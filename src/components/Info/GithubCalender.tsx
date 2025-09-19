@@ -37,7 +37,7 @@ function GithubCalender() {
       <div>
         <H2Heading>proof of Work</H2Heading>
         <Description>
-          All the work I have done so far in public &amp;&amp; people's
+          All the work I have done so far in public &amp; people&#39;s
           appreciation
         </Description>
       </div>
