@@ -11,7 +11,7 @@ interface Blog {
   publishedAt: string;
 }
 
-const PATH = "src/writings";
+const PATH = "src/Blogs";
 
 export const getBlogs = async () => {
   const files = await fs.readdir(path.join(process.cwd(), PATH));

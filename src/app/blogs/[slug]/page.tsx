@@ -19,7 +19,7 @@ export async function generateMetadata({
       description: blog.description,
       type: "article",
       publishedTime: blog.publishedAt,
-      url: `/w/${slug}`,
+      url: `/blogs/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
@@ -40,7 +40,7 @@ export default async function Post({
   return (
     <div className="max-w-3xl mx-auto font-sans w-full">
       <div className="mb-8">
-        <Link href="/w" className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-200 transition-colors">
+        <Link href="/blogs" className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-200 transition-colors">
           <ArrowLeftIcon className="w-4 h-4" />
           <span>Back to writings</span>
         </Link>

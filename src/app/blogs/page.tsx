@@ -10,13 +10,13 @@ export default async function BlogsPage() {
     <main className="flex flex-col max-w-3xl mx-auto">
       <div className="flex text-4xl font-semibold items-center gap-2">
         <Star />
-        <HyperText>writings</HyperText>
+        <HyperText>blogs</HyperText>
       </div>
 
       <section className="mt-4 flex flex-col gap-6">
         {allBlogs.map((blog, index) => (
           <Link
-            href={"/w/" + blog.slug}
+            href={"/blogs/" + blog.slug}
             passHref
             key={blog.slug}
           >
