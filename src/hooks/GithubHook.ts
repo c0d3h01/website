@@ -29,7 +29,7 @@ type GitHubResponse = {
   };
 };
 
-const GITHUB_USERNAME = "hanuchaudhary";
+const GITHUB_USERNAME = "c0d3h01";
 const GITHUB_TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
 
 const QUERY = `{
