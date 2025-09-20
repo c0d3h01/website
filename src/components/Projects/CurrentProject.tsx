@@ -7,11 +7,11 @@ import LivePing from "../ui/LivePing";
 import UserCount from "./UserCount";
 
 export const currentProject: Project = {
-  id: 59,
+  id: 1,
   // users: 127,
-  title: "go-installer",
+  title: "Go Installer",
   description:
-    "A quick Go installer written in Rust. Published and downloaded over 100 times on crates.io.",
+    "A quick Go installer written in Rust. Published and downloaded over 100+ times on crates.io.",
   githubLink: "https://github.com/c0d3h01/go-installer",
   liveLink: "https://crates.io/crates/go-installer",
   keyFeatures: [
@@ -21,18 +21,13 @@ export const currentProject: Project = {
     "MIT-licensed and open source",
   ],
 
-  technologies: [
-    "Rust",
-    "CLI",
-    "MIT License",
-    "Crates.io",
-  ],
+  technologies: ["Rust", "CLI", "MIT License", "Crates.io"],
 };
 
 export function CurrentProject() {
   return (
     <div className="projects mt-6 space-y-5">
-      <H2Heading>currently working on</H2Heading>
+      <H2Heading>Currently working on</H2Heading>
       <div className="flex flex-col group">
         <H3Heading>
           <span className="font-semibold md:text-[16px] text-base w-full">
