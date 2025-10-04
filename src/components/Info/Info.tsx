@@ -12,7 +12,7 @@ export function Info() {
         <h2 className="text-muted-foreground md:text-sm text-xs flex items-center gap-3">
           Mumbai, IN{" "}
           <Image
-            src={"/india.webp"}
+            src={"/india.svg"}
             height={23}
             width={23}
             alt="india"

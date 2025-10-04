@@ -24,7 +24,7 @@ function GithubCalender() {
     <GitHubCalendar
       colorScheme="dark"
       fontSize={12}
-      blockSize={10}
+      blockSize={12}
       theme={{
         dark: themes.indigo,
       }}

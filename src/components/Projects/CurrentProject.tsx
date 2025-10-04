@@ -9,19 +9,17 @@ import UserCount from "./UserCount";
 export const currentProject: Project = {
   id: 1,
   // users: 127,
-  title: "Go Installer",
-  description:
-    "A quick Go installer written in Rust. Published and downloaded over 100+ times on crates.io.",
-  githubLink: "https://github.com/c0d3h01/go-installer",
-  liveLink: "https://crates.io/crates/go-installer",
+  title: "Obfussor",
+  description: "A cross-platform obfuscator for C and C++ code.",
+  githubLink: "https://github.com/matrixbytes/Obfussor",
+  technologies: ["Rust", "Tauri", "Angular"],
   keyFeatures: [
-    "Quick and easy installation of the Go programming language",
-    "Written in Rust for performance and safety",
-    "Command-line interface for user-friendly operation",
-    "MIT-licensed and open source",
+    "Cross-platform support for obfuscating C and C++ code",
+    "Built with Tauri for a modern desktop application experience",
+    "Rust-powered backend for performance and reliability",
+    "Angular-based user interface for intuitive code obfuscation",
+    "Open-source with MIT License for community collaboration",
   ],
-
-  technologies: ["Rust", "CLI", "MIT License", "Crates.io"],
 };
 
 export function CurrentProject() {

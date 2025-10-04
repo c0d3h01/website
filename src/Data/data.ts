@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { use } from "react";
 
 export interface Project {
   id: number;
@@ -9,20 +10,6 @@ export interface Project {
   technologies?: string[];
   keyFeatures?: string[];
   users?: number;
-}
-
-export interface OpenSourceContribution {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  link: string;
-}
-
-export interface Writings {
-  title: string;
-  link: string;
-  Date: string;
 }
 
 export const skillsData: string[] = [
@@ -52,138 +39,36 @@ export const skillsData: string[] = [
   "Git",
   "GitHub",
   "GitHub Actions",
-  "Netlify",
-  "Vercel",
-  "NPM",
   "Node.js",
   "Express",
   "JQuery",
   "Markdown",
   "TypeScript",
   "Next.js",
-  "Remix",
-  "Firebase",
   "MongoDB",
   "MySQL",
   "PostgreSQL",
-  "Redis",
-  "Supabase",
-  "Nginx",
-  "Cloudflare",
-  "BullMQ",
-  "Nodemon",
-  "Socket.io",
-  "JWT",
-  "Auth.js",
-  "Prisma",
-  "ESLint",
-  "Storybook",
   "Postman",
-  "Monorepo",
   "Bash",
-  "Powershell",
-  "Gsap",
-  "Python",
   "Docker",
   "Kubernetes",
-  "AWS",
-  "Nginx",
-  "Redis",
-  "Better Auth",
-  "Cloudflare",
-  "React Native",
-  "Vite",
-  "Blender",
-  "Stack Overflow",
-  "Zustand",
-  "Motion",
-];
+  ];
 
 export const projectsData = [
-  // {
-  //   id: 1,
-  //   title: "Go Installer",
-  //   description: "A quick Go installer written in Rust.",
-  //   githubLink: "https://github.com/c0d3h01/go-installer",
-  //   technologies: ["Rust"],
-  //   keyFeatures: [],
-  // },
   {
     id: 1,
-    title: "Androidtweaker",
-    description: "Android performance enhancer.",
-    githubLink: "https://github.com/c0d3h01/androidtweaker",
-    technologies: ["Shell", "kernel"],
-    keyFeatures: [],
+    users: 220,
+    title: "Go Installer",
+    description: "A quick Go installer written in Rust.",
+    githubLink: "https://github.com/c0d3h01/go-installer",
+    liveLink: "https://crates.io/crates/go-installer",
+    technologies: [ "Rust", "CLI" ],
+    keyFeatures: [
+      "Quick and easy installation of the Go programming language",
+      "Written in Rust for performance and safety",
+      "Command-line interface for user-friendly operation",
+    ],
   },
-  {
-    id: 2,
-    title: "Core Task Optimizer",
-    description: "Adaptive core CPU nice optimizer.",
-    githubLink: "https://github.com/c0d3h01/coretaskoptimizer",
-    technologies: ["Shell", "C++", "CMake", "Nix"],
-    keyFeatures: [],
-  },
-  {
-    id: 3,
-    title: "Archinstall",
-    description: "Automated Arch Linux Installation",
-    githubLink: "https://github.com/c0d3h01/archinstall",
-    technologies: ["Shell"],
-    keyFeatures: [],
-  },
-  {
-    id: 4,
-    title: "ASCII",
-    description: "ASCII - Moving donought written in rust",
-    githubLink: "https://github.com/c0d3h01/ascii",
-    technologies: ["Rust", "Nix", "Shell"],
-    keyFeatures: [],
-  },
-  {
-    id: 5,
-    title: "PHP-Portfolio",
-    description: "Personal portfolio written in PHP",
-    githubLink: "https://github.com/c0d3h01/php-portfolio",
-    technologies: ["PHP", "CSS", "JavaScript", "Nix", "Other"],
-    keyFeatures: [],
-  },
-  {
-    id: 6,
-    title: "Dotfiles",
-    description: "Declarative -  Flake based dotfiles",
-    githubLink: "https://github.com/c0d3h01/dotfiles",
-    technologies: ["Nix", "Lua", "Shell", "Python", "Just"],
-    keyFeatures: [],
-  },
-];
-
-
-export const OpenSourceContributions = [
-  {
-    id: 1,
-    title: "isabelroses/dotfiles",
-    description:
-      "Suggested improvements to documentation structure and clarity for better usability, including step-by-step guides and user adaptation tips.",
-    image: "/dotfiles.png",
-    link: "https://github.com/isabelroses/dotfiles/issues/421",
-  },
-  {
-    id: 2,
-    title: "RiProG-id/Universal-Shell-Dec",
-    description:
-      "Raised and discussed a bug report regarding decryption failure in the Universal-Shell-Dec project.",
-    image: "/shell-dec.png",
-    link: "https://github.com/RiProG-id/Universal-Shell-Dec/issues/1",
-  },
-];
-
-export const writingsData: Writings[] = [
-  {
-    title: "Kleos CLI: Mindsdb Knowledge Base supercharged",
-    link: "https://dev.to/yashksaini/kleos-cli-mindsdb-knowledge-base-supercharged-1a83",
-    Date: "June 30, 2025",
-  }
 ];
 
 export const siteMetadata: Metadata = {
@@ -208,7 +93,7 @@ export const siteMetadata: Metadata = {
     address: true,
     telephone: true,
   },
-  metadataBase: new URL("https://www.c0d3h01.tech/"), //deployed website url
+  metadataBase: new URL("https://www.c0d3h01.tech/"),
   alternates: {
     canonical: "/",
   },

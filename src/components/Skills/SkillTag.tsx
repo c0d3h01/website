@@ -3,26 +3,19 @@
 import { useMemo } from "react";
 
 const highlightedSkills = [
+  "c",
   "c++",
   "nix",
-  "flakes",
   "rust",
-  "shell",
-  "typescript",
-  "tailwind css",
+  "typeScript",
+  "javaScript",
   "react",
-  "node.js",
   "next.js",
-  "postgresql",
-  "mongodb",
+  "postgreSQL",
   "docker",
-  "javascript",
-  "git",
-  "github",
-  "github actions",
+  "gitHub Actions",
   "bash",
   "linux",
-  "vercel",
 ];
 
 export function SkillTag({ skill }: { skill: string }) {

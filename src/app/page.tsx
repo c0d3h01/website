@@ -1,5 +1,4 @@
 import React from "react";
-import { Contributions } from "@/components/Conributions/Contributions";
 import { ProjectsSection } from "@/components/Projects/ProjectSection";
 import { CurrentProject } from "@/components/Projects/CurrentProject";
 import { Info } from "@/components/Info/Info";
@@ -13,7 +12,6 @@ export default function Home() {
         <GitHubCalendar />
         <CurrentProject />
         <ProjectsSection />
-        <Contributions />
       </div>
     </div>
   );
