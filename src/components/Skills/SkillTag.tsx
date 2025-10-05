@@ -28,8 +28,8 @@ export function SkillTag({ skill }: { skill: string }) {
     <span
       className={`
         md:text-sm text-xs 
-        ${isHighlighted ? "text-blue-500" : "text-stone-300"}
-        bg-stone-900 border hover:text-blue-500 
+        ${isHighlighted ? "text-orange-500" : "text-stone-300"}
+        bg-stone-900 border hover:text-orange-500 
         transition-colors duration-300 border-stone-700 
         px-4 py-2 flex items-center justify-center select-none
       `}

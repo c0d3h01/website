@@ -9,7 +9,7 @@ export const components = {
   Button,
   
   h1: (props: React.ComponentProps<"h1">) => (
-    <h1 className="text-3xl md:text-4xl font-semibold text-blue-500 py-4 border-b border-stone-700 mb-6" {...props} />
+    <h1 className="text-3xl md:text-4xl font-semibold text-orange-500 py-4 border-b border-stone-700 mb-6" {...props} />
   ),
   h2: (props: React.ComponentProps<"h2">) => (
     <h2 className="text-lg md:text-xl font-semibold text-stone-50 mt-8 mb-4" {...props} />
@@ -47,7 +47,7 @@ export const components = {
     const isExternal = href.startsWith("http") || href.startsWith("https");
     return (
       <a
-        className="text-blue-400 hover:text-blue-300 hover:underline transition-colors inline-flex items-center gap-1"
+        className="text-orange-400 hover:text-orange-300 hover:underline transition-colors inline-flex items-center gap-1"
         href={href}
         target={isExternal ? "_blank" : undefined}
         rel={isExternal ? "noopener noreferrer" : undefined}
@@ -60,9 +60,9 @@ export const components = {
   },
 
   blockquote: (props: React.ComponentProps<"blockquote">) => (
-    <blockquote className="border-l-4 border-blue-500 pl-4 py-2 my-6 bg-stone-900/50 rounded-r  -lg" {...props}>
+    <blockquote className="border-l-4 border-orange-500 pl-4 py-2 my-6 bg-stone-900/50 rounded-r  -lg" {...props}>
       <div className="flex items-start gap-2">
-        <Quote size={16} className="text-blue-500 mt-1 flex-shrink-0" />
+        <Quote size={16} className="text-orange-500 mt-1 flex-shrink-0" />
         <div className="text-stone-300 italic">
           {props.children}
         </div>
@@ -140,7 +140,7 @@ export const components = {
     };
 
     const colors = {
-      info: "border-blue-500 bg-blue-500/10 text-blue-400",
+      info: "border-orange-500 bg-orange-500/10 text-orange-400",
       warning: "border-yellow-500 bg-yellow-500/10 text-yellow-400",
       error: "border-red-500 bg-red-500/10 text-red-400",
       success: "border-green-500 bg-green-500/10 text-green-400"

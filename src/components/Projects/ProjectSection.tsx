@@ -17,7 +17,7 @@ export function ProjectsSection() {
       </div>
       <Link
         href="/projects"
-        className="flex items-center text-base font-semibold text-blue-200 border-b border-blue-100/30 border-dashed w-max leading-none hover:text-blue-500 hover:border-blue-500 duration-300 transition-colors"
+        className="flex items-center text-base font-semibold text-orange-200 border-b border-orange-100/30 border-dashed w-max leading-none hover:text-orange-500 hover:border-orange-500 duration-300 transition-colors"
       >
         View more projects <ArrowUpRight />
       </Link>

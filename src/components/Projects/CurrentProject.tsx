@@ -1,10 +1,10 @@
 import React from "react";
-import { H2Heading } from "../H2Heading";
-import { H3Heading } from "../H3Heading";
-import Description from "../Description";
+import { H2Heading } from "@/components/H2Heading";
+import { H3Heading } from "@/components/H3Heading";
+import Description from "@/components/Description";
 import { Project } from "@/Data/data";
-import LivePing from "../ui/LivePing";
-import UserCount from "./UserCount";
+import LivePing from "@/components/ui/LivePing";
+import UserCount from "@/components/Projects/UserCount";
 
 export const currentProject: Project = {
   id: 1,
@@ -34,7 +34,7 @@ export function CurrentProject() {
                 <a
                   target="_blank"
                   href={currentProject.liveLink || currentProject.githubLink}
-                  className="hover:text-blue-100 transition-colors"
+                  className="hover:text-orange-400 transition-colors"
                 >
                   {currentProject.title}
                 </a>
@@ -44,7 +44,7 @@ export function CurrentProject() {
                 <UserCount count={currentProject.users} />
               )}
             </div>
-            <span className="h-10 w-10 bg-green-400 rounded-full" />
+            <span className="h-10 w-10 bg-orange-400 rounded-full" />
           </span>
         </H3Heading>
         <Description>{currentProject.description}</Description>

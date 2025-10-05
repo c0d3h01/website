@@ -23,7 +23,7 @@ export default function ProjectTile({ project }: ProjectTileProps) {
         </H3Heading>
         <Description>{project.description}</Description>
       </div>
-      <span className="absolute top-0 right-0 text-blue-500 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <span className="absolute top-0 right-0 text-orange-500 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <ArrowUpRight />
       </span>
     </a>

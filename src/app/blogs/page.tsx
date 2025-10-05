@@ -28,7 +28,7 @@ export default async function BlogsPage() {
           >
             <div className="pb-2 flex justify-between align-middle gap-2 group">
               <div className="space-y-2">
-                <h3 className="md:text-base group-hover:text-blue-500 transition-colors duration-200">
+                <h3 className="md:text-base group-hover:text-orange-500 transition-colors duration-200">
                   {blog.title}
                 </h3>
                 <p className="text-stone-400 md:text-sm text-sm md:line-clamp-3 line-clamp-2">
