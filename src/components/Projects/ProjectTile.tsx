@@ -1,9 +1,9 @@
 import React from "react";
-import { H3Heading } from "../H3Heading";
+import { H3Heading } from "@/components/H3Heading";
 import { Project } from "@/Data/data";
-import Description from "../Description";
+import Description from "@/components/Description";
 import { ArrowUpRight } from "lucide-react";
-import LivePing from "../ui/LivePing";
+import LivePing from "@/components/ui/LivePing";
 
 interface ProjectTileProps {
   project: Project;

@@ -1,9 +1,9 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Project } from "@/Data/data";
-import { SkillTag } from "../Skills/SkillTag";
-import Description from "../Description";
-import UserCount from "./UserCount";
+import { SkillTag } from "@/components/Skills/SkillTag";
+import Description from "@/components/Description";
+import UserCount from "@/components/Projects/UserCount";
 
 export default function ProjectCard(project: Project) {
   return (

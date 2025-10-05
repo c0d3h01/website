@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/Button";
 import { NextImage } from "@/components/ui/NextImage";
 import type { ImageProps } from "next/image";
-import { CodeBlock } from "./ui/CodeBlock";
+import { CodeBlock } from "@/components/ui/CodeBlock";
 import { ExternalLink, Quote, AlertCircle, Info, CheckCircle } from "lucide-react";
 
 export const components = {

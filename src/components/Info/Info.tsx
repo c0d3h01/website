@@ -1,8 +1,8 @@
 import React from "react";
 import { HyperText } from "@/components/ui/HyperText";
 import Image from "next/image";
-import Description from "../Description";
-import CustomATag from "../ui/CustomATag";
+import Description from "@/components/Description";
+import CustomATag from "@/components/ui/CustomATag";
 import { IoLocationSharp } from "react-icons/io5";
 
 const PROFILE = {

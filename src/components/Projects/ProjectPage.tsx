@@ -1,9 +1,9 @@
 import React from "react";
-import { HyperText } from "../ui/HyperText";
-import ProjectCard from "./ProjectCard";
+import { HyperText } from "@/components/ui/HyperText";
+import ProjectCard from "@/components/Projects/ProjectCard";
 import { projectsData } from "@/Data/data";
-import { Star } from "../Star";
-import { currentProject } from "./CurrentProject";
+import { Star } from "@/components/Star";
+import { currentProject } from "@/components/Projects/CurrentProject";
 
 export default function ProjectPage() {
   return (

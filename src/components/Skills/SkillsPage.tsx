@@ -1,8 +1,8 @@
 import React from "react";
-import { Star } from "../Star";
-import { HyperText } from "../ui/HyperText";
+import { Star } from "@/components/Star";
+import { HyperText } from "@/components/ui/HyperText";
 import { skillsData } from "@/Data/data";
-import { SkillTag } from "./SkillTag";
+import { SkillTag } from "@/components/Skills/SkillTag";
 
 export function SkillsPage() {
   return (
