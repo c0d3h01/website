@@ -3,6 +3,7 @@ import { ProjectsSection } from "@/components/Projects/ProjectSection";
 import { CurrentProject } from "@/components/Projects/CurrentProject";
 import { Info } from "@/components/Info/Info";
 import GitHubCalendar from "@/components/Info/GithubCalender";
+import { LinksSection } from "@/components/Footer-links";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <GitHubCalendar />
         <CurrentProject />
         <ProjectsSection />
+        <LinksSection />
       </div>
     </div>
   );
