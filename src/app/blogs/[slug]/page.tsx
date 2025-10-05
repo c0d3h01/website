@@ -22,6 +22,7 @@ export async function generateMetadata({
       url: `/blogs/${slug}`,
     },
     twitter: {
+      creator: "@haarshalsawant",
       card: "summary_large_image",
       title: blog.title,
       description: blog.description,
