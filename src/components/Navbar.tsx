@@ -34,16 +34,16 @@ export default function Navbar() {
     <nav className="flex max-w-3xl mx-auto pb-8 text-sm text-muted-foreground items-center gap-4">
       {links.map(({ href, text, key }) => (
         <h4
-          className="hover:text-blue-500 sm:text-sm text-xs duration-300 transition-colors"
+          className="hover:text-orange-500 sm:text-sm text-xs duration-300 transition-colors"
           key={key}
         >
           <Link href={href}>
             <span
               className={`${
                 pathname === href
-                  ? "text-blue-500"
+                  ? "text-orange-500"
                   : pathname.startsWith("/w") && href === "/w"
-                  ? "text-blue-500"
+                  ? "text-orange-500"
                   : ""
               }`}
             >

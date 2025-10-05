@@ -26,11 +26,11 @@ function GithubCalender() {
       fontSize={12}
       blockSize={12}
       theme={{
-        dark: themes.indigo,
+        dark: themes.orange,
       }}
       username="c0d3h01"
     />
-  ), [themes.indigo]);
+  ), [themes.orange]);
 
   return (
     <div className="space-y-4">
