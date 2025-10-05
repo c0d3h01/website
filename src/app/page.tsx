@@ -4,6 +4,12 @@ import { CurrentProject } from "@/components/Projects/CurrentProject";
 import { Info } from "@/components/Info/Info";
 import GitHubCalendar from "@/components/Info/GithubCalender";
 import { LinksSection } from "@/components/Footer-links";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Harshal Sawant",
+  description: "Home page"
+}
 
 export default function Home() {
   return (

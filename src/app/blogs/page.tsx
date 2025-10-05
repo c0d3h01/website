@@ -3,6 +3,12 @@ import {Link} from "next-view-transitions";
 import { HyperText } from "@/components/ui/HyperText";
 import { Star } from "@/components/Star";
 import { getBlogs } from "@/lib/BlogUtils";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog | Harshal Sawant",
+  description: "Blog page"
+};
 
 export default async function BlogsPage() {
   const allBlogs = await getBlogs();
