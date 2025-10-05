@@ -73,17 +73,21 @@ export const projectsData = [
 
 export const siteMetadata: Metadata = {
   title: "Harshal Sawant",
-  description: "Backend engineer from India",
+  description: "Backend engineer",
   keywords: [
     "Harshal Sawant",
     "Backend developer",
+    "Blockchain developer",
+    "Solana",
+    "Rust",
     "Next.js",
     "React",
     "TypeScript",
     "JavaScript",
     "India",
-    "nix",
-    "linux"
+    "Mumbai",
+    "Nix",
+    "Linux"
   ],
   authors: [{ name: "Harshal Sawant" }],
   creator: "Harshal Sawant",
@@ -127,7 +131,7 @@ export const siteMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@c0d3h01.vercel.app",
+    site: "@c0d3h01.tech",
     title: "Harshal Sawant - Backend Engineer",
     description:
       "Backend engineer from India specializing in modern web technologies",
