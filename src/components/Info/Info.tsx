@@ -1,4 +1,5 @@
 import React from "react";
+import { Terminal } from 'lucide-react';
 import { HyperText } from "@/components/ui/HyperText";
 import Image from "next/image";
 import Description from "@/components/Description";
@@ -19,7 +20,10 @@ const PROFILE = {
 
 const ProfileHeader = () => (
   <div className="flex md:flex-row flex-col md:items-center justify-between">
-    <HyperText>{PROFILE.name}</HyperText>
+    <div className="flex items-center gap-4">
+      <Terminal className="h-6 w-6 text-orange-500" />
+      <HyperText>{PROFILE.name}</HyperText>
+    </div>
     <h2 className="text-muted-foreground md:text-sm text-xs flex items-center gap-2">
       <IoLocationSharp size={16} />
       {PROFILE.location.city}, {PROFILE.location.country}
