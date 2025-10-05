@@ -3,12 +3,14 @@
 import { Link } from "next-view-transitions";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
+import { ResumeButton } from "./ResumeButton";
+import { resumeData } from "@/Data/data";
 
 const links = [
-  { href: "/", text: "home", key: "h" },
-  { href: "/projects", text: "projects", key: "p" },
-  { href: "/skills", text: "skills", key: "s" },
-  { href: "/blogs", text: "blogs", key: "b" },
+  { href: "/", text: "home", key: "h", type: "route" },
+  { href: "/projects", text: "projects", key: "p", type: "route" },
+  { href: "/skills", text: "skills", key: "s", type: "route" },
+  { href: "/blogs", text: "blogs", key: "b", type: "route" },
 ];
 
 export default function Navbar() {
@@ -17,6 +19,18 @@ export default function Navbar() {
 
   const handleKeyPress = (event: KeyboardEvent) => {
     const key = event.key.toLowerCase();
+    
+    // Handle resume keybinding
+    if (key === "r") {
+      if (resumeData.isAvailable) {
+        window.open(resumeData.url, "_blank");
+      } else {
+        router.push(resumeData.fallbackRoute);
+      }
+      return;
+    }
+    
+    // Handle other navigation
     const link = links.find((link) => link.key === key);
     if (link) {
       router.push(link.href, { scroll: true });
@@ -31,13 +45,14 @@ export default function Navbar() {
   });
 
   return (
-    <nav className="flex max-w-3xl mx-auto pb-8 text-sm text-muted-foreground items-center gap-4">
-      {links.map(({ href, text, key }) => (
-        <h4
-          className="hover:text-orange-500 sm:text-sm text-xs duration-300 transition-colors"
-          key={key}
-        >
-          <Link href={href}>
+    <nav className="flex max-w-3xl mx-auto pb-8 text-sm text-muted-foreground items-center justify-between flex-wrap gap-4">
+      <div className="flex items-center gap-4 flex-wrap">
+        {links.map(({ href, text, key }) => (
+          <Link
+            key={key}
+            href={href}
+            className="hover:text-orange-500 sm:text-sm text-xs duration-300 transition-colors"
+          >
             <span
               className={`${
                 pathname === href
@@ -51,8 +66,9 @@ export default function Navbar() {
             </span>{" "}
             {text}
           </Link>
-        </h4>
-      ))}
+        ))}
+      </div>
+      <ResumeButton />
     </nav>
   );
 }

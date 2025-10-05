@@ -71,6 +71,17 @@ export const projectsData = [
   },
 ];
 
+export const resumeData = {
+  // Set to false when you don't have resume, true when you do
+  isAvailable: false,
+  
+  // Add your Google Drive link here when ready
+  url: "https://drive.google.com/file/d/YOUR_FILE_ID/view",
+  
+  // Fallback route when not available
+  fallbackRoute: "/not-found",
+};
+
 export const siteMetadata: Metadata = {
   title: "Harshal Sawant",
   description: "Backend engineer",
