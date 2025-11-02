@@ -1,6 +1,6 @@
 {
-  "name": "c0d3h01-website",
-  "version": "0.1.0",
+  "name": "c0d3h01.tech",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,17 +8,10 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "overrides": {
-    "react-syntax-highlighter": "15.0.0"
-  },
   "dependencies": {
     "@tabler/icons-react": "^3.34.0",
-    "axios": "^1.8.3",
-    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.22",
-    "gray-matter": "^4.0.3",
-    "highlight.js": "^11.11.1",
     "lucide-react": "^0.471.2",
     "next": "^15.3.3",
     "next-mdx-remote": "^5.0.0",
@@ -28,7 +21,6 @@
     "react-github-calendar": "^4.5.6",
     "react-icons": "^5.5.0",
     "react-syntax-highlighter": "^15.0.0",
-    "sugar-high": "^0.9.3",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7"
   },
