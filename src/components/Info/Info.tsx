@@ -52,9 +52,11 @@ const ProfileHeader = () => {
         </span>
         <Image
           src={PROFILE.location.flag}
-          height={23}
-          width={23}
           alt={PROFILE.location.country}
+          height={20}
+          width={20}
+          className="w-[23px] h-auto inline-block align-middle"
+          priority
         />
       </h2>
     </div>

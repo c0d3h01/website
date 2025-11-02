@@ -3,7 +3,7 @@ import "@/app/globals.css";
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { ViewTransitions } from "next-view-transitions";
-import { siteMetadata } from "@/Data/data";
+import { baseMetadata } from "@/lib/metadata";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,7 +12,7 @@ const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
-export const metadata: Metadata = siteMetadata
+export const metadata: Metadata = baseMetadata;
 
 export default function RootLayout({
   children,

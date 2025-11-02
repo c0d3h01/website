@@ -1,13 +1,14 @@
 import React from "react";
-import {Link} from "next-view-transitions";
+import { Link } from "next-view-transitions";
 import { HyperText } from "@/components/ui/HyperText";
 import { Star } from "@/components/Star";
 import { getBlogs } from "@/lib/BlogUtils";
 import { Metadata } from "next";
+import { siteConfig } from "@/lib/metadata";
 
 export const metadata: Metadata = {
-  title: "Blog | Harshal Sawant",
-  description: "Blog page"
+  title: siteConfig.title,
+  description: siteConfig.description
 };
 
 export default async function BlogsPage() {
