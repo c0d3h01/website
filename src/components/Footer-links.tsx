@@ -1,7 +1,6 @@
-import Link from "next/link";
-import { SiGmail, SiX, SiGithub, SiLinkedin } from "react-icons/si";
-import { BsCalendar3 } from "react-icons/bs";
 import { H2Heading } from "@/components/H2Heading";
+import Link from "next/link";
+import { SiGithub, SiGmail, SiLinkedin, SiX } from "react-icons/si";
 
 const links = [
   {
@@ -23,11 +22,6 @@ const links = [
     title: "LinkedIn",
     href: "https://linkedin.com/in/haarshalsawant",
     icon: SiLinkedin,
-  },
-  {
-    title: "Book a Call",
-    href: "https://cal.com/c0d3h01",
-    icon: BsCalendar3,
   },
 ];
 

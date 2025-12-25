@@ -1,15 +1,14 @@
 "use client";
 
+import { resumeData } from "@/Data/data";
 import { Link } from "next-view-transitions";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
-import { ResumeButton } from "./ResumeButton";
-import { resumeData } from "@/Data/data";
 
 const links = [
   { href: "/", text: "home", key: "h", type: "route" },
   { href: "/projects", text: "projects", key: "p", type: "route" },
-  { href: "/skills", text: "skills", key: "s", type: "route" },
+  { href: "/resume", text: "resume", key: "r", type: "route" },
   { href: "/blogs", text: "blogs", key: "b", type: "route" },
 ];
 
@@ -19,7 +18,7 @@ export default function Navbar() {
 
   const handleKeyPress = (event: KeyboardEvent) => {
     const key = event.key.toLowerCase();
-    
+
     // Handle resume keybinding
     if (key === "r") {
       if (resumeData.isAvailable) {
@@ -29,7 +28,7 @@ export default function Navbar() {
       }
       return;
     }
-    
+
     // Handle other navigation
     const link = links.find((link) => link.key === key);
     if (link) {
@@ -68,7 +67,6 @@ export default function Navbar() {
           </Link>
         ))}
       </div>
-      <ResumeButton />
     </nav>
   );
 }

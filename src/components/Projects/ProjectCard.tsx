@@ -1,9 +1,7 @@
-import React from "react";
-import { ArrowUpRight } from "lucide-react";
 import { Project } from "@/Data/data";
-import { SkillTag } from "@/components/Skills/SkillTag";
 import Description from "@/components/Description";
 import UserCount from "@/components/Projects/UserCount";
+import { ArrowUpRight } from "lucide-react";
 
 export default function ProjectCard(project: Project) {
   return (
@@ -33,16 +31,6 @@ export default function ProjectCard(project: Project) {
             </li>
           ))}
         </ul>
-      </div>
-      <div>
-        <h4 className="text-sm md:text-base font-medium text-white/80">
-          Technologies
-        </h4>
-        <div className="mt-2 flex flex-wrap gap-1">
-          {project.technologies?.map((technology, index) => (
-            <SkillTag key={index} skill={technology} />
-          ))}
-        </div>
       </div>
     </div>
   );

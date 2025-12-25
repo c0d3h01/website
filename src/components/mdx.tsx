@@ -1,13 +1,13 @@
-import React from "react";
 import { Button } from "@/components/ui/Button";
-import { NextImage } from "@/components/ui/NextImage";
-import type { ImageProps } from "next/image";
 import { CodeBlock } from "@/components/ui/CodeBlock";
-import { ExternalLink, Quote, AlertCircle, Info, CheckCircle } from "lucide-react";
+import { NextImage } from "@/components/ui/NextImage";
+import { AlertCircle, CheckCircle, ExternalLink, Info, Quote } from "lucide-react";
+import type { ImageProps } from "next/image";
+import React from "react";
 
 export const components = {
   Button,
-  
+
   h1: (props: React.ComponentProps<"h1">) => (
     <h1 className="text-3xl md:text-4xl font-semibold text-orange-500 py-4 border-b border-stone-700 mb-6" {...props} />
   ),
@@ -99,7 +99,7 @@ export const components = {
       </div>
     </div>
   ),
-  
+
   pre: (props: React.ComponentProps<"pre">) => {
     const childrenArray = React.Children.toArray(props.children);
     const codeElement = childrenArray.find(

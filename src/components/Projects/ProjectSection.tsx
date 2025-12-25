@@ -1,7 +1,6 @@
-import { projectsData } from "@/Data/data";
-import React from "react";
-import ProjectTile from "@/components/Projects/ProjectTile";
 import { H2Heading } from "@/components/H2Heading";
+import ProjectTile from "@/components/Projects/ProjectTile";
+import { projectsData } from "@/Data/data";
 import { Link } from "next-view-transitions";
 
 import { ArrowUpRight } from "lucide-react";

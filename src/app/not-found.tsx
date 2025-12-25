@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { HiHome } from "react-icons/hi2";
 
 export default function NotFound() {
@@ -55,7 +55,7 @@ export default function NotFound() {
     <div className="min-h-screen flex items-center justify-center bg-black relative overflow-hidden">
       {/* Animated grid background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] animate-pulse" />
-      
+
       {/* Scanline effect */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-500/5 to-transparent animate-scan" />
 

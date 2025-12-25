@@ -1,9 +1,9 @@
 "use client";
 
-import { useMemo } from "react";
-import GitHubCalendar from "react-github-calendar";
 import Description from "@/components/Description";
 import { H2Heading } from "@/components/H2Heading";
+import { useMemo } from "react";
+import GitHubCalendar from "react-github-calendar";
 
 function GithubCalender() {
   const themes = useMemo(() => ({

@@ -1,10 +1,9 @@
-import React from "react";
+import Description from "@/components/Description";
 import { H2Heading } from "@/components/H2Heading";
 import { H3Heading } from "@/components/H3Heading";
-import Description from "@/components/Description";
-import { Project } from "@/Data/data";
-import LivePing from "@/components/ui/LivePing";
 import UserCount from "@/components/Projects/UserCount";
+import LivePing from "@/components/ui/LivePing";
+import { Project } from "@/Data/data";
 
 export const currentProject: Project = {
   id: 1,

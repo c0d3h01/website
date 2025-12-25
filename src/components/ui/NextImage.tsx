@@ -1,9 +1,9 @@
 "use client";
 
+import clsx from "clsx";
 import type { ImageProps } from "next/image";
 import Image from "next/image";
 import { useState } from "react";
-import clsx from "clsx";
 
 export const NextImage = (props: ImageProps) => {
   const [isLoading, setIsLoading] = useState(true);

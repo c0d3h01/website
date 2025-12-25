@@ -1,7 +1,4 @@
-import Description from "@/components/Description";
-import { url } from "inspector";
 import { Metadata } from "next";
-import { title } from "process";
 
 const siteConfig = {
   name: "Harshal Sawant",

@@ -1,7 +1,7 @@
-import { Link } from "next-view-transitions";
-import { ArrowLeftIcon } from "lucide-react";
 import { getBlog } from "@/lib/BlogUtils";
+import { ArrowLeftIcon } from "lucide-react";
 import type { Metadata } from "next";
+import { Link } from "next-view-transitions";
 
 export async function generateMetadata({
   params,
@@ -41,7 +41,7 @@ export default async function Post({
   return (
     <div className="max-w-3xl mx-auto font-sans w-full">
       <div className="mb-8">
-        <Link href="/blogs" className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-200 transition-colors">
+        <Link href="/blog" className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-200 transition-colors">
           <ArrowLeftIcon className="w-4 h-4" />
           <span>Back to writings</span>
         </Link>

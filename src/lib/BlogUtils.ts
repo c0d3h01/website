@@ -1,9 +1,9 @@
 "use server";
 
-import fs from "fs/promises";
-import path from "path";
-import { compileMDX } from "next-mdx-remote/rsc";
 import { components } from "@/components/mdx";
+import fs from "fs/promises";
+import { compileMDX } from "next-mdx-remote/rsc";
+import path from "path";
 
 interface Blog {
   title: string;

@@ -1,9 +1,8 @@
-import React from "react";
-import { Terminal } from "lucide-react";
-import { HyperText } from "@/components/ui/HyperText";
-import Image from "next/image";
 import Description from "@/components/Description";
 import CustomATag from "@/components/ui/CustomATag";
+import { HyperText } from "@/components/ui/HyperText";
+import { Terminal } from "lucide-react";
+import Image from "next/image";
 import { IoLocationSharp } from "react-icons/io5";
 
 const PROFILE = {

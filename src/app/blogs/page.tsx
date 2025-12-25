@@ -1,10 +1,9 @@
-import React from "react";
-import { Link } from "next-view-transitions";
-import { HyperText } from "@/components/ui/HyperText";
 import { Star } from "@/components/Star";
+import { HyperText } from "@/components/ui/HyperText";
 import { getBlogs } from "@/lib/BlogUtils";
-import { Metadata } from "next";
 import { siteConfig } from "@/lib/metadata";
+import { Metadata } from "next";
+import { Link } from "next-view-transitions";
 
 export const metadata: Metadata = {
   title: siteConfig.title,

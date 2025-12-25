@@ -1,7 +1,6 @@
 import ProjectPage from "@/components/Projects/ProjectPage";
-import { Metadata } from "next";
-import React from "react";
 import { siteConfig } from "@/lib/metadata";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: siteConfig.title,

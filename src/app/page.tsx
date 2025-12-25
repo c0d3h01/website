@@ -1,11 +1,10 @@
-import React from "react";
-import { ProjectsSection } from "@/components/Projects/ProjectSection";
-import { CurrentProject } from "@/components/Projects/CurrentProject";
-import { Info } from "@/components/Info/Info";
-import GitHubCalendar from "@/components/Info/GithubCalender";
 import { LinksSection } from "@/components/Footer-links";
-import { Metadata } from "next";
+import GitHubCalendar from "@/components/Info/GithubCalender";
+import { Info } from "@/components/Info/Info";
+import { CurrentProject } from "@/components/Projects/CurrentProject";
+import { ProjectsSection } from "@/components/Projects/ProjectSection";
 import { siteConfig } from "@/lib/metadata";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: siteConfig.title,

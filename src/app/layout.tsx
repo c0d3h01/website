@@ -1,9 +1,9 @@
-import Navbar from "@/components/Navbar";
 import "@/app/globals.css";
-import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
-import { ViewTransitions } from "next-view-transitions";
+import Navbar from "@/components/Navbar";
 import { baseMetadata } from "@/lib/metadata";
+import type { Metadata } from "next";
+import { ViewTransitions } from "next-view-transitions";
+import { Inter, JetBrains_Mono } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
