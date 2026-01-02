@@ -1,50 +1,22 @@
-/**
- * An ESLint configuration file for Effect-TS projects.
- *
- * SPDX-License-Identifier: Unlicense
- */
+import { FlatCompat } from "@eslint/eslintrc";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
-import antfu from "@antfu/eslint-config"
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-// TanStack Router/Start
-// import pluginRouter from "@tanstack/eslint-plugin-router"
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+});
 
-export default antfu({
-  // react: true,
-
-  formatters: true,
-
-  // stylistic: {
-  //   quotes: "double",
-  //   semi: false,
-  // },
-
-  ignores: [
-    // TanStack Router
-    // "**/*.gen.ts",
-  ],
-
-  // Override rules for Effect-TS
-  rules: {
-    "array-callback-return": "off",
-    // Effect uses many of them
-    "no-lone-blocks": "off",
-    "no-empty": "off",
-    // Don't insert `new` into `extends Data.TaggedError` declarations.
-    "unicorn/throw-new-error": "off",
+const eslintConfig = [
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    rules: {
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+    },
   },
-},
-  // TanStack Router
-  // pluginRouter.configs["flat/recommended"],
+];
 
-  // Override the default rules for specific files
-
-  // {
-  //   files: [
-  //     "tests/**/*.ts",
-  //   ],
-  //   rules: {
-  //     "no-console": "off",
-  //   },
-  // },
-)
+export default eslintConfig;
