@@ -15,9 +15,10 @@
         let
           buildDeps = [
             pkgs.nodejs
-            pkgs.pnpm
             pkgs.bun
             pkgs.corepack
+            pkgs.tsx
+            pkgs.just
           ];
 
           enablePlaywright = false;
@@ -26,7 +27,7 @@
             withFirefox = false;
             withWebkit = false;
             withFfmpeg = false;
-            # fontconfig_file = { fontDirectories = []; };
+            fontconfig_file = { fontDirectories = [./public/fonts]; };
           };
 
           browserProgram = if pkgs.stdenv.targetPlatform.isLinux then "chrome" else "Chromium";
