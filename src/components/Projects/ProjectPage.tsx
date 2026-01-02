@@ -1,4 +1,3 @@
-import { currentProject } from "@/components/Projects/CurrentProject";
 import ProjectCard from "@/components/Projects/ProjectCard";
 import { Star } from "@/components/Star";
 import { HyperText } from "@/components/ui/HyperText";
@@ -12,7 +11,6 @@ export default function ProjectPage() {
         <HyperText>projects</HyperText>
       </div>
       <div className="md:mt-6 mt-4 space-y-10">
-        {currentProject && <ProjectCard {...currentProject} />}
         {projectsData.map((project, index) => (
           <ProjectCard key={index} {...project} />
         ))}
