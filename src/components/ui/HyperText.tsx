@@ -2,12 +2,9 @@
 
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, MotionProps } from "framer-motion";
-import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-type CharacterSet = string[] | readonly string[];
-
-interface HyperTextProps extends MotionProps {
+interface HyperTextProps extends Omit<MotionProps, 'children'> {
   children: string;
   className?: string;
   duration?: number;
@@ -15,15 +12,10 @@ interface HyperTextProps extends MotionProps {
   as?: React.ElementType;
   startOnView?: boolean;
   animateOnHover?: boolean;
-  characterSet?: CharacterSet;
+  characterSet?: string[];
 }
 
-// Cyber hacker character set with symbols and numbers
-const CYBER_CHARACTER_SET = Object.freeze(
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?/~`".split("")
-) as readonly string[];
-
-const getRandomInt = (max: number): number => Math.floor(Math.random() * max);
+const CYBER_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?/~`".split("");
 
 export function HyperText({
   children,
@@ -33,132 +25,119 @@ export function HyperText({
   as: Component = "div",
   startOnView = false,
   animateOnHover = false,
-  characterSet = CYBER_CHARACTER_SET,
+  characterSet = CYBER_CHARS,
   ...props
 }: HyperTextProps) {
-  const MotionComponent = motion.create(Component, {
-    forwardMotionProps: true,
-  });
+  const MotionComponent = motion.create(Component, { forwardMotionProps: true });
 
-  const router = useRouter();
-
-  const [displayText, setDisplayText] = useState<string[]>(() =>
-    children.split("")
-  );
+  const [displayText, setDisplayText] = useState(() => children.split(""));
   const [isAnimating, setIsAnimating] = useState(false);
-  const [glitchEffect, setGlitchEffect] = useState(false);
-  const iterationCount = useRef(0);
+  const [glitch, setGlitch] = useState(false);
+  const iterationRef = useRef(0);
   const elementRef = useRef<HTMLElement>(null);
 
-  const handleAnimationTrigger = () => {
-    if (animateOnHover && !isAnimating) {
-      iterationCount.current = 0;
-      setIsAnimating(true);
-    }
-  };
-
+  // Start animation based on view or delay
   useEffect(() => {
     if (!startOnView) {
-      const startTimeout = setTimeout(() => {
-        setIsAnimating(true);
-      }, delay);
-      return () => clearTimeout(startTimeout);
+      const timer = setTimeout(() => setIsAnimating(true), delay);
+      return () => clearTimeout(timer);
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => {
-            setIsAnimating(true);
-          }, delay);
+          setTimeout(() => setIsAnimating(true), delay);
           observer.disconnect();
         }
       },
-      { threshold: 0.1, rootMargin: "-30% 0px -30% 0px" }
+      { threshold: 0.1 }
     );
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
-
+    if (elementRef.current) observer.observe(elementRef.current);
     return () => observer.disconnect();
   }, [delay, startOnView]);
 
-  // Cyber glitch effect
+  // Glitch effect interval
   useEffect(() => {
-    const glitchInterval = setInterval(() => {
-      setGlitchEffect(true);
-      setTimeout(() => setGlitchEffect(false), 100);
+    const interval = setInterval(() => {
+      setGlitch(true);
+      setTimeout(() => setGlitch(false), 100);
     }, 3000);
-
-    return () => clearInterval(glitchInterval);
+    return () => clearInterval(interval);
   }, []);
 
-  // Enhanced scramble animation with faster character cycling
+  // Scramble animation
   useEffect(() => {
     if (!isAnimating) return;
 
-    const intervalDuration = duration / (children.length * 15);
-    const maxIterations = children.length;
+    const chars = children.split("");
+    const intervalTime = duration / (chars.length * 10);
 
     const interval = setInterval(() => {
-      if (iterationCount.current < maxIterations) {
-        setDisplayText((currentText) =>
-          currentText.map((letter, index) =>
-            letter === " "
-              ? letter
-              : index <= iterationCount.current
-              ? children[index]
-              : characterSet[getRandomInt(characterSet.length)]
-          )
-        );
-        iterationCount.current = iterationCount.current + 0.15;
-      } else {
+      if (iterationRef.current >= chars.length) {
         setIsAnimating(false);
         clearInterval(interval);
+        return;
       }
-    }, intervalDuration);
+
+      setDisplayText((current) =>
+        current.map((char, i) => {
+          if (char === " ") return " ";
+          if (i <= iterationRef.current) return chars[i];
+          return characterSet[Math.floor(Math.random() * characterSet.length)];
+        })
+      );
+
+      iterationRef.current += 0.15;
+    }, intervalTime);
 
     return () => clearInterval(interval);
-  }, [children, duration, isAnimating, characterSet, router]);
+  }, [isAnimating, children, duration, characterSet]);
+
+  const handleHover = () => {
+    if (animateOnHover && !isAnimating) {
+      iterationRef.current = 0;
+      setIsAnimating(true);
+    }
+  };
 
   return (
     <MotionComponent
       ref={elementRef}
       className={cn(
-        "overflow-hidden py-2 text-2xl md:text-3xl font-mono font-bold tracking-wider",
-        "text-orange-400 drop-shadow-[0_0_8px_rgba(251,146,60,0.5)]",
-        glitchEffect && "animate-pulse",
+        "overflow-hidden py-2 font-mono font-bold tracking-wider",
+        "text-2xl md:text-3xl text-orange-400",
+        glitch && "animate-pulse",
         className
       )}
-      onMouseEnter={handleAnimationTrigger}
+      onMouseEnter={handleHover}
       style={{
-        textShadow: glitchEffect
+        textShadow: glitch
           ? "0 0 10px #fb923c, 0 0 20px #fb923c, 0 0 30px #fb923c"
           : "0 0 5px rgba(251,146,60,0.3)",
       }}
       {...props}
     >
-      <AnimatePresence>
-        {displayText.map((letter, index) => (
+      <AnimatePresence mode="wait">
+        {displayText.map((char, i) => (
           <motion.span
-            key={index}
+            key={`${char}-${i}`}
             initial={{ opacity: 0.5 }}
             animate={{
               opacity: [0.5, 1, 0.7, 1],
-              y: glitchEffect ? [0, -2, 2, 0] : 0,
+              y: glitch ? [0, -2, 2, 0] : 0,
             }}
             transition={{
               duration: 0.3,
-              delay: index * 0.02,
+              delay: i * 0.02,
             }}
             className={cn(
               "inline-block",
-              letter === " " ? "w-3" : "",
+              char === " " && "w-3",
               isAnimating && "text-orange-500"
             )}
           >
-            {letter.toUpperCase()}
+            {char.toUpperCase()}
           </motion.span>
         ))}
       </AnimatePresence>
