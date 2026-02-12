@@ -16,20 +16,20 @@ export default function RootLayout({
         <Toaster
           toastOptions={{
             style: {
-              background: "#221208",
-              color: "#ffe2cf",
-              border: "1px solid #8a4d22",
+              background: "#151515",
+              color: "#d4d4d4",
+              border: "1px solid #2f2f2f",
             },
             success: {
               iconTheme: {
-                primary: "#ff9a4f",
-                secondary: "#1a0d06",
+                primary: "#f5f5f5",
+                secondary: "#050505",
               },
             },
             error: {
               iconTheme: {
-                primary: "#ff7a4e",
-                secondary: "#1a0d06",
+                primary: "#bdbdbd",
+                secondary: "#050505",
               },
             },
           }}

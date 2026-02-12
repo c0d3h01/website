@@ -1,23 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --gb-bg0-hard: #140904;
-  --gb-bg0: #1b0d05;
-  --gb-bg0-soft: #251108;
-  --gb-bg1: #2f170a;
-  --gb-bg2: #3f210e;
-  --gb-bg3: #542c13;
-  --gb-fg0: #fff1e4;
-  --gb-fg1: #ffd7bd;
-  --gb-fg2: #f5b78d;
-  --gb-gray: #c18b66;
-  --gb-yellow: #ffc985;
-  --gb-orange: #ff934a;
-  --gb-red: #ff734a;
-  --gb-green: #ffb16e;
-  --gb-blue: #ff8a3d;
-  --gb-aqua: #ffc08d;
-  --gb-border: #6b3b1a;
+  --gb-bg0-hard: #030303;
+  --gb-bg0: #080808;
+  --gb-bg0-soft: #101010;
+  --gb-bg1: #151515;
+  --gb-bg2: #1f1f1f;
+  --gb-bg3: #2a2a2a;
+  --gb-fg0: #f5f5f5;
+  --gb-fg1: #d4d4d4;
+  --gb-fg2: #a3a3a3;
+  --gb-gray: #737373;
+  --gb-yellow: #e5e5e5;
+  --gb-red: #b0b0b0;
+  --gb-green: #cfcfcf;
+  --gb-blue: #bdbdbd;
+  --gb-aqua: #9ca3af;
+  --gb-border: #2f2f2f;
   --font-body:
     "Aptos", "Inter", "Segoe UI Variable", "Segoe UI", "SF Pro Text",
     "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -31,24 +30,24 @@ body {
   min-height: 100vh;
   color: var(--gb-fg1);
   line-height: 1.55;
-  background-color: #120803;
+  background-color: #050505;
   background-image:
     radial-gradient(
       circle at 12% 8%,
-      rgba(255, 170, 92, 0.2),
+      rgba(245, 245, 245, 0.08),
       transparent 34%
     ),
     radial-gradient(
       circle at 88% 0%,
-      rgba(255, 120, 72, 0.16),
+      rgba(163, 163, 163, 0.1),
       transparent 30%
     ),
     radial-gradient(
       circle at 50% 100%,
-      rgba(255, 204, 132, 0.14),
+      rgba(212, 212, 212, 0.08),
       transparent 36%
     ),
-    linear-gradient(165deg, #120803 0%, #1b0d05 48%, #2b1509 100%);
+    linear-gradient(165deg, #030303 0%, #080808 48%, #111111 100%);
   background-attachment: fixed;
 }
 
@@ -60,14 +59,14 @@ h3,
   letter-spacing: -0.01em;
 }
 ::selection {
-  background: rgba(255, 153, 84, 0.42);
-  color: #1b0d05;
+  background: rgba(245, 245, 245, 0.35);
+  color: #050505;
 }
 
 /* For Firefox-specific styling */
 ::-moz-selection {
-  background: rgba(255, 153, 84, 0.42);
-  color: #1b0d05;
+  background: rgba(245, 245, 245, 0.35);
+  color: #050505;
 }
 
 .screen {
@@ -78,8 +77,8 @@ h3,
 }
 
 .section-stack > * {
-  border-left: 1px solid rgba(255, 151, 82, 0.22);
-  border-right: 1px solid rgba(255, 151, 82, 0.22);
+  border-left: 1px solid rgba(212, 212, 212, 0.18);
+  border-right: 1px solid rgba(212, 212, 212, 0.18);
   padding-inline: clamp(0.7rem, 1.35vw, 1rem);
   padding-block: clamp(0.35rem, 0.85vw, 0.55rem);
 }
@@ -117,11 +116,11 @@ h3,
   clip-path: var(--bolt-shape);
   background: conic-gradient(
     from 220deg,
-    rgba(255, 153, 77, 0.5),
-    rgba(255, 196, 122, 0.42),
-    rgba(255, 128, 82, 0.4),
-    rgba(255, 170, 94, 0.45),
-    rgba(255, 153, 77, 0.5)
+    rgba(56, 189, 248, 0.48),
+    rgba(147, 197, 253, 0.4),
+    rgba(103, 232, 249, 0.38),
+    rgba(125, 211, 252, 0.42),
+    rgba(56, 189, 248, 0.48)
   );
   filter: blur(11px);
   opacity: 0.78;
@@ -137,11 +136,11 @@ h3,
   clip-path: var(--bolt-shape);
   background: linear-gradient(
     140deg,
-    rgba(255, 241, 222, 0.98) 0%,
-    rgba(255, 184, 120, 0.94) 32%,
-    rgba(255, 145, 83, 0.9) 56%,
-    rgba(255, 115, 76, 0.88) 78%,
-    rgba(255, 213, 164, 0.97) 100%
+    rgba(239, 246, 255, 0.98) 0%,
+    rgba(186, 230, 253, 0.95) 32%,
+    rgba(125, 211, 252, 0.9) 56%,
+    rgba(96, 165, 250, 0.88) 78%,
+    rgba(224, 242, 254, 0.97) 100%
   );
   z-index: 1;
   pointer-events: none;
@@ -151,8 +150,8 @@ h3,
 .pro-pic-shell:hover {
   transform: translateY(-1px) scale(1.01);
   filter:
-    drop-shadow(0 0 12px rgba(255, 207, 154, 0.72))
-    drop-shadow(0 0 26px rgba(255, 141, 74, 0.46));
+    drop-shadow(0 0 12px rgba(186, 230, 253, 0.74))
+    drop-shadow(0 0 26px rgba(56, 189, 248, 0.5));
 }
 
 .pro-pic-shell:hover::before {
@@ -172,23 +171,23 @@ h3,
   0%,
   100% {
     filter:
-      drop-shadow(0 0 8px rgba(255, 195, 132, 0.56))
-      drop-shadow(0 0 20px rgba(255, 134, 74, 0.36));
+      drop-shadow(0 0 8px rgba(186, 230, 253, 0.56))
+      drop-shadow(0 0 20px rgba(56, 189, 248, 0.36));
   }
   30% {
     filter:
-      drop-shadow(0 0 11px rgba(255, 212, 165, 0.72))
-      drop-shadow(0 0 24px rgba(255, 146, 83, 0.44));
+      drop-shadow(0 0 11px rgba(219, 234, 254, 0.72))
+      drop-shadow(0 0 24px rgba(125, 211, 252, 0.44));
   }
   55% {
     filter:
-      drop-shadow(0 0 13px rgba(255, 225, 187, 0.84))
-      drop-shadow(0 0 28px rgba(255, 154, 91, 0.5));
+      drop-shadow(0 0 13px rgba(224, 242, 254, 0.84))
+      drop-shadow(0 0 28px rgba(96, 165, 250, 0.5));
   }
   78% {
     filter:
-      drop-shadow(0 0 10px rgba(255, 202, 152, 0.66))
-      drop-shadow(0 0 22px rgba(255, 141, 79, 0.42));
+      drop-shadow(0 0 10px rgba(186, 230, 253, 0.66))
+      drop-shadow(0 0 22px rgba(56, 189, 248, 0.42));
   }
 }
 
@@ -210,26 +209,26 @@ h3,
 
 @keyframes pfp-border-shift {
   0% {
-    filter: hue-rotate(0deg) saturate(1.05);
+    filter: hue-rotate(0deg) saturate(1.04);
   }
   50% {
-    filter: hue-rotate(180deg) saturate(1.28);
+    filter: hue-rotate(12deg) saturate(1.2);
   }
   100% {
-    filter: hue-rotate(360deg) saturate(1.05);
+    filter: hue-rotate(0deg) saturate(1.04);
   }
 }
 
 .social-card {
   @apply select-none rounded-md p-1.5 text-[1.35rem] transition-all duration-150;
-  background: rgba(24, 14, 8, 0.9);
+  background: rgba(12, 12, 12, 0.88);
   border: 1px solid var(--gb-border);
   color: var(--gb-fg1);
   backdrop-filter: blur(6px);
 }
 
 .social-card:hover {
-  background: rgba(34, 19, 10, 0.96);
+  background: rgba(20, 20, 20, 0.96);
   border-color: var(--gb-blue);
   color: var(--gb-yellow);
   transform: translateY(-1px);
@@ -237,13 +236,13 @@ h3,
 
 .skills-card {
   @apply select-none transition-all duration-150 flex flex-row gap-1 items-center px-2 py-1 rounded-md;
-  background: rgba(26, 15, 8, 0.9);
+  background: rgba(14, 14, 14, 0.9);
   border: 1px solid var(--gb-border);
   transform: translateY(0);
 }
 
 .skills-card:hover {
-  background: rgba(36, 20, 10, 0.98);
+  background: rgba(22, 22, 22, 0.98);
   border-color: var(--gb-blue);
   transform: translateY(-1px);
 }
@@ -255,13 +254,13 @@ h3,
 
 .showMore-btn {
   @apply select-none w-full px-2 py-1 rounded-md transition-all duration-150;
-  background: rgba(26, 15, 8, 0.9);
+  background: rgba(14, 14, 14, 0.9);
   border: 1px solid var(--gb-border);
   transform: translateY(0);
 }
 
 .showMore-btn:hover {
-  background: rgba(38, 21, 11, 1);
+  background: rgba(22, 22, 22, 1);
   border-color: var(--gb-blue);
   color: var(--gb-yellow);
   transform: translateY(-1px);
@@ -271,8 +270,8 @@ h3,
   @apply cursor-pointer w-fit select-none transition-all duration-150 flex flex-row gap-1.5 items-center px-2 py-1 rounded-md;
   background: linear-gradient(
     180deg,
-    rgba(40, 22, 11, 0.95) 0%,
-    rgba(26, 15, 8, 0.98) 100%
+    rgba(28, 28, 28, 0.95) 0%,
+    rgba(14, 14, 14, 0.98) 100%
   );
   border: 1px solid var(--gb-border);
   transform: translateY(0);
@@ -281,8 +280,8 @@ h3,
 .btn:hover {
   background: linear-gradient(
     180deg,
-    rgba(56, 30, 15, 0.96) 0%,
-    rgba(38, 21, 11, 1) 100%
+    rgba(42, 42, 42, 0.96) 0%,
+    rgba(22, 22, 22, 1) 100%
   );
   border-color: var(--gb-blue);
   color: var(--gb-yellow);
@@ -291,13 +290,13 @@ h3,
 
 .blog-post {
   @apply cursor-pointer p-2 rounded-md transition-all duration-150;
-  background: rgba(24, 14, 8, 0.9);
+  background: rgba(12, 12, 12, 0.9);
   border: 1px solid var(--gb-border);
   transform: translateY(0);
 }
 
 .blog-post:hover {
-  background: rgba(35, 20, 10, 1);
+  background: rgba(21, 21, 21, 1);
   border-color: var(--gb-blue);
   transform: translateY(-1px);
 }
@@ -336,7 +335,7 @@ h3,
 }
 
 .blog-content code {
-  background: rgba(33, 19, 10, 0.92);
+  background: rgba(20, 20, 20, 0.92);
   border: 1px solid var(--gb-border);
   border-radius: 0.3rem;
   padding: 0.08rem 0.35rem;
@@ -354,11 +353,11 @@ h3,
 
 @layer utilities {
   .bg-zinc-950 {
-    background-color: rgba(24, 14, 8, 0.9) !important;
+    background-color: rgba(12, 12, 12, 0.9) !important;
   }
 
   .bg-zinc-900 {
-    background-color: rgba(26, 15, 8, 0.9) !important;
+    background-color: rgba(14, 14, 14, 0.9) !important;
   }
 
   .border-zinc-700 {
@@ -366,12 +365,12 @@ h3,
   }
 
   .hover\:bg-zinc-900:hover {
-    background-color: rgba(35, 20, 10, 0.98) !important;
+    background-color: rgba(21, 21, 21, 0.98) !important;
   }
 
   .hover\:bg-zinc-800:hover,
   .hover\:bg-zinc-800\/75:hover {
-    background-color: rgba(38, 22, 11, 1) !important;
+    background-color: rgba(24, 24, 24, 1) !important;
   }
 
   .focus\:border-zinc-500:focus,
