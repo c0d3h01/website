@@ -59,7 +59,7 @@ const WritingsSection = () => {
 
   return (
     <section className="flex flex-col gap-3">
-      <SectionHeading title="Writings" />
+      <SectionHeading title="Blog" />
 
       <motion.div layout className="flex flex-col gap-3.5 md:gap-2.5">
         {isLoading && <div className="opacity-70">Loading blog posts...</div>}

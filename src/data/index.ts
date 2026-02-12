@@ -64,7 +64,6 @@ export const userAbout = profile.about
 
 export const emailLink = `mailto:${profile.email}?subject=Interested%20in%20Hiring%20You`
 
-export const resumePreviewPath = "/resume"
 export const resumeFilePath = "/assets/docs/resume.pdf"
 
 export const userLink = [
@@ -100,35 +99,79 @@ export const userFooterLink = [
     name: "Mail",
     link: `mailto:${profile.email}`,
     icon: MdOutlineMail,
+    iconClassName: "text-[#EA4335]",
   },
   {
     id: 2,
     name: "Github",
     link: `https://github.com/${profile.githubUsername}`,
     icon: FaGithub,
+    iconClassName: "text-zinc-100",
   },
   {
     id: 3,
     name: "Twitter",
     link: `https://x.com/intent/follow?screen_name=${profile.twitterHandle}`,
     icon: FaXTwitter,
+    iconClassName: "text-zinc-100",
   },
   {
     id: 4,
     name: "LinkedIn",
     link: `https://www.linkedin.com/in/${profile.linkedinSlug}`,
     icon: FaLinkedinIn,
+    iconClassName: "text-[#0A66C2]",
   },
   {
     id: 5,
     name: "LeetCode",
     link: `https://leetcode.com/u/${profile.leetcodeUsername}`,
     icon: SiLeetcode,
+    iconClassName: "text-[#FFA116]",
   },
 ]
 
 export const hireText =
   "I’m open to software engineering roles and freelance work where I can build reliable backend systems, developer tools, and cloud-native products."
+
+export const experiences = [
+  {
+    id: 1,
+    role: "Senior Software Engineer",
+    company: "Northstar Labs",
+    location: "Austin, TX",
+    duration: "May 2023 - Present",
+    highlights: [
+      "Led migration of core APIs from a monolith to services, reducing average response time by 38%.",
+      "Designed event-driven workflows with Kafka and Redis for billing and notification pipelines.",
+      "Introduced CI quality gates and integration tests, reducing production rollback frequency by 45%.",
+    ],
+  },
+  {
+    id: 2,
+    role: "Software Engineer",
+    company: "Bluewave Commerce",
+    location: "Remote",
+    duration: "Jan 2021 - Apr 2023",
+    highlights: [
+      "Built order management features used by 120k+ monthly users across web and mobile clients.",
+      "Delivered internal admin tooling that cut manual support tasks by 12 hours per week.",
+      "Partnered with product and design teams to ship 20+ roadmap features with predictable release cadence.",
+    ],
+  },
+  {
+    id: 3,
+    role: "Junior Backend Engineer",
+    company: "Harbor Data Systems",
+    location: "Denver, CO",
+    duration: "Jun 2018 - Dec 2020",
+    highlights: [
+      "Implemented REST APIs and SQL reporting endpoints for operations dashboards.",
+      "Improved test coverage from 42% to 71% across critical backend modules.",
+      "Automated deployment checks with GitHub Actions to reduce release defects.",
+    ],
+  },
+]
 
 export const projects = [
   {
@@ -230,7 +273,7 @@ export const supportMethods: SupportMethod[] = [
     type: "link",
     href: `https://github.com/sponsors/${profile.support.githubSponsorsUsername}`,
     icon: FaRegHeart,
-    iconClassName: "text-pink-400",
+    iconClassName: "text-[#DB61A2]",
   },
   {
     id: 2,
@@ -238,7 +281,7 @@ export const supportMethods: SupportMethod[] = [
     type: "link",
     href: `https://buymeacoffee.com/${profile.support.buyMeACoffeeUsername}`,
     icon: SiBuymeacoffee,
-    iconClassName: "text-yellow-400",
+    iconClassName: "text-[#FFDD00]",
   },
   {
     id: 3,
@@ -246,7 +289,7 @@ export const supportMethods: SupportMethod[] = [
     type: "copy",
     value: profile.support.solanaAddress,
     icon: SiSolana,
-    iconClassName: "text-[#00ffa3]",
+    iconClassName: "text-[#14F195]",
   },
   {
     id: 4,
@@ -254,7 +297,7 @@ export const supportMethods: SupportMethod[] = [
     type: "copy",
     value: profile.support.paytmUpiId,
     icon: SiPaytm,
-    iconClassName: "text-[#01BAF2]",
+    iconClassName: "text-[#00BAF2]",
   },
 ]
 
@@ -287,24 +330,24 @@ export const seoMetadata: Metadata = {
     icon: [
       {
         media: "(prefers-color-scheme: light)",
-        url: "/assets/Images/icon/icon-light.png",
+        url: "/Images/icon/icon.png",
         type: "image/png",
       },
       {
         media: "(prefers-color-scheme: dark)",
-        url: "/assets/Images/icon/icon-dark.png",
+        url: "/Images/icon/icon.png",
         type: "image/png",
       },
     ],
     shortcut: [
       {
         media: "(prefers-color-scheme: light)",
-        url: "/assets/Images/icon/icon-light.png",
+        url: "/Images/icon/icon.png",
         type: "image/png",
       },
       {
         media: "(prefers-color-scheme: dark)",
-        url: "/assets/Images/icon/icon-dark.png",
+        url: "/Images/icon/icon.png",
         type: "image/png",
       },
     ],
@@ -313,7 +356,7 @@ export const seoMetadata: Metadata = {
     title: siteTitle,
     description: siteDescription,
     url: siteUrl,
-    siteName: "Harshal Portfolio",
+    siteName: "Harshal Sawant",
     images: [
       {
         url: ogImage,

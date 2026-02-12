@@ -14,7 +14,7 @@ const SocialSection = () => {
             rel="noreferrer"
             href={link.link}
           >
-            <link.icon />
+            <link.icon className={link.iconClassName} />
             {link.name}
           </a>
         ))}

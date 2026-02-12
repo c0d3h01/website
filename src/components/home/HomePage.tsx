@@ -3,6 +3,7 @@
 import AnimatedReveal from "@/components/ui/AnimatedReveal"
 import Screen from "@/layout/Screen"
 import AboutSection from "./AboutSection"
+import ExperienceSection from "./ExperienceSection"
 import FooterSection from "./FooterSection"
 import HireSection from "./HireSection"
 import ProfileHeader from "./ProfileHeader"
@@ -26,22 +27,25 @@ const HomePage = () => {
           <SocialSection />
         </AnimatedReveal>
         <AnimatedReveal delay={0.35}>
+          <ExperienceSection />
+        </AnimatedReveal>
+        <AnimatedReveal delay={0.4}>
           <HireSection />
         </AnimatedReveal>
-        <AnimatedReveal delay={0.45}>
+        <AnimatedReveal delay={0.5}>
           <SkillsSection />
         </AnimatedReveal>
-        <AnimatedReveal delay={0.55}>
+        <AnimatedReveal delay={0.6}>
           <ProjectsSection />
         </AnimatedReveal>
-        <AnimatedReveal delay={0.65}>
+        <AnimatedReveal delay={0.7}>
           <WritingsSection />
         </AnimatedReveal>
-        <AnimatedReveal delay={0.75}>
+        <AnimatedReveal delay={0.8}>
           <SupportSection />
         </AnimatedReveal>
       </div>
-      <AnimatedReveal delay={1.05}>
+      <AnimatedReveal delay={1.1}>
         <FooterSection />
       </AnimatedReveal>
     </Screen>

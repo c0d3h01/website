@@ -1,8 +1,7 @@
 "use client"
 
-import Link from "next/link"
 import { PiFilePdfBold, PiSuitcaseSimpleBold } from "react-icons/pi"
-import { emailLink, hireText, resumePreviewPath } from "@/data"
+import { emailLink, hireText, resumeFilePath } from "@/data"
 import SectionHeading from "@/components/ui/SectionHeading"
 
 const HireSection = () => {
@@ -16,10 +15,10 @@ const HireSection = () => {
             <PiSuitcaseSimpleBold />
             Hire Me
           </a>
-          <Link className="btn" href={resumePreviewPath}>
+          <a className="btn" target="_blank" rel="noreferrer" href={resumeFilePath}>
             <PiFilePdfBold />
             Resume
-          </Link>
+          </a>
         </div>
       </div>
     </section>
