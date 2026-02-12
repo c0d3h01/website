@@ -13,71 +13,28 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint:
+  quality:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
 
-      - name: Set up Nix
-        uses: ./.github/actions/setup
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
-          cache-key: ""
+          node-version: 22
+          cache: pnpm
 
-      - name: Check TypeScript types
-        run: nix develop -L -c pnpm run typecheck
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Run eslint
-        run: nix develop -L -c pnpm run lint
+        run: pnpm run lint
 
-  # test-e2e:
-  #   strategy:
-  #     matrix:
-  #       include:
-  #         - os: ubuntu-latest
-  #           browser: chromium
+      - name: Check TypeScript types
+        run: pnpm run typecheck
 
-  #         - os: ubuntu-latest
-  #           browser: firefox
-
-  #         # - os: macos-latest
-  #         #   browser: chromium
-
-  #         # - os: macos-latest
-  #         #   browser: webkit
-
-  #   runs-on: ${{ matrix.os }}
-
-  #   steps:
-  #     - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-
-  #     - name: Set up Nix
-  #       uses: ./.github/actions/setup
-  #       with:
-  #         cache-key: ${{ matrix.browser }}
-
-  #     - name: Build the production assets
-  #       run: nix develop -L -c pnpm run build
-
-  #     - name: Install Playwright browser
-  #       # npm (provided by GitHub Actions) is a more reliable way to install a
-  #       # browser that can be used on the platform.
-  #       run: |
-  #         if [[ "${{ matrix.browser }}" = chromium ]]
-  #         then
-  #           npx playwright install --with-deps ${{ matrix.browser }} --only-shell
-  #         else
-  #           npx playwright install --with-deps ${{ matrix.browser }}
-  #         fi
-
-  #     - name: Run e2e tests
-  #       run: |
-  #         CI=true NODE_ENV=production \
-  #           nix develop -L .#node-build \
-  #           -c pnpm run test-e2e --project=${{ matrix.browser }}
-
-  #     - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-  #       if: ${{ !cancelled() }}
-  #       with:
-  #         name: playwright-report-${{ matrix.os }}-${{ matrix.browser }}
-  #         path: playwright-report/
-  #         retention-days: 30
+      - name: Build
+        run: pnpm run build
