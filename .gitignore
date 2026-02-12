@@ -7,8 +7,10 @@ dist/
 *.log
 coverage/
 *.tmp
-*.swp       
+*.swp
 *.bak
 *.old
 .next/
-npm-debug.log*  
+*.tsbuildinfo
+npm-debug.log*
+.next_stale*
