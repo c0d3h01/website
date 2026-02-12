@@ -64,6 +64,9 @@ export const userAbout = profile.about
 
 export const emailLink = `mailto:${profile.email}?subject=Interested%20in%20Hiring%20You`
 
+export const resumePreviewPath = "/resume"
+export const resumeFilePath = "/assets/docs/resume.pdf"
+
 export const userLink = [
   {
     id: 1,
@@ -130,7 +133,6 @@ export const hireText =
 export const projects = [
   {
     id: 1,
-    img: "/assets/Images/project/11Hack.png",
     title: "androidtweaker",
     status: true,
     content:
@@ -142,7 +144,6 @@ export const projects = [
   },
   {
     id: 2,
-    img: "/assets/Images/project/snake.jpg",
     title: "coretaskoptimizer",
     status: true,
     content:
@@ -154,7 +155,6 @@ export const projects = [
   },
   {
     id: 3,
-    img: "/assets/Images/project/apple.jpg",
     title: "firuslab/obfussor",
     status: true,
     content:
@@ -166,7 +166,6 @@ export const projects = [
   },
   {
     id: 4,
-    img: "/assets/Images/project/port.jpeg",
     title: "nix-dotfiles",
     status: true,
     content:
