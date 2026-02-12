@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { AnimatePresence, motion } from "motion/react"
 import {
   MdKeyboardDoubleArrowDown,
   MdKeyboardDoubleArrowUp,
@@ -18,22 +19,28 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="flex flex-col gap-3">
       <SectionHeading title="Projects" />
-      <div className="flex flex-col gap-3.5 md:gap-2.5">
-        {visibleProjects.map((project, index) => (
-          <AnimatedReveal key={project.id} delay={index * 0.075}>
-            <ProjectCard
-              title={project.title}
-              image={project.img}
-              description={project.content}
-              isActive={project.status}
-              skills={project.skill}
-              liveUrl={project.url || ""}
-              githubUrl={project.github || ""}
-              previewVideo={project.preview || ""}
-            />
-          </AnimatedReveal>
-        ))}
-      </div>
+      <motion.div layout className="flex flex-col gap-3.5 md:gap-2.5">
+        <AnimatePresence initial={false} mode="popLayout">
+          {visibleProjects.map((project, index) => (
+            <AnimatedReveal
+              key={project.id}
+              layout="position"
+              delay={index * 0.07}
+              exitDelay={index * 0.03}
+              offsetY={16}
+            >
+              <ProjectCard
+                title={project.title}
+                description={project.content}
+                skills={project.skill}
+                liveUrl={project.url || ""}
+                githubUrl={project.github || ""}
+                previewVideo={project.preview || ""}
+              />
+            </AnimatedReveal>
+          ))}
+        </AnimatePresence>
+      </motion.div>
 
       {shouldShowToggle && (
         <button

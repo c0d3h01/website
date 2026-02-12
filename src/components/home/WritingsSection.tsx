@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { AnimatePresence, motion } from "motion/react"
 import {
   MdKeyboardDoubleArrowDown,
   MdKeyboardDoubleArrowUp,
@@ -14,7 +15,6 @@ interface BlogPostMeta {
   title: string
   description: string
   date: string
-  image?: string
 }
 
 const WritingsSection = () => {
@@ -61,26 +61,34 @@ const WritingsSection = () => {
     <section className="flex flex-col gap-3">
       <SectionHeading title="Writings" />
 
-      <div className="flex flex-col gap-3.5 md:gap-2.5">
+      <motion.div layout className="flex flex-col gap-3.5 md:gap-2.5">
         {isLoading && <div className="opacity-70">Loading blog posts...</div>}
 
-        {!isLoading &&
-          visiblePosts.map((post, index) => (
-            <AnimatedReveal key={post.slug} delay={index * 0.075}>
-              <BlogPostCard
-                image={post.image}
-                title={post.title}
-                description={post.description}
-                href={`/blog/${post.slug}`}
-                date={post.date}
-              />
-            </AnimatedReveal>
-          ))}
+        {!isLoading && (
+          <AnimatePresence initial={false} mode="popLayout">
+            {visiblePosts.map((post, index) => (
+              <AnimatedReveal
+                key={post.slug}
+                layout="position"
+                delay={index * 0.07}
+                exitDelay={index * 0.03}
+                offsetY={16}
+              >
+                <BlogPostCard
+                  title={post.title}
+                  description={post.description}
+                  href={`/blog/${post.slug}`}
+                  date={post.date}
+                />
+              </AnimatedReveal>
+            ))}
+          </AnimatePresence>
+        )}
 
         {!isLoading && visiblePosts.length === 0 && (
           <div className="opacity-70">No blog posts found.</div>
         )}
-      </div>
+      </motion.div>
 
       {shouldShowToggle && (
         <button className="showMore-btn" onClick={() => setShowAllPosts((prev) => !prev)}>
