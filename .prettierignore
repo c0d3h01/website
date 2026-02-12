@@ -1,0 +1,8 @@
+.next
+.next_stale_*
+node_modules
+out
+build
+coverage
+pnpm-lock.yaml
+tsconfig.tsbuildinfo
