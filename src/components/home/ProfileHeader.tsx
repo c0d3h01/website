@@ -12,30 +12,32 @@ const ProfileHeader = () => {
   return (
     <section>
       <div className="flex flex-col gap-2">
-        <div className="flex w-full items-center gap-3">
+        <div className="flex items-center gap-3 md:gap-4">
           <button
             type="button"
             onClick={() => setIsPreviewOpen(true)}
-            className="w-1/3 cursor-pointer select-none transition duration-200 hover:brightness-75 md:w-auto"
+            className="w-1/3 shrink-0 cursor-pointer select-none md:w-auto"
           >
-            <Image
-              src={userImage}
-              alt="Profile Picture"
-              className="pro-pic"
-              width={200}
-              height={200}
-            />
+            <span className="pro-pic-shell">
+              <Image
+                src={userImage}
+                alt="Profile Picture"
+                className="pro-pic"
+                width={200}
+                height={200}
+              />
+            </span>
           </button>
 
-          <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-1.5 text-center">
+          <div className="flex min-w-0 flex-col justify-center gap-1 text-left">
             <HyperText
               as="h1"
-              className="head-name flex w-full justify-center py-0 normal-case"
+              className="head-name py-0 normal-case"
               duration={700}
             >
               {userName}
             </HyperText>
-            <p className="w-full text-center">{userBio}</p>
+            <p>{userBio}</p>
           </div>
         </div>
       </div>
