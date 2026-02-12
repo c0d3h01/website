@@ -9,9 +9,9 @@ const SupportSection = () => {
   }
 
   return (
-    <section className="flex flex-col gap-0.5">
+    <section className="flex flex-col gap-2">
       <SectionHeading title="Support Me" />
-      <div className="flex flex-col gap-2">
+      <div className="section-copy flex flex-col gap-2.5">
         <p>{supportText}</p>
         <div className="flex flex-wrap items-center gap-2">
           {supportMethods.map((method) => {
