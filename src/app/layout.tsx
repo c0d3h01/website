@@ -1,34 +1,40 @@
-import "@/app/globals.css";
-import Navbar from "@/components/Navbar";
-import { baseMetadata } from "@/lib/metadata";
-import type { Metadata } from "next";
-import { ViewTransitions } from "next-view-transitions";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import "../styles/globals.css"
+import { Toaster } from "react-hot-toast"
+import { seoMetadata } from "@/data"
 
-const inter = Inter({ subsets: ["latin"] });
-
-const jetBrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
-});
-
-export const metadata: Metadata = baseMetadata;
+export const metadata = seoMetadata
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+}: Readonly<{
+  children: React.ReactNode
+}>) {
   return (
-    <ViewTransitions>
-      <html lang="en">
-        <body className={`${inter.className} ${jetBrainsMono.className}`}>
-          <main className="bg-stone-950 font-jetbrains-mono min-h-screen text-stone-50 py-10 px-4 selection:bg-stone-500 selection:text-stone-950 selection:rounded-md">
-            <Navbar />
-            {children}
-          </main>
-        </body>
-      </html>
-    </ViewTransitions>
-  );
+    <html lang="en">
+      <body className="antialiased">
+        <Toaster
+          toastOptions={{
+            style: {
+              background: "#151515",
+              color: "#d4d4d4",
+              border: "1px solid #2f2f2f",
+            },
+            success: {
+              iconTheme: {
+                primary: "#f5f5f5",
+                secondary: "#050505",
+              },
+            },
+            error: {
+              iconTheme: {
+                primary: "#bdbdbd",
+                secondary: "#050505",
+              },
+            },
+          }}
+        />
+        {children}
+      </body>
+    </html>
+  )
 }
