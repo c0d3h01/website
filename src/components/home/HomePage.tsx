@@ -7,7 +7,7 @@ import FooterSection from "./FooterSection"
 import HireSection from "./HireSection"
 import ProfileHeader from "./ProfileHeader"
 import ProjectsSection from "./ProjectsSection"
-import QuoteSection from "./QuoteSection"
+import SocialSection from "./SocialSection"
 import SkillsSection from "./SkillsSection"
 import SupportSection from "./SupportSection"
 import WritingsSection from "./WritingsSection"
@@ -15,12 +15,15 @@ import WritingsSection from "./WritingsSection"
 const HomePage = () => {
   return (
     <Screen>
-      <div className="flex flex-col gap-5">
+      <div className="section-stack flex flex-col gap-5">
         <AnimatedReveal delay={0.15}>
           <ProfileHeader />
         </AnimatedReveal>
         <AnimatedReveal delay={0.25}>
           <AboutSection />
+        </AnimatedReveal>
+        <AnimatedReveal delay={0.3}>
+          <SocialSection />
         </AnimatedReveal>
         <AnimatedReveal delay={0.35}>
           <HireSection />
@@ -36,9 +39,6 @@ const HomePage = () => {
         </AnimatedReveal>
         <AnimatedReveal delay={0.75}>
           <SupportSection />
-        </AnimatedReveal>
-        <AnimatedReveal delay={1.05}>
-          <QuoteSection />
         </AnimatedReveal>
       </div>
       <AnimatedReveal delay={1.05}>
