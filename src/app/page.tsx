@@ -1,24 +1,12 @@
-import { LinksSection } from "@/components/Footer-links";
-import GitHubCalendar from "@/components/Info/GithubCalender";
-import { Info } from "@/components/Info/Info";
-import { ProjectsSection } from "@/components/Projects/ProjectSection";
-import { siteConfig } from "@/lib/metadata";
-import { Metadata } from "next";
+import HomePage from "@/components/home/HomePage"
+import MainScreen from "@/layout/MainScreen"
 
-export const metadata: Metadata = {
-  title: siteConfig.title,
-  description: siteConfig.description
-};
-
-export default function Home() {
+const Home = () => {
   return (
-    <div className="max-w-3xl mx-auto">
-      <div className="space-y-12">
-        <Info />
-        <GitHubCalendar />
-        <ProjectsSection />
-        <LinksSection />
-      </div>
-    </div>
-  );
+    <MainScreen>
+      <HomePage />
+    </MainScreen>
+  )
 }
+
+export default Home
