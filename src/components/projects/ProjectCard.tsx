@@ -2,17 +2,13 @@
 
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "motion/react"
-import Image from "next/image"
 import { toast } from "react-hot-toast"
 import { FaEye, FaEyeSlash } from "react-icons/fa"
 import { FiGithub } from "react-icons/fi"
-import { GoDotFill } from "react-icons/go"
 import { LuLink, LuShare } from "react-icons/lu"
 import Tooltip from "@/components/ui/Tooltip"
 
 interface ProjectCardProps {
-  image: string
-  isActive: boolean
   title: string
   description: string
   liveUrl: string
@@ -22,8 +18,6 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({
-  image,
-  isActive,
   title,
   description,
   liveUrl,
@@ -93,36 +87,11 @@ const ProjectCard = ({
         )}
       </AnimatePresence>
 
-      <div className="flex gap-3 p-2 md:flex-row flex-col">
-        <div className="basis-[22%] select-none p-1">
-          <Image
-            className="h-[200px] w-full rounded-md object-cover md:h-[130px]"
-            src={image}
-            alt={`${title} preview`}
-            width={200}
-            height={200}
-          />
-        </div>
-
-        <div className="basis-[78%] flex flex-col gap-1 md:gap-0">
+      <div className="p-2">
+        <div className="flex flex-col gap-1 md:gap-0">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 truncate">
+            <div className="truncate">
               <h2 className="text-2xl font-semibold">{title}</h2>
-              {isActive ? (
-                <div className="flex w-fit select-none items-center gap-0.5 rounded-md border border-[var(--gb-green)]/50 bg-[var(--gb-green)]/10 px-1.5 py-0.5 text-xs font-medium text-[var(--gb-green)]">
-                  <span className="animate-pulse">
-                    <GoDotFill />
-                  </span>
-                  Running
-                </div>
-              ) : (
-                <div className="flex w-fit select-none items-center gap-0.5 rounded-md border border-[var(--gb-red)]/50 bg-[var(--gb-red)]/10 px-1.5 py-0.5 text-xs font-medium text-[var(--gb-red)]">
-                  <span className="animate-pulse">
-                    <GoDotFill />
-                  </span>
-                  Building
-                </div>
-              )}
             </div>
 
             <div className="flex select-none gap-2 px-2 text-base">

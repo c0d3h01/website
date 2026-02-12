@@ -30,7 +30,6 @@ const BlogPage = () => {
               <BlogPostCard
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                image={post.image}
                 title={post.title}
                 description={post.description}
                 date={post.date}

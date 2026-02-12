@@ -2,7 +2,6 @@
 title: "Docker with Node.js and Express: Basics"
 description: "A beginner-friendly start to containerizing a Node.js + Express app, with core Docker commands and workflow."
 date: "2025-05-14"
-image: "/assets/Images/writing/docker1.png"
 ---
 
 Containerization removes the classic _\"works on my machine\"_ issue.

@@ -2,7 +2,6 @@
 title: "Prisma Quick Start for Node.js and TypeScript"
 description: "Set up Prisma fast in a Node.js + TypeScript project with migration basics and clean database access patterns."
 date: "2025-02-11"
-image: "/assets/Images/writing/prisma.jpg"
 ---
 
 Prisma makes database access cleaner in TypeScript projects by giving strongly typed queries and reliable migrations.

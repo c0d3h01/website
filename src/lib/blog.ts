@@ -14,7 +14,6 @@ export interface BlogPostMeta {
   title: string
   description: string
   date: string
-  image?: string
 }
 
 export interface BlogPost extends BlogPostMeta {
@@ -34,7 +33,6 @@ const parsePost = (fileName: string): BlogPost => {
     title: String(data.title ?? slug),
     description: String(data.description ?? ""),
     date: String(data.date ?? ""),
-    image: data.image ? String(data.image) : undefined,
     content,
   }
 }
@@ -53,7 +51,6 @@ export const getBlogPosts = (): BlogPostMeta[] => {
       title: post.title,
       description: post.description,
       date: post.date,
-      image: post.image,
     }))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }

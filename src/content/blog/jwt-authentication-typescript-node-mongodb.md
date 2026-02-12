@@ -2,7 +2,6 @@
 title: "JWT Authentication APIs with TypeScript, Node.js, and MongoDB"
 description: "Build a secure JWT auth API with Express, TypeScript, and MongoDB, including route protection and testing flow."
 date: "2025-06-20"
-image: "/assets/Images/writing/jwt.png"
 ---
 
 This guide walks through building a production-ready JWT authentication API using **TypeScript**, **Node.js**, **Express**, and **MongoDB**.
