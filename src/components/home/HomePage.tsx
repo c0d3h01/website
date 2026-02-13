@@ -9,7 +9,7 @@ import SkillsSection from "@/components/home/SkillsSection"
 import SupportSection from "@/components/home/SupportSection"
 import WritingsSection from "@/components/home/WritingsSection"
 import Screen from "@/layout/Screen"
-import { userBio, userImage, userName } from "@/data"
+import { profile } from "@/data"
 
 const HomePage = () => {
   return (
@@ -17,9 +17,9 @@ const HomePage = () => {
       <div className="section-stack flex flex-col gap-5">
         {/* Section order matches how visitors usually scan a portfolio. */}
         <ProfileHeader
-          userName={userName}
-          userBio={userBio}
-          userImage={userImage}
+          userName={profile.name}
+          userBio={profile.bio}
+          userImage={profile.image}
         />
         <AboutSection />
         <SocialSection />

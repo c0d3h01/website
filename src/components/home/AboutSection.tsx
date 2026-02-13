@@ -1,4 +1,4 @@
-import { userAbout } from "@/data"
+import { profile } from "@/data"
 import SectionHeading from "@/components/ui/SectionHeading"
 
 const AboutSection = () => {
@@ -7,7 +7,7 @@ const AboutSection = () => {
       <SectionHeading title="About Me" />
       <div
         dangerouslySetInnerHTML={{
-          __html: userAbout,
+          __html: profile.aboutHtml,
         }}
         className="section-copy flex flex-col gap-2.5"
       />

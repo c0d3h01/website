@@ -2,8 +2,6 @@ import type { MetadataRoute } from "next"
 import { siteUrl } from "@/data"
 import { getBlogPosts } from "@/lib/blog"
 
-const baseUrl = siteUrl
-
 const parseLastModified = (dateString: string) => {
   const parsedDate = new Date(dateString)
   if (Number.isNaN(parsedDate.getTime())) {
@@ -17,25 +15,25 @@ const sitemap = (): MetadataRoute.Sitemap => {
   const now = new Date()
   const staticRoutes: MetadataRoute.Sitemap = [
     {
-      url: `${baseUrl}/`,
+      url: `${siteUrl}/`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: `${baseUrl}/blog`,
+      url: `${siteUrl}/blog`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/projects`,
+      url: `${siteUrl}/projects`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/experience`,
+      url: `${siteUrl}/experience`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
@@ -43,7 +41,7 @@ const sitemap = (): MetadataRoute.Sitemap => {
   ]
 
   const blogRoutes: MetadataRoute.Sitemap = getBlogPosts().map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
+    url: `${siteUrl}/blog/${post.slug}`,
     lastModified: parseLastModified(post.date),
     changeFrequency: "monthly",
     priority: 0.7,

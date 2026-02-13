@@ -18,20 +18,20 @@ export interface ProjectCardProps {
 }
 
 const statusMeta: Record<ProjectStatus, { label: string; className: string }> =
-  {
-    active: {
-      label: "Active",
-      className: "bg-emerald-500/15 text-emerald-300",
-    },
-    building: {
-      label: "Building",
-      className: "bg-amber-500/15 text-amber-300",
-    },
-    archived: {
-      label: "Archived",
-      className: "bg-[#5c4720]/25 text-[#d6b06d]",
-    },
-  }
+{
+  active: {
+    label: "Active",
+    className: "bg-emerald-500/15 text-emerald-300",
+  },
+  building: {
+    label: "Building",
+    className: "bg-amber-500/15 text-amber-300",
+  },
+  archived: {
+    label: "Archived",
+    className: "bg-[#5c4720]/25 text-[#d6b06d]",
+  },
+}
 
 const ProjectCard = ({
   title,
@@ -51,7 +51,7 @@ const ProjectCard = ({
   const previewTooltip = showPreview ? "Close" : "Preview"
 
   return (
-    <article className="project-card rounded-md border border-zinc-700 bg-zinc-900 transition-colors duration-100 hover:bg-zinc-800/75">
+    <article className="project-card rounded-md transition-colors duration-100">
       {showPreview && hasPreview && (
         <div className="overflow-hidden">
           <div className="p-2">
@@ -93,7 +93,7 @@ const ProjectCard = ({
                     aria-pressed={showPreview}
                     aria-expanded={showPreview}
                     onClick={() => setShowPreview((prev) => !prev)}
-                    className="cursor-pointer transition-colors duration-100 hover:text-zinc-400"
+                    className="project-card-action cursor-pointer transition-colors duration-100"
                   >
                     <PreviewIcon />
                   </button>
@@ -106,7 +106,7 @@ const ProjectCard = ({
                     target="_blank"
                     rel="noreferrer"
                     aria-label={`Open live project: ${title}`}
-                    className="transition-colors duration-100 hover:text-zinc-400"
+                    className="project-card-action transition-colors duration-100"
                     href={liveUrl}
                   >
                     <LuLink />
@@ -120,7 +120,7 @@ const ProjectCard = ({
                     target="_blank"
                     rel="noreferrer"
                     aria-label={`Open GitHub repository for ${title}`}
-                    className="transition-colors duration-100 hover:text-zinc-400"
+                    className="project-card-action transition-colors duration-100"
                     href={githubUrl}
                   >
                     <FiGithub />
@@ -135,14 +135,14 @@ const ProjectCard = ({
       </div>
 
       <div className="overflow-hidden">
-        <div className="mx-auto mt-3 flex w-[97%] border-t border-zinc-700 md:mt-0" />
+        <div className="mx-auto mt-3 flex w-[97%] border-t border-(--gb-border) md:mt-0" />
         <div className="flex items-center px-3 py-3 transition-all duration-100 md:py-2">
           {/* Tech stack is always visible to avoid hidden content toggles. */}
           <ul className="flex flex-wrap gap-1.5 select-none">
             {skills.map((skill, index) => (
               <li
                 key={`${title}-${index}`}
-                className="list-none rounded-md border border-zinc-700 px-2 py-0.5 text-sm"
+                className="list-none rounded-md border border-(--gb-border) px-2 py-0.5 text-sm"
               >
                 {skill}
               </li>

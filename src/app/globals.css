@@ -393,34 +393,15 @@ h3,
   border-top-color: var(--gb-bg3);
 }
 
-@layer utilities {
-  .bg-zinc-950 {
-    background-color: rgba(12, 12, 12, 0.9) !important;
-  }
+.project-card {
+  background: rgba(14, 14, 14, 0.9);
+  border: 1px solid var(--gb-border);
+}
 
-  .bg-zinc-900 {
-    background-color: rgba(14, 14, 14, 0.9) !important;
-  }
+.project-card:hover {
+  background: rgba(24, 24, 24, 1);
+}
 
-  .border-zinc-700 {
-    border-color: var(--gb-border) !important;
-  }
-
-  .hover\:bg-zinc-900:hover {
-    background-color: rgba(21, 21, 21, 0.98) !important;
-  }
-
-  .hover\:bg-zinc-800:hover,
-  .hover\:bg-zinc-800\/75:hover {
-    background-color: rgba(24, 24, 24, 1) !important;
-  }
-
-  .focus\:border-zinc-500:focus,
-  .hover\:border-zinc-500:hover {
-    border-color: var(--gb-blue) !important;
-  }
-
-  .hover\:text-zinc-400:hover {
-    color: var(--gb-yellow) !important;
-  }
+.project-card-action:hover {
+  color: var(--gb-yellow);
 }

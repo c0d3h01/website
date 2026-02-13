@@ -1,8 +1,6 @@
 import type { MetadataRoute } from "next"
 import { siteUrl } from "@/data"
 
-const baseUrl = siteUrl
-
 const robots = (): MetadataRoute.Robots => {
   return {
     rules: [
@@ -12,8 +10,8 @@ const robots = (): MetadataRoute.Robots => {
         disallow: ["/api/"],
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
-    host: baseUrl,
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   }
 }
 

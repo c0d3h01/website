@@ -86,13 +86,6 @@ export const profile: Profile = {
 `,
 }
 
-// Compatibility exports used across existing components.
-export const userImage = profile.image
-export const userName = profile.name
-export const userShortName = profile.shortName
-export const userBio = profile.bio
-export const userAbout = profile.aboutHtml
-
 export const emailLink = `mailto:${profile.email}?subject=Interested%20in%20Hiring%20You`
 export const resumeFilePath = "/assets/docs/resume.pdf"
 
@@ -142,9 +135,6 @@ export const footerSocialLinks: SocialLink[] = [
     iconClassName: "text-[#1F8ACB]",
   },
 ]
-
-// Compatibility alias for old imports.
-export const userFooterLink = footerSocialLinks
 
 export const hireText =
   "I’m open to software engineering roles and freelance work where I can build reliable backend systems, developer tools, and cloud-native products."
@@ -268,21 +258,21 @@ export const skills: Skill[] = [
 
 export type SupportMethod =
   | {
-      id: number
-      label: string
-      type: "link"
-      href: string
-      icon: IconComponent
-      iconClassName: string
-    }
+    id: number
+    label: string
+    type: "link"
+    href: string
+    icon: IconComponent
+    iconClassName: string
+  }
   | {
-      id: number
-      label: string
-      type: "copy"
-      value: string
-      icon: IconComponent
-      iconClassName: string
-    }
+    id: number
+    label: string
+    type: "copy"
+    value: string
+    icon: IconComponent
+    iconClassName: string
+  }
 
 export const supportText =
   "If my open-source work, tools, or technical writing helps you, consider supporting me. It helps me keep building and sharing useful developer tools."
