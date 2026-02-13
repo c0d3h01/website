@@ -1,9 +1,9 @@
 "use client"
 
+import Link from "next/link"
 import { useEffect, useState } from "react"
 import {
   MdKeyboardDoubleArrowDown,
-  MdKeyboardDoubleArrowUp,
 } from "react-icons/md"
 import BlogPostCard from "@/components/blog/BlogPostCard"
 import SectionHeading from "@/components/ui/SectionHeading"
@@ -19,7 +19,6 @@ interface BlogPostMeta {
 const WritingsSection = () => {
   const [posts, setPosts] = useState<BlogPostMeta[]>([])
   const [isLoading, setIsLoading] = useState(true)
-  const [showAllPosts, setShowAllPosts] = useState(false)
 
   useEffect(() => {
     let isMounted = true
@@ -53,8 +52,8 @@ const WritingsSection = () => {
     }
   }, [])
 
-  const shouldShowToggle = posts.length > 2
-  const visiblePosts = showAllPosts ? posts : posts.slice(0, 2)
+  const shouldShowViewAll = posts.length > 2
+  const visiblePosts = posts.slice(0, 2)
 
   return (
     <section className="flex flex-col gap-3">
@@ -82,25 +81,16 @@ const WritingsSection = () => {
         )}
       </div>
 
-      {shouldShowToggle && (
-        <Tooltip text={showAllPosts ? "Show less" : "Show all"}>
-          <button className="showMore-btn" onClick={() => setShowAllPosts((prev) => !prev)}>
-            {showAllPosts ? (
-              <span className="flex items-center justify-center gap-0.5">
-                <span className="animate-pulse">
-                  <MdKeyboardDoubleArrowUp />
-                </span>
-                Show less
+      {shouldShowViewAll && (
+        <Tooltip text="View All">
+          <Link href="/blog" className="showMore-btn">
+            <span className="flex items-center justify-center gap-0.5">
+              <span className="animate-pulse">
+                <MdKeyboardDoubleArrowDown />
               </span>
-            ) : (
-              <span className="flex items-center justify-center gap-0.5">
-                <span className="animate-pulse">
-                  <MdKeyboardDoubleArrowDown />
-                </span>
-                Show all
-              </span>
-            )}
-          </button>
+              View All
+            </span>
+          </Link>
         </Tooltip>
       )}
     </section>
