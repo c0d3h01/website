@@ -23,6 +23,9 @@
   --font-display:
     "Aptos Display", "Segoe UI Variable", "Segoe UI", "Inter", "SF Pro Display",
     "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-scihub:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
 }
 
 body {
@@ -299,6 +302,21 @@ h3,
   background: rgba(21, 21, 21, 1);
   border-color: var(--gb-blue);
   transform: translateY(-1px);
+}
+
+.scihub-blog-font {
+  font-family: var(--font-scihub), serif;
+  line-height: 1.6;
+}
+
+.scihub-blog-font h1,
+.scihub-blog-font h2,
+.scihub-blog-font h3,
+.scihub-blog-font h4,
+.scihub-blog-font h5,
+.scihub-blog-font h6 {
+  font-family: var(--font-scihub), serif;
+  letter-spacing: 0.01em;
 }
 
 .blog-content h2 {
