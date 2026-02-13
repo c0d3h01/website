@@ -1,19 +1,13 @@
-"use client"
-
-import { useState } from "react"
-import {
-  MdKeyboardDoubleArrowDown,
-  MdKeyboardDoubleArrowUp,
-} from "react-icons/md"
+import Link from "next/link"
+import { MdKeyboardDoubleArrowDown } from "react-icons/md"
 import ProjectCard from "@/components/projects/ProjectCard"
 import SectionHeading from "@/components/ui/SectionHeading"
 import Tooltip from "@/components/ui/Tooltip"
 import { projects } from "@/data"
 
 const ProjectsSection = () => {
-  const [showAllProjects, setShowAllProjects] = useState(false)
-  const shouldShowToggle = projects.length > 2
-  const visibleProjects = showAllProjects ? projects : projects.slice(0, 2)
+  const shouldShowViewAll = projects.length > 2
+  const visibleProjects = projects.slice(0, 2)
 
   return (
     <section id="projects" className="flex flex-col gap-3">
@@ -32,28 +26,16 @@ const ProjectsSection = () => {
         ))}
       </div>
 
-      {shouldShowToggle && (
-        <Tooltip text={showAllProjects ? "Show less" : "Show all"}>
-          <button
-            className="showMore-btn"
-            onClick={() => setShowAllProjects((prev) => !prev)}
-          >
-            {showAllProjects ? (
-              <span className="flex items-center justify-center gap-0.5">
-                <span className="animate-pulse">
-                  <MdKeyboardDoubleArrowUp />
-                </span>
-                Show less
+      {shouldShowViewAll && (
+        <Tooltip text="View All">
+          <Link href="/projects" className="showMore-btn">
+            <span className="flex items-center justify-center gap-0.5">
+              <span className="animate-pulse">
+                <MdKeyboardDoubleArrowDown />
               </span>
-            ) : (
-              <span className="flex items-center justify-center gap-0.5">
-                <span className="animate-pulse">
-                  <MdKeyboardDoubleArrowDown />
-                </span>
-                Show all
-              </span>
-            )}
-          </button>
+              View All
+            </span>
+          </Link>
         </Tooltip>
       )}
     </section>
