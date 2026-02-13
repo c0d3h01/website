@@ -6,10 +6,12 @@ import { toast } from "react-hot-toast"
 import { FaEye, FaEyeSlash } from "react-icons/fa"
 import { FiGithub } from "react-icons/fi"
 import { LuLink, LuShare } from "react-icons/lu"
+import type { ProjectStatus } from "@/data"
 import Tooltip from "@/components/ui/Tooltip"
 
 interface ProjectCardProps {
   title: string
+  status: ProjectStatus
   description: string
   liveUrl: string
   githubUrl: string
@@ -17,8 +19,24 @@ interface ProjectCardProps {
   previewVideo: string
 }
 
+const statusMeta: Record<ProjectStatus, { label: string; className: string }> = {
+  active: {
+    label: "Active",
+    className: "bg-emerald-500/15 text-emerald-300",
+  },
+  building: {
+    label: "Building",
+    className: "bg-amber-500/15 text-amber-300",
+  },
+  archived: {
+    label: "Archived",
+    className: "bg-zinc-500/15 text-zinc-300",
+  },
+}
+
 const ProjectCard = ({
   title,
+  status,
   description,
   liveUrl,
   githubUrl,
@@ -90,8 +108,14 @@ const ProjectCard = ({
       <div className="p-2">
         <div className="flex flex-col gap-1 md:gap-0">
           <div className="flex items-center justify-between">
-            <div className="truncate">
-              <h2 className="text-2xl font-semibold">{title}</h2>
+            <div className="flex min-w-0 items-center gap-2">
+              <h2 className="truncate text-2xl font-semibold">{title}</h2>
+              <span
+                aria-label={`Project status: ${statusMeta[status].label}`}
+                className={`pointer-events-none shrink-0 rounded px-2 py-0.5 text-sm font-semibold leading-none tracking-wide ${statusMeta[status].className}`}
+              >
+                {statusMeta[status].label}
+              </span>
             </div>
 
             <div className="flex select-none gap-2 px-2 text-base">

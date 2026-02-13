@@ -149,11 +149,24 @@ export const experiences = [
   },
 ]
 
-export const projects = [
+export type ProjectStatus = "active" | "building" | "archived"
+
+export interface Project {
+  id: number
+  title: string
+  status: ProjectStatus
+  content: string
+  url: string
+  github: string
+  skill: string[]
+  preview: string
+}
+
+export const projects: Project[] = [
   {
     id: 1,
     title: "androidtweaker",
-    status: true,
+    status: "active",
     content:
       "Built and maintained a shell-driven Android optimization toolkit for rooted devices, focused on runtime tuning, repeatable tweak workflows, and easier long-term maintenance.",
     url: "",
@@ -164,7 +177,7 @@ export const projects = [
   {
     id: 2,
     title: "coretaskoptimizer",
-    status: true,
+    status: "building",
     content:
       "Implemented a native C++ root module that applies CPU affinity, scheduler policy, and I/O priority to critical Android system tasks with low-overhead boot-time execution.",
     url: "",
@@ -175,7 +188,7 @@ export const projects = [
   {
     id: 3,
     title: "firuslab/obfussor",
-    status: true,
+    status: "active",
     content:
       "Contributed to a cross-platform LLVM-based C/C++ obfuscation suite and worked on the Svelte + Tauri app workflow for job execution and protection metric review.",
     url: "",
@@ -186,7 +199,7 @@ export const projects = [
   {
     id: 4,
     title: "nix-dotfiles",
-    status: true,
+    status: "archived",
     content:
       "Engineered a flake-driven NixOS + Home Manager setup with modular host profiles, Disko provisioning, and secure secret management for reproducible workstation bootstrap.",
     url: "",
