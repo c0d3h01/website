@@ -5,13 +5,18 @@ import { useRouter } from "next/navigation"
 type BackButtonProps = {
   fallbackHref?: string
   label?: string
+  useHistory?: boolean
 }
 
-const BackButton = ({ fallbackHref = "/blog", label = "Back" }: BackButtonProps) => {
+const BackButton = ({
+  fallbackHref = "/blog",
+  label = "Back",
+  useHistory = true,
+}: BackButtonProps) => {
   const router = useRouter()
 
   const handleBack = () => {
-    if (window.history.length > 1) {
+    if (useHistory && window.history.length > 1) {
       router.back()
       return
     }

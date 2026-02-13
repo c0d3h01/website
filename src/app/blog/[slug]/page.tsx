@@ -57,7 +57,7 @@ const BlogPostPage = async ({ params }: BlogPostPageProps) => {
                 day: "numeric",
               })}
             </p>
-            <BackButton />
+            <BackButton fallbackHref="/blog" label="Back to Blog" useHistory={false} />
           </div>
 
           <h1 className="text-3xl font-bold">{post.title}</h1>
