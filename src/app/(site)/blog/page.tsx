@@ -23,22 +23,32 @@ export const metadata: Metadata = {
     images: [defaultOgImage],
   },
 }
+export const dynamic = "force-static"
 
 const BlogPage = () => {
   const posts = getBlogPosts()
 
   return (
-    <PageShell title="Blog">
+    <PageShell
+      title="Blog"
+      backRailHref="/#blog"
+      backRailLabel="Back to Blog section"
+      backRailVariant="attached"
+    >
       <div className="flex flex-col gap-3">
-        {posts.map((post) => (
-          <BlogPostCard
-            key={post.slug}
-            href={`/blog/${post.slug}`}
-            title={post.title}
-            description={post.description}
-            date={post.date}
-          />
-        ))}
+        {posts.length > 0 ? (
+          posts.map((post) => (
+            <BlogPostCard
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              title={post.title}
+              description={post.description}
+              date={post.date}
+            />
+          ))
+        ) : (
+          <p className="opacity-75">No blog posts published yet.</p>
+        )}
       </div>
     </PageShell>
   )

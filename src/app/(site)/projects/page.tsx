@@ -22,10 +22,16 @@ export const metadata: Metadata = {
     images: [defaultOgImage],
   },
 }
+export const dynamic = "force-static"
 
 const ProjectsPage = () => {
   return (
-    <PageShell title="Projects">
+    <PageShell
+      title="Projects"
+      backRailHref="/#projects"
+      backRailLabel="Back to Projects section"
+      backRailVariant="attached"
+    >
       <ProjectList items={projects} />
     </PageShell>
   )

@@ -1,12 +1,11 @@
 import type { Project } from "@/data"
-import ProjectCard from "@/components/projects/ProjectCardNoSSR"
+import ProjectCard from "@/components/projects/ProjectCard"
 
 interface ProjectListProps {
   items: Project[]
   limit?: number
 }
 
-// Projects are rendered through one list component so card props stay consistent.
 const ProjectList = ({ items, limit }: ProjectListProps) => {
   const visibleProjects =
     typeof limit === "number" ? items.slice(0, limit) : items

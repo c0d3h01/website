@@ -9,7 +9,7 @@ const WritingsSection = () => {
   const visiblePosts = posts.slice(0, 2)
 
   return (
-    <section className="flex flex-col gap-3">
+    <section id="blog" className="flex flex-col gap-3">
       <SectionHeading title="Blog" />
 
       <div className="flex flex-col gap-3.5 md:gap-2.5">

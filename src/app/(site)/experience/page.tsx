@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     images: [defaultOgImage],
   },
 }
+export const dynamic = "force-static"
 
 const ExperiencePage = () => {
   return (

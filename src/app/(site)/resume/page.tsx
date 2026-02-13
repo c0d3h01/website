@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     follow: false,
   },
 }
+export const dynamic = "force-static"
 
 const ResumePage = () => {
   redirect(resumeFilePath)

@@ -19,7 +19,7 @@ export const generateStaticParams = () => {
   }))
 }
 
-export const dynamicParams = false
+export const dynamicParams = true
 
 export const generateMetadata = async ({
   params,
@@ -85,6 +85,7 @@ const BlogPostPage = async ({ params }: BlogPostPageProps) => {
               fallbackHref="/blog"
               label="Back to Blog"
               useHistory={false}
+              variant="default"
             />
           </div>
 

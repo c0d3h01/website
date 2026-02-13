@@ -1,17 +1,20 @@
 "use client"
 
 import { useRouter } from "next/navigation"
+import { LuArrowLeft } from "react-icons/lu"
 
 type BackButtonProps = {
   fallbackHref?: string
   label?: string
   useHistory?: boolean
+  variant?: "default" | "rail"
 }
 
 const BackButton = ({
   fallbackHref = "/blog",
   label = "Back",
   useHistory = true,
+  variant = "default",
 }: BackButtonProps) => {
   const router = useRouter()
 
@@ -24,9 +27,21 @@ const BackButton = ({
     router.push(fallbackHref)
   }
 
+  const baseClasses =
+    variant === "rail"
+      ? "group fixed left-3 top-1/2 z-40 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-(--gb-border) bg-[rgba(12,12,12,0.9)] text-(--gb-fg0) shadow-md backdrop-blur transition duration-150 hover:-translate-x-0.5 hover:border-(--gb-fg2)"
+      : "btn text-sm"
+
   return (
-    <button type="button" className="btn text-sm" onClick={handleBack}>
-      {`<- ${label}`}
+    <button type="button" className={baseClasses} onClick={handleBack}>
+      {variant === "rail" ? (
+        <>
+          <LuArrowLeft aria-hidden className="text-xl" />
+          <span className="sr-only">{label}</span>
+        </>
+      ) : (
+        <>{`<- ${label}`}</>
+      )}
     </button>
   )
 }

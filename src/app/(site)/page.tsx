@@ -7,6 +7,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
 }
+export const dynamic = "force-static"
 
 const HomePageRoute = () => {
   return (

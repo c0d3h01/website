@@ -6,6 +6,7 @@ import matter from "gray-matter"
 import { remark } from "remark"
 import remarkGfm from "remark-gfm"
 import remarkHtml from "remark-html"
+import { cache } from "react"
 
 // Markdown source files for blog content.
 const postsDirectory = path.join(process.cwd(), "src/content/blog")
@@ -21,7 +22,6 @@ export interface BlogPost extends BlogPostMeta {
   content: string
 }
 
-const getFilePath = (slug: string) => path.join(postsDirectory, `${slug}.md`)
 const byDateDesc = (a: BlogPostMeta, b: BlogPostMeta) =>
   new Date(b.date).getTime() - new Date(a.date).getTime()
 
@@ -40,7 +40,7 @@ const parsePost = (fileName: string): BlogPost => {
   }
 }
 
-export const getBlogPosts = (): BlogPostMeta[] => {
+const loadPosts = cache((): BlogPost[] => {
   if (!fs.existsSync(postsDirectory)) {
     return []
   }
@@ -48,9 +48,12 @@ export const getBlogPosts = (): BlogPostMeta[] => {
   const files = fs
     .readdirSync(postsDirectory)
     .filter((fileName) => fileName.endsWith(".md"))
-  const posts = files.map(parsePost)
 
-  return posts
+  return files.map(parsePost)
+})
+
+export const getBlogPosts = (): BlogPostMeta[] =>
+  loadPosts()
     .map((post) => ({
       slug: post.slug,
       title: post.title,
@@ -58,15 +61,10 @@ export const getBlogPosts = (): BlogPostMeta[] => {
       date: post.date,
     }))
     .sort(byDateDesc)
-}
 
 export const getBlogPostBySlug = (slug: string): BlogPost | null => {
-  const filePath = getFilePath(slug)
-  if (!fs.existsSync(filePath)) {
-    return null
-  }
-
-  return parsePost(`${slug}.md`)
+  const post = loadPosts().find((entry) => entry.slug === slug)
+  return post ?? null
 }
 
 export const renderMarkdown = async (markdown: string): Promise<string> => {

@@ -88,7 +88,7 @@ const ProfileHeader = ({
           </Tooltip>
 
           <div
-            className="w-[600px] max-w-[90vw] overflow-hidden rounded-lg md:max-w-[25vw]"
+            className="w-150 max-w-[90vw] overflow-hidden rounded-lg md:max-w-[25vw]"
             onClick={(event) => event.stopPropagation()}
           >
             <Image

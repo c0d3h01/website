@@ -42,6 +42,7 @@ const ProjectCard = ({
   skills,
   previewVideo,
 }: ProjectCardProps) => {
+  const hasPreview = Boolean(previewVideo)
   const [showPreview, setShowPreview] = useState(false)
   const PreviewIcon = showPreview ? FaEyeSlash : FaEye
   const previewLabel = showPreview
@@ -51,13 +52,15 @@ const ProjectCard = ({
 
   return (
     <article className="project-card rounded-md border border-zinc-700 bg-zinc-900 transition-colors duration-100 hover:bg-zinc-800/75">
-      {showPreview && (
+      {showPreview && hasPreview && (
         <div className="overflow-hidden">
           <div className="p-2">
             <video
               className="w-full rounded-md"
               loop
               autoPlay
+              muted
+              playsInline
               controls
               preload="metadata"
             >
@@ -82,11 +85,13 @@ const ProjectCard = ({
             </div>
 
             <div className="flex select-none gap-2 px-2 text-base">
-              {previewVideo && (
+              {hasPreview && (
                 <Tooltip text={previewTooltip} offset="compact">
                   <button
                     type="button"
                     aria-label={previewLabel}
+                    aria-pressed={showPreview}
+                    aria-expanded={showPreview}
                     onClick={() => setShowPreview((prev) => !prev)}
                     className="cursor-pointer transition-colors duration-100 hover:text-zinc-400"
                   >
