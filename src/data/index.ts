@@ -16,9 +16,9 @@ import {
 } from "react-icons/ri"
 import {
   SiBuymeacoffee,
+  SiCodeforces,
   SiDjango,
   SiExpress,
-  SiLeetcode,
   SiMongodb,
   SiPaytm,
   SiPostman,
@@ -33,11 +33,11 @@ export const profile = {
   name: "Harshal Sawant",
   shortName: "Harshal",
   bio: "Software Engineer",
-  image: "/assets/Images/pfp/pfp.png",
+  image: "/Images/pfp/pfp.png",
   githubUsername: "c0d3h01",
   twitterHandle: "haarshalsawant",
   linkedinSlug: "haarshalsawant",
-  leetcodeUsername: "c0d3h01",
+  codeforcesUsername: "c0d3h01",
   email: "harshalsawant.dev@gmail.com",
   website: "https://c0d3h01.tech",
   support: {
@@ -87,9 +87,9 @@ export const userLink = [
   },
   {
     id: 4,
-    name: "LeetCode",
-    link: `https://leetcode.com/u/${profile.leetcodeUsername}`,
-    icon: SiLeetcode,
+    name: "Codeforces",
+    link: `https://codeforces.com/profile/${profile.codeforcesUsername}`,
+    icon: SiCodeforces,
   },
 ]
 
@@ -124,10 +124,10 @@ export const userFooterLink = [
   },
   {
     id: 5,
-    name: "LeetCode",
-    link: `https://leetcode.com/u/${profile.leetcodeUsername}`,
-    icon: SiLeetcode,
-    iconClassName: "text-[#FFA116]",
+    name: "Codeforces",
+    link: `https://codeforces.com/profile/${profile.codeforcesUsername}`,
+    icon: SiCodeforces,
+    iconClassName: "text-[#1F8ACB]",
   },
 ]
 
@@ -137,38 +137,14 @@ export const hireText =
 export const experiences = [
   {
     id: 1,
-    role: "Senior Software Engineer",
-    company: "Northstar Labs",
-    location: "Austin, TX",
-    duration: "May 2023 - Present",
-    highlights: [
-      "Led migration of core APIs from a monolith to services, reducing average response time by 38%.",
-      "Designed event-driven workflows with Kafka and Redis for billing and notification pipelines.",
-      "Introduced CI quality gates and integration tests, reducing production rollback frequency by 45%.",
-    ],
-  },
-  {
-    id: 2,
-    role: "Software Engineer",
-    company: "Bluewave Commerce",
+    role: "Freelance Software Engineer",
+    company: "Freelance",
     location: "Remote",
-    duration: "Jan 2021 - Apr 2023",
+    duration: "2024 - Present",
     highlights: [
-      "Built order management features used by 120k+ monthly users across web and mobile clients.",
-      "Delivered internal admin tooling that cut manual support tasks by 12 hours per week.",
-      "Partnered with product and design teams to ship 20+ roadmap features with predictable release cadence.",
-    ],
-  },
-  {
-    id: 3,
-    role: "Junior Backend Engineer",
-    company: "Harbor Data Systems",
-    location: "Denver, CO",
-    duration: "Jun 2018 - Dec 2020",
-    highlights: [
-      "Implemented REST APIs and SQL reporting endpoints for operations dashboards.",
-      "Improved test coverage from 42% to 71% across critical backend modules.",
-      "Automated deployment checks with GitHub Actions to reduce release defects.",
+      "Built and maintained backend services and developer tools for client projects.",
+      "Delivered production-ready features across web platforms with a focus on performance and reliability.",
+      "Partnered directly with clients from planning through deployment and ongoing support.",
     ],
   },
 ]

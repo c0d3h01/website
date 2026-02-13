@@ -6,6 +6,7 @@ import {
   MdKeyboardDoubleArrowUp,
 } from "react-icons/md"
 import SectionHeading from "@/components/ui/SectionHeading"
+import Tooltip from "@/components/ui/Tooltip"
 import { experiences } from "@/data"
 
 const ExperienceSection = () => {
@@ -48,26 +49,28 @@ const ExperienceSection = () => {
       </div>
 
       {shouldShowToggle && (
-        <button
-          className="showMore-btn"
-          onClick={() => setShowAllExperiences((prev) => !prev)}
-        >
-          {showAllExperiences ? (
-            <span className="flex items-center justify-center gap-0.5">
-              <span className="animate-pulse">
-                <MdKeyboardDoubleArrowUp />
+        <Tooltip text={showAllExperiences ? "Show less" : "Show all"}>
+          <button
+            className="showMore-btn"
+            onClick={() => setShowAllExperiences((prev) => !prev)}
+          >
+            {showAllExperiences ? (
+              <span className="flex items-center justify-center gap-0.5">
+                <span className="animate-pulse">
+                  <MdKeyboardDoubleArrowUp />
+                </span>
+                Show less
               </span>
-              Show less
-            </span>
-          ) : (
-            <span className="flex items-center justify-center gap-0.5">
-              <span className="animate-pulse">
-                <MdKeyboardDoubleArrowDown />
+            ) : (
+              <span className="flex items-center justify-center gap-0.5">
+                <span className="animate-pulse">
+                  <MdKeyboardDoubleArrowDown />
+                </span>
+                Show all
               </span>
-              Show all
-            </span>
-          )}
-        </button>
+            )}
+          </button>
+        </Tooltip>
       )}
     </section>
   )

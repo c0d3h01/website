@@ -38,8 +38,6 @@ interface HyperTextProps extends MotionProps {
   className?: string;
   /** Duration of the animation in milliseconds */
   duration?: number;
-  /** Delay before animation starts in milliseconds */
-  delay?: number;
   /** Component to render as - defaults to div */
   as?: HyperTextElement;
   /** Whether to start animation when element comes into view */
@@ -60,7 +58,6 @@ export function HyperText({
   children,
   className,
   duration = 800,
-  delay = 0,
   as: component = "div",
   startOnView = false,
   animateOnHover = false,
@@ -83,21 +80,17 @@ export function HyperText({
     }
   };
 
-  // Handle animation start based on view or delay
+  // Handle animation start based on view visibility
   useEffect(() => {
     if (!startOnView) {
-      const startTimeout = setTimeout(() => {
-        setIsAnimating(true);
-      }, delay);
-      return () => clearTimeout(startTimeout);
+      setIsAnimating(true);
+      return;
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => {
-            setIsAnimating(true);
-          }, delay);
+          setIsAnimating(true);
           observer.disconnect();
         }
       },
@@ -109,7 +102,7 @@ export function HyperText({
     }
 
     return () => observer.disconnect();
-  }, [delay, startOnView]);
+  }, [startOnView]);
 
   // Handle scramble animation
   useEffect(() => {

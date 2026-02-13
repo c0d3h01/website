@@ -1,53 +1,32 @@
 "use client"
 
-import AnimatedReveal from "@/components/ui/AnimatedReveal"
+import AboutSection from "@/components/home/AboutSection"
+import ExperienceSection from "@/components/home/ExperienceSection"
+import FooterSection from "@/components/home/FooterSection"
+import HireSection from "@/components/home/HireSection"
+import ProfileHeader from "@/components/home/ProfileHeader"
+import ProjectsSection from "@/components/home/ProjectsSection"
+import SocialSection from "@/components/home/SocialSection"
+import SkillsSection from "@/components/home/SkillsSection"
+import SupportSection from "@/components/home/SupportSection"
+import WritingsSection from "@/components/home/WritingsSection"
 import Screen from "@/layout/Screen"
-import AboutSection from "./AboutSection"
-import ExperienceSection from "./ExperienceSection"
-import FooterSection from "./FooterSection"
-import HireSection from "./HireSection"
-import ProfileHeader from "./ProfileHeader"
-import ProjectsSection from "./ProjectsSection"
-import SocialSection from "./SocialSection"
-import SkillsSection from "./SkillsSection"
-import SupportSection from "./SupportSection"
-import WritingsSection from "./WritingsSection"
 
 const HomePage = () => {
   return (
     <Screen>
       <div className="section-stack flex flex-col gap-5">
-        <AnimatedReveal delay={0.15}>
-          <ProfileHeader />
-        </AnimatedReveal>
-        <AnimatedReveal delay={0.25}>
-          <AboutSection />
-        </AnimatedReveal>
-        <AnimatedReveal delay={0.3}>
-          <SocialSection />
-        </AnimatedReveal>
-        <AnimatedReveal delay={0.35}>
-          <ExperienceSection />
-        </AnimatedReveal>
-        <AnimatedReveal delay={0.4}>
-          <HireSection />
-        </AnimatedReveal>
-        <AnimatedReveal delay={0.5}>
-          <SkillsSection />
-        </AnimatedReveal>
-        <AnimatedReveal delay={0.6}>
-          <ProjectsSection />
-        </AnimatedReveal>
-        <AnimatedReveal delay={0.7}>
-          <WritingsSection />
-        </AnimatedReveal>
-        <AnimatedReveal delay={0.8}>
-          <SupportSection />
-        </AnimatedReveal>
+        <ProfileHeader />
+        <AboutSection />
+        <SocialSection />
+        <ExperienceSection />
+        <HireSection />
+        <SkillsSection />
+        <ProjectsSection />
+        <WritingsSection />
+        <SupportSection />
       </div>
-      <AnimatedReveal delay={1.1}>
-        <FooterSection />
-      </AnimatedReveal>
+      <FooterSection />
     </Screen>
   )
 }

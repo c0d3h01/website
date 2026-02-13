@@ -1,14 +1,13 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { AnimatePresence, motion } from "motion/react"
 import {
   MdKeyboardDoubleArrowDown,
   MdKeyboardDoubleArrowUp,
 } from "react-icons/md"
 import BlogPostCard from "@/components/blog/BlogPostCard"
-import AnimatedReveal from "@/components/ui/AnimatedReveal"
 import SectionHeading from "@/components/ui/SectionHeading"
+import Tooltip from "@/components/ui/Tooltip"
 
 interface BlogPostMeta {
   slug: string
@@ -61,53 +60,48 @@ const WritingsSection = () => {
     <section className="flex flex-col gap-3">
       <SectionHeading title="Blog" />
 
-      <motion.div layout className="flex flex-col gap-3.5 md:gap-2.5">
+      <div className="flex flex-col gap-3.5 md:gap-2.5">
         {isLoading && <div className="opacity-70">Loading blog posts...</div>}
 
         {!isLoading && (
-          <AnimatePresence initial={false} mode="popLayout">
-            {visiblePosts.map((post, index) => (
-              <AnimatedReveal
+          <>
+            {visiblePosts.map((post) => (
+              <BlogPostCard
                 key={post.slug}
-                layout="position"
-                delay={index * 0.07}
-                exitDelay={index * 0.03}
-                offsetY={16}
-              >
-                <BlogPostCard
-                  title={post.title}
-                  description={post.description}
-                  href={`/blog/${post.slug}`}
-                  date={post.date}
-                />
-              </AnimatedReveal>
+                title={post.title}
+                description={post.description}
+                href={`/blog/${post.slug}`}
+                date={post.date}
+              />
             ))}
-          </AnimatePresence>
+          </>
         )}
 
         {!isLoading && visiblePosts.length === 0 && (
           <div className="opacity-70">No blog posts found.</div>
         )}
-      </motion.div>
+      </div>
 
       {shouldShowToggle && (
-        <button className="showMore-btn" onClick={() => setShowAllPosts((prev) => !prev)}>
-          {showAllPosts ? (
-            <span className="flex items-center justify-center gap-0.5">
-              <span className="animate-pulse">
-                <MdKeyboardDoubleArrowUp />
+        <Tooltip text={showAllPosts ? "Show less" : "Show all"}>
+          <button className="showMore-btn" onClick={() => setShowAllPosts((prev) => !prev)}>
+            {showAllPosts ? (
+              <span className="flex items-center justify-center gap-0.5">
+                <span className="animate-pulse">
+                  <MdKeyboardDoubleArrowUp />
+                </span>
+                Show less
               </span>
-              Show less
-            </span>
-          ) : (
-            <span className="flex items-center justify-center gap-0.5">
-              <span className="animate-pulse">
-                <MdKeyboardDoubleArrowDown />
+            ) : (
+              <span className="flex items-center justify-center gap-0.5">
+                <span className="animate-pulse">
+                  <MdKeyboardDoubleArrowDown />
+                </span>
+                Show all
               </span>
-              Show all
-            </span>
-          )}
-        </button>
+            )}
+          </button>
+        </Tooltip>
       )}
     </section>
   )

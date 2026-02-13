@@ -1,6 +1,7 @@
 import toast from "react-hot-toast"
 import { supportMethods, supportText } from "@/data"
 import SectionHeading from "@/components/ui/SectionHeading"
+import Tooltip from "@/components/ui/Tooltip"
 
 const SupportSection = () => {
   const handleCopy = async (value: string) => {
@@ -19,29 +20,26 @@ const SupportSection = () => {
 
             if (method.type === "link") {
               return (
-                <a
-                  key={method.id}
-                  className="btn"
-                  target="_blank"
-                  rel="noreferrer"
-                  href={method.href}
-                >
-                  <Icon className={method.iconClassName} />
-                  {method.label}
-                </a>
+                <Tooltip key={method.id} text={method.label}>
+                  <a className="btn" target="_blank" rel="noreferrer" href={method.href}>
+                    <Icon className={method.iconClassName} />
+                    {method.label}
+                  </a>
+                </Tooltip>
               )
             }
 
             return (
-              <button
-                key={method.id}
-                type="button"
-                className="btn"
-                onClick={() => handleCopy(method.value)}
-              >
-                <Icon className={method.iconClassName} />
-                {method.label}
-              </button>
+              <Tooltip key={method.id} text={method.label}>
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() => handleCopy(method.value)}
+                >
+                  <Icon className={method.iconClassName} />
+                  {method.label}
+                </button>
+              </Tooltip>
             )
           })}
         </div>

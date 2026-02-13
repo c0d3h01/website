@@ -182,16 +182,18 @@ const ProjectCard = ({
                 ))}
               </div>
               <div className="flex items-center gap-4 px-2.5 text-xl md:px-2 md:text-lg">
-                <button
-                  type="button"
-                  className="cursor-pointer select-none transition-colors duration-100 hover:text-zinc-400"
-                  onClick={(event) => {
-                    event.stopPropagation()
-                    handleShare(liveUrl || githubUrl)
-                  }}
-                >
-                  <LuShare />
-                </button>
+                <Tooltip text="Share" offset="compact">
+                  <button
+                    type="button"
+                    className="cursor-pointer select-none transition-colors duration-100 hover:text-zinc-400"
+                    onClick={(event) => {
+                      event.stopPropagation()
+                      handleShare(liveUrl || githubUrl)
+                    }}
+                  >
+                    <LuShare />
+                  </button>
+                </Tooltip>
               </div>
             </div>
           </motion.div>

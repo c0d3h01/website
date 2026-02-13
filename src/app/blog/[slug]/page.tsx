@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 import { notFound } from "next/navigation"
+import BackButton from "@/components/blog/BackButton"
 import MainScreen from "@/layout/MainScreen"
 import Screen from "@/layout/Screen"
 import { getBlogPostBySlug, getBlogPosts, renderMarkdown } from "@/lib/blog"
@@ -57,9 +57,7 @@ const BlogPostPage = async ({ params }: BlogPostPageProps) => {
                 day: "numeric",
               })}
             </p>
-            <Link className="btn text-sm" href="/blog">
-              All posts
-            </Link>
+            <BackButton />
           </div>
 
           <h1 className="text-3xl font-bold">{post.title}</h1>
