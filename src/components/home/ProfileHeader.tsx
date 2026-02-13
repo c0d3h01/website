@@ -4,7 +4,6 @@ import { useState } from "react"
 import { AnimatePresence, motion } from "motion/react"
 import Image from "next/image"
 import { userBio, userImage, userName } from "@/data"
-import { HyperText } from "@/components/ui/HyperText"
 import Tooltip from "@/components/ui/Tooltip"
 
 const ProfileHeader = () => {
@@ -15,7 +14,7 @@ const ProfileHeader = () => {
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-3 md:gap-4">
           <Tooltip
-            text="View profile picture"
+            text="View Avatar"
             containerClassName="w-1/3 shrink-0 md:w-auto"
           >
             <button
@@ -36,13 +35,7 @@ const ProfileHeader = () => {
           </Tooltip>
 
           <div className="flex min-w-0 flex-col justify-center gap-1 text-left">
-            <HyperText
-              as="h1"
-              className="head-name py-0 normal-case"
-              duration={700}
-            >
-              {userName}
-            </HyperText>
+            <h1 className="head-name py-0 normal-case">{userName}</h1>
             <p>{userBio}</p>
           </div>
         </div>
