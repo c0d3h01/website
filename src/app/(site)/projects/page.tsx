@@ -28,9 +28,6 @@ const ProjectsPage = () => {
   return (
     <PageShell
       title="Projects"
-      backRailHref="/#projects"
-      backRailLabel="Back to Projects section"
-      backRailVariant="attached"
     >
       <ProjectList items={projects} />
     </PageShell>

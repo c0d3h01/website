@@ -31,9 +31,6 @@ const BlogPage = () => {
   return (
     <PageShell
       title="Blog"
-      backRailHref="/#blog"
-      backRailLabel="Back to Blog section"
-      backRailVariant="attached"
     >
       <div className="flex flex-col gap-3">
         {posts.length > 0 ? (
