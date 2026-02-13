@@ -1,5 +1,57 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Inter Local";
+  src: url("/fonts/inter/inter-latin-wght-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter Local";
+  src: url("/fonts/inter/inter-latin-wght-italic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans Local";
+  src: url("/fonts/plus-jakarta-sans/plus-jakarta-sans-latin-wght-normal.woff2")
+    format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans Local";
+  src: url("/fonts/plus-jakarta-sans/plus-jakarta-sans-latin-wght-italic.woff2")
+    format("woff2");
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono Local";
+  src: url("/fonts/jetbrains-mono/jetbrains-mono-latin-wght-normal.woff2")
+    format("woff2");
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono Local";
+  src: url("/fonts/jetbrains-mono/jetbrains-mono-latin-wght-italic.woff2")
+    format("woff2");
+  font-style: italic;
+  font-weight: 100 800;
+  font-display: swap;
+}
+
 :root {
   --gb-bg0-hard: #030303;
   --gb-bg0: #080808;
@@ -18,14 +70,15 @@
   --gb-aqua: #9ca3af;
   --gb-border: #2f2f2f;
   --font-body:
-    "Aptos", "Inter", "Segoe UI Variable", "Segoe UI", "SF Pro Text",
-    "Helvetica Neue", Helvetica, Arial, sans-serif;
+    "Inter Local", "Aptos", "Inter", "Segoe UI Variable", "Segoe UI",
+    "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-display:
-    "Aptos Display", "Segoe UI Variable", "Segoe UI", "Inter", "SF Pro Display",
-    "Helvetica Neue", Helvetica, Arial, sans-serif;
+    "Plus Jakarta Sans Local", "Aptos Display", "Segoe UI Variable",
+    "Segoe UI", "Inter", "SF Pro Display", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
   --font-scihub:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
+    "JetBrains Mono Local", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 body {
@@ -305,7 +358,7 @@ h3,
 }
 
 .scihub-blog-font {
-  font-family: var(--font-scihub), serif;
+  font-family: var(--font-scihub), monospace;
   line-height: 1.6;
 }
 
@@ -315,7 +368,7 @@ h3,
 .scihub-blog-font h4,
 .scihub-blog-font h5,
 .scihub-blog-font h6 {
-  font-family: var(--font-scihub), serif;
+  font-family: var(--font-scihub), monospace;
   letter-spacing: 0.01em;
 }
 
