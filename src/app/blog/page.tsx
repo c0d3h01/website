@@ -1,11 +1,27 @@
 import type { Metadata } from "next"
 import BlogPostCard from "@/components/blog/BlogPostCard"
+import { defaultOgImage } from "@/data"
 import PageShell from "@/layout/PageShell"
 import { getBlogPosts } from "@/lib/blog"
 
 export const metadata: Metadata = {
   title: "Blog",
   description: "Markdown-based blog posts",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Blog",
+    description: "Markdown-based blog posts",
+    url: "/blog",
+    images: [defaultOgImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog",
+    description: "Markdown-based blog posts",
+    images: [defaultOgImage],
+  },
 }
 
 const BlogPage = () => {

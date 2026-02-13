@@ -322,11 +322,26 @@ export const supportMethods: SupportMethod[] = [
   },
 ]
 
-const siteUrl = profile.website
-const siteTitle = profile.name
-const siteDescription =
+const normalizeSiteUrl = (url: string) => url.replace(/\/$/, "")
+const isValidAbsoluteUrl = (url: string) => {
+  try {
+    new URL(url)
+    return true
+  } catch {
+    return false
+  }
+}
+
+const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() ?? ""
+
+export const siteUrl =
+  configuredSiteUrl && isValidAbsoluteUrl(configuredSiteUrl)
+    ? normalizeSiteUrl(configuredSiteUrl)
+    : normalizeSiteUrl(profile.website)
+export const siteTitle = profile.name
+export const siteDescription =
   "Portfolio of Harshal Sawant - Software Engineer focused on backend systems, developer tooling, and cloud services."
-const ogImage =
+export const defaultOgImage =
   "https://res.cloudinary.com/dhcocqegu/image/upload/v1753737110/OGN_o7spwl.png"
 
 export const seoMetadata: Metadata = {
@@ -346,6 +361,9 @@ export const seoMetadata: Metadata = {
   ],
   authors: [{ name: profile.name }],
   creator: profile.name,
+  alternates: {
+    canonical: "/",
+  },
   metadataBase: new URL(siteUrl),
   icons: {
     icon: [
@@ -380,7 +398,7 @@ export const seoMetadata: Metadata = {
     siteName: profile.name,
     images: [
       {
-        url: ogImage,
+        url: defaultOgImage,
         width: 1200,
         height: 630,
         alt: siteTitle,
@@ -393,7 +411,7 @@ export const seoMetadata: Metadata = {
     card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
-    images: [ogImage],
+    images: [defaultOgImage],
     creator: `@${profile.twitterHandle}`,
   },
   robots: {

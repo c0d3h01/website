@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import BackButton from "@/components/blog/BackButton"
+import { defaultOgImage, profile } from "@/data"
 import MainScreen from "@/layout/MainScreen"
 import Screen from "@/layout/Screen"
 import { formatLongDate } from "@/lib/date"
@@ -18,6 +19,8 @@ export const generateStaticParams = () => {
   }))
 }
 
+export const dynamicParams = false
+
 export const generateMetadata = async ({
   params,
 }: BlogPostPageProps): Promise<Metadata> => {
@@ -33,6 +36,32 @@ export const generateMetadata = async ({
   return {
     title: post.title,
     description: post.description,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: "article",
+      url: `/blog/${post.slug}`,
+      publishedTime: post.date,
+      authors: [profile.name],
+      images: [
+        {
+          url: defaultOgImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [defaultOgImage],
+      creator: `@${profile.twitterHandle}`,
+    },
   }
 }
 
