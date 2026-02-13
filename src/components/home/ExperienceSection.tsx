@@ -1,17 +1,10 @@
-"use client"
-
-import { useState } from "react"
-import {
-  MdKeyboardDoubleArrowDown,
-  MdKeyboardDoubleArrowUp,
-} from "react-icons/md"
+import Link from "next/link"
+import { MdKeyboardDoubleArrowDown } from "react-icons/md"
 import SectionHeading from "@/components/ui/SectionHeading"
 import Tooltip from "@/components/ui/Tooltip"
 import { experiences } from "@/data"
 
 const ExperienceSection = () => {
-  const [showAllExperiences, setShowAllExperiences] = useState(false)
-
   const presentExperiences = experiences.filter((experience) =>
     /present/i.test(experience.duration)
   )
@@ -19,8 +12,8 @@ const ExperienceSection = () => {
   const defaultExperiences =
     presentExperiences.length > 0 ? presentExperiences : experiences.slice(0, 1)
 
-  const visibleExperiences = showAllExperiences ? experiences : defaultExperiences
-  const shouldShowToggle = experiences.length > defaultExperiences.length
+  const visibleExperiences = defaultExperiences
+  const shouldShowViewAll = experiences.length > defaultExperiences.length
 
   return (
     <section className="flex flex-col gap-3">
@@ -48,28 +41,16 @@ const ExperienceSection = () => {
         ))}
       </div>
 
-      {shouldShowToggle && (
-        <Tooltip text={showAllExperiences ? "Show less" : "Show all"}>
-          <button
-            className="showMore-btn"
-            onClick={() => setShowAllExperiences((prev) => !prev)}
-          >
-            {showAllExperiences ? (
-              <span className="flex items-center justify-center gap-0.5">
-                <span className="animate-pulse">
-                  <MdKeyboardDoubleArrowUp />
-                </span>
-                Show less
+      {shouldShowViewAll && (
+        <Tooltip text="View All">
+          <Link href="/experience" className="showMore-btn">
+            <span className="flex items-center justify-center gap-0.5">
+              <span className="animate-pulse">
+                <MdKeyboardDoubleArrowDown />
               </span>
-            ) : (
-              <span className="flex items-center justify-center gap-0.5">
-                <span className="animate-pulse">
-                  <MdKeyboardDoubleArrowDown />
-                </span>
-                Show all
-              </span>
-            )}
-          </button>
+              View All
+            </span>
+          </Link>
         </Tooltip>
       )}
     </section>
