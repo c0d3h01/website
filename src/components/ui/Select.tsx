@@ -21,7 +21,7 @@ const Select = ({ options }: SelectProps) => {
         onChange={(event) => setSelectedOption(event.target.value)}
         className="w-full appearance-none cursor-pointer rounded-md border border-zinc-700 bg-zinc-900 px-3 py-1 transition duration-100 hover:border-zinc-500 focus:border-zinc-500 focus:outline-none"
       >
-        <option value="Show all">Show all</option>
+        <option value="View All">View All</option>
         {options.map((option) => (
           <option
             key={option.value}
