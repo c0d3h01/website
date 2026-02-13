@@ -1,5 +1,3 @@
-"use client"
-
 import { userAbout } from "@/data"
 import SectionHeading from "@/components/ui/SectionHeading"
 

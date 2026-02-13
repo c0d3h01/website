@@ -19,7 +19,9 @@ const Tooltip = ({
   groupClassName = "",
 }: TooltipProps) => {
   return (
-    <div className={`relative flex items-center select-none ${containerClassName}`.trim()}>
+    <div
+      className={`relative flex items-center select-none ${containerClassName}`.trim()}
+    >
       <div className={`group relative flex ${groupClassName}`.trim()}>
         {children}
         <span

@@ -1,11 +1,11 @@
-import React from "react"
+import type { ReactNode } from "react"
 
 interface ScreenProps {
-  children: React.ReactNode
+  children: ReactNode
 }
 
-const Screen: React.FC<ScreenProps> = ({ children }) => {
-  return <div className="screen">{children}</div>
-}
+const Screen = ({ children }: ScreenProps) => (
+  <div className="screen">{children}</div>
+)
 
 export default Screen

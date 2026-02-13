@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { formatShortDate } from "@/lib/date"
 
 interface BlogPostCardProps {
   title: string
@@ -13,12 +14,6 @@ const BlogPostCard = ({
   href,
   date,
 }: BlogPostCardProps) => {
-  const formattedDate = new Date(date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  })
-
   return (
     <Link
       href={href}
@@ -26,7 +21,7 @@ const BlogPostCard = ({
     >
       <div className="flex flex-col gap-0.5 w-full">
         <h2 className="text-xl font-semibold md:text-lg">{title}</h2>
-        <p className="text-sm opacity-70">{formattedDate}</p>
+        <p className="text-sm opacity-70">{formatShortDate(date)}</p>
         <p className="opacity-80">{description}</p>
       </div>
     </Link>

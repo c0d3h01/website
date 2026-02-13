@@ -4,7 +4,14 @@ import { BiLogoPostgresql } from "react-icons/bi"
 import { BsFiletypeSql } from "react-icons/bs"
 import { DiJavascript } from "react-icons/di"
 import { FaDocker } from "react-icons/fa"
-import { FaGithub, FaGitAlt, FaLinkedinIn, FaPython, FaRegHeart, FaXTwitter } from "react-icons/fa6"
+import {
+  FaGithub,
+  FaGitAlt,
+  FaLinkedinIn,
+  FaPython,
+  FaRegHeart,
+  FaXTwitter,
+} from "react-icons/fa6"
 import { IoLogoNodejs } from "react-icons/io5"
 import { MdOutlineMail } from "react-icons/md"
 import { PiFigmaLogoBold } from "react-icons/pi"
@@ -29,7 +36,30 @@ import {
 import { TbBrandCpp, TbBrandTypescript } from "react-icons/tb"
 import { VscTerminalLinux } from "react-icons/vsc"
 
-export const profile = {
+type IconComponent = ComponentType<{ className?: string }>
+
+// Global profile identity and social handles.
+export interface Profile {
+  name: string
+  shortName: string
+  bio: string
+  image: string
+  githubUsername: string
+  twitterHandle: string
+  linkedinSlug: string
+  codeforcesUsername: string
+  email: string
+  website: string
+  support: {
+    githubSponsorsUsername: string
+    buyMeACoffeeUsername: string
+    solanaAddress: string
+    paytmUpiId: string
+  }
+  aboutHtml: string
+}
+
+export const profile: Profile = {
   name: "Harshal Sawant",
   shortName: "Harshal",
   bio: "Software Engineer",
@@ -46,7 +76,7 @@ export const profile = {
     solanaAddress: "BvVsoRAUvRpiuG1tVSb4kRRf4MJWsEvgBBSH3PUnVgFF",
     paytmUpiId: "8828166801@ptsbi",
   },
-  about: `
+  aboutHtml: `
   <p>
     Hi, I&apos;m Harshal Sawant, a product-focused software engineer based in Mumbai, India.
   </p>
@@ -54,87 +84,82 @@ export const profile = {
     I enjoy building reliable software, <strong>improving performance</strong>, and contributing to open-source projects that solve practical engineering problems.
   </p>
 `,
-} as const
+}
 
+// Compatibility exports used across existing components.
 export const userImage = profile.image
 export const userName = profile.name
 export const userShortName = profile.shortName
 export const userBio = profile.bio
-export const userAbout = profile.about
+export const userAbout = profile.aboutHtml
 
 export const emailLink = `mailto:${profile.email}?subject=Interested%20in%20Hiring%20You`
-
 export const resumeFilePath = "/assets/docs/resume.pdf"
 
-export const userLink = [
-  {
-    id: 1,
-    name: "Github",
-    link: `https://github.com/${profile.githubUsername}`,
-    icon: FaGithub,
-  },
-  {
-    id: 2,
-    name: "Twitter",
-    link: `https://x.com/intent/follow?screen_name=${profile.twitterHandle}`,
-    icon: FaXTwitter,
-  },
-  {
-    id: 3,
-    name: "LinkedIn",
-    link: `https://www.linkedin.com/in/${profile.linkedinSlug}`,
-    icon: FaLinkedinIn,
-  },
-  {
-    id: 4,
-    name: "Codeforces",
-    link: `https://codeforces.com/profile/${profile.codeforcesUsername}`,
-    icon: SiCodeforces,
-  },
-]
+// Public links shown on the home page.
+export interface SocialLink {
+  id: number
+  name: string
+  href: string
+  icon: IconComponent
+  iconClassName?: string
+}
 
-export const userFooterLink = [
+export const footerSocialLinks: SocialLink[] = [
   {
     id: 1,
     name: "Mail",
-    link: `mailto:${profile.email}`,
+    href: `mailto:${profile.email}`,
     icon: MdOutlineMail,
     iconClassName: "text-[#EA4335]",
   },
   {
     id: 2,
     name: "Github",
-    link: `https://github.com/${profile.githubUsername}`,
+    href: `https://github.com/${profile.githubUsername}`,
     icon: FaGithub,
     iconClassName: "text-zinc-100",
   },
   {
     id: 3,
     name: "Twitter",
-    link: `https://x.com/intent/follow?screen_name=${profile.twitterHandle}`,
+    href: `https://x.com/intent/follow?screen_name=${profile.twitterHandle}`,
     icon: FaXTwitter,
     iconClassName: "text-zinc-100",
   },
   {
     id: 4,
     name: "LinkedIn",
-    link: `https://www.linkedin.com/in/${profile.linkedinSlug}`,
+    href: `https://www.linkedin.com/in/${profile.linkedinSlug}`,
     icon: FaLinkedinIn,
     iconClassName: "text-[#0A66C2]",
   },
   {
     id: 5,
     name: "Codeforces",
-    link: `https://codeforces.com/profile/${profile.codeforcesUsername}`,
+    href: `https://codeforces.com/profile/${profile.codeforcesUsername}`,
     icon: SiCodeforces,
     iconClassName: "text-[#1F8ACB]",
   },
 ]
 
+// Compatibility alias for old imports.
+export const userFooterLink = footerSocialLinks
+
 export const hireText =
   "I’m open to software engineering roles and freelance work where I can build reliable backend systems, developer tools, and cloud-native products."
 
-export const experiences = [
+// Experience cards rendered in home and dedicated experience pages.
+export interface Experience {
+  id: number
+  role: string
+  company: string
+  location: string
+  duration: string
+  highlights: string[]
+}
+
+export const experiences: Experience[] = [
   {
     id: 1,
     role: "Freelance Software Engineer",
@@ -151,15 +176,16 @@ export const experiences = [
 
 export type ProjectStatus = "active" | "building" | "archived"
 
+// Source of truth for project cards across home and /projects.
 export interface Project {
   id: number
   title: string
   status: ProjectStatus
-  content: string
-  url: string
-  github: string
-  skill: string[]
-  preview: string
+  description: string
+  liveUrl: string
+  githubUrl: string
+  techStack: string[]
+  previewVideo: string
 }
 
 export const projects: Project[] = [
@@ -167,49 +193,55 @@ export const projects: Project[] = [
     id: 1,
     title: "androidtweaker",
     status: "active",
-    content:
+    description:
       "Built and maintained a shell-driven Android optimization toolkit for rooted devices, focused on runtime tuning, repeatable tweak workflows, and easier long-term maintenance.",
-    url: "",
-    github: "https://github.com/c0d3h01/androidtweaker",
-    skill: ["Shell", "Android", "Linux", "Performance Tuning"],
-    preview: "",
+    liveUrl: "",
+    githubUrl: "https://github.com/c0d3h01/androidtweaker",
+    techStack: ["Shell", "Android", "Linux", "Performance Tuning"],
+    previewVideo: "",
   },
   {
     id: 2,
     title: "coretaskoptimizer",
     status: "building",
-    content:
+    description:
       "Implemented a native C++ root module that applies CPU affinity, scheduler policy, and I/O priority to critical Android system tasks with low-overhead boot-time execution.",
-    url: "",
-    github: "https://github.com/c0d3h01/coretaskoptimizer",
-    skill: ["C++", "CMake", "Linux Syscalls", "Kernel Optimization"],
-    preview: "",
+    liveUrl: "",
+    githubUrl: "https://github.com/c0d3h01/coretaskoptimizer",
+    techStack: ["C++", "CMake", "Linux Syscalls", "Kernel Optimization"],
+    previewVideo: "",
   },
   {
     id: 3,
     title: "firuslab/obfussor",
     status: "active",
-    content:
+    description:
       "Contributed to a cross-platform LLVM-based C/C++ obfuscation suite and worked on the Svelte + Tauri app workflow for job execution and protection metric review.",
-    url: "",
-    github: "https://github.com/firuslab/obfussor",
-    skill: ["TypeScript", "Svelte", "Tauri", "Rust", "LLVM"],
-    preview: "",
+    liveUrl: "",
+    githubUrl: "https://github.com/firuslab/obfussor",
+    techStack: ["TypeScript", "Svelte", "Tauri", "Rust", "LLVM"],
+    previewVideo: "",
   },
   {
     id: 4,
     title: "nix-dotfiles",
     status: "archived",
-    content:
+    description:
       "Engineered a flake-driven NixOS + Home Manager setup with modular host profiles, Disko provisioning, and secure secret management for reproducible workstation bootstrap.",
-    url: "",
-    github: "https://github.com/c0d3h01/nix-dotfiles",
-    skill: ["Nix", "Nix Flakes", "Home Manager", "sops-nix", "Disko"],
-    preview: "",
+    liveUrl: "",
+    githubUrl: "https://github.com/c0d3h01/nix-dotfiles",
+    techStack: ["Nix", "Nix Flakes", "Home Manager", "sops-nix", "Disko"],
+    previewVideo: "",
   },
 ]
 
-export const skills = [
+export interface Skill {
+  id: number
+  icon: IconComponent
+  text: string
+}
+
+export const skills: Skill[] = [
   { id: 1, icon: TbBrandTypescript, text: "TypeScript" },
   { id: 2, icon: DiJavascript, text: "JavaScript" },
   { id: 3, icon: FaPython, text: "Python" },
@@ -234,13 +266,13 @@ export const skills = [
   { id: 22, icon: PiFigmaLogoBold, text: "Product Collaboration" },
 ]
 
-type SupportMethod =
+export type SupportMethod =
   | {
       id: number
       label: string
       type: "link"
       href: string
-      icon: ComponentType<{ className?: string }>
+      icon: IconComponent
       iconClassName: string
     }
   | {
@@ -248,7 +280,7 @@ type SupportMethod =
       label: string
       type: "copy"
       value: string
-      icon: ComponentType<{ className?: string }>
+      icon: IconComponent
       iconClassName: string
     }
 
@@ -291,7 +323,7 @@ export const supportMethods: SupportMethod[] = [
 ]
 
 const siteUrl = profile.website
-const siteTitle = `${profile.name}`
+const siteTitle = profile.name
 const siteDescription =
   "Portfolio of Harshal Sawant - Software Engineer focused on backend systems, developer tooling, and cloud services."
 const ogImage =
@@ -345,7 +377,7 @@ export const seoMetadata: Metadata = {
     title: siteTitle,
     description: siteDescription,
     url: siteUrl,
-    siteName: "Harshal Sawant",
+    siteName: profile.name,
     images: [
       {
         url: ogImage,

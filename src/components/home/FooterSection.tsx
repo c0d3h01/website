@@ -1,5 +1,3 @@
-"use client"
-
 const FooterSection = () => {
   return (
     <footer className="mb-16 md:mb-12">

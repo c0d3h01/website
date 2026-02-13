@@ -1,13 +1,23 @@
 "use client"
 
 import { useState } from "react"
-import { AnimatePresence, motion } from "motion/react"
 import Image from "next/image"
-import { userBio, userImage, userName } from "@/data"
 import Tooltip from "@/components/ui/Tooltip"
 
-const ProfileHeader = () => {
+interface ProfileHeaderProps {
+  userName: string
+  userBio: string
+  userImage: string
+}
+
+const ProfileHeader = ({
+  userName,
+  userBio,
+  userImage,
+}: ProfileHeaderProps) => {
   const [isPreviewOpen, setIsPreviewOpen] = useState(false)
+  const openPreview = () => setIsPreviewOpen(true)
+  const closePreview = () => setIsPreviewOpen(false)
 
   return (
     <section>
@@ -19,7 +29,8 @@ const ProfileHeader = () => {
           >
             <button
               type="button"
-              onClick={() => setIsPreviewOpen(true)}
+              aria-label="Open avatar preview"
+              onClick={openPreview}
               className="cursor-pointer select-none"
             >
               <span className="pro-pic-shell">
@@ -29,6 +40,8 @@ const ProfileHeader = () => {
                   className="pro-pic"
                   width={200}
                   height={200}
+                  priority
+                  sizes="(max-width: 768px) 108px, 130px"
                 />
               </span>
             </button>
@@ -41,64 +54,54 @@ const ProfileHeader = () => {
         </div>
       </div>
 
-      <AnimatePresence>
-        {isPreviewOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex select-none items-center justify-center bg-black/80"
-            onClick={() => setIsPreviewOpen(false)}
+      {/* Simple click-outside modal for the avatar preview. */}
+      {isPreviewOpen && (
+        <div
+          className="fixed inset-0 z-50 flex select-none items-center justify-center bg-black/80"
+          onClick={closePreview}
+        >
+          <Tooltip
+            text="Close"
+            offset="compact"
+            containerClassName="absolute top-4 right-4 z-10"
           >
-            <Tooltip
-              text="Close"
-              offset="compact"
-              containerClassName="absolute top-4 right-4 z-10"
+            <button
+              type="button"
+              aria-label="Close avatar preview"
+              onClick={closePreview}
+              className="p-2 text-white hover:text-gray-300"
             >
-              <motion.button
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.5 }}
-                transition={{ duration: 0.2 }}
-                onClick={() => setIsPreviewOpen(false)}
-                className="p-2 text-white hover:text-gray-300"
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </motion.button>
-            </Tooltip>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </Tooltip>
 
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="w-[600px] max-w-[90vw] overflow-hidden rounded-lg md:max-w-[25vw]"
-              onClick={(event) => event.stopPropagation()}
-            >
-              <Image
-                src={userImage}
-                alt="Profile Picture"
-                className="h-full w-full rounded-lg object-contain"
-                width={200}
-                height={200}
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          <div
+            className="w-[600px] max-w-[90vw] overflow-hidden rounded-lg md:max-w-[25vw]"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <Image
+              src={userImage}
+              alt="Profile Picture Preview"
+              className="h-full w-full rounded-lg object-contain"
+              width={600}
+              height={600}
+              sizes="(max-width: 768px) 90vw, 25vw"
+            />
+          </div>
+        </div>
+      )}
     </section>
   )
 }

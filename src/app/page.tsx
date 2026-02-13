@@ -1,7 +1,7 @@
 import HomePage from "@/components/home/HomePage"
 import MainScreen from "@/layout/MainScreen"
 
-const Home = () => {
+const HomePageRoute = () => {
   return (
     <MainScreen>
       <HomePage />
@@ -9,4 +9,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomePageRoute

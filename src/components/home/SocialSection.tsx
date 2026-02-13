@@ -1,15 +1,20 @@
 import SectionHeading from "@/components/ui/SectionHeading"
 import Tooltip from "@/components/ui/Tooltip"
-import { userFooterLink } from "@/data"
+import { footerSocialLinks } from "@/data"
 
 const SocialSection = () => {
   return (
     <section className="flex flex-col gap-2.5">
       <SectionHeading title="Social" />
       <div className="flex flex-wrap items-center gap-2.5">
-        {userFooterLink.map((link) => (
+        {footerSocialLinks.map((link) => (
           <Tooltip key={link.id} text={link.name}>
-            <a className="btn" target="_blank" rel="noreferrer" href={link.link}>
+            <a
+              className="btn"
+              target="_blank"
+              rel="noreferrer"
+              href={link.href}
+            >
               <link.icon className={link.iconClassName} />
               {link.name}
             </a>

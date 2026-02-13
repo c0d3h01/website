@@ -1,5 +1,3 @@
-"use client"
-
 import { PiFilePdfBold, PiSuitcaseSimpleBold } from "react-icons/pi"
 import Tooltip from "@/components/ui/Tooltip"
 import { emailLink, hireText, resumeFilePath } from "@/data"
@@ -13,13 +11,23 @@ const HireSection = () => {
         <p>{hireText}</p>
         <div className="flex flex-wrap items-center gap-2.5">
           <Tooltip text="Hire Me">
-            <a className="btn" target="_blank" rel="noreferrer" href={emailLink}>
+            <a
+              className="btn"
+              target="_blank"
+              rel="noreferrer"
+              href={emailLink}
+            >
               <PiSuitcaseSimpleBold />
               Hire Me
             </a>
           </Tooltip>
           <Tooltip text="Resume">
-            <a className="btn" target="_blank" rel="noreferrer" href={resumeFilePath}>
+            <a
+              className="btn"
+              target="_blank"
+              rel="noreferrer"
+              href={resumeFilePath}
+            >
               <PiFilePdfBold />
               Resume
             </a>

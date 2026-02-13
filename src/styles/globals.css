@@ -73,9 +73,8 @@
     "Inter Local", "Aptos", "Inter", "Segoe UI Variable", "Segoe UI",
     "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-display:
-    "Plus Jakarta Sans Local", "Aptos Display", "Segoe UI Variable",
-    "Segoe UI", "Inter", "SF Pro Display", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
+    "Plus Jakarta Sans Local", "Aptos Display", "Segoe UI Variable", "Segoe UI",
+    "Inter", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-scihub:
     "JetBrains Mono Local", ui-monospace, SFMono-Regular, Menlo, Monaco,
     Consolas, "Liberation Mono", "Courier New", monospace;
@@ -104,7 +103,6 @@ body {
       transparent 36%
     ),
     linear-gradient(165deg, #030303 0%, #080808 48%, #111111 100%);
-  background-attachment: fixed;
 }
 
 h1,
@@ -161,8 +159,10 @@ h3,
   );
   isolation: isolate;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.45);
-  animation: pfp-electric-flicker 5.2s cubic-bezier(0.42, 0, 0.58, 1) infinite;
-  transition: transform 0.22s ease, filter 0.22s ease;
+  transition:
+    transform 0.22s ease,
+    filter 0.22s ease;
+  will-change: transform;
 }
 
 .pro-pic-shell::before {
@@ -200,13 +200,11 @@ h3,
   );
   z-index: 1;
   pointer-events: none;
-  animation: pfp-border-shift 6s linear infinite;
 }
 
 .pro-pic-shell:hover {
   transform: translateY(-1px) scale(1.01);
-  filter:
-    drop-shadow(0 0 12px rgba(186, 230, 253, 0.74))
+  filter: drop-shadow(0 0 12px rgba(186, 230, 253, 0.74))
     drop-shadow(0 0 26px rgba(56, 189, 248, 0.5));
 }
 
@@ -221,30 +219,6 @@ h3,
   z-index: 2;
   clip-path: var(--bolt-shape);
   transform: scale(0.955);
-}
-
-@keyframes pfp-electric-flicker {
-  0%,
-  100% {
-    filter:
-      drop-shadow(0 0 8px rgba(186, 230, 253, 0.56))
-      drop-shadow(0 0 20px rgba(56, 189, 248, 0.36));
-  }
-  30% {
-    filter:
-      drop-shadow(0 0 11px rgba(219, 234, 254, 0.72))
-      drop-shadow(0 0 24px rgba(125, 211, 252, 0.44));
-  }
-  55% {
-    filter:
-      drop-shadow(0 0 13px rgba(224, 242, 254, 0.84))
-      drop-shadow(0 0 28px rgba(96, 165, 250, 0.5));
-  }
-  78% {
-    filter:
-      drop-shadow(0 0 10px rgba(186, 230, 253, 0.66))
-      drop-shadow(0 0 22px rgba(56, 189, 248, 0.42));
-  }
 }
 
 @keyframes pfp-aura-pulse {
@@ -263,15 +237,12 @@ h3,
   }
 }
 
-@keyframes pfp-border-shift {
-  0% {
-    filter: hue-rotate(0deg) saturate(1.04);
-  }
-  50% {
-    filter: hue-rotate(12deg) saturate(1.2);
-  }
-  100% {
-    filter: hue-rotate(0deg) saturate(1.04);
+@media (prefers-reduced-motion: reduce) {
+  .pro-pic-shell,
+  .pro-pic-shell::before,
+  .pro-pic-shell::after {
+    animation: none !important;
+    transition: none !important;
   }
 }
 

@@ -7,6 +7,7 @@ import { remark } from "remark"
 import remarkGfm from "remark-gfm"
 import remarkHtml from "remark-html"
 
+// Markdown source files for blog content.
 const postsDirectory = path.join(process.cwd(), "src/content/blog")
 
 export interface BlogPostMeta {
@@ -21,6 +22,8 @@ export interface BlogPost extends BlogPostMeta {
 }
 
 const getFilePath = (slug: string) => path.join(postsDirectory, `${slug}.md`)
+const byDateDesc = (a: BlogPostMeta, b: BlogPostMeta) =>
+  new Date(b.date).getTime() - new Date(a.date).getTime()
 
 const parsePost = (fileName: string): BlogPost => {
   const slug = fileName.replace(/\.md$/, "")
@@ -42,17 +45,19 @@ export const getBlogPosts = (): BlogPostMeta[] => {
     return []
   }
 
-  return fs
+  const files = fs
     .readdirSync(postsDirectory)
     .filter((fileName) => fileName.endsWith(".md"))
-    .map(parsePost)
+  const posts = files.map(parsePost)
+
+  return posts
     .map((post) => ({
       slug: post.slug,
       title: post.title,
       description: post.description,
       date: post.date,
     }))
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .sort(byDateDesc)
 }
 
 export const getBlogPostBySlug = (slug: string): BlogPost | null => {

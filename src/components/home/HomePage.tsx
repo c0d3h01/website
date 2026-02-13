@@ -1,5 +1,3 @@
-"use client"
-
 import AboutSection from "@/components/home/AboutSection"
 import ExperienceSection from "@/components/home/ExperienceSection"
 import FooterSection from "@/components/home/FooterSection"
@@ -11,12 +9,18 @@ import SkillsSection from "@/components/home/SkillsSection"
 import SupportSection from "@/components/home/SupportSection"
 import WritingsSection from "@/components/home/WritingsSection"
 import Screen from "@/layout/Screen"
+import { userBio, userImage, userName } from "@/data"
 
 const HomePage = () => {
   return (
     <Screen>
       <div className="section-stack flex flex-col gap-5">
-        <ProfileHeader />
+        {/* Section order matches how visitors usually scan a portfolio. */}
+        <ProfileHeader
+          userName={userName}
+          userBio={userBio}
+          userImage={userImage}
+        />
         <AboutSection />
         <SocialSection />
         <ExperienceSection />

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import BackButton from "@/components/blog/BackButton"
 import MainScreen from "@/layout/MainScreen"
 import Screen from "@/layout/Screen"
+import { formatLongDate } from "@/lib/date"
 import { getBlogPostBySlug, getBlogPosts, renderMarkdown } from "@/lib/blog"
 
 type BlogPostPageProps = {
@@ -50,14 +51,12 @@ const BlogPostPage = async ({ params }: BlogPostPageProps) => {
       <Screen>
         <article className="flex flex-col gap-4">
           <div className="flex items-center justify-between gap-2">
-            <p className="text-sm opacity-70">
-              {new Date(post.date).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </p>
-            <BackButton fallbackHref="/blog" label="Back to Blog" useHistory={false} />
+            <p className="text-sm opacity-70">{formatLongDate(post.date)}</p>
+            <BackButton
+              fallbackHref="/blog"
+              label="Back to Blog"
+              useHistory={false}
+            />
           </div>
 
           <h1 className="text-3xl font-bold">{post.title}</h1>
