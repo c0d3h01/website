@@ -9,65 +9,28 @@
 }
 
 @font-face {
-  font-family: "Inter Local";
-  src: url("/fonts/inter/inter-latin-wght-italic.woff2") format("woff2");
-  font-style: italic;
-  font-weight: 100 900;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "Plus Jakarta Sans Local";
-  src: url("/fonts/plus-jakarta-sans/plus-jakarta-sans-latin-wght-normal.woff2")
-    format("woff2");
+  src: url("/fonts/plus-jakarta-sans/plus-jakarta-sans-latin-wght-normal.woff2") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Plus Jakarta Sans Local";
-  src: url("/fonts/plus-jakarta-sans/plus-jakarta-sans-latin-wght-italic.woff2")
-    format("woff2");
-  font-style: italic;
-  font-weight: 100 900;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "JetBrains Mono Local";
-  src: url("/fonts/jetbrains-mono/jetbrains-mono-latin-wght-normal.woff2")
-    format("woff2");
+  src: url("/fonts/jetbrains-mono/jetbrains-mono-latin-wght-normal.woff2") format("woff2");
   font-style: normal;
-  font-weight: 100 800;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "JetBrains Mono Local";
-  src: url("/fonts/jetbrains-mono/jetbrains-mono-latin-wght-italic.woff2")
-    format("woff2");
-  font-style: italic;
   font-weight: 100 800;
   font-display: swap;
 }
 
 :root {
-  --gb-bg0-hard: #030303;
-  --gb-bg0: #080808;
-  --gb-bg0-soft: #101010;
-  --gb-bg1: #151515;
-  --gb-bg2: #1f1f1f;
   --gb-bg3: #2a2a2a;
   --gb-fg0: #f5f5f5;
   --gb-fg1: #d4d4d4;
   --gb-fg2: #a3a3a3;
-  --gb-gray: #737373;
   --gb-yellow: #e5e5e5;
-  --gb-red: #b0b0b0;
-  --gb-green: #cfcfcf;
   --gb-blue: #bdbdbd;
-  --gb-aqua: #9ca3af;
   --gb-border: #2f2f2f;
   --font-body:
     "Inter Local", "Aptos", "Inter", "Segoe UI Variable", "Segoe UI",
@@ -81,44 +44,32 @@
 }
 
 body {
-  font-family: var(--font-body), sans-serif;
+  font-family: var(--font-body);
   min-height: 100vh;
   color: var(--gb-fg1);
   line-height: 1.55;
   background-color: #050505;
   background-image:
-    radial-gradient(
-      circle at 12% 8%,
+    radial-gradient(circle at 12% 8%,
       rgba(245, 245, 245, 0.08),
-      transparent 34%
-    ),
-    radial-gradient(
-      circle at 88% 0%,
+      transparent 34%),
+    radial-gradient(circle at 88% 0%,
       rgba(163, 163, 163, 0.1),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 50% 100%,
+      transparent 30%),
+    radial-gradient(circle at 50% 100%,
       rgba(212, 212, 212, 0.08),
-      transparent 36%
-    ),
+      transparent 36%),
     linear-gradient(165deg, #030303 0%, #080808 48%, #111111 100%);
 }
 
 h1,
 h2,
-h3,
-.display-font {
+h3 {
   font-family: var(--font-display), sans-serif;
   letter-spacing: -0.01em;
 }
-::selection {
-  background: rgba(245, 245, 245, 0.35);
-  color: #050505;
-}
 
-/* For Firefox-specific styling */
-::-moz-selection {
+::selection {
   background: rgba(245, 245, 245, 0.35);
   color: #050505;
 }
@@ -126,19 +77,16 @@ h3,
 .screen {
   @apply md:w-[860px] md:mx-auto px-4 md:py-14 py-4;
 }
+
 .main-screen {
   @apply py-3;
 }
 
-.section-stack > * {
+.section-stack>* {
   border-left: 1px solid rgba(212, 212, 212, 0.18);
   border-right: 1px solid rgba(212, 212, 212, 0.18);
   padding-inline: clamp(0.7rem, 1.35vw, 1rem);
   padding-block: clamp(0.35rem, 0.85vw, 0.55rem);
-}
-
-.section-copy {
-  color: var(--gb-fg1);
 }
 
 .section-copy p {
@@ -147,125 +95,18 @@ h3,
 
 .pro-pic-shell {
   @apply relative block md:size-[130px] size-[108px] select-none;
-  --bolt-shape: polygon(
-    30% 0%,
-    100% 0%,
-    62% 46%,
-    96% 46%,
-    36% 100%,
-    48% 58%,
-    4% 58%,
-    42% 0%
-  );
-  isolation: isolate;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.45);
-  transition:
-    transform 0.22s ease,
-    filter 0.22s ease;
-  will-change: transform;
-}
-
-.pro-pic-shell::before {
-  content: "";
-  position: absolute;
-  inset: -9px;
-  clip-path: var(--bolt-shape);
-  background: conic-gradient(
-    from 220deg,
-    rgba(56, 189, 248, 0.48),
-    rgba(147, 197, 253, 0.4),
-    rgba(103, 232, 249, 0.38),
-    rgba(125, 211, 252, 0.42),
-    rgba(56, 189, 248, 0.48)
-  );
-  filter: blur(11px);
-  opacity: 0.78;
-  z-index: 0;
-  pointer-events: none;
-  animation: pfp-aura-pulse 5.2s cubic-bezier(0.42, 0, 0.58, 1) infinite;
-}
-
-.pro-pic-shell::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  clip-path: var(--bolt-shape);
-  background: linear-gradient(
-    140deg,
-    rgba(239, 246, 255, 0.98) 0%,
-    rgba(186, 230, 253, 0.95) 32%,
-    rgba(125, 211, 252, 0.9) 56%,
-    rgba(96, 165, 250, 0.88) 78%,
-    rgba(224, 242, 254, 0.97) 100%
-  );
-  z-index: 1;
-  pointer-events: none;
-}
-
-.pro-pic-shell:hover {
-  transform: translateY(-1px) scale(1.01);
-  filter: drop-shadow(0 0 12px rgba(186, 230, 253, 0.74))
-    drop-shadow(0 0 26px rgba(56, 189, 248, 0.5));
-}
-
-.pro-pic-shell:hover::before {
-  opacity: 1;
-  filter: blur(14px);
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .pro-pic {
   @apply block size-full object-cover;
-  position: relative;
-  z-index: 2;
-  clip-path: var(--bolt-shape);
-  transform: scale(0.955);
-}
-
-@keyframes pfp-aura-pulse {
-  0%,
-  100% {
-    opacity: 0.72;
-  }
-  35% {
-    opacity: 0.84;
-  }
-  55% {
-    opacity: 0.96;
-  }
-  80% {
-    opacity: 0.82;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pro-pic-shell,
-  .pro-pic-shell::before,
-  .pro-pic-shell::after {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
-.social-card {
-  @apply select-none rounded-md p-1.5 text-[1.35rem] transition-all duration-150;
-  background: rgba(12, 12, 12, 0.88);
-  border: 1px solid var(--gb-border);
-  color: var(--gb-fg1);
-  backdrop-filter: blur(6px);
-}
-
-.social-card:hover {
-  background: rgba(20, 20, 20, 0.96);
-  border-color: var(--gb-blue);
-  color: var(--gb-yellow);
-  transform: translateY(-1px);
 }
 
 .skills-card {
   @apply select-none transition-all duration-150 flex flex-row gap-1 items-center px-2 py-1 rounded-md;
   background: rgba(14, 14, 14, 0.9);
   border: 1px solid var(--gb-border);
-  transform: translateY(0);
 }
 
 .skills-card:hover {
@@ -283,7 +124,6 @@ h3,
   @apply select-none w-full px-2 py-1 rounded-md transition-all duration-150;
   background: rgba(14, 14, 14, 0.9);
   border: 1px solid var(--gb-border);
-  transform: translateY(0);
 }
 
 .showMore-btn:hover {
@@ -295,21 +135,16 @@ h3,
 
 .btn {
   @apply cursor-pointer w-fit select-none transition-all duration-150 flex flex-row gap-1.5 items-center px-2 py-1 rounded-md;
-  background: linear-gradient(
-    180deg,
-    rgba(28, 28, 28, 0.95) 0%,
-    rgba(14, 14, 14, 0.98) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(28, 28, 28, 0.95) 0%,
+      rgba(14, 14, 14, 0.98) 100%);
   border: 1px solid var(--gb-border);
-  transform: translateY(0);
 }
 
 .btn:hover {
-  background: linear-gradient(
-    180deg,
-    rgba(42, 42, 42, 0.96) 0%,
-    rgba(22, 22, 22, 1) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(42, 42, 42, 0.96) 0%,
+      rgba(22, 22, 22, 1) 100%);
   border-color: var(--gb-blue);
   color: var(--gb-yellow);
   transform: translateY(-1px);
@@ -319,7 +154,6 @@ h3,
   @apply cursor-pointer p-2 rounded-md transition-all duration-150;
   background: rgba(12, 12, 12, 0.9);
   border: 1px solid var(--gb-border);
-  transform: translateY(0);
 }
 
 .blog-post:hover {
