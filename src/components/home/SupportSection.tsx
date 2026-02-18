@@ -13,10 +13,10 @@ const SupportSection = () => {
           <a
             className="btn"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             href={method.href}
           >
-            <Icon className={method.iconClassName} />
+            <Icon />
             {method.label}
           </a>
         </Tooltip>
@@ -26,7 +26,7 @@ const SupportSection = () => {
     return (
       <Tooltip key={method.id} text={method.label}>
         <SupportCopyButton label={method.label} value={method.value}>
-          <Icon className={method.iconClassName} />
+          <Icon />
         </SupportCopyButton>
       </Tooltip>
     )

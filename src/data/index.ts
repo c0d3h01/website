@@ -3,10 +3,13 @@ import type { ComponentType } from "react"
 import { BiLogoPostgresql } from "react-icons/bi"
 import { BsFiletypeSql } from "react-icons/bs"
 import { DiJavascript } from "react-icons/di"
-import { FaDocker } from "react-icons/fa"
+import {
+  FaDocker,
+  FaRust,
+} from "react-icons/fa"
 import {
   FaGithub,
-  FaGitAlt,
+  FaGolang,
   FaLinkedinIn,
   FaPython,
   FaRegHeart,
@@ -14,26 +17,22 @@ import {
 } from "react-icons/fa6"
 import { IoLogoNodejs } from "react-icons/io5"
 import { MdOutlineMail } from "react-icons/md"
-import { PiFigmaLogoBold } from "react-icons/pi"
 import {
   RiJavaLine,
   RiNextjsLine,
   RiReactjsLine,
-  RiTailwindCssFill,
 } from "react-icons/ri"
 import {
   SiBuymeacoffee,
   SiCodeforces,
   SiDjango,
-  SiExpress,
-  SiMongodb,
+  SiNixos,
   SiPaytm,
   SiPostman,
   SiRedis,
   SiSolana,
-  SiVercel,
 } from "react-icons/si"
-import { TbBrandCpp, TbBrandTypescript } from "react-icons/tb"
+import { TbBracketsAngle, TbBrandTypescript } from "react-icons/tb"
 import { VscTerminalLinux } from "react-icons/vsc"
 
 type IconComponent = ComponentType<{ className?: string }>
@@ -78,10 +77,13 @@ export const profile: Profile = {
   },
   aboutHtml: `
   <p>
-    Hi, I&apos;m Harshal Sawant, a product-focused software engineer based in Mumbai, India.
+    Hi, I&apos;m Harshal Sawant, a software engineer based in Mumbai, India.
   </p>
   <p>
-    I enjoy building reliable software, <strong>improving performance</strong>, and contributing to open-source projects that solve practical engineering problems.
+    I like building finance systems, HFT-style platforms, algorithm-heavy services, and <strong>low-latency distributed systems</strong> where reliability is non-negotiable and every millisecond matters.
+  </p>
+  <p>
+    I&apos;m the kind of engineer who gets genuinely excited by profiling traces, clean architecture, and shaving off latency that most people can&apos;t even see. If a queue is backed up, I treat it like a mystery novel.
   </p>
 `,
 }
@@ -95,7 +97,6 @@ export interface SocialLink {
   name: string
   href: string
   icon: IconComponent
-  iconClassName?: string
 }
 
 export const footerSocialLinks: SocialLink[] = [
@@ -104,40 +105,35 @@ export const footerSocialLinks: SocialLink[] = [
     name: "Mail",
     href: `mailto:${profile.email}`,
     icon: MdOutlineMail,
-    iconClassName: "text-[#EA4335]",
   },
   {
     id: 2,
     name: "Github",
     href: `https://github.com/${profile.githubUsername}`,
     icon: FaGithub,
-    iconClassName: "text-zinc-100",
   },
   {
     id: 3,
     name: "Twitter",
     href: `https://x.com/intent/follow?screen_name=${profile.twitterHandle}`,
     icon: FaXTwitter,
-    iconClassName: "text-zinc-100",
   },
   {
     id: 4,
     name: "LinkedIn",
     href: `https://www.linkedin.com/in/${profile.linkedinSlug}`,
     icon: FaLinkedinIn,
-    iconClassName: "text-[#0A66C2]",
   },
   {
     id: 5,
     name: "Codeforces",
     href: `https://codeforces.com/profile/${profile.codeforcesUsername}`,
     icon: SiCodeforces,
-    iconClassName: "text-[#1F8ACB]",
   },
 ]
 
 export const hireText =
-  "I’m open to software engineering roles and freelance work where I can build reliable backend systems, developer tools, and cloud-native products."
+  "I’m open to software engineering roles and freelance work where I can build reliable backend systems, developer tools, and performance-critical products."
 
 // Experience cards rendered in home and dedicated experience pages.
 export interface Experience {
@@ -152,14 +148,14 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     id: 1,
-    role: "Freelance Software Engineer",
+    role: "Software Engineer",
     company: "Freelance",
     location: "Remote",
     duration: "2024 - Present",
     highlights: [
-      "Built and maintained backend services and developer tools for client projects.",
-      "Delivered production-ready features across web platforms with a focus on performance and reliability.",
-      "Partnered directly with clients from planning through deployment and ongoing support.",
+      "Designed and shipped backend services in Rust using Actix Web, with a focus on low-latency request handling and reliable production behavior.",
+      "Built REST APIs and web application backends around HTTP fundamentals, including routing, middleware, authentication, validation, error handling, and API versioning.",
+      "Worked across PostgreSQL, Redis, Docker, and CI/CD pipelines to deliver maintainable services with strong observability, performance tuning, and long-term support.",
     ],
   },
 ]
@@ -232,28 +228,25 @@ export interface Skill {
 }
 
 export const skills: Skill[] = [
-  { id: 1, icon: TbBrandTypescript, text: "TypeScript" },
-  { id: 2, icon: DiJavascript, text: "JavaScript" },
-  { id: 3, icon: FaPython, text: "Python" },
-  { id: 4, icon: TbBrandCpp, text: "C++" },
+  { id: 1, icon: FaGolang, text: "Go" },
+  { id: 2, icon: FaRust, text: "Rust" },
+  { id: 3, icon: TbBracketsAngle, text: "C++" },
+  { id: 4, icon: FaPython, text: "Python" },
   { id: 5, icon: RiJavaLine, text: "Java" },
   { id: 6, icon: BsFiletypeSql, text: "SQL" },
-  { id: 7, icon: RiReactjsLine, text: "React" },
-  { id: 8, icon: RiNextjsLine, text: "Next.js" },
-  { id: 9, icon: RiTailwindCssFill, text: "Tailwind" },
-  { id: 10, icon: IoLogoNodejs, text: "Node.js" },
-  { id: 11, icon: SiExpress, text: "Express" },
-  { id: 12, icon: SiDjango, text: "Django" },
-  { id: 13, icon: BiLogoPostgresql, text: "PostgreSQL" },
-  { id: 14, icon: SiMongodb, text: "MongoDB" },
-  { id: 15, icon: SiRedis, text: "Redis" },
-  { id: 16, icon: FaDocker, text: "Docker" },
-  { id: 17, icon: VscTerminalLinux, text: "Linux" },
-  { id: 18, icon: FaGitAlt, text: "Git" },
-  { id: 19, icon: FaGithub, text: "GitHub Actions" },
-  { id: 20, icon: SiVercel, text: "Cloud Deployments" },
-  { id: 21, icon: SiPostman, text: "API Testing" },
-  { id: 22, icon: PiFigmaLogoBold, text: "Product Collaboration" },
+  { id: 7, icon: IoLogoNodejs, text: "Node.js" },
+  { id: 8, icon: SiDjango, text: "Django" },
+  { id: 9, icon: BiLogoPostgresql, text: "PostgreSQL" },
+  { id: 10, icon: SiRedis, text: "Redis" },
+  { id: 11, icon: FaDocker, text: "Docker" },
+  { id: 12, icon: VscTerminalLinux, text: "Linux" },
+  { id: 13, icon: SiNixos, text: "Nix, NixOS" },
+  { id: 14, icon: FaGithub, text: "GitHub Actions" },
+  { id: 15, icon: SiPostman, text: "API Testing" },
+  { id: 16, icon: TbBrandTypescript, text: "TypeScript" },
+  { id: 17, icon: DiJavascript, text: "JavaScript" },
+  { id: 18, icon: RiReactjsLine, text: "React" },
+  { id: 19, icon: RiNextjsLine, text: "Next.js" },
 ]
 
 export type SupportMethod =
@@ -263,7 +256,6 @@ export type SupportMethod =
     type: "link"
     href: string
     icon: IconComponent
-    iconClassName: string
   }
   | {
     id: number
@@ -271,11 +263,12 @@ export type SupportMethod =
     type: "copy"
     value: string
     icon: IconComponent
-    iconClassName: string
   }
 
 export const supportText =
   "If my open-source work, tools, or technical writing helps you, consider supporting me. It helps me keep building and sharing useful developer tools."
+
+export const gpgFingerprint = "A7A7 A172 5FBF 10AB 04BF 1355 B424 2C21 BAF7 4B7C"
 
 export const supportMethods: SupportMethod[] = [
   {
@@ -284,7 +277,6 @@ export const supportMethods: SupportMethod[] = [
     type: "link",
     href: `https://github.com/sponsors/${profile.support.githubSponsorsUsername}`,
     icon: FaRegHeart,
-    iconClassName: "text-[#DB61A2]",
   },
   {
     id: 2,
@@ -292,7 +284,6 @@ export const supportMethods: SupportMethod[] = [
     type: "link",
     href: `https://buymeacoffee.com/${profile.support.buyMeACoffeeUsername}`,
     icon: SiBuymeacoffee,
-    iconClassName: "text-[#FFDD00]",
   },
   {
     id: 3,
@@ -300,7 +291,6 @@ export const supportMethods: SupportMethod[] = [
     type: "copy",
     value: profile.support.solanaAddress,
     icon: SiSolana,
-    iconClassName: "text-[#14F195]",
   },
   {
     id: 4,
@@ -308,7 +298,6 @@ export const supportMethods: SupportMethod[] = [
     type: "copy",
     value: profile.support.paytmUpiId,
     icon: SiPaytm,
-    iconClassName: "text-[#00BAF2]",
   },
 ]
 
@@ -330,9 +319,9 @@ export const siteUrl =
     : normalizeSiteUrl(profile.website)
 export const siteTitle = profile.name
 export const siteDescription =
-  "Portfolio of Harshal Sawant - Software Engineer focused on backend systems, developer tooling, and cloud services."
+  "Portfolio of Harshal Sawant - Software Engineer focused on distributed systems, developer tooling, and high-performance software."
 export const defaultOgImage =
-  "https://res.cloudinary.com/dhcocqegu/image/upload/v1753737110/OGN_o7spwl.png"
+  ""
 
 export const seoMetadata: Metadata = {
   title: {
@@ -344,10 +333,10 @@ export const seoMetadata: Metadata = {
     "Harshal Sawant",
     "Portfolio",
     "Software Engineer",
-    "Backend Engineer",
+    "Distributed Systems",
     "TypeScript",
     "Node.js",
-    "Cloud Services",
+    "High Performance Systems",
   ],
   authors: [{ name: profile.name }],
   creator: profile.name,
@@ -358,24 +347,12 @@ export const seoMetadata: Metadata = {
   icons: {
     icon: [
       {
-        media: "(prefers-color-scheme: light)",
-        url: "/Images/icon/icon.png",
-        type: "image/png",
-      },
-      {
-        media: "(prefers-color-scheme: dark)",
         url: "/Images/icon/icon.png",
         type: "image/png",
       },
     ],
     shortcut: [
       {
-        media: "(prefers-color-scheme: light)",
-        url: "/Images/icon/icon.png",
-        type: "image/png",
-      },
-      {
-        media: "(prefers-color-scheme: dark)",
         url: "/Images/icon/icon.png",
         type: "image/png",
       },

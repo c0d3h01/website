@@ -21,15 +21,15 @@ const statusMeta: Record<ProjectStatus, { label: string; className: string }> =
 {
   active: {
     label: "Active",
-    className: "bg-emerald-500/15 text-emerald-300",
+    className: "bg-emerald-100 text-emerald-700",
   },
   building: {
     label: "Building",
-    className: "bg-amber-500/15 text-amber-300",
+    className: "bg-amber-100 text-amber-700",
   },
   archived: {
     label: "Archived",
-    className: "bg-[#5c4720]/25 text-[#d6b06d]",
+    className: "bg-stone-200 text-stone-700",
   },
 }
 
@@ -104,7 +104,7 @@ const ProjectCard = ({
                 <Tooltip text="Live" offset="compact">
                   <a
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     aria-label={`Open live project: ${title}`}
                     className="project-card-action transition-colors duration-100"
                     href={liveUrl}
@@ -118,7 +118,7 @@ const ProjectCard = ({
                 <Tooltip text="GitHub" offset="compact">
                   <a
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     aria-label={`Open GitHub repository for ${title}`}
                     className="project-card-action transition-colors duration-100"
                     href={githubUrl}

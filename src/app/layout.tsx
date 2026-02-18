@@ -1,7 +1,12 @@
 import "./globals.css"
+import type { Viewport } from "next"
 import { profile, seoMetadata, siteUrl } from "@/data"
 
 export const metadata = seoMetadata
+export const viewport: Viewport = {
+  colorScheme: "light",
+  themeColor: "#f8fafc",
+}
 
 const personJsonLd = {
   "@context": "https://schema.org",

@@ -25,13 +25,17 @@
 }
 
 :root {
-  --gb-bg3: #2a2a2a;
-  --gb-fg0: #f5f5f5;
-  --gb-fg1: #d4d4d4;
-  --gb-fg2: #a3a3a3;
-  --gb-yellow: #e5e5e5;
-  --gb-blue: #bdbdbd;
-  --gb-border: #2f2f2f;
+  color-scheme: light;
+  --gb-bg3: #0f172a;
+  --gb-fg0: #0f172a;
+  --gb-fg1: #1f2937;
+  --gb-fg2: #64748b;
+  --gb-yellow: #0f766e;
+  --gb-blue: #94a3b8;
+  --gb-border: #d9e2ec;
+  --gb-surface: #ffffff;
+  --gb-surface-muted: #f8fafc;
+  --gb-surface-strong: #f1f5f9;
   --font-body:
     "Inter Local", "Aptos", "Inter", "Segoe UI Variable", "Segoe UI",
     "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -48,18 +52,18 @@ body {
   min-height: 100vh;
   color: var(--gb-fg1);
   line-height: 1.55;
-  background-color: #050505;
+  background-color: var(--gb-surface-muted);
   background-image:
     radial-gradient(circle at 12% 8%,
-      rgba(245, 245, 245, 0.08),
+      rgba(148, 163, 184, 0.2),
       transparent 34%),
     radial-gradient(circle at 88% 0%,
-      rgba(163, 163, 163, 0.1),
+      rgba(59, 130, 246, 0.08),
       transparent 30%),
     radial-gradient(circle at 50% 100%,
-      rgba(212, 212, 212, 0.08),
+      rgba(148, 163, 184, 0.12),
       transparent 36%),
-    linear-gradient(165deg, #030303 0%, #080808 48%, #111111 100%);
+    linear-gradient(160deg, #f8fafc 0%, #fdfefe 48%, #f1f5f9 100%);
 }
 
 h1,
@@ -70,8 +74,8 @@ h3 {
 }
 
 ::selection {
-  background: rgba(245, 245, 245, 0.35);
-  color: #050505;
+  background: rgba(56, 189, 248, 0.25);
+  color: var(--gb-fg0);
 }
 
 .screen {
@@ -83,8 +87,8 @@ h3 {
 }
 
 .section-stack>* {
-  border-left: 1px solid rgba(212, 212, 212, 0.18);
-  border-right: 1px solid rgba(212, 212, 212, 0.18);
+  border-left: 1px solid rgba(15, 23, 42, 0.14);
+  border-right: 1px solid rgba(15, 23, 42, 0.14);
   padding-inline: clamp(0.7rem, 1.35vw, 1rem);
   padding-block: clamp(0.35rem, 0.85vw, 0.55rem);
 }
@@ -105,12 +109,12 @@ h3 {
 
 .skills-card {
   @apply select-none transition-all duration-150 flex flex-row gap-1 items-center px-2 py-1 rounded-md;
-  background: rgba(14, 14, 14, 0.9);
+  background: var(--gb-surface);
   border: 1px solid var(--gb-border);
 }
 
 .skills-card:hover {
-  background: rgba(22, 22, 22, 0.98);
+  background: var(--gb-surface-strong);
   border-color: var(--gb-blue);
   transform: translateY(-1px);
 }
@@ -122,12 +126,12 @@ h3 {
 
 .showMore-btn {
   @apply select-none w-full px-2 py-1 rounded-md transition-all duration-150;
-  background: rgba(14, 14, 14, 0.9);
+  background: var(--gb-surface);
   border: 1px solid var(--gb-border);
 }
 
 .showMore-btn:hover {
-  background: rgba(22, 22, 22, 1);
+  background: var(--gb-surface-strong);
   border-color: var(--gb-blue);
   color: var(--gb-yellow);
   transform: translateY(-1px);
@@ -136,15 +140,15 @@ h3 {
 .btn {
   @apply cursor-pointer w-fit select-none transition-all duration-150 flex flex-row gap-1.5 items-center px-2 py-1 rounded-md;
   background: linear-gradient(180deg,
-      rgba(28, 28, 28, 0.95) 0%,
-      rgba(14, 14, 14, 0.98) 100%);
+      var(--gb-surface) 0%,
+      var(--gb-surface-muted) 100%);
   border: 1px solid var(--gb-border);
 }
 
 .btn:hover {
   background: linear-gradient(180deg,
-      rgba(42, 42, 42, 0.96) 0%,
-      rgba(22, 22, 22, 1) 100%);
+      var(--gb-surface) 0%,
+      var(--gb-surface-strong) 100%);
   border-color: var(--gb-blue);
   color: var(--gb-yellow);
   transform: translateY(-1px);
@@ -152,12 +156,12 @@ h3 {
 
 .blog-post {
   @apply cursor-pointer p-2 rounded-md transition-all duration-150;
-  background: rgba(12, 12, 12, 0.9);
+  background: var(--gb-surface);
   border: 1px solid var(--gb-border);
 }
 
 .blog-post:hover {
-  background: rgba(21, 21, 21, 1);
+  background: var(--gb-surface-strong);
   border-color: var(--gb-blue);
   transform: translateY(-1px);
 }
@@ -211,7 +215,7 @@ h3 {
 }
 
 .blog-content code {
-  background: rgba(20, 20, 20, 0.92);
+  background: var(--gb-surface-strong);
   border: 1px solid var(--gb-border);
   border-radius: 0.3rem;
   padding: 0.08rem 0.35rem;
@@ -220,7 +224,7 @@ h3 {
 
 .info-tip {
   background: var(--gb-bg3);
-  color: var(--gb-fg0);
+  color: #ffffff;
 }
 
 .info-tip-arrow {
@@ -228,12 +232,12 @@ h3 {
 }
 
 .project-card {
-  background: rgba(14, 14, 14, 0.9);
+  background: var(--gb-surface);
   border: 1px solid var(--gb-border);
 }
 
 .project-card:hover {
-  background: rgba(24, 24, 24, 1);
+  background: var(--gb-surface-strong);
 }
 
 .project-card-action:hover {

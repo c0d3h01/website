@@ -14,7 +14,7 @@ const HireSection = () => {
             <a
               className="btn"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               href={emailLink}
             >
               <PiSuitcaseSimpleBold />
@@ -25,7 +25,7 @@ const HireSection = () => {
             <a
               className="btn"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               href={resumeFilePath}
             >
               <PiFilePdfBold />

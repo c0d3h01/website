@@ -14,3 +14,4 @@ coverage/
 *.tsbuildinfo
 npm-debug.log*
 .next_stale*
+!AGENTS.md

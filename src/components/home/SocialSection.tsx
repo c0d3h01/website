@@ -12,10 +12,10 @@ const SocialSection = () => {
             <a
               className="btn"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               href={link.href}
             >
-              <link.icon className={link.iconClassName} />
+              <link.icon />
               {link.name}
             </a>
           </Tooltip>

@@ -29,7 +29,7 @@ const BackButton = ({
 
   const baseClasses =
     variant === "rail"
-      ? "group fixed left-3 top-1/2 z-40 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-(--gb-border) bg-[rgba(12,12,12,0.9)] text-(--gb-fg0) shadow-md backdrop-blur transition duration-150 hover:-translate-x-0.5 hover:border-(--gb-fg2)"
+      ? "group fixed left-3 top-1/2 z-40 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-(--gb-border) bg-white/95 text-(--gb-fg0) shadow-md backdrop-blur transition duration-150 hover:-translate-x-0.5 hover:border-(--gb-fg2)"
       : "btn text-sm"
 
   return (

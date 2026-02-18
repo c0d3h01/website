@@ -69,7 +69,7 @@ const ProfileHeader = ({
               type="button"
               aria-label="Close avatar preview"
               onClick={closePreview}
-              className="p-2 text-white hover:text-gray-300"
+              className="p-2 text-white transition-colors hover:text-slate-200"
             >
               <svg
                 className="h-6 w-6"
@@ -88,7 +88,7 @@ const ProfileHeader = ({
           </Tooltip>
 
           <div
-            className="w-150 max-w-[90vw] overflow-hidden rounded-lg md:max-w-[25vw]"
+            className="w-[min(90vw,24rem)] overflow-hidden rounded-lg"
             onClick={(event) => event.stopPropagation()}
           >
             <Image
