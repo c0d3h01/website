@@ -16,6 +16,7 @@ import {
   FaXTwitter,
 } from "react-icons/fa6"
 import { IoLogoNodejs } from "react-icons/io5"
+import { LuCalendarClock } from "react-icons/lu"
 import { MdOutlineMail } from "react-icons/md"
 import {
   RiJavaLine,
@@ -47,6 +48,7 @@ export interface Profile {
   twitterHandle: string
   linkedinSlug: string
   codeforcesUsername: string
+  calComUsername: string
   email: string
   website: string
   support: {
@@ -67,6 +69,7 @@ export const profile: Profile = {
   twitterHandle: "haarshalsawant",
   linkedinSlug: "haarshalsawant",
   codeforcesUsername: "c0d3h01",
+  calComUsername: "c0d3h01",
   email: "harshalsawant.dev@gmail.com",
   website: "https://c0d3h01.tech",
   support: {
@@ -129,6 +132,12 @@ export const footerSocialLinks: SocialLink[] = [
     name: "Codeforces",
     href: `https://codeforces.com/profile/${profile.codeforcesUsername}`,
     icon: SiCodeforces,
+  },
+  {
+    id: 6,
+    name: "Cal.com",
+    href: `https://cal.com/${profile.calComUsername}`,
+    icon: LuCalendarClock,
   },
 ]
 
