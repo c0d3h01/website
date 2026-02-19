@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from "react"
 import Image from "next/image"
+import ImagePreview from "@/components/ui/ImagePreview"
 import Tooltip from "@/components/ui/Tooltip"
 
 interface ProfileHeaderProps {
@@ -15,10 +15,6 @@ const ProfileHeader = ({
   userBio,
   userImage,
 }: ProfileHeaderProps) => {
-  const [isPreviewOpen, setIsPreviewOpen] = useState(false)
-  const openPreview = () => setIsPreviewOpen(true)
-  const closePreview = () => setIsPreviewOpen(false)
-
   return (
     <section>
       <div className="flex flex-col gap-2">
@@ -27,24 +23,26 @@ const ProfileHeader = ({
             text="View Avatar"
             containerClassName="w-1/3 shrink-0 md:w-auto"
           >
-            <button
-              type="button"
-              aria-label="Open avatar preview"
-              onClick={openPreview}
-              className="cursor-pointer select-none"
-            >
-              <span className="pro-pic-shell">
-                <Image
-                  src={userImage}
-                  alt="Profile Picture"
-                  className="pro-pic"
-                  width={200}
-                  height={200}
-                  priority
-                  sizes="(max-width: 768px) 108px, 130px"
-                />
-              </span>
-            </button>
+            <ImagePreview
+              src={userImage}
+              alt="Profile Picture"
+              previewAlt="Profile Picture Preview"
+              dialogLabel="Profile picture preview"
+              triggerAriaLabel="Open avatar preview"
+              trigger={
+                <span className="pro-pic-shell">
+                  <Image
+                    src={userImage}
+                    alt="Profile Picture"
+                    className="pro-pic"
+                    width={200}
+                    height={200}
+                    priority
+                    sizes="(max-width: 768px) 108px, 130px"
+                  />
+                </span>
+              }
+            />
           </Tooltip>
 
           <div className="flex min-w-0 flex-col justify-center gap-1 text-left">
@@ -53,55 +51,6 @@ const ProfileHeader = ({
           </div>
         </div>
       </div>
-
-      {/* Simple click-outside modal for the avatar preview. */}
-      {isPreviewOpen && (
-        <div
-          className="fixed inset-0 z-50 flex select-none items-center justify-center bg-black/80"
-          onClick={closePreview}
-        >
-          <Tooltip
-            text="Close"
-            offset="compact"
-            containerClassName="absolute top-4 right-4 z-10"
-          >
-            <button
-              type="button"
-              aria-label="Close avatar preview"
-              onClick={closePreview}
-              className="p-2 text-white transition-colors hover:text-slate-200"
-            >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </Tooltip>
-
-          <div
-            className="w-[min(90vw,24rem)] overflow-hidden rounded-lg"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <Image
-              src={userImage}
-              alt="Profile Picture Preview"
-              className="h-full w-full rounded-lg object-contain"
-              width={600}
-              height={600}
-              sizes="(max-width: 768px) 90vw, 25vw"
-            />
-          </div>
-        </div>
-      )}
     </section>
   )
 }
