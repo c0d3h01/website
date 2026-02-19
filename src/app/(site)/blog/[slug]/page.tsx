@@ -89,7 +89,7 @@ const BlogPostPage = async ({ params }: BlogPostPageProps) => {
             />
           </div>
 
-          <h1 className="text-3xl font-bold">{post.title}</h1>
+          <h1 className="text-2xl font-bold">{post.title}</h1>
           <p className="opacity-80">{post.description}</p>
 
           <div

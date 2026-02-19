@@ -128,7 +128,8 @@ h3 {
 
 .blog-font {
   font-family: var(--font-scihub), monospace;
-  line-height: 1.6;
+  font-size: 0.97rem;
+  line-height: 1.55;
 }
 
 .blog-font h1,
@@ -142,17 +143,17 @@ h3 {
 }
 
 .blog-content h2 {
-  @apply text-2xl font-semibold mt-3;
+  @apply text-xl font-semibold mt-3;
   color: var(--gb-fg0);
 }
 
 .blog-content h3 {
-  @apply text-xl font-semibold mt-2;
+  @apply text-lg font-semibold mt-2;
   color: var(--gb-fg0);
 }
 
 .blog-content p {
-  @apply leading-7;
+  @apply text-[0.97rem] leading-6;
   color: var(--gb-fg1);
 }
 
