@@ -54,6 +54,7 @@ For PRs, include:
 - No dead code: remove unused variables, imports, components, styles, and branches.
 - No unused dependencies or duplicate utilities.
 - Keep components focused and small; extract only when reuse is real.
+- Write once, use everywhere: move repeated UI behavior into shared components in `src/components/ui` and reuse across sections (e.g., profile, blog banners, pictures) to keep code minimal, simple, and fast.
 - Prefer semantic HTML and accessible controls (`aria-*`, labels, keyboard-safe interactions).
 - Preserve SEO integrity: canonical URLs, metadata, Open Graph/Twitter fields, robots/sitemap behavior.
 - Preserve performance: static rendering by default, no unnecessary client components, no heavy runtime effects.
