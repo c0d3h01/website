@@ -15,7 +15,6 @@ const HomePage = () => {
   return (
     <Screen>
       <div className="section-stack flex flex-col gap-5">
-        {/* Section order matches how visitors usually scan a portfolio. */}
         <ProfileHeader
           userName={profile.name}
           userBio={profile.bio}

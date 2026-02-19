@@ -4,7 +4,6 @@ import ViewAllLink from "@/components/ui/ViewAllLink"
 import { experiences } from "@/data"
 
 const ExperienceSection = () => {
-  // Home keeps this section short by defaulting to current role(s).
   const presentExperiences = experiences.filter((experience) =>
     /present/i.test(experience.duration),
   )

@@ -137,7 +137,6 @@ const ProjectCard = ({
       <div className="overflow-hidden">
         <div className="mx-auto mt-3 flex w-[97%] border-t border-(--gb-border) md:mt-0" />
         <div className="flex items-center px-3 py-3 transition-all duration-100 md:py-2">
-          {/* Tech stack is always visible to avoid hidden content toggles. */}
           <ul className="flex flex-wrap gap-1.5 select-none">
             {skills.map((skill, index) => (
               <li
