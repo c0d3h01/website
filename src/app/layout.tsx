@@ -1,5 +1,9 @@
 import "./globals.css"
+import "react-toastify/dist/ReactToastify.css"
 import type { Viewport } from "next"
+import { ToastContainer } from "react-toastify"
+import PageTransition from "@/components/ui/PageTransition"
+import { siteFontVariables } from "@/app/fonts"
 import { profile, seoMetadata, siteUrl } from "@/data"
 
 export const metadata = seoMetadata
@@ -30,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={siteFontVariables}>
       <head>
         <script
           type="application/ld+json"
@@ -38,7 +42,19 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <PageTransition>{children}</PageTransition>
+        <ToastContainer
+          position="top-center"
+          autoClose={2200}
+          newestOnTop
+          hideProgressBar
+          closeOnClick
+          pauseOnHover
+          draggable={false}
+          theme="light"
+        />
+      </body>
     </html>
   )
 }

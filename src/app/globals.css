@@ -1,29 +1,5 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Inter Local";
-  src: url("/fonts/inter/inter-latin-wght-normal.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Plus Jakarta Sans Local";
-  src: url("/fonts/plus-jakarta-sans/plus-jakarta-sans-latin-wght-normal.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "JetBrains Mono Local";
-  src: url("/fonts/jetbrains-mono/jetbrains-mono-latin-wght-normal.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 100 800;
-  font-display: swap;
-}
-
 :root {
   color-scheme: light;
   --gb-bg3: #0f172a;
@@ -37,13 +13,14 @@
   --gb-surface-muted: #f8fafc;
   --gb-surface-strong: #f1f5f9;
   --font-body:
-    "Inter Local", "Aptos", "Inter", "Segoe UI Variable", "Segoe UI",
+    var(--font-inter-local), "Aptos", "Inter", "Segoe UI Variable", "Segoe UI",
     "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-display:
-    "Plus Jakarta Sans Local", "Aptos Display", "Segoe UI Variable", "Segoe UI",
-    "Inter", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    var(--font-plus-jakarta-sans-local), "Aptos Display", "Segoe UI Variable",
+    "Segoe UI", "Inter", "SF Pro Display", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
   --font-scihub:
-    "JetBrains Mono Local", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    var(--font-jetbrains-mono-local), ui-monospace, SFMono-Regular, Menlo, Monaco,
     Consolas, "Liberation Mono", "Courier New", monospace;
 }
 

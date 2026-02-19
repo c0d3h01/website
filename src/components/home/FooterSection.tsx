@@ -1,5 +1,5 @@
 import { FaKey } from "react-icons/fa6"
-import SupportCopyButton from "@/components/home/SupportCopyButton"
+import SupportCopyButton from "@/components/ui/SupportCopyButton"
 import { gpgFingerprint } from "@/data"
 
 const FooterSection = () => {

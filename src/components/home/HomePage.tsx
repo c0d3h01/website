@@ -9,7 +9,7 @@ import SkillsSection from "@/components/home/SkillsSection"
 import SupportSection from "@/components/home/SupportSection"
 import WritingsSection from "@/components/home/WritingsSection"
 import Screen from "@/layout/Screen"
-import { profile } from "@/data"
+import { profile, profileImage } from "@/data"
 
 const HomePage = () => {
   return (
@@ -18,7 +18,7 @@ const HomePage = () => {
         <ProfileHeader
           userName={profile.name}
           userBio={profile.bio}
-          userImage={profile.image}
+          userImage={profileImage}
         />
         <AboutSection />
         <SocialSection />

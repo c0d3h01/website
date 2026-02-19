@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import type { ComponentType } from "react"
+import profileImage from "@public/Images/pfp/pfp.png"
 import { BiLogoPostgresql } from "react-icons/bi"
 import { BsFiletypeSql } from "react-icons/bs"
 import { DiJavascript } from "react-icons/di"
@@ -37,6 +38,7 @@ import { TbBracketsAngle, TbBrandTypescript } from "react-icons/tb"
 import { VscTerminalLinux } from "react-icons/vsc"
 
 type IconComponent = ComponentType<{ className?: string }>
+export { profileImage }
 
 // Global profile identity and social handles.
 export interface Profile {
@@ -64,7 +66,7 @@ export const profile: Profile = {
   name: "Harshal Sawant",
   shortName: "Harshal",
   bio: "Software Engineer",
-  image: "/Images/pfp/pfp.png",
+  image: profileImage.src,
   githubUsername: "c0d3h01",
   twitterHandle: "haarshalsawant",
   linkedinSlug: "haarshalsawant",

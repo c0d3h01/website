@@ -1,5 +1,5 @@
 import { supportMethods, supportText } from "@/data"
-import SupportCopyButton from "@/components/home/SupportCopyButton"
+import SupportCopyButton from "@/components/ui/SupportCopyButton"
 import SectionHeading from "@/components/ui/SectionHeading"
 import Tooltip from "@/components/ui/Tooltip"
 

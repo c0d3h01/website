@@ -1,13 +1,13 @@
 "use client"
 
-import Image from "next/image"
+import Image, { type ImageProps } from "next/image"
 import ImagePreview from "@/components/ui/ImagePreview"
 import Tooltip from "@/components/ui/Tooltip"
 
 interface ProfileHeaderProps {
   userName: string
   userBio: string
-  userImage: string
+  userImage: ImageProps["src"]
 }
 
 const ProfileHeader = ({
@@ -35,9 +35,11 @@ const ProfileHeader = ({
                     src={userImage}
                     alt="Profile Picture"
                     className="pro-pic"
-                    width={200}
-                    height={200}
-                    priority
+                    fill
+                    preload
+                    placeholder={
+                      typeof userImage === "string" ? "empty" : "blur"
+                    }
                     sizes="(max-width: 768px) 108px, 130px"
                   />
                 </span>

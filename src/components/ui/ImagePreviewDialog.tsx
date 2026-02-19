@@ -1,12 +1,12 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import Image from "next/image"
+import Image, { type ImageProps } from "next/image"
 
 interface ImagePreviewDialogProps {
   isOpen: boolean
   onClose: () => void
-  src: string
+  src: ImageProps["src"]
   alt: string
   dialogLabel?: string
   width?: number
@@ -29,6 +29,7 @@ const ImagePreviewDialog = ({
   imageClassName = "h-full w-full rounded-lg object-contain",
 }: ImagePreviewDialogProps) => {
   const closeButtonRef = useRef<HTMLButtonElement>(null)
+  const placeholder = typeof src === "string" ? "empty" : "blur"
 
   useEffect(() => {
     if (!isOpen) {
@@ -98,6 +99,7 @@ const ImagePreviewDialog = ({
           width={width}
           height={height}
           sizes={sizes}
+          placeholder={placeholder}
           className={imageClassName}
         />
       </div>
