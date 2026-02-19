@@ -28,8 +28,8 @@ import {
   SiBuymeacoffee,
   SiCodeforces,
   SiDjango,
+  SiGooglepay,
   SiNixos,
-  SiPaytm,
   SiPostman,
   SiRedis,
   SiSolana,
@@ -57,7 +57,7 @@ export interface Profile {
     githubSponsorsUsername: string
     buyMeACoffeeUsername: string
     solanaAddress: string
-    paytmUpiId: string
+    upiId: string
   }
   aboutHtml: string
 }
@@ -78,7 +78,7 @@ export const profile: Profile = {
     githubSponsorsUsername: "c0d3h01",
     buyMeACoffeeUsername: "c0d3h01",
     solanaAddress: "BvVsoRAUvRpiuG1tVSb4kRRf4MJWsEvgBBSH3PUnVgFF",
-    paytmUpiId: "8828166801@ptsbi",
+    upiId: "harshalsawant.dev@okicici",
   },
   aboutHtml: `
   <p>
@@ -280,6 +280,7 @@ export const supportText =
   "If my open-source work, tools, or technical writing helps you, consider supporting me. It helps me keep building and sharing useful developer tools."
 
 export const gpgFingerprint = "A7A7 A172 5FBF 10AB 04BF 1355 B424 2C21 BAF7 4B7C"
+const upiPaymentLink = `upi://pay?pa=${encodeURIComponent(profile.support.upiId)}&pn=${encodeURIComponent(profile.name)}&cu=INR`
 
 export const supportMethods: SupportMethod[] = [
   {
@@ -305,10 +306,10 @@ export const supportMethods: SupportMethod[] = [
   },
   {
     id: 4,
-    label: "Paytm",
-    type: "copy",
-    value: profile.support.paytmUpiId,
-    icon: SiPaytm,
+    label: "Google Pay",
+    type: "link",
+    href: upiPaymentLink,
+    icon: SiGooglepay,
   },
 ]
 
