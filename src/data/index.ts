@@ -273,6 +273,7 @@ export type SupportMethod =
     label: string
     type: "copy"
     value: string
+    mobileHref?: string
     icon: IconComponent
   }
 
@@ -280,6 +281,7 @@ export const supportText =
   "If my open-source work, tools, or technical writing helps you, consider supporting me. It helps me keep building and sharing useful developer tools."
 
 export const gpgFingerprint = "A7A7 A172 5FBF 10AB 04BF 1355 B424 2C21 BAF7 4B7C"
+const upiPayLink = `upi://pay?pa=${encodeURIComponent(profile.support.upiId)}&pn=${encodeURIComponent(profile.name)}&cu=INR`
 
 export const supportMethods: SupportMethod[] = [
   {
@@ -308,6 +310,7 @@ export const supportMethods: SupportMethod[] = [
     label: "Google Pay",
     type: "copy",
     value: profile.support.upiId,
+    mobileHref: upiPayLink,
     icon: SiGooglepay,
   },
 ]

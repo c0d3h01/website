@@ -1,13 +1,13 @@
 "use client"
 
 import type { ImageProps } from "next/image"
-import { useState } from "react"
+import { useState, type ReactNode } from "react"
 import ImagePreviewDialog from "@/components/ui/ImagePreviewDialog"
 
 interface ImagePreviewProps {
   src: ImageProps["src"]
   alt: string
-  trigger: React.ReactNode
+  trigger: ReactNode
   previewAlt?: string
   dialogLabel?: string
   triggerAriaLabel?: string

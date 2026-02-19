@@ -51,7 +51,7 @@ const ProjectCard = ({
   const previewTooltip = showPreview ? "Close" : "Preview"
 
   return (
-    <article className="project-card rounded-md transition-colors duration-100">
+    <article className="project-card rounded-md">
       {showPreview && hasPreview && (
         <div className="overflow-hidden">
           <div className="p-2">
@@ -93,7 +93,7 @@ const ProjectCard = ({
                     aria-pressed={showPreview}
                     aria-expanded={showPreview}
                     onClick={() => setShowPreview((prev) => !prev)}
-                    className="project-card-action cursor-pointer transition-colors duration-100"
+                    className="project-card-action cursor-pointer"
                   >
                     <PreviewIcon />
                   </button>
@@ -106,7 +106,7 @@ const ProjectCard = ({
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Open live project: ${title}`}
-                    className="project-card-action transition-colors duration-100"
+                    className="project-card-action"
                     href={liveUrl}
                   >
                     <LuLink />
@@ -120,7 +120,7 @@ const ProjectCard = ({
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Open GitHub repository for ${title}`}
-                    className="project-card-action transition-colors duration-100"
+                    className="project-card-action"
                     href={githubUrl}
                   >
                     <FiGithub />
@@ -136,7 +136,7 @@ const ProjectCard = ({
 
       <div className="overflow-hidden">
         <div className="mx-auto mt-3 flex w-[97%] border-t border-(--gb-border) md:mt-0" />
-        <div className="flex items-center px-3 py-3 transition-all duration-100 md:py-2">
+        <div className="flex items-center px-3 py-3 md:py-2">
           <ul className="flex flex-wrap gap-1.5 select-none">
             {skills.map((skill, index) => (
               <li

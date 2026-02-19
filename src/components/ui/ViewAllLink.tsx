@@ -11,11 +11,9 @@ interface ViewAllLinkProps {
 const ViewAllLink = ({ href, label = "View All" }: ViewAllLinkProps) => {
   return (
     <Tooltip text={label}>
-      <Link href={href} className="showMore-btn">
+      <Link href={href} className="showMore-btn block">
         <span className="flex items-center justify-center gap-0.5">
-          <span className="animate-pulse">
-            <MdKeyboardDoubleArrowDown />
-          </span>
+          <MdKeyboardDoubleArrowDown />
           {label}
         </span>
       </Link>

@@ -1,5 +1,5 @@
-import Link from "next/link"
 import type { ReactNode } from "react"
+import Link from "next/link"
 
 import SectionHeading from "@/components/ui/SectionHeading"
 import MainScreen from "@/layout/MainScreen"
@@ -26,9 +26,7 @@ const PageShell = ({
           <section className="flex flex-col gap-4">
             <div className="flex items-center justify-between gap-2">
               <SectionHeading title={title} as="h1" />
-              <Link className="btn text-sm" href={backHref}>
-                {backLabel}
-              </Link>
+              <Link className="btn text-sm w-fit" href={backHref}>{backLabel}</Link>
             </div>
             {children}
           </section>

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import Image, { type ImageProps } from "next/image"
+import { createPortal } from "react-dom"
 
 interface ImagePreviewDialogProps {
   isOpen: boolean
@@ -59,7 +60,7 @@ const ImagePreviewDialog = ({
     return null
   }
 
-  return (
+  const dialog = (
     <div
       role="dialog"
       aria-modal="true"
@@ -76,7 +77,7 @@ const ImagePreviewDialog = ({
           type="button"
           aria-label="Close image preview"
           onClick={onClose}
-          className="absolute top-3 right-3 z-20 rounded-full bg-black/70 p-2.5 text-white transition-colors hover:bg-black/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          className="absolute top-3 right-3 z-20 rounded-full bg-black/70 p-2.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           <svg
             className="h-6 w-6"
@@ -105,6 +106,8 @@ const ImagePreviewDialog = ({
       </div>
     </div>
   )
+
+  return createPortal(dialog, document.body)
 }
 
 export default ImagePreviewDialog

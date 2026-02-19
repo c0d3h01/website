@@ -15,10 +15,7 @@ const BlogPostCard = ({
   date,
 }: BlogPostCardProps) => {
   return (
-    <Link
-      href={href}
-      className="blog-post flex items-center gap-3 md:flex-row flex-col"
-    >
+    <Link href={href} className="blog-post block">
       <div className="flex flex-col gap-0.5 w-full">
         <h2 className="text-xl font-semibold md:text-lg">{title}</h2>
         <p className="text-sm opacity-70">{formatShortDate(date)}</p>

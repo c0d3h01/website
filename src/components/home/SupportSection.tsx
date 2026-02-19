@@ -25,7 +25,11 @@ const SupportSection = () => {
 
     return (
       <Tooltip key={method.id} text={method.label}>
-        <SupportCopyButton label={method.label} value={method.value}>
+        <SupportCopyButton
+          label={method.label}
+          value={method.value}
+          mobileHref={method.mobileHref}
+        >
           <Icon />
         </SupportCopyButton>
       </Tooltip>
