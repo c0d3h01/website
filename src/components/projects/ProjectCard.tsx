@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useState } from "react"
 import { FaEye, FaEyeSlash } from "react-icons/fa"
 import { FiGithub } from "react-icons/fi"
@@ -8,6 +9,7 @@ import type { ProjectStatus } from "@/data"
 import Tooltip from "@/components/ui/Tooltip"
 
 export interface ProjectCardProps {
+  slug: string
   title: string
   status: ProjectStatus
   description: string
@@ -34,6 +36,7 @@ const statusMeta: Record<ProjectStatus, { label: string; className: string }> =
 }
 
 const ProjectCard = ({
+  slug,
   title,
   status,
   description,
@@ -43,6 +46,7 @@ const ProjectCard = ({
   previewVideo,
 }: ProjectCardProps) => {
   const hasPreview = Boolean(previewVideo)
+  const projectPagePath = `/projects/${slug}`
   const [showPreview, setShowPreview] = useState(false)
   const PreviewIcon = showPreview ? FaEyeSlash : FaEye
   const previewLabel = showPreview
@@ -51,9 +55,15 @@ const ProjectCard = ({
   const previewTooltip = showPreview ? "Close" : "Preview"
 
   return (
-    <article className="project-card rounded-md">
+    <article className="project-card relative rounded-md">
+      <Link
+        href={projectPagePath}
+        aria-label={`Open project details for ${title}`}
+        className="absolute inset-0 z-20 rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--gb-fg0)"
+      />
+
       {showPreview && hasPreview && (
-        <div className="overflow-hidden">
+        <div className="relative z-30 overflow-hidden">
           <div className="p-2">
             <video
               className="w-full rounded-md"
@@ -84,7 +94,7 @@ const ProjectCard = ({
               </span>
             </div>
 
-            <div className="flex select-none gap-2 px-2 text-base">
+            <div className="relative z-30 flex select-none gap-2 px-2 text-base">
               {hasPreview && (
                 <Tooltip text={previewTooltip} offset="compact">
                   <button

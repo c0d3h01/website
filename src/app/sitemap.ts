@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next"
-import { siteUrl } from "@/data"
+import { projects, siteUrl } from "@/data"
 import { getBlogPosts } from "@/lib/blog"
 
 const parseLastModified = (dateString: string) => {
@@ -47,7 +47,14 @@ const sitemap = (): MetadataRoute.Sitemap => {
     priority: 0.7,
   }))
 
-  return [...staticRoutes, ...blogRoutes]
+  const projectRoutes: MetadataRoute.Sitemap = projects.map((project) => ({
+    url: `${siteUrl}/projects/${project.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }))
+
+  return [...staticRoutes, ...blogRoutes, ...projectRoutes]
 }
 
 export default sitemap

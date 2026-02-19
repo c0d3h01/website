@@ -1,0 +1,11 @@
+<svg width="1200" height="420" viewBox="0 0 1200 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="420" fill="#F8FAFC"/>
+  <rect x="40" y="40" width="1120" height="340" rx="20" fill="#111827"/>
+  <rect x="72" y="72" width="1056" height="276" rx="14" fill="#1F2937"/>
+  <path d="M112 130H1088" stroke="#475569" stroke-width="2"/>
+  <rect x="112" y="156" width="34" height="34" rx="6" fill="#0EA5E9" fill-opacity="0.22"/>
+  <rect x="156" y="156" width="34" height="34" rx="6" fill="#22C55E" fill-opacity="0.22"/>
+  <rect x="200" y="156" width="34" height="34" rx="6" fill="#F59E0B" fill-opacity="0.22"/>
+  <text x="112" y="248" fill="#F1F5F9" font-family="JetBrains Mono, monospace" font-size="42" font-weight="700">coretaskoptimizer</text>
+  <text x="112" y="292" fill="#CBD5E1" font-family="JetBrains Mono, monospace" font-size="22">CPU affinity and scheduler tuning module</text>
+</svg>

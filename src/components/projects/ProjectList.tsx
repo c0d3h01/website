@@ -15,6 +15,7 @@ const ProjectList = ({ items, limit }: ProjectListProps) => {
       {visibleProjects.map((project) => (
         <ProjectCard
           key={project.id}
+          slug={project.slug}
           title={project.title}
           status={project.status}
           description={project.description}
