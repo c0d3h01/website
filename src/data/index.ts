@@ -1,4 +1,4 @@
-import profileImage from "@public/Images/pfp/pfp.png"
+import profileImage from "@public/Images/pfp/pfp.webp"
 import type { Metadata } from "next"
 import type { ComponentType } from "react"
 import { BiLogoPostgresql } from "react-icons/bi"

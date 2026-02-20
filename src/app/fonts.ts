@@ -7,13 +7,9 @@ const bodyFont = localFont({
       style: "normal",
       weight: "100 900",
     },
-    {
-      path: "../../public/fonts/inter/inter-latin-wght-italic.woff2",
-      style: "italic",
-      weight: "100 900",
-    },
   ],
   display: "swap",
+  preload: true,
   variable: "--font-inter-local",
 })
 
@@ -31,6 +27,7 @@ const displayFont = localFont({
     },
   ],
   display: "swap",
+  preload: false,
   variable: "--font-plus-jakarta-sans-local",
 })
 

@@ -2,9 +2,12 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { FaEye, FaEyeSlash } from "react-icons/fa"
-import { FiGithub } from "react-icons/fi"
-import { LuLink } from "react-icons/lu"
+import {
+  ExternalLinkIcon,
+  EyeIcon,
+  EyeOffIcon,
+  GitHubIcon,
+} from "@/components/ui/icons"
 import type { ProjectStatus } from "@/data"
 
 interface ProjectCardProps {
@@ -47,7 +50,6 @@ const ProjectCard = ({
   const hasPreview = Boolean(previewVideo)
   const projectPagePath = `/projects/${slug}`
   const [showPreview, setShowPreview] = useState(false)
-  const PreviewIcon = showPreview ? FaEyeSlash : FaEye
   const previewLabel = showPreview
     ? "Close project preview"
     : "Open project preview"
@@ -101,7 +103,7 @@ const ProjectCard = ({
                   onClick={() => setShowPreview((prev) => !prev)}
                   className="project-card-action"
                 >
-                  <PreviewIcon />
+                  {showPreview ? <EyeOffIcon /> : <EyeIcon />}
                 </button>
               )}
 
@@ -113,7 +115,7 @@ const ProjectCard = ({
                   className="project-card-action"
                   href={liveUrl}
                 >
-                  <LuLink />
+                  <ExternalLinkIcon />
                 </a>
               )}
 
@@ -125,7 +127,7 @@ const ProjectCard = ({
                   className="project-card-action"
                   href={githubUrl}
                 >
-                  <FiGithub />
+                  <GitHubIcon />
                 </a>
               )}
             </div>

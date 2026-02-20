@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { LuArrowLeft } from "react-icons/lu"
+import { ArrowLeftIcon } from "@/components/ui/icons"
 
 type BackButtonProps = {
   fallbackHref?: string
@@ -36,7 +36,9 @@ const BackButton = ({
     <button type="button" className={baseClasses} onClick={handleBack}>
       {variant === "rail" ? (
         <>
-          <LuArrowLeft aria-hidden className="text-xl" />
+          <span className="text-xl">
+            <ArrowLeftIcon />
+          </span>
           <span className="sr-only">{label}</span>
         </>
       ) : (
