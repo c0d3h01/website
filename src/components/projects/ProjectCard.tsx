@@ -59,7 +59,7 @@ const ProjectCard = ({
       <Link
         href={projectPagePath}
         aria-label={`Open project details for ${title}`}
-        className="absolute inset-0 z-20 rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--gb-fg0)"
+        className="absolute inset-0 z-20 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--gb-fg0)"
       />
 
       {showPreview && hasPreview && (

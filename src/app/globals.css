@@ -65,7 +65,7 @@ h3 {
 }
 
 .screen {
-  @apply md:w-[860px] md:mx-auto px-4 md:py-14 py-4;
+  @apply md:w-215 md:mx-auto px-4 md:py-14 py-4;
 }
 
 .main-screen {
@@ -84,7 +84,7 @@ h3 {
 }
 
 .pro-pic-shell {
-  @apply relative block md:size-[130px] size-[108px] select-none;
+  @apply relative block md:size-32.5 size-27 select-none;
   border-radius: 50%;
   overflow: hidden;
 }
