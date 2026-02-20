@@ -1,5 +1,5 @@
-import { profile } from "@/data"
 import SectionHeading from "@/components/ui/SectionHeading"
+import { profile } from "@/data"
 
 const AboutSection = () => {
   return (

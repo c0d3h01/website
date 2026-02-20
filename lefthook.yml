@@ -1,8 +1,9 @@
 pre-commit:
   runner: bash
   commands:
-    lint:
-      run: pnpm run lint
+    biome:
+      run: pnpm biome check --write --staged
+      stage_fixed: true
 pre-push:
   runner: bash
   commands:

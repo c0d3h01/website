@@ -1,5 +1,5 @@
-import { skills } from "@/data"
 import SectionHeading from "@/components/ui/SectionHeading"
+import { skills } from "@/data"
 
 const SkillsSection = () => {
   return (

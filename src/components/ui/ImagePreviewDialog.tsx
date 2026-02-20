@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useRef } from "react"
 import Image, { type ImageProps } from "next/image"
+import { useEffect, useRef } from "react"
 import { createPortal } from "react-dom"
 
 interface ImagePreviewDialogProps {
@@ -65,12 +65,21 @@ const ImagePreviewDialog = ({
       role="dialog"
       aria-modal="true"
       aria-label={dialogLabel}
+      tabIndex={-1}
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
-      onClick={onClose}
+      onClick={(event) => {
+        if (event.target === event.currentTarget) {
+          onClose()
+        }
+      }}
+      onKeyDown={(event) => {
+        if (event.key === "Escape") {
+          onClose()
+        }
+      }}
     >
       <div
         className={`${dialogWidthClassName} relative overflow-hidden rounded-lg`}
-        onClick={(event) => event.stopPropagation()}
       >
         <button
           ref={closeButtonRef}
@@ -80,6 +89,7 @@ const ImagePreviewDialog = ({
           className="absolute top-3 right-3 z-20 rounded-full bg-black/70 p-2.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           <svg
+            aria-hidden="true"
             className="h-6 w-6"
             fill="none"
             stroke="currentColor"

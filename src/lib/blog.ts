@@ -3,22 +3,22 @@ import "server-only"
 import fs from "node:fs"
 import path from "node:path"
 import matter from "gray-matter"
+import { cache } from "react"
 import { remark } from "remark"
 import remarkGfm from "remark-gfm"
 import remarkHtml from "remark-html"
-import { cache } from "react"
 
 // Markdown source files for blog content.
 const postsDirectory = path.join(process.cwd(), "src/content/blog")
 
-export interface BlogPostMeta {
+interface BlogPostMeta {
   slug: string
   title: string
   description: string
   date: string
 }
 
-export interface BlogPost extends BlogPostMeta {
+interface BlogPost extends BlogPostMeta {
   content: string
 }
 

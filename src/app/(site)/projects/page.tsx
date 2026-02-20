@@ -26,9 +26,7 @@ export const dynamic = "force-static"
 
 const ProjectsPage = () => {
   return (
-    <PageShell
-      title="Projects"
-    >
+    <PageShell title="Projects">
       <ProjectList items={projects} />
     </PageShell>
   )

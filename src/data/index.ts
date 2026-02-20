@@ -1,13 +1,10 @@
+import profileImage from "@public/Images/pfp/pfp.png"
 import type { Metadata } from "next"
 import type { ComponentType } from "react"
-import profileImage from "@public/Images/pfp/pfp.png"
 import { BiLogoPostgresql } from "react-icons/bi"
 import { BsFiletypeSql } from "react-icons/bs"
 import { DiJavascript } from "react-icons/di"
-import {
-  FaDocker,
-  FaRust,
-} from "react-icons/fa"
+import { FaDocker, FaRust } from "react-icons/fa"
 import {
   FaGithub,
   FaGolang,
@@ -19,11 +16,7 @@ import {
 import { IoLogoNodejs } from "react-icons/io5"
 import { LuCalendarClock } from "react-icons/lu"
 import { MdOutlineMail } from "react-icons/md"
-import {
-  RiJavaLine,
-  RiNextjsLine,
-  RiReactjsLine,
-} from "react-icons/ri"
+import { RiJavaLine, RiNextjsLine, RiReactjsLine } from "react-icons/ri"
 import {
   SiBuymeacoffee,
   SiCodeforces,
@@ -41,7 +34,7 @@ type IconComponent = ComponentType<{ className?: string }>
 export { profileImage }
 
 // Global profile identity and social handles.
-export interface Profile {
+interface Profile {
   name: string
   shortName: string
   bio: string
@@ -97,7 +90,7 @@ export const emailLink = `mailto:${profile.email}?subject=Interested%20in%20Hiri
 export const resumeFilePath = "/assets/docs/resume.pdf"
 
 // Public links shown on the home page.
-export interface SocialLink {
+interface SocialLink {
   id: number
   name: string
   href: string
@@ -267,7 +260,7 @@ export const getProjectBySlug = (slug: string) => {
   return projects.find((project) => project.slug === slug)
 }
 
-export interface Skill {
+interface Skill {
   id: number
   icon: IconComponent
   text: string
@@ -295,27 +288,28 @@ export const skills: Skill[] = [
   { id: 19, icon: RiNextjsLine, text: "Next.js" },
 ]
 
-export type SupportMethod =
+type SupportMethod =
   | {
-    id: number
-    label: string
-    type: "link"
-    href: string
-    icon: IconComponent
-  }
+      id: number
+      label: string
+      type: "link"
+      href: string
+      icon: IconComponent
+    }
   | {
-    id: number
-    label: string
-    type: "copy"
-    value: string
-    mobileHref?: string
-    icon: IconComponent
-  }
+      id: number
+      label: string
+      type: "copy"
+      value: string
+      mobileHref?: string
+      icon: IconComponent
+    }
 
 export const supportText =
   "If my open-source work, tools, or technical writing helps you, consider supporting me. It helps me keep building and sharing useful developer tools."
 
-export const gpgFingerprint = "A7A7 A172 5FBF 10AB 04BF 1355 B424 2C21 BAF7 4B7C"
+export const gpgFingerprint =
+  "A7A7 A172 5FBF 10AB 04BF 1355 B424 2C21 BAF7 4B7C"
 const upiPayLink = `upi://pay?pa=${encodeURIComponent(profile.support.upiId)}&pn=${encodeURIComponent(profile.name)}&cu=INR`
 
 export const supportMethods: SupportMethod[] = [
@@ -366,11 +360,10 @@ export const siteUrl =
   configuredSiteUrl && isValidAbsoluteUrl(configuredSiteUrl)
     ? normalizeSiteUrl(configuredSiteUrl)
     : normalizeSiteUrl(profile.website)
-export const siteTitle = profile.name
-export const siteDescription =
+const siteTitle = profile.name
+const siteDescription =
   "Portfolio of Harshal Sawant - Software Engineer focused on distributed systems, developer tooling, and high-performance software."
-export const defaultOgImage =
-  ""
+export const defaultOgImage = ""
 
 export const seoMetadata: Metadata = {
   title: {

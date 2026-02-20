@@ -10,6 +10,7 @@ This repository is a Next.js 16 + TypeScript portfolio site.
 - `src/data`: Typed content models and profile/project data.
 - `src/content/blog`: Markdown blog posts with front matter (`title`, `description`, `date`).
 - `public`: Static assets (images, self-hosted fonts).
+- `tests/e2e`: Playwright smoke/end-to-end tests.
 
 Use the `@/*` import alias for files under `src`.
 
@@ -17,23 +18,29 @@ Use the `@/*` import alias for files under `src`.
 - `pnpm dev`: Start local dev server with Turbopack.
 - `pnpm dev:webpack`: Start dev server with Webpack fallback.
 - `pnpm build`: Create production build.
+- `pnpm analyze`: Build with Next bundle analyzer enabled.
 - `pnpm start`: Run the production build locally.
-- `pnpm lint` / `pnpm lint:fix`: Run ESLint (or auto-fix issues).
+- `pnpm lint` / `pnpm lint:fix`: Run Biome checks (or auto-fix issues).
+- `pnpm fmt` / `pnpm fmt:check`: Format or verify formatting with Biome.
 - `pnpm typecheck`: Generate Next route types and run strict TypeScript checks.
-- `pnpm fmt` / `pnpm fmt:check`: Format or verify formatting with Prettier.
+- `pnpm test` / `pnpm test:run` / `pnpm test:coverage`: Run Vitest.
+- `pnpm test:e2e`: Run Playwright e2e smoke tests.
+- `pnpm test:e2e:install`: Install Playwright Chromium browser.
+- `pnpm knip`: Find unused files/exports/dependencies.
 
-Git hooks enforce quality gates: pre-commit runs `lint`; pre-push runs `typecheck` and `build`.
+Git hooks enforce quality gates: pre-commit runs staged Biome fixes/checks; pre-push runs `typecheck` and `build`.
 
 ## Coding Style & Naming Conventions
 - TypeScript + React function components, strict typing enabled.
-- Prettier config uses no semicolons; keep formatting tool-driven.
+- Biome config is the source of truth; keep formatting tool-driven.
 - Use PascalCase for component files (`HomePage.tsx`), camelCase for utilities (`blog.ts`), and lowercase-hyphen for markdown slugs (`docker-node-express-basics.md`).
 - Keep feature code colocated with its route/section when practical.
 
 ## Testing Guidelines
-There is currently no dedicated unit/integration test framework checked in. For now, treat `pnpm lint`, `pnpm typecheck`, and `pnpm build` as the required validation set before opening a PR.
-
-When adding tests, colocate them near the feature (`*.test.ts[x]` or `*.spec.ts[x]`) and document the run command in `package.json`.
+- Unit tests use Vitest and should live close to features (`*.test.ts[x]`).
+- E2E tests use Playwright and live in `tests/e2e`.
+- Required validation before PR: `pnpm lint`, `pnpm fmt:check`, `pnpm typecheck`, and `pnpm build`.
+- Add or update relevant tests for behavior changes when practical.
 
 ## Commit & Pull Request Guidelines
 Recent commits follow concise, scoped messages such as:
@@ -46,7 +53,7 @@ For PRs, include:
 - What changed and why.
 - Linked issue (if available).
 - Screenshots/GIFs for UI changes.
-- Confirmation that `pnpm lint`, `pnpm typecheck`, and `pnpm build` pass locally.
+- Confirmation that `pnpm lint`, `pnpm fmt:check`, `pnpm typecheck`, and `pnpm build` pass locally.
 
 ## Non-Negotiable Code Requirements
 - Keep the site **light mode only**. Do not add dark-mode toggles or `prefers-color-scheme: dark` variants.

@@ -1,9 +1,7 @@
 import "./globals.css"
-import "react-toastify/dist/ReactToastify.css"
 import type { Viewport } from "next"
-import { ToastContainer } from "react-toastify"
-import PageTransition from "@/components/ui/PageTransition"
 import { siteFontVariables } from "@/app/fonts"
+import PageTransition from "@/components/ui/PageTransition"
 import { profile, seoMetadata, siteUrl } from "@/data"
 
 export const metadata = seoMetadata
@@ -44,16 +42,6 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <PageTransition>{children}</PageTransition>
-        <ToastContainer
-          position="top-center"
-          autoClose={2200}
-          newestOnTop
-          hideProgressBar
-          closeOnClick
-          pauseOnHover
-          draggable={false}
-          theme="light"
-        />
       </body>
     </html>
   )

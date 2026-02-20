@@ -1,7 +1,6 @@
 "use client"
 
-import type { ReactNode } from "react"
-import { toast } from "react-toastify"
+import { type ReactNode, useEffect, useState } from "react"
 
 interface SupportCopyButtonProps {
   label: string
@@ -37,12 +36,28 @@ const SupportCopyButton = ({
   mobileHref,
   children,
 }: SupportCopyButtonProps) => {
+  const [copyStatus, setCopyStatus] = useState<"idle" | "success" | "error">(
+    "idle",
+  )
+
+  useEffect(() => {
+    if (copyStatus === "idle") {
+      return
+    }
+
+    const timeout = window.setTimeout(() => {
+      setCopyStatus("idle")
+    }, 2200)
+
+    return () => window.clearTimeout(timeout)
+  }, [copyStatus])
+
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(value)
-      toast.success(`${label} copied to clipboard`)
+      setCopyStatus("success")
     } catch {
-      toast.error(`Failed to copy ${label}`)
+      setCopyStatus("error")
     }
   }
 
@@ -56,15 +71,24 @@ const SupportCopyButton = ({
   }
 
   return (
-    <button
-      type="button"
-      className="btn"
-      aria-label={mobileHref ? `Pay with ${label} or copy on desktop` : `Copy ${label}`}
-      onClick={handleClick}
-    >
-      {children}
-      {label}
-    </button>
+    <>
+      <button
+        type="button"
+        className="btn"
+        aria-label={
+          mobileHref ? `Pay with ${label} or copy on desktop` : `Copy ${label}`
+        }
+        onClick={handleClick}
+      >
+        {children}
+        {label}
+      </button>
+
+      <output className="sr-only" aria-live="polite">
+        {copyStatus === "success" && `${label} copied to clipboard`}
+        {copyStatus === "error" && `Failed to copy ${label}`}
+      </output>
+    </>
   )
 }
 

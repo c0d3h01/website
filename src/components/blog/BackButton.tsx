@@ -40,7 +40,7 @@ const BackButton = ({
           <span className="sr-only">{label}</span>
         </>
       ) : (
-        <>{`<- ${label}`}</>
+        `<- ${label}`
       )}
     </button>
   )

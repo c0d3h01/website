@@ -20,8 +20,8 @@
     "Segoe UI", "Inter", "SF Pro Display", "Helvetica Neue", Helvetica, Arial,
     sans-serif;
   --font-scihub:
-    var(--font-jetbrains-mono-local), ui-monospace, SFMono-Regular, Menlo, Monaco,
-    Consolas, "Liberation Mono", "Courier New", monospace;
+    var(--font-jetbrains-mono-local), ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 body {
@@ -31,15 +31,13 @@ body {
   line-height: 1.55;
   background-color: var(--gb-surface-muted);
   background-image:
-    radial-gradient(circle at 12% 8%,
-      rgba(148, 163, 184, 0.2),
-      transparent 34%),
-    radial-gradient(circle at 88% 0%,
-      rgba(59, 130, 246, 0.08),
-      transparent 30%),
-    radial-gradient(circle at 50% 100%,
+    radial-gradient(circle at 12% 8%, rgba(148, 163, 184, 0.2), transparent 34%),
+    radial-gradient(circle at 88% 0%, rgba(59, 130, 246, 0.08), transparent 30%),
+    radial-gradient(
+      circle at 50% 100%,
       rgba(148, 163, 184, 0.12),
-      transparent 36%),
+      transparent 36%
+    ),
     linear-gradient(160deg, #f8fafc 0%, #fdfefe 48%, #f1f5f9 100%);
 }
 
@@ -74,7 +72,7 @@ h3 {
   @apply py-3;
 }
 
-.section-stack>* {
+.section-stack > * {
   border-left: 1px solid rgba(15, 23, 42, 0.14);
   border-right: 1px solid rgba(15, 23, 42, 0.14);
   padding-inline: clamp(0.7rem, 1.35vw, 1rem);
@@ -114,9 +112,11 @@ h3 {
 
 .btn {
   @apply cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md;
-  background: linear-gradient(180deg,
-      var(--gb-surface) 0%,
-      var(--gb-surface-muted) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--gb-surface) 0%,
+    var(--gb-surface-muted) 100%
+  );
   border: 1px solid var(--gb-border);
 }
 
@@ -183,15 +183,6 @@ h3 {
   color: var(--gb-fg0);
 }
 
-.info-tip {
-  background: var(--gb-bg3);
-  color: #ffffff;
-}
-
-.info-tip-arrow {
-  border-top-color: var(--gb-bg3);
-}
-
 .project-card {
   background: var(--gb-surface);
   border: 1px solid var(--gb-border);
@@ -199,4 +190,26 @@ h3 {
 
 .project-card-action {
   color: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.14s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.project-card-action svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.project-card-action:hover {
+  background: var(--gb-surface-strong);
+}
+
+.project-card-action:focus-visible {
+  outline: 2px solid var(--gb-fg0);
+  outline-offset: 2px;
 }

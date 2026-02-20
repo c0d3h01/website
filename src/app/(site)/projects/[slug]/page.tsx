@@ -85,8 +85,12 @@ const ProjectDetailPage = async ({ params }: ProjectPageProps) => {
       <Screen>
         <article className="flex flex-col gap-4">
           <div className="flex items-center justify-between gap-2">
-            <h1 className="text-2xl font-bold text-(--gb-fg0)">{project.title}</h1>
-            <Link className="btn text-sm" href="/projects">Back to Projects</Link>
+            <h1 className="text-2xl font-bold text-(--gb-fg0)">
+              {project.title}
+            </h1>
+            <Link className="btn text-sm" href="/projects">
+              Back to Projects
+            </Link>
           </div>
 
           <div className="overflow-hidden rounded-md border border-(--gb-border) bg-(--gb-surface)">
@@ -132,17 +136,23 @@ const ProjectDetailPage = async ({ params }: ProjectPageProps) => {
 
           {project.highlights.length > 0 && (
             <section className="flex flex-col gap-2">
-              <h2 className="text-lg font-semibold text-(--gb-fg0)">Highlights</h2>
+              <h2 className="text-lg font-semibold text-(--gb-fg0)">
+                Highlights
+              </h2>
               <ul className="list-disc pl-5">
                 {project.highlights.map((highlight, index) => (
-                  <li key={`${project.slug}-highlight-${index}`}>{highlight}</li>
+                  <li key={`${project.slug}-highlight-${index}`}>
+                    {highlight}
+                  </li>
                 ))}
               </ul>
             </section>
           )}
 
           <section className="flex flex-col gap-2">
-            <h2 className="text-lg font-semibold text-(--gb-fg0)">Tech Stack</h2>
+            <h2 className="text-lg font-semibold text-(--gb-fg0)">
+              Tech Stack
+            </h2>
             <ul className="flex flex-wrap gap-1.5 select-none">
               {project.techStack.map((tech) => (
                 <li

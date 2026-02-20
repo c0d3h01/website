@@ -1,7 +1,6 @@
-import { supportMethods, supportText } from "@/data"
-import SupportCopyButton from "@/components/ui/SupportCopyButton"
 import SectionHeading from "@/components/ui/SectionHeading"
-import Tooltip from "@/components/ui/Tooltip"
+import SupportCopyButton from "@/components/ui/SupportCopyButton"
+import { supportMethods, supportText } from "@/data"
 
 const SupportSection = () => {
   const renderSupportAction = (method: (typeof supportMethods)[number]) => {
@@ -9,30 +8,28 @@ const SupportSection = () => {
 
     if (method.type === "link") {
       return (
-        <Tooltip key={method.id} text={method.label}>
-          <a
-            className="btn"
-            target="_blank"
-            rel="noopener noreferrer"
-            href={method.href}
-          >
-            <Icon />
-            {method.label}
-          </a>
-        </Tooltip>
+        <a
+          key={method.id}
+          className="btn"
+          target="_blank"
+          rel="noopener noreferrer"
+          href={method.href}
+        >
+          <Icon />
+          {method.label}
+        </a>
       )
     }
 
     return (
-      <Tooltip key={method.id} text={method.label}>
-        <SupportCopyButton
-          label={method.label}
-          value={method.value}
-          mobileHref={method.mobileHref}
-        >
-          <Icon />
-        </SupportCopyButton>
-      </Tooltip>
+      <SupportCopyButton
+        key={method.id}
+        label={method.label}
+        value={method.value}
+        mobileHref={method.mobileHref}
+      >
+        <Icon />
+      </SupportCopyButton>
     )
   }
 

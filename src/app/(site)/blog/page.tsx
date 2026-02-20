@@ -29,9 +29,7 @@ const BlogPage = () => {
   const posts = getBlogPosts()
 
   return (
-    <PageShell
-      title="Blog"
-    >
+    <PageShell title="Blog">
       <div className="flex flex-col gap-3">
         {posts.length > 0 ? (
           posts.map((post) => (

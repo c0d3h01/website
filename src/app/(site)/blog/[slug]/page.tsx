@@ -4,8 +4,8 @@ import BackButton from "@/components/blog/BackButton"
 import { defaultOgImage, profile } from "@/data"
 import MainScreen from "@/layout/MainScreen"
 import Screen from "@/layout/Screen"
-import { formatLongDate } from "@/lib/date"
 import { getBlogPostBySlug, getBlogPosts, renderMarkdown } from "@/lib/blog"
+import { formatLongDate } from "@/lib/date"
 
 type BlogPostPageProps = {
   params: Promise<{

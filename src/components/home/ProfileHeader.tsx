@@ -2,7 +2,6 @@
 
 import Image, { type ImageProps } from "next/image"
 import ImagePreview from "@/components/ui/ImagePreview"
-import Tooltip from "@/components/ui/Tooltip"
 
 interface ProfileHeaderProps {
   userName: string
@@ -19,10 +18,7 @@ const ProfileHeader = ({
     <section>
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-3 md:gap-4">
-          <Tooltip
-            text="View Avatar"
-            containerClassName="w-1/3 shrink-0 md:w-auto"
-          >
+          <div className="w-1/3 shrink-0 md:w-auto">
             <ImagePreview
               src={userImage}
               alt="Profile Picture"
@@ -45,7 +41,7 @@ const ProfileHeader = ({
                 </span>
               }
             />
-          </Tooltip>
+          </div>
 
           <div className="flex min-w-0 flex-col justify-center gap-1 text-left">
             <h1 className="head-name py-0 normal-case">{userName}</h1>
