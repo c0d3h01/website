@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import Button from "@/components/ui/Button"
 import {
   ExternalLinkIcon,
   EyeIcon,
@@ -49,6 +50,7 @@ const ProjectCard = ({
 }: ProjectCardProps) => {
   const hasPreview = Boolean(previewVideo)
   const projectPagePath = `/projects/${slug}`
+  const statusInfo = statusMeta[status]
   const [showPreview, setShowPreview] = useState(false)
   const previewLabel = showPreview
     ? "Close project preview"
@@ -87,16 +89,16 @@ const ProjectCard = ({
             <div className="flex min-w-0 items-center gap-2">
               <h2 className="truncate text-2xl font-semibold">{title}</h2>
               <span
-                className={`pointer-events-none shrink-0 rounded px-2 py-0.5 text-sm font-semibold leading-none tracking-wide ${statusMeta[status].className}`}
+                className={`pointer-events-none shrink-0 rounded px-2 py-0.5 text-sm font-semibold leading-none tracking-wide ${statusInfo.className}`}
               >
-                {statusMeta[status].label}
+                {statusInfo.label}
               </span>
             </div>
 
             <div className="relative z-30 flex select-none gap-2 px-2 text-base">
               {hasPreview && (
-                <button
-                  type="button"
+                <Button
+                  variant="unstyled"
                   aria-label={previewLabel}
                   aria-pressed={showPreview}
                   aria-expanded={showPreview}
@@ -104,7 +106,7 @@ const ProjectCard = ({
                   className="project-card-action"
                 >
                   {showPreview ? <EyeOffIcon /> : <EyeIcon />}
-                </button>
+                </Button>
               )}
 
               {liveUrl && (
