@@ -4,8 +4,6 @@ interface PageTransitionProps {
   children: ReactNode
 }
 
-const PageTransition = ({ children }: PageTransitionProps) => {
-  return <>{children}</>
-}
+const PageTransition = ({ children }: PageTransitionProps) => <>{children}</>
 
 export default PageTransition
