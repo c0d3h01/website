@@ -7,7 +7,7 @@ import { profile, seoMetadata, siteUrl } from "@/data"
 export const metadata = seoMetadata
 export const viewport: Viewport = {
   colorScheme: "light",
-  themeColor: "#f8fafc",
+  themeColor: "#ffffff",
 }
 
 const personJsonLd = {
