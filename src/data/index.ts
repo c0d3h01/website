@@ -66,7 +66,7 @@ export const profile: Profile = {
   codeforcesUsername: "c0d3h01",
   calComUsername: "c0d3h01",
   email: "harshalsawant.dev@gmail.com",
-  website: "https://c0d3h01.tech",
+  website: "https://www.c0d3h01.tech",
   support: {
     githubSponsorsUsername: "c0d3h01",
     buyMeACoffeeUsername: "c0d3h01",
@@ -363,7 +363,7 @@ export const siteUrl =
 const siteTitle = profile.name
 const siteDescription =
   "Portfolio of Harshal Sawant - Software Engineer focused on distributed systems, developer tooling, and high-performance software."
-export const defaultOgImage = ""
+export const defaultOgImage = "/Images/icon/icon.png"
 
 export const seoMetadata: Metadata = {
   title: {
