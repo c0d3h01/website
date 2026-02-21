@@ -5,8 +5,8 @@ import { getBlogPosts } from "@/lib/blog"
 
 const WritingsSection = () => {
   const posts = getBlogPosts()
-  const shouldShowViewAll = posts.length > 2
   const visiblePosts = posts.slice(0, 2)
+  const shouldShowViewAll = posts.length > visiblePosts.length
 
   return (
     <section id="blog" className="flex flex-col gap-3">
