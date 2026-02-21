@@ -1,6 +1,7 @@
 "use client"
 
 import { type ReactNode, useEffect, useState } from "react"
+import Button from "@/components/ui/Button"
 
 interface SupportCopyButtonProps {
   label: string
@@ -32,6 +33,12 @@ const isLikelyMobileDevice = () => {
     navigator.userAgent,
   )
 }
+
+const statusMessageByState = {
+  idle: "",
+  success: "Copied",
+  error: "Copy failed",
+} as const
 
 const SupportCopyButton = ({
   label,
@@ -80,25 +87,19 @@ const SupportCopyButton = ({
     ? `Pay with ${label} or copy on desktop`
     : `Copy ${label}`
 
-  const visibleStatusLabel =
-    copyStatus === "success"
-      ? "Copied"
-      : copyStatus === "error"
-        ? "Copy failed"
-        : ""
+  const visibleStatusLabel = statusMessageByState[copyStatus]
 
   return (
     <>
       <div className="inline-flex items-center gap-2">
-        <button
-          type="button"
+        <Button
           className={buttonClassName}
           aria-label={ariaLabel ?? defaultAriaLabel}
           onClick={handleClick}
         >
           {children}
           {displayLabel ?? label}
-        </button>
+        </Button>
 
         {visibleStatusLabel && (
           <span
