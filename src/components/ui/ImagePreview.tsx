@@ -1,8 +1,14 @@
 "use client"
 
+import dynamic from "next/dynamic"
 import type { ImageProps } from "next/image"
 import { type ReactNode, useState } from "react"
-import ImagePreviewDialog from "@/components/ui/ImagePreviewDialog"
+import Button from "@/components/ui/Button"
+
+const ImagePreviewDialog = dynamic(
+  () => import("@/components/ui/ImagePreviewDialog"),
+  { ssr: false },
+)
 
 interface ImagePreviewProps {
   src: ImageProps["src"]
@@ -37,27 +43,29 @@ const ImagePreview = ({
 
   return (
     <>
-      <button
-        type="button"
+      <Button
+        variant="unstyled"
         aria-label={triggerAriaLabel}
         onClick={() => setIsOpen(true)}
         className={triggerClassName}
       >
         {trigger}
-      </button>
+      </Button>
 
-      <ImagePreviewDialog
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        src={src}
-        alt={previewAlt ?? alt}
-        dialogLabel={dialogLabel}
-        width={width}
-        height={height}
-        sizes={sizes}
-        dialogWidthClassName={dialogWidthClassName}
-        imageClassName={imageClassName}
-      />
+      {isOpen && (
+        <ImagePreviewDialog
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          src={src}
+          alt={previewAlt ?? alt}
+          dialogLabel={dialogLabel}
+          width={width}
+          height={height}
+          sizes={sizes}
+          dialogWidthClassName={dialogWidthClassName}
+          imageClassName={imageClassName}
+        />
+      )}
     </>
   )
 }
