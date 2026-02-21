@@ -5,13 +5,12 @@
   --gb-bg3: #0f172a;
   --gb-fg0: #0f172a;
   --gb-fg1: #1f2937;
-  --gb-fg2: #64748b;
+  --gb-fg2: #6b7280;
   --gb-yellow: #0f766e;
-  --gb-blue: #94a3b8;
-  --gb-border: #d9e2ec;
+  --gb-border: #e5e7eb;
   --gb-surface: #ffffff;
-  --gb-surface-muted: #f8fafc;
-  --gb-surface-strong: #f1f5f9;
+  --gb-surface-muted: #ffffff;
+  --gb-surface-strong: #f5f5f5;
   --font-body:
     var(--font-inter-local), "Aptos", "Inter", "Segoe UI Variable", "Segoe UI",
     "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -29,16 +28,7 @@ body {
   min-height: 100vh;
   color: var(--gb-fg1);
   line-height: 1.55;
-  background-color: var(--gb-surface-muted);
-  background-image:
-    radial-gradient(circle at 12% 8%, rgba(148, 163, 184, 0.2), transparent 34%),
-    radial-gradient(circle at 88% 0%, rgba(59, 130, 246, 0.08), transparent 30%),
-    radial-gradient(
-      circle at 50% 100%,
-      rgba(148, 163, 184, 0.12),
-      transparent 36%
-    ),
-    linear-gradient(160deg, #f8fafc 0%, #fdfefe 48%, #f1f5f9 100%);
+  background-color: var(--gb-surface);
 }
 
 h1,
@@ -49,7 +39,7 @@ h3 {
 }
 
 ::selection {
-  background: rgba(56, 189, 248, 0.25);
+  background: rgba(107, 114, 128, 0.2);
   color: var(--gb-fg0);
 }
 
@@ -73,10 +63,12 @@ h3 {
 }
 
 .section-stack > * {
-  border-left: 1px solid rgba(15, 23, 42, 0.14);
-  border-right: 1px solid rgba(15, 23, 42, 0.14);
+  border-left: 1px solid rgba(31, 41, 55, 0.14);
+  border-right: 1px solid rgba(31, 41, 55, 0.14);
   padding-inline: clamp(0.7rem, 1.35vw, 1rem);
   padding-block: clamp(0.35rem, 0.85vw, 0.55rem);
+  content-visibility: auto;
+  contain-intrinsic-size: 480px;
 }
 
 .section-copy p {
@@ -120,67 +112,83 @@ h3 {
   border: 1px solid var(--gb-border);
 }
 
-.blog-post {
+.content-rail {
+  border-inline: 1px solid var(--gb-border);
+  padding-inline: clamp(0.7rem, 1.35vw, 1rem);
+  padding-block: clamp(0.35rem, 0.85vw, 0.55rem);
+}
+
+.blog-card {
   @apply cursor-pointer p-2 rounded-md;
   background: var(--gb-surface);
   border: 1px solid var(--gb-border);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
-.blog-font {
+.blog-shell {
   font-family: var(--font-scihub), monospace;
   font-size: 0.97rem;
   line-height: 1.55;
 }
 
-.blog-font h1,
-.blog-font h2,
-.blog-font h3,
-.blog-font h4,
-.blog-font h5,
-.blog-font h6 {
+.blog-shell :where(h1, h2, h3, h4, h5, h6) {
   font-family: var(--font-scihub), monospace;
   letter-spacing: 0.01em;
 }
 
-.blog-content h2 {
-  @apply text-xl font-semibold mt-3;
-  color: var(--gb-fg0);
-}
-
-.blog-content h3 {
-  @apply text-lg font-semibold mt-2;
-  color: var(--gb-fg0);
-}
-
-.blog-content p {
-  @apply text-[0.97rem] leading-6;
+.blog-prose {
   color: var(--gb-fg1);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
-.blog-content ul,
-.blog-content ol {
+.blog-prose :where(h2, h3) {
+  font-weight: 600;
+  color: var(--gb-fg0);
+}
+
+.blog-prose :where(p, ul, ol) {
+  font-size: 0.97rem;
+  line-height: 1.5rem;
+}
+
+.blog-prose h2 {
+  @apply mt-3 text-xl;
+}
+
+.blog-prose h3 {
+  @apply mt-2 text-lg;
+}
+
+.blog-prose :where(ul, ol) {
   @apply pl-5 flex flex-col gap-1;
 }
 
-.blog-content ul {
+.blog-prose ul {
   list-style: disc;
 }
 
-.blog-content ol {
+.blog-prose ol {
   list-style: decimal;
 }
 
-.blog-content a {
+.blog-prose a {
   color: var(--gb-yellow);
   text-decoration: underline;
 }
 
-.blog-content code {
+.blog-prose code {
   background: var(--gb-surface-strong);
   border: 1px solid var(--gb-border);
   border-radius: 0.3rem;
   padding: 0.08rem 0.35rem;
   color: var(--gb-fg0);
+}
+
+.blog-prose pre {
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .project-card {
