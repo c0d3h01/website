@@ -12,39 +12,37 @@ const ProfileHeader = ({
   userBio,
   userImage,
 }: ProfileHeaderProps) => {
+  const imageAlt = "Profile Picture"
+
   return (
     <section>
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-3 md:gap-4">
-          <div className="w-1/3 shrink-0 md:w-auto">
-            <ImagePreview
-              src={userImage}
-              alt="Profile Picture"
-              previewAlt="Profile Picture Preview"
-              dialogLabel="Profile picture preview"
-              triggerAriaLabel="Open avatar preview"
-              trigger={
-                <span className="pro-pic-shell">
-                  <Image
-                    src={userImage}
-                    alt="Profile Picture"
-                    className="pro-pic"
-                    fill
-                    preload
-                    placeholder={
-                      typeof userImage === "string" ? "empty" : "blur"
-                    }
-                    sizes="(max-width: 768px) 108px, 130px"
-                  />
-                </span>
-              }
-            />
-          </div>
+      <div className="flex items-center gap-3 md:gap-4">
+        <div className="w-1/3 shrink-0 md:w-auto">
+          <ImagePreview
+            src={userImage}
+            alt={imageAlt}
+            previewAlt={`${imageAlt} Preview`}
+            dialogLabel="Profile picture preview"
+            triggerAriaLabel="Open avatar preview"
+            trigger={
+              <span className="pro-pic-shell">
+                <Image
+                  src={userImage}
+                  alt={imageAlt}
+                  className="pro-pic"
+                  fill
+                  preload
+                  placeholder={typeof userImage === "string" ? "empty" : "blur"}
+                  sizes="(max-width: 768px) 108px, 130px"
+                />
+              </span>
+            }
+          />
+        </div>
 
-          <div className="flex min-w-0 flex-col justify-center gap-1 text-left">
-            <h1 className="head-name py-0 normal-case">{userName}</h1>
-            <p>{userBio}</p>
-          </div>
+        <div className="flex min-w-0 flex-col justify-center gap-1 text-left">
+          <h1 className="head-name py-0 normal-case">{userName}</h1>
+          <p>{userBio}</p>
         </div>
       </div>
     </section>
