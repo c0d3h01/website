@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 import { notFound } from "next/navigation"
-import BackButton from "@/components/blog/BackButton"
 import { defaultOgImage, profile } from "@/data"
 import MainScreen from "@/layout/MainScreen"
 import Screen from "@/layout/Screen"
@@ -78,22 +78,19 @@ const BlogPostPage = async ({ params }: BlogPostPageProps) => {
   return (
     <MainScreen>
       <Screen>
-        <article className="flex flex-col gap-4">
-          <div className="flex items-center justify-between gap-2">
+        <article className="content-rail flex flex-col gap-4">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <p className="text-sm opacity-70">{formatLongDate(post.date)}</p>
-            <BackButton
-              fallbackHref="/blog"
-              label="Back to Blog"
-              useHistory={false}
-              variant="default"
-            />
+            <Link className="btn text-sm" href="/blog">
+              {"<- Back to Blog"}
+            </Link>
           </div>
 
-          <h1 className="text-2xl font-bold">{post.title}</h1>
-          <p className="opacity-80">{post.description}</p>
+          <h1 className="wrap-break-word text-2xl font-bold">{post.title}</h1>
+          <p className="wrap-break-word opacity-80">{post.description}</p>
 
           <div
-            className="blog-content flex flex-col gap-4"
+            className="blog-prose flex flex-col gap-4"
             dangerouslySetInnerHTML={{ __html: htmlContent }}
           />
         </article>
