@@ -38,6 +38,12 @@ const sitemap = (): MetadataRoute.Sitemap => {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${siteUrl}/llms.txt`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.4,
+    },
   ]
 
   const blogRoutes: MetadataRoute.Sitemap = getBlogPosts().map((post) => ({
