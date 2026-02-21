@@ -10,7 +10,7 @@ interface ViewAllLinkProps {
 // Reused by home sections to keep CTA behavior and styling consistent.
 const ViewAllLink = ({ href, label = "View All" }: ViewAllLinkProps) => {
   return (
-    <Tooltip text={label}>
+    <Tooltip>
       <Link href={href} className="showMore-btn block">
         <span className="flex items-center justify-center gap-0.5">
           <MdKeyboardDoubleArrowDown />
