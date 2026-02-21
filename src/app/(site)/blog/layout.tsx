@@ -5,7 +5,7 @@ type BlogLayoutProps = {
 }
 
 const BlogLayout = ({ children }: BlogLayoutProps) => (
-  <div className="blog-font">{children}</div>
+  <div className="blog-shell">{children}</div>
 )
 
 export default BlogLayout
