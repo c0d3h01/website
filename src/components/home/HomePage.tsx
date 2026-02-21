@@ -12,14 +12,12 @@ import { profile, profileImage } from "@/data"
 import Screen from "@/layout/Screen"
 
 const HomePage = () => {
+  const { name, bio } = profile
+
   return (
     <Screen>
       <div className="section-stack flex flex-col gap-5">
-        <ProfileHeader
-          userName={profile.name}
-          userBio={profile.bio}
-          userImage={profileImage}
-        />
+        <ProfileHeader userName={name} userBio={bio} userImage={profileImage} />
         <AboutSection />
         <SocialSection />
         <ExperienceSection />
