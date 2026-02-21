@@ -4,19 +4,18 @@ import ViewAllLink from "@/components/ui/ViewAllLink"
 import { experiences } from "@/data"
 
 const ExperienceSection = () => {
-  const presentExperiences = experiences.filter((experience) =>
-    /present/i.test(experience.duration),
+  const activeExperiences = experiences.filter((item) =>
+    /present/i.test(item.duration),
   )
+  const visibleExperiences =
+    activeExperiences.length > 0 ? activeExperiences : experiences.slice(0, 1)
 
-  const defaultExperiences =
-    presentExperiences.length > 0 ? presentExperiences : experiences.slice(0, 1)
-
-  const shouldShowViewAll = experiences.length > defaultExperiences.length
+  const shouldShowViewAll = experiences.length > visibleExperiences.length
 
   return (
     <section className="flex flex-col gap-3">
       <SectionHeading title="Experience" />
-      <ExperienceList items={defaultExperiences} />
+      <ExperienceList items={visibleExperiences} />
       {shouldShowViewAll && <ViewAllLink href="/experience" />}
     </section>
   )
