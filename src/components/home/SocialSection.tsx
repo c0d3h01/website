@@ -1,3 +1,4 @@
+import ButtonLink from "@/components/ui/ButtonLink"
 import SectionHeading from "@/components/ui/SectionHeading"
 import { footerSocialLinks } from "@/data"
 
@@ -7,16 +8,10 @@ const SocialSection = () => {
       <SectionHeading title="Social" />
       <div className="flex flex-wrap items-center gap-2.5">
         {footerSocialLinks.map((link) => (
-          <a
-            key={link.id}
-            className="btn"
-            target="_blank"
-            rel="noopener noreferrer"
-            href={link.href}
-          >
+          <ButtonLink key={link.id} href={link.href}>
             <link.icon />
             {link.name}
-          </a>
+          </ButtonLink>
         ))}
       </div>
     </section>
