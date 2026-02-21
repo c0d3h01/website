@@ -4,12 +4,13 @@ import ViewAllLink from "@/components/ui/ViewAllLink"
 import { projects } from "@/data"
 
 const ProjectsSection = () => {
-  const shouldShowViewAll = projects.length > 2
+  const visibleCount = 2
+  const shouldShowViewAll = projects.length > visibleCount
 
   return (
     <section id="projects" className="flex flex-col gap-3">
       <SectionHeading title="Projects" />
-      <ProjectList items={projects} limit={2} />
+      <ProjectList items={projects} limit={visibleCount} />
       {shouldShowViewAll && <ViewAllLink href="/projects" />}
     </section>
   )
