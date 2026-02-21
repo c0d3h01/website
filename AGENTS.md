@@ -43,11 +43,20 @@ Git hooks enforce quality gates: pre-commit runs staged Biome fixes/checks; pre-
 - Add or update relevant tests for behavior changes when practical.
 
 ## Commit & Pull Request Guidelines
-Recent commits follow concise, scoped messages such as:
-- `[src] refactor: simplify app structure`
-- `[root] chore: update package name`
+Use professional, technical commit messages.
 
-Prefer: optional scope prefix (`[src]`, `[root]`) + conventional type (`feat`, `fix`, `refactor`, `chore`) + imperative summary.
+- Use format: `<type>: <imperative technical summary>`.
+- Recommended types: `feat`, `fix`, `refactor`, `chore`, `docs`, `test`, `perf`, `build`, `ci`.
+- Keep the subject concise, specific, and implementation-focused.
+- If extra context is needed, add a short commit body with bullet points describing:
+  - What changed.
+  - Why it changed.
+  - Any migration, behavior, or risk notes.
+
+Examples:
+- `fix: correct canonical URL generation for project pages`
+- `feat: add llms.txt endpoint for AI crawler discovery`
+- `refactor: simplify blog post card rendering logic`
 
 For PRs, include:
 - What changed and why.
