@@ -1,8 +1,15 @@
 "use client"
 
 import Image, { type ImageProps } from "next/image"
-import { useEffect, useRef } from "react"
+import {
+  type MouseEvent,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useCallback,
+  useEffect,
+  useRef,
+} from "react"
 import { createPortal } from "react-dom"
+import Button from "@/components/ui/Button"
 
 interface ImagePreviewDialogProps {
   isOpen: boolean
@@ -31,6 +38,24 @@ const ImagePreviewDialog = ({
 }: ImagePreviewDialogProps) => {
   const closeButtonRef = useRef<HTMLButtonElement>(null)
   const placeholder = typeof src === "string" ? "empty" : "blur"
+  const closeOnEscape = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose()
+      }
+    },
+    [onClose],
+  )
+  const closeOnBackdropClick = (event: MouseEvent<HTMLDivElement>) => {
+    if (event.target === event.currentTarget) {
+      onClose()
+    }
+  }
+  const closeOnDialogKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Escape") {
+      onClose()
+    }
+  }
 
   useEffect(() => {
     if (!isOpen) {
@@ -41,20 +66,13 @@ const ImagePreviewDialog = ({
 
     document.body.style.overflow = "hidden"
     closeButtonRef.current?.focus()
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose()
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown)
+    window.addEventListener("keydown", closeOnEscape)
 
     return () => {
       document.body.style.overflow = previousOverflow
-      window.removeEventListener("keydown", handleKeyDown)
+      window.removeEventListener("keydown", closeOnEscape)
     }
-  }, [isOpen, onClose])
+  }, [isOpen, closeOnEscape])
 
   if (!isOpen) {
     return null
@@ -67,26 +85,18 @@ const ImagePreviewDialog = ({
       aria-label={dialogLabel}
       tabIndex={-1}
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
-      onClick={(event) => {
-        if (event.target === event.currentTarget) {
-          onClose()
-        }
-      }}
-      onKeyDown={(event) => {
-        if (event.key === "Escape") {
-          onClose()
-        }
-      }}
+      onClick={closeOnBackdropClick}
+      onKeyDown={closeOnDialogKeyDown}
     >
       <div
         className={`${dialogWidthClassName} relative overflow-hidden rounded-lg`}
       >
-        <button
+        <Button
           ref={closeButtonRef}
-          type="button"
+          variant="unstyled"
           aria-label="Close image preview"
           onClick={onClose}
-          className="absolute top-3 right-3 z-20 rounded-full bg-black/70 p-2.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          className="absolute top-3 right-3 z-20 rounded-full bg-black/70 p-2.5 text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           <svg
             aria-hidden="true"
@@ -102,7 +112,7 @@ const ImagePreviewDialog = ({
               d="M6 18L18 6M6 6l12 12"
             />
           </svg>
-        </button>
+        </Button>
 
         <Image
           src={src}
