@@ -1,4 +1,5 @@
 import { PiFilePdfBold, PiSuitcaseSimpleBold } from "react-icons/pi"
+import ButtonLink from "@/components/ui/ButtonLink"
 import SectionHeading from "@/components/ui/SectionHeading"
 import { emailLink, hireText, resumeFilePath } from "@/data"
 
@@ -9,24 +10,14 @@ const HireSection = () => {
       <div className="section-copy flex flex-col gap-2.5">
         <p>{hireText}</p>
         <div className="flex flex-wrap items-center gap-2.5">
-          <a
-            className="btn"
-            target="_blank"
-            rel="noopener noreferrer"
-            href={emailLink}
-          >
+          <ButtonLink href={emailLink}>
             <PiSuitcaseSimpleBold />
             Hire Me
-          </a>
-          <a
-            className="btn"
-            target="_blank"
-            rel="noopener noreferrer"
-            href={resumeFilePath}
-          >
+          </ButtonLink>
+          <ButtonLink href={resumeFilePath}>
             <PiFilePdfBold />
             Resume
-          </a>
+          </ButtonLink>
         </div>
       </div>
     </section>
