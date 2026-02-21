@@ -30,7 +30,7 @@ const BlogPage = () => {
 
   return (
     <PageShell title="Blog">
-      <div className="flex flex-col gap-3">
+      <div className="content-rail flex flex-col gap-3">
         {posts.length > 0 ? (
           posts.map((post) => (
             <BlogPostCard
