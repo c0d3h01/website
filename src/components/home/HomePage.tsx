@@ -4,6 +4,7 @@ import FooterSection from "@/components/home/FooterSection"
 import HireSection from "@/components/home/HireSection"
 import ProfileHeader from "@/components/home/ProfileHeader"
 import ProjectsSection from "@/components/home/ProjectsSection"
+import QuotesSection from "@/components/home/QuotesSection"
 import SkillsSection from "@/components/home/SkillsSection"
 import SocialSection from "@/components/home/SocialSection"
 import SupportSection from "@/components/home/SupportSection"
@@ -26,6 +27,7 @@ const HomePage = () => {
         <ProjectsSection />
         <WritingsSection />
         <SupportSection />
+        <QuotesSection />
       </div>
       <FooterSection />
     </Screen>
