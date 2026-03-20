@@ -1,26 +1,23 @@
 import AboutSection from "@/components/home/AboutSection"
 import ExperienceSection from "@/components/home/ExperienceSection"
 import FooterSection from "@/components/home/FooterSection"
+import GitHubProfileHeader from "@/components/home/GitHubProfileHeader"
 import HireSection from "@/components/home/HireSection"
-import ProfileHeader from "@/components/home/ProfileHeader"
 import ProjectsSection from "@/components/home/ProjectsSection"
 import QuotesSection from "@/components/home/QuotesSection"
 import SkillsSection from "@/components/home/SkillsSection"
 import SocialSection from "@/components/home/SocialSection"
 import SupportSection from "@/components/home/SupportSection"
 import WritingsSection from "@/components/home/WritingsSection"
-import { profile, profileImage } from "@/data"
 import Screen from "@/layout/Screen"
 
 const HomePage = () => {
-  const { name, bio } = profile
-
   return (
     <Screen>
       <div className="section-stack flex flex-col gap-5">
-        <ProfileHeader userName={name} userBio={bio} userImage={profileImage} />
-        <AboutSection />
+        <GitHubProfileHeader />
         <SocialSection />
+        <AboutSection />
         <ExperienceSection />
         <HireSection />
         <SkillsSection />
@@ -28,8 +25,8 @@ const HomePage = () => {
         <WritingsSection />
         <SupportSection />
         <QuotesSection />
+        <FooterSection />
       </div>
-      <FooterSection />
     </Screen>
   )
 }
