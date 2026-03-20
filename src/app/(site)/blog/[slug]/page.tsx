@@ -1,102 +1,102 @@
-import type { Metadata } from "next"
-import Link from "next/link"
-import { notFound } from "next/navigation"
-import { defaultOgImage, profile } from "@/data"
-import MainScreen from "@/layout/MainScreen"
-import Screen from "@/layout/Screen"
-import { getBlogPostBySlug, getBlogPosts, renderMarkdown } from "@/lib/blog"
-import { formatLongDate } from "@/lib/date"
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { defaultOgImage, profile } from "@/data";
+import MainScreen from "@/layout/MainScreen";
+import Screen from "@/layout/Screen";
+import { getBlogPostBySlug, getBlogPosts, renderMarkdown } from "@/lib/blog";
+import { formatLongDate } from "@/lib/date";
 
 type BlogPostPageProps = {
-  params: Promise<{
-    slug: string
-  }>
-}
+	params: Promise<{
+		slug: string;
+	}>;
+};
 
 export const generateStaticParams = () => {
-  return getBlogPosts().map((post) => ({
-    slug: post.slug,
-  }))
-}
+	return getBlogPosts().map((post) => ({
+		slug: post.slug,
+	}));
+};
 
-export const dynamicParams = true
+export const dynamicParams = true;
 
 export const generateMetadata = async ({
-  params,
+	params,
 }: BlogPostPageProps): Promise<Metadata> => {
-  const { slug } = await params
-  const post = getBlogPostBySlug(slug)
+	const { slug } = await params;
+	const post = getBlogPostBySlug(slug);
 
-  if (!post) {
-    return {
-      title: "Post Not Found",
-    }
-  }
+	if (!post) {
+		return {
+			title: "Post Not Found",
+		};
+	}
 
-  return {
-    title: post.title,
-    description: post.description,
-    alternates: {
-      canonical: `/blog/${post.slug}`,
-    },
-    openGraph: {
-      title: post.title,
-      description: post.description,
-      type: "article",
-      url: `/blog/${post.slug}`,
-      publishedTime: post.date,
-      authors: [profile.name],
-      images: [
-        {
-          url: defaultOgImage,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.description,
-      images: [defaultOgImage],
-      creator: `@${profile.twitterHandle}`,
-    },
-  }
-}
+	return {
+		title: post.title,
+		description: post.description,
+		alternates: {
+			canonical: `/blog/${post.slug}`,
+		},
+		openGraph: {
+			title: post.title,
+			description: post.description,
+			type: "article",
+			url: `/blog/${post.slug}`,
+			publishedTime: post.date,
+			authors: [profile.name],
+			images: [
+				{
+					url: defaultOgImage,
+					width: 1200,
+					height: 630,
+					alt: post.title,
+				},
+			],
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: post.title,
+			description: post.description,
+			images: [defaultOgImage],
+			creator: `@${profile.twitterHandle}`,
+		},
+	};
+};
 
 const BlogPostPage = async ({ params }: BlogPostPageProps) => {
-  const { slug } = await params
-  const post = getBlogPostBySlug(slug)
+	const { slug } = await params;
+	const post = getBlogPostBySlug(slug);
 
-  if (!post) {
-    notFound()
-  }
+	if (!post) {
+		notFound();
+	}
 
-  const htmlContent = await renderMarkdown(post.content)
+	const htmlContent = await renderMarkdown(post.content);
 
-  return (
-    <MainScreen>
-      <Screen>
-        <article className="content-rail flex flex-col gap-4">
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <p className="text-sm opacity-70">{formatLongDate(post.date)}</p>
-            <Link className="btn text-sm" href="/blog">
-              {"<- Back to Blog"}
-            </Link>
-          </div>
+	return (
+		<MainScreen>
+			<Screen>
+				<article className="content-rail flex flex-col gap-4">
+					<div className="flex flex-wrap items-center justify-between gap-2">
+						<p className="text-sm opacity-70">{formatLongDate(post.date)}</p>
+						<Link className="btn text-sm" href="/blog">
+							{"<- Back to Blog"}
+						</Link>
+					</div>
 
-          <h1 className="wrap-break-word text-2xl font-bold">{post.title}</h1>
-          <p className="wrap-break-word opacity-80">{post.description}</p>
+					<h1 className="wrap-break-word text-2xl font-bold">{post.title}</h1>
+					<p className="wrap-break-word opacity-80">{post.description}</p>
 
-          <div
-            className="blog-prose flex flex-col gap-4"
-            dangerouslySetInnerHTML={{ __html: htmlContent }}
-          />
-        </article>
-      </Screen>
-    </MainScreen>
-  )
-}
+					<div
+						className="blog-prose flex flex-col gap-4"
+						dangerouslySetInnerHTML={{ __html: htmlContent }}
+					/>
+				</article>
+			</Screen>
+		</MainScreen>
+	);
+};
 
-export default BlogPostPage
+export default BlogPostPage;
