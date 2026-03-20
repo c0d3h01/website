@@ -1,0 +1,9 @@
+<svg width="1200" height="420" viewBox="0 0 1200 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="420" fill="#F8FAFC"/>
+  <rect x="40" y="40" width="1120" height="340" rx="20" fill="#0B1220"/>
+  <path d="M560 72L640 72L760 348L680 348L560 72Z" fill="#1E293B"/>
+  <path d="M440 72L520 72L640 348L560 348L440 72Z" fill="#334155"/>
+  <path d="M320 72L400 72L520 348L440 348L320 72Z" fill="#475569"/>
+  <text x="112" y="210" fill="#E2E8F0" font-family="JetBrains Mono, monospace" font-size="46" font-weight="700">nix-dotfiles</text>
+  <text x="112" y="258" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="22">Reproducible NixOS and Home Manager setup</text>
+</svg>
