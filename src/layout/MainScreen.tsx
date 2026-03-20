@@ -1,11 +1,11 @@
-import type { ReactNode } from "react"
+import type { ReactNode } from "react";
 
 interface MainScreenProps {
-  children: ReactNode
+	children: ReactNode;
 }
 
 const MainScreen = ({ children }: MainScreenProps) => (
-  <main className="main-screen">{children}</main>
-)
+	<main className="main-screen">{children}</main>
+);
 
-export default MainScreen
+export default MainScreen;
