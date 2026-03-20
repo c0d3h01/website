@@ -1,223 +1,223 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: light;
-  --gb-bg3: #0f172a;
-  --gb-fg0: #0f172a;
-  --gb-fg1: #1f2937;
-  --gb-fg2: #6b7280;
-  --gb-yellow: #0f766e;
-  --gb-border: #e5e7eb;
-  --gb-surface: #ffffff;
-  --gb-surface-muted: #ffffff;
-  --gb-surface-strong: #f5f5f5;
-  --font-body:
-    var(--font-inter-local), "Aptos", "Inter", "Segoe UI Variable", "Segoe UI",
-    "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-display:
-    var(--font-plus-jakarta-sans-local), "Aptos Display", "Segoe UI Variable",
-    "Segoe UI", "Inter", "SF Pro Display", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
-  --font-scihub:
-    var(--font-jetbrains-mono-local), ui-monospace, SFMono-Regular, Menlo,
-    Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	color-scheme: light;
+	--gb-bg3: #0f172a;
+	--gb-fg0: #0f172a;
+	--gb-fg1: #1f2937;
+	--gb-fg2: #6b7280;
+	--gb-yellow: #0f766e;
+	--gb-border: #e5e7eb;
+	--gb-surface: #ffffff;
+	--gb-surface-muted: #ffffff;
+	--gb-surface-strong: #f5f5f5;
+	--font-body:
+		var(--font-inter-local), "Aptos", "Inter", "Segoe UI Variable", "Segoe UI",
+		"SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	--font-display:
+		var(--font-plus-jakarta-sans-local), "Aptos Display", "Segoe UI Variable",
+		"Segoe UI", "Inter", "SF Pro Display", "Helvetica Neue", Helvetica, Arial,
+		sans-serif;
+	--font-scihub:
+		var(--font-jetbrains-mono-local), ui-monospace, SFMono-Regular, Menlo,
+		Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 body {
-  font-family: var(--font-body);
-  min-height: 100vh;
-  color: var(--gb-fg1);
-  line-height: 1.55;
-  background-color: var(--gb-surface);
+	font-family: var(--font-body);
+	min-height: 100vh;
+	color: var(--gb-fg1);
+	line-height: 1.55;
+	background-color: var(--gb-surface);
 }
 
 h1,
 h2,
 h3 {
-  font-family: var(--font-display), sans-serif;
-  letter-spacing: -0.01em;
+	font-family: var(--font-display), sans-serif;
+	letter-spacing: -0.01em;
 }
 
 ::selection {
-  background: rgba(107, 114, 128, 0.2);
-  color: var(--gb-fg0);
+	background: rgba(107, 114, 128, 0.2);
+	color: var(--gb-fg0);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
 }
 
 .screen {
-  @apply md:w-215 md:mx-auto px-4 md:py-14 py-4;
+	@apply md:w-215 md:mx-auto px-4 md:py-14 py-4;
 }
 
 .main-screen {
-  @apply py-3;
+	@apply py-3;
 }
 
 .section-stack > * {
-  border-left: 1px solid rgba(31, 41, 55, 0.14);
-  border-right: 1px solid rgba(31, 41, 55, 0.14);
-  padding-inline: clamp(0.7rem, 1.35vw, 1rem);
-  padding-block: clamp(0.35rem, 0.85vw, 0.55rem);
-  content-visibility: auto;
-  contain-intrinsic-size: 480px;
+	border-left: 1px solid rgba(31, 41, 55, 0.14);
+	border-right: 1px solid rgba(31, 41, 55, 0.14);
+	padding-inline: clamp(0.7rem, 1.35vw, 1rem);
+	padding-block: clamp(0.35rem, 0.85vw, 0.55rem);
+	content-visibility: auto;
+	contain-intrinsic-size: 480px;
 }
 
 .section-copy p {
-  line-height: 1.72;
+	line-height: 1.72;
 }
 
 .pro-pic-shell {
-  @apply relative block md:size-32.5 size-27 select-none;
-  border-radius: 50%;
-  overflow: hidden;
+	@apply relative block md:size-32.5 size-27 select-none;
+	border-radius: 50%;
+	overflow: hidden;
 }
 
 .pro-pic {
-  @apply block size-full object-cover;
+	@apply block size-full object-cover;
 }
 
 .skills-card {
-  @apply select-none flex flex-row gap-1 items-center px-2 py-1 rounded-md;
-  background: var(--gb-surface);
-  border: 1px solid var(--gb-border);
+	@apply select-none flex flex-row gap-1 items-center px-2 py-1 rounded-md;
+	background: var(--gb-surface);
+	border: 1px solid var(--gb-border);
 }
 
 .head-name {
-  @apply font-bold md:text-[2rem] text-[1.8rem] leading-[1.95rem];
-  color: var(--gb-fg0);
+	@apply font-bold md:text-[2rem] text-[1.8rem] leading-[1.95rem];
+	color: var(--gb-fg0);
 }
 
 .showMore-btn {
-  @apply select-none w-full px-2 py-1 rounded-md;
-  background: var(--gb-surface);
-  border: 1px solid var(--gb-border);
+	@apply select-none w-full px-2 py-1 rounded-md;
+	background: var(--gb-surface);
+	border: 1px solid var(--gb-border);
 }
 
 .btn {
-  @apply cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md;
-  background: linear-gradient(
-    180deg,
-    var(--gb-surface) 0%,
-    var(--gb-surface-muted) 100%
-  );
-  border: 1px solid var(--gb-border);
+	@apply cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md;
+	background: linear-gradient(
+		180deg,
+		var(--gb-surface) 0%,
+		var(--gb-surface-muted) 100%
+	);
+	border: 1px solid var(--gb-border);
 }
 
 .content-rail {
-  border-inline: 1px solid var(--gb-border);
-  padding-inline: clamp(0.7rem, 1.35vw, 1rem);
-  padding-block: clamp(0.35rem, 0.85vw, 0.55rem);
+	border-inline: 1px solid var(--gb-border);
+	padding-inline: clamp(0.7rem, 1.35vw, 1rem);
+	padding-block: clamp(0.35rem, 0.85vw, 0.55rem);
 }
 
 .blog-card {
-  @apply cursor-pointer p-2 rounded-md;
-  background: var(--gb-surface);
-  border: 1px solid var(--gb-border);
-  overflow-wrap: anywhere;
-  word-break: break-word;
+	@apply cursor-pointer p-2 rounded-md;
+	background: var(--gb-surface);
+	border: 1px solid var(--gb-border);
+	overflow-wrap: anywhere;
+	word-break: break-word;
 }
 
 .blog-shell {
-  font-family: var(--font-scihub), monospace;
-  font-size: 0.97rem;
-  line-height: 1.55;
+	font-family: var(--font-scihub), monospace;
+	font-size: 0.97rem;
+	line-height: 1.55;
 }
 
 .blog-shell :where(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--font-scihub), monospace;
-  letter-spacing: 0.01em;
+	font-family: var(--font-scihub), monospace;
+	letter-spacing: 0.01em;
 }
 
 .blog-prose {
-  color: var(--gb-fg1);
-  overflow-wrap: anywhere;
-  word-break: break-word;
+	color: var(--gb-fg1);
+	overflow-wrap: anywhere;
+	word-break: break-word;
 }
 
 .blog-prose :where(h2, h3) {
-  font-weight: 600;
-  color: var(--gb-fg0);
+	font-weight: 600;
+	color: var(--gb-fg0);
 }
 
 .blog-prose :where(p, ul, ol) {
-  font-size: 0.97rem;
-  line-height: 1.5rem;
+	font-size: 0.97rem;
+	line-height: 1.5rem;
 }
 
 .blog-prose h2 {
-  @apply mt-3 text-xl;
+	@apply mt-3 text-xl;
 }
 
 .blog-prose h3 {
-  @apply mt-2 text-lg;
+	@apply mt-2 text-lg;
 }
 
 .blog-prose :where(ul, ol) {
-  @apply pl-5 flex flex-col gap-1;
+	@apply pl-5 flex flex-col gap-1;
 }
 
 .blog-prose ul {
-  list-style: disc;
+	list-style: disc;
 }
 
 .blog-prose ol {
-  list-style: decimal;
+	list-style: decimal;
 }
 
 .blog-prose a {
-  color: var(--gb-yellow);
-  text-decoration: underline;
+	color: var(--gb-yellow);
+	text-decoration: underline;
 }
 
 .blog-prose code {
-  background: var(--gb-surface-strong);
-  border: 1px solid var(--gb-border);
-  border-radius: 0.3rem;
-  padding: 0.08rem 0.35rem;
-  color: var(--gb-fg0);
+	background: var(--gb-surface-strong);
+	border: 1px solid var(--gb-border);
+	border-radius: 0.3rem;
+	padding: 0.08rem 0.35rem;
+	color: var(--gb-fg0);
 }
 
 .blog-prose pre {
-  max-width: 100%;
-  overflow-x: auto;
+	max-width: 100%;
+	overflow-x: auto;
 }
 
 .project-card {
-  background: var(--gb-surface);
-  border: 1px solid var(--gb-border);
+	background: var(--gb-surface);
+	border: 1px solid var(--gb-border);
 }
 
 .project-card-action {
-  color: inherit;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 2.75rem;
-  min-height: 2.75rem;
-  border-radius: 0.5rem;
-  transition: background-color 0.14s ease;
-  -webkit-tap-highlight-color: transparent;
+	color: inherit;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 2.75rem;
+	min-height: 2.75rem;
+	border-radius: 0.5rem;
+	transition: background-color 0.14s ease;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .project-card-action svg {
-  width: 1.05rem;
-  height: 1.05rem;
+	width: 1.05rem;
+	height: 1.05rem;
 }
 
 .project-card-action:hover {
-  background: var(--gb-surface-strong);
+	background: var(--gb-surface-strong);
 }
 
 .project-card-action:focus-visible {
-  outline: 2px solid var(--gb-fg0);
-  outline-offset: 2px;
+	outline: 2px solid var(--gb-fg0);
+	outline-offset: 2px;
 }
