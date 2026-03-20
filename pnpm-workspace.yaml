@@ -1,7 +1,0 @@
-onlyBuiltDependencies:
-  - core-js
-  - es5-ext
-  - highlight.js
-  - sharp
-  - uglifyjs-webpack-plugin
-  - unrs-resolver
