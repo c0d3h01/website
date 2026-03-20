@@ -1,9 +1,9 @@
-import type { ReactNode } from "react"
+import type { ReactNode } from "react";
 
 interface PageTransitionProps {
-  children: ReactNode
+	children: ReactNode;
 }
 
-const PageTransition = ({ children }: PageTransitionProps) => <>{children}</>
+const PageTransition = ({ children }: PageTransitionProps) => <>{children}</>;
 
-export default PageTransition
+export default PageTransition;
