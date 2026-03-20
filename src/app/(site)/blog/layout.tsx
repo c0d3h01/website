@@ -1,11 +1,11 @@
-import type { ReactNode } from "react"
+import type { ReactNode } from "react";
 
 type BlogLayoutProps = {
-  children: ReactNode
-}
+	children: ReactNode;
+};
 
 const BlogLayout = ({ children }: BlogLayoutProps) => (
-  <div className="blog-shell">{children}</div>
-)
+	<div className="blog-shell">{children}</div>
+);
 
-export default BlogLayout
+export default BlogLayout;
