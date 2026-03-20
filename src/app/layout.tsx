@@ -1,48 +1,48 @@
-import "./globals.css"
-import type { Viewport } from "next"
-import { siteFontVariables } from "@/app/fonts"
-import PageTransition from "@/components/ui/PageTransition"
-import { profile, seoMetadata, siteUrl } from "@/data"
+import "./globals.css";
+import type { Viewport } from "next";
+import { siteFontVariables } from "@/app/fonts";
+import PageTransition from "@/components/ui/PageTransition";
+import { profile, seoMetadata, siteUrl } from "@/data";
 
-export const metadata = seoMetadata
+export const metadata = seoMetadata;
 export const viewport: Viewport = {
-  colorScheme: "light",
-  themeColor: "#ffffff",
-}
+	colorScheme: "light",
+	themeColor: "#ffffff",
+};
 
 const personJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: profile.name,
-  url: siteUrl,
-  image: `${siteUrl}${profile.image}`,
-  jobTitle: profile.bio,
-  email: `mailto:${profile.email}`,
-  sameAs: [
-    `https://github.com/${profile.githubUsername}`,
-    `https://x.com/${profile.twitterHandle}`,
-    `https://www.linkedin.com/in/${profile.linkedinSlug}`,
-    `https://codeforces.com/profile/${profile.codeforcesUsername}`,
-  ],
-}
+	"@context": "https://schema.org",
+	"@type": "Person",
+	name: profile.name,
+	url: siteUrl,
+	image: `${siteUrl}${profile.image}`,
+	jobTitle: profile.bio,
+	email: `mailto:${profile.email}`,
+	sameAs: [
+		`https://github.com/${profile.githubUsername}`,
+		`https://x.com/${profile.twitterHandle}`,
+		`https://www.linkedin.com/in/${profile.linkedinSlug}`,
+		`https://codeforces.com/profile/${profile.codeforcesUsername}`,
+	],
+};
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en" className={siteFontVariables}>
-      <head>
-        <script
-          type="application/ld+json"
-          // Schema.org Person data for richer search snippets.
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-        />
-      </head>
-      <body className="antialiased">
-        <PageTransition>{children}</PageTransition>
-      </body>
-    </html>
-  )
+	return (
+		<html lang="en" className={siteFontVariables}>
+			<head>
+				<script
+					type="application/ld+json"
+					// Schema.org Person data for richer search snippets.
+					dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+				/>
+			</head>
+			<body className="antialiased">
+				<PageTransition>{children}</PageTransition>
+			</body>
+		</html>
+	);
 }
