@@ -1,9 +1,9 @@
-import type { ReactNode } from "react"
+import type { ReactNode } from "react";
 
 interface TooltipProps {
-  children: ReactNode
+	children: ReactNode;
 }
 
-const Tooltip = ({ children }: TooltipProps) => <>{children}</>
+const Tooltip = ({ children }: TooltipProps) => <>{children}</>;
 
-export default Tooltip
+export default Tooltip;
