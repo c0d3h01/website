@@ -1,11 +1,11 @@
-import type { ReactNode } from "react"
+import type { ReactNode } from "react";
 
 interface ScreenProps {
-  children: ReactNode
+	children: ReactNode;
 }
 
 const Screen = ({ children }: ScreenProps) => (
-  <div className="screen">{children}</div>
-)
+	<div className="screen">{children}</div>
+);
 
-export default Screen
+export default Screen;
