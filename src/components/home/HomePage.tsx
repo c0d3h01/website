@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import AboutSection from "@/components/home/AboutSection";
 import ExperienceSection from "@/components/home/ExperienceSection";
 import FooterSection from "@/components/home/FooterSection";
@@ -9,7 +10,6 @@ import SkillsSection from "@/components/home/SkillsSection";
 import SocialSection from "@/components/home/SocialSection";
 import SupportSection from "@/components/home/SupportSection";
 import Screen from "@/layout/Screen";
-import dynamic from "next/dynamic";
 
 // Dynamic Lazy loader - Havy context loader/>
 const WritingsSection = dynamic(

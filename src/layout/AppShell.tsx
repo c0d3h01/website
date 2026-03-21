@@ -2,11 +2,11 @@
 import type { ReactNode } from "react";
 
 interface AppShellProps {
-    children: ReactNode;
+	children: ReactNode;
 }
 
 const AppShell = ({ children }: AppShellProps) => (
-    <main className="main-screen">{children}</main>
+	<main className="main-screen">{children}</main>
 );
 
 export default AppShell;

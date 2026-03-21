@@ -55,13 +55,13 @@ export const generateMetadata = async ({
 			authors: [profile.name],
 			images: socialImage
 				? [
-					{
-						url: socialImage,
-						width: 1200,
-						height: 420,
-						alt: `${project.title} banner`,
-					},
-				]
+						{
+							url: socialImage,
+							width: 1200,
+							height: 420,
+							alt: `${project.title} banner`,
+						},
+					]
 				: undefined,
 		},
 		twitter: {
