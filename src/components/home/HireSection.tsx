@@ -1,7 +1,7 @@
 import { PiFilePdfBold, PiSuitcaseSimpleBold } from "react-icons/pi";
 import ButtonLink from "@/components/ui/ButtonLink";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { emailLink, hireText, resumeFilePath } from "@/data";
+import { emailLink, hireText, resumeFilePath } from "@/data/social";
 
 const HireSection = () => {
 	return (

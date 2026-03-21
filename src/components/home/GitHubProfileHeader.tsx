@@ -1,17 +1,17 @@
-import ProfileHeader from "@/components/home/ProfileHeader"
-import { profile, profileImage } from "@/data"
-import { getGitHubUser } from "@/lib/github"
+import ProfileHeader from "@/components/home/ProfileHeader";
+import { profile, profileImage } from "@/data/github";
+import { getGitHubUser } from "@/lib/github";
 
 const GitHubProfileHeader = async () => {
-  const githubUser = await getGitHubUser(profile.githubUsername)
+	const githubUser = await getGitHubUser(profile.githubUsername);
 
-  return (
-    <ProfileHeader
-      userName={profile.name}
-      userBio={profile.bio}
-      userImage={githubUser?.avatar_url ?? profileImage}
-    />
-  )
-}
+	return (
+		<ProfileHeader
+			userName={profile.name}
+			userBio={profile.bio}
+			userImage={githubUser?.avatar_url ?? profileImage}
+		/>
+	);
+};
 
-export default GitHubProfileHeader
+export default GitHubProfileHeader;

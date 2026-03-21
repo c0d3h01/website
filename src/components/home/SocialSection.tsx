@@ -1,5 +1,5 @@
 import ButtonLink from "@/components/ui/ButtonLink";
-import { footerSocialLinks } from "@/data";
+import { footerSocialLinks } from "@/data/social";
 
 const SocialSection = () => {
 	return (

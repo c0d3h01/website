@@ -1,11 +1,8 @@
-import {
-	experiences,
-	hireText,
-	profile,
-	projects,
-	siteUrl,
-	skills,
-} from "@/data";
+import { experiences } from "@/data/experience";
+import { profile } from "@/data/github";
+import { projects } from "@/data/projects";
+import { siteUrl, skills } from "@/data/site";
+import { hireText } from "@/data/social";
 import { getBlogPosts } from "@/lib/blog";
 
 export const dynamic = "force-static";

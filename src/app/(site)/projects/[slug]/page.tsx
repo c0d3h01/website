@@ -4,8 +4,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FiGithub } from "react-icons/fi";
 import { LuLink } from "react-icons/lu";
-import { defaultOgImage, getProjectBySlug, profile, projects } from "@/data";
-import MainScreen from "@/layout/MainScreen";
+import { profile } from "@/data/github";
+import { getProjectBySlug, projects } from "@/data/projects";
+import { defaultOgImage } from "@/data/site";
+import AppShell from "@/layout/AppShell";
 import Screen from "@/layout/Screen";
 
 type ProjectPageProps = {
@@ -53,13 +55,13 @@ export const generateMetadata = async ({
 			authors: [profile.name],
 			images: socialImage
 				? [
-						{
-							url: socialImage,
-							width: 1200,
-							height: 420,
-							alt: `${project.title} banner`,
-						},
-					]
+					{
+						url: socialImage,
+						width: 1200,
+						height: 420,
+						alt: `${project.title} banner`,
+					},
+				]
 				: undefined,
 		},
 		twitter: {
@@ -81,7 +83,7 @@ const ProjectDetailPage = async ({ params }: ProjectPageProps) => {
 	}
 
 	return (
-		<MainScreen>
+		<AppShell>
 			<Screen>
 				<article className="flex flex-col gap-4">
 					<div className="flex items-center justify-between gap-2">
@@ -184,7 +186,7 @@ const ProjectDetailPage = async ({ params }: ProjectPageProps) => {
 					)}
 				</article>
 			</Screen>
-		</MainScreen>
+		</AppShell>
 	);
 };
 

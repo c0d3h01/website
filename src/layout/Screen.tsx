@@ -1,3 +1,4 @@
+/** Outermost page shell — applies `.screen` class for background and structural styling. */
 import type { ReactNode } from "react";
 
 interface ScreenProps {

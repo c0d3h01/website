@@ -9,7 +9,7 @@ import {
 	EyeOffIcon,
 	GitHubIcon,
 } from "@/components/ui/icons";
-import type { ProjectStatus } from "@/data";
+import type { ProjectStatus } from "@/data/projects";
 
 interface ProjectCardProps {
 	slug: string;
@@ -23,20 +23,20 @@ interface ProjectCardProps {
 }
 
 const statusMeta: Record<ProjectStatus, { label: string; className: string }> =
-	{
-		active: {
-			label: "Active",
-			className: "bg-emerald-100 text-emerald-700",
-		},
-		building: {
-			label: "Building",
-			className: "bg-amber-100 text-amber-700",
-		},
-		archived: {
-			label: "Archived",
-			className: "bg-stone-200 text-stone-700",
-		},
-	};
+{
+	active: {
+		label: "Active",
+		className: "bg-emerald-100 text-emerald-700",
+	},
+	building: {
+		label: "Building",
+		className: "bg-amber-100 text-amber-700",
+	},
+	archived: {
+		label: "Archived",
+		className: "bg-stone-200 text-stone-700",
+	},
+};
 
 const ProjectCard = ({
 	slug,

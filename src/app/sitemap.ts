@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
-import { projects, siteUrl } from "@/data";
+import { projects } from "@/data/projects";
+import { siteUrl } from "@/data/site";
 import { getBlogPosts } from "@/lib/blog";
 
 const parseLastModified = (dateString: string) => {

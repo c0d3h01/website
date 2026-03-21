@@ -1,7 +1,7 @@
 import ButtonLink from "@/components/ui/ButtonLink";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SupportCopyButton from "@/components/ui/SupportCopyButton";
-import { supportMethods, supportText } from "@/data";
+import { supportMethods, supportText } from "@/data/social";
 
 const SupportSection = () => {
 	return (

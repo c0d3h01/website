@@ -1,8 +1,9 @@
+/** Shared page shell for list pages — provides heading, back-navigation, and content layout. */
 import Link from "next/link";
 import type { ReactNode } from "react";
 
 import SectionHeading from "@/components/ui/SectionHeading";
-import MainScreen from "@/layout/MainScreen";
+import AppShell from "@/layout/AppShell";
 import Screen from "@/layout/Screen";
 
 interface PageShellProps {
@@ -20,7 +21,7 @@ const PageShell = ({
 	backLabel = "Back Home",
 }: PageShellProps) => {
 	return (
-		<MainScreen>
+		<AppShell>
 			<Screen>
 				<div className="relative">
 					<section className="flex flex-col gap-4">
@@ -34,7 +35,7 @@ const PageShell = ({
 					</section>
 				</div>
 			</Screen>
-		</MainScreen>
+		</AppShell>
 	);
 };
 

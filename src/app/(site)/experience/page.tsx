@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ExperienceList from "@/components/experience/ExperienceList";
-import { defaultOgImage, experiences } from "@/data";
+import { experiences } from "@/data/experience";
+import { defaultOgImage } from "@/data/site";
 import PageShell from "@/layout/PageShell";
 
 export const metadata: Metadata = {

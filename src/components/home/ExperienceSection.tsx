@@ -1,7 +1,7 @@
 import ExperienceList from "@/components/experience/ExperienceList";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ViewAllLink from "@/components/ui/ViewAllLink";
-import { experiences } from "@/data";
+import { experiences } from "@/data/experience";
 
 const ExperienceSection = () => {
 	const activeExperiences = experiences.filter((item) =>

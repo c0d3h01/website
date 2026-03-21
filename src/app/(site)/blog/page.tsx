@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import BlogPostCard from "@/components/blog/BlogPostCard";
-import { defaultOgImage } from "@/data";
+import { defaultOgImage } from "@/data/site";
 import PageShell from "@/layout/PageShell";
 import { getBlogPosts } from "@/lib/blog";
 

@@ -9,7 +9,7 @@ import remarkGfm from "remark-gfm";
 import remarkHtml from "remark-html";
 
 // Markdown source files for blog content.
-const postsDirectory = path.join(process.cwd(), "src/blog");
+const postsDirectory = path.join(process.cwd(), "content/blog");
 
 interface BlogPostMeta {
 	slug: string;

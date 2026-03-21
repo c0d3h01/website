@@ -1,5 +1,5 @@
 import SectionHeading from "@/components/ui/SectionHeading";
-import { profile } from "@/data";
+import { profile } from "@/data/github";
 
 const AboutSection = () => {
 	const aboutHtml = profile.aboutHtml;

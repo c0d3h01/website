@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ProjectList from "@/components/projects/ProjectList";
-import { defaultOgImage, projects } from "@/data";
+import { projects } from "@/data/projects";
+import { defaultOgImage } from "@/data/site";
 import PageShell from "@/layout/PageShell";
 
 export const metadata: Metadata = {

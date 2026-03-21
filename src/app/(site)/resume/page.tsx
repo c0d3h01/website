@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { resumeFilePath } from "@/data";
+import { resumeFilePath } from "@/data/social";
 
 export const metadata: Metadata = {
 	title: "Resume",

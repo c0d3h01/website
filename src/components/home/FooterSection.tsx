@@ -1,6 +1,6 @@
 import { FaKey } from "react-icons/fa6";
 import SupportCopyButton from "@/components/ui/SupportCopyButton";
-import { gpgFingerprint } from "@/data";
+import { gpgFingerprint } from "@/data/social";
 
 const FooterSection = () => {
 	const fingerprintLabel = "GPG fingerprint";

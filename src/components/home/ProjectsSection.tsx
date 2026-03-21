@@ -1,7 +1,7 @@
 import ProjectList from "@/components/projects/ProjectList";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ViewAllLink from "@/components/ui/ViewAllLink";
-import { projects } from "@/data";
+import { projects } from "@/data/projects";
 
 const ProjectsSection = () => {
 	const visibleCount = 2;

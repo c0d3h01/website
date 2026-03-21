@@ -2,7 +2,8 @@ import "./globals.css";
 import type { Viewport } from "next";
 import { siteFontVariables } from "@/app/fonts";
 import PageTransition from "@/components/ui/PageTransition";
-import { profile, seoMetadata, siteUrl } from "@/data";
+import { profile } from "@/data/github";
+import { seoMetadata, siteUrl } from "@/data/site";
 
 export const metadata = seoMetadata;
 export const viewport: Viewport = {

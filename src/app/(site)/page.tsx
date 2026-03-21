@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import HomePage from "@/components/home/HomePage";
-import MainScreen from "@/layout/MainScreen";
+import AppShell from "@/layout/AppShell";
 
 export const metadata: Metadata = {
 	alternates: {
@@ -11,9 +11,9 @@ export const dynamic = "force-static";
 
 const HomePageRoute = () => {
 	return (
-		<MainScreen>
+		<AppShell>
 			<HomePage />
-		</MainScreen>
+		</AppShell>
 	);
 };
 

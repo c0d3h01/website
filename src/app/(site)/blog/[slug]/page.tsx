@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { defaultOgImage, profile } from "@/data";
-import MainScreen from "@/layout/MainScreen";
+import { profile } from "@/data/github";
+import { defaultOgImage } from "@/data/site";
+import AppShell from "@/layout/AppShell";
 import Screen from "@/layout/Screen";
 import { getBlogPostBySlug, getBlogPosts, renderMarkdown } from "@/lib/blog";
 import { formatLongDate } from "@/lib/date";
@@ -76,7 +77,7 @@ const BlogPostPage = async ({ params }: BlogPostPageProps) => {
 	const htmlContent = await renderMarkdown(post.content);
 
 	return (
-		<MainScreen>
+		<AppShell>
 			<Screen>
 				<article className="content-rail flex flex-col gap-4">
 					<div className="flex flex-wrap items-center justify-between gap-2">
@@ -95,7 +96,7 @@ const BlogPostPage = async ({ params }: BlogPostPageProps) => {
 					/>
 				</article>
 			</Screen>
-		</MainScreen>
+		</AppShell>
 	);
 };
 

@@ -1,5 +1,5 @@
 import SectionHeading from "@/components/ui/SectionHeading";
-import { skills } from "@/data";
+import { skills } from "@/data/site";
 
 const SkillsSection = () => {
 	return (
