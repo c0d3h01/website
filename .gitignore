@@ -17,3 +17,5 @@ npm-debug.log*
 playwright-report/
 test-results/
 !AGENTS.md
+.direnv
+.pnpm-store
