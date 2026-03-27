@@ -44,10 +44,15 @@ export const getGitHubUser = unstable_cache(
 	{ revalidate: githubUserRevalidateSeconds },
 );
 
-export const getGitHubAvatarUrl = (githubUser: GitHubUser | null): string | null => {
+export const getGitHubAvatarUrl = (
+	githubUser: GitHubUser | null,
+): string | null => {
 	if (!githubUser?.avatar_url) {
 		return null;
 	}
 
 	return withCacheBuster(githubUser.avatar_url, githubUser.updated_at);
 };
+
+export const getGitHubAvatarFallbackUrl = (username: string): string =>
+	`https://avatars.githubusercontent.com/${encodeURIComponent(username)}`;

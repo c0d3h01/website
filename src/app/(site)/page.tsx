@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 		canonical: "/",
 	},
 };
-export const dynamic = "force-static";
+export const revalidate = 300;
 
 const HomePageRoute = () => {
 	return (

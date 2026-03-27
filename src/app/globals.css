@@ -2,14 +2,12 @@
 
 :root {
 	color-scheme: light;
-	--gb-bg3: #0f172a;
 	--gb-fg0: #0f172a;
 	--gb-fg1: #1f2937;
 	--gb-fg2: #6b7280;
 	--gb-yellow: #0f766e;
 	--gb-border: #e5e7eb;
 	--gb-surface: #ffffff;
-	--gb-surface-muted: #ffffff;
 	--gb-surface-strong: #f5f5f5;
 	--font-body:
 		var(--font-inter-local), "Aptos", "Inter", "Segoe UI Variable", "Segoe UI",
@@ -104,11 +102,7 @@ h3 {
 
 .btn {
 	@apply cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md;
-	background: linear-gradient(
-		180deg,
-		var(--gb-surface) 0%,
-		var(--gb-surface-muted) 100%
-	);
+	background: var(--gb-surface);
 	border: 1px solid var(--gb-border);
 }
 
