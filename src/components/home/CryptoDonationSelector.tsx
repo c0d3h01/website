@@ -5,25 +5,23 @@ import { cryptoDonationOptions } from "@/data/social";
 import { useEffect, useState } from "react";
 import { FaWallet } from "react-icons/fa6";
 
-const feedbackResetDelay = 1800;
+const COPY_RESET_MS = 1800;
 
 export default function CryptoDonationSelector() {
   const [isOpen, setIsOpen] = useState(false);
   const [copiedId, setCopiedId] = useState<number | null>(null);
 
-  // Dismiss on scroll to maintain stable viewport interactions
   useEffect(() => {
     if (!isOpen) return;
-    const handleScroll = () => setIsOpen(false);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setIsOpen(false);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, [isOpen]);
 
-  // Reset copied state securely
   useEffect(() => {
     if (copiedId === null) return;
-    const timeout = window.setTimeout(() => setCopiedId(null), feedbackResetDelay);
-    return () => window.clearTimeout(timeout);
+    const t = setTimeout(() => setCopiedId(null), COPY_RESET_MS);
+    return () => clearTimeout(t);
   }, [copiedId]);
 
   const handleCopy = async (id: number, address: string) => {
@@ -45,38 +43,36 @@ export default function CryptoDonationSelector() {
         className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap transition-transform duration-300 ease-out hover:scale-105 active:scale-95"
         aria-label="Open crypto donation options"
         aria-expanded={isOpen}
-        onClick={() => setIsOpen(!isOpen)}
+        aria-haspopup="listbox"
       >
         <FaWallet className="size-4 shrink-0" />
         Crypto
       </Button>
 
-			<div
-			  className={[
-			    "absolute bottom-full z-50 pb-2 transition-all duration-200 ease-out right-0 sm:right-auto sm:left-0",
-			    "w-max min-w-48",
-			    isOpen
-			      ? "translate-y-0 opacity-100 pointer-events-auto visible"
-			      : "translate-y-1 opacity-0 pointer-events-none invisible",
-			  ].join(" ")}
-			>
-
+      <div
+        role="listbox"
+        aria-label="Crypto donation options"
+        className={`absolute bottom-full right-0 z-50 w-max min-w-48 pb-2 transition-all duration-200 ease-out sm:left-0 sm:right-auto ${
+          isOpen
+            ? "visible translate-y-0 opacity-100"
+            : "invisible translate-y-1 opacity-0 pointer-events-none"
+        }`}
+      >
         <div className="flex w-full flex-col gap-2 rounded-lg border border-(--gb-border) bg-(--gb-surface) p-2 shadow-xl ring-1 ring-black/5">
           {cryptoDonationOptions.map((option) => {
-            const Icon = option.icon;
             const isCopied = copiedId === option.id;
-
             return (
               <Button
                 key={option.id}
-                className={[
-                  "btn w-full justify-between gap-3 text-left transition-colors hover:bg-black/5 dark:hover:bg-white/10",
-                  isCopied ? "border-(--gb-yellow)" : "",
-                ].filter(Boolean).join(" ")}
+                role="option"
+                aria-selected={isCopied}
+                className={`w-full justify-between gap-3 text-left transition-colors hover:bg-black/5 dark:hover:bg-white/10 ${
+                  isCopied ? "border-(--gb-yellow)" : ""
+                }`}
                 onClick={() => handleCopy(option.id, option.address)}
               >
                 <span className="flex items-center gap-2">
-                  <Icon className="size-5 shrink-0 text-(--gb-fg1)" />
+                  <option.icon className="size-5 shrink-0 text-(--gb-fg1)" />
                   <span className="flex flex-col items-start leading-tight">
                     <span className="text-sm font-medium text-(--gb-fg1)">{option.name}</span>
                     {option.shortName && (
@@ -84,7 +80,13 @@ export default function CryptoDonationSelector() {
                     )}
                   </span>
                 </span>
-                <span className={`text-xs font-medium ${isCopied ? "text-green-500 dark:text-green-400" : "text-(--gb-fg2)"}`}>
+                <span
+                  className={`text-xs font-medium ${
+                    isCopied
+                      ? "text-green-500 dark:text-green-400"
+                      : "text-(--gb-fg2)"
+                  }`}
+                >
                   {isCopied ? "Copied!" : "Copy"}
                 </span>
               </Button>
