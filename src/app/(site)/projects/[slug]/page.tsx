@@ -142,8 +142,8 @@ const ProjectDetailPage = async ({ params }: ProjectPageProps) => {
 								Highlights
 							</h2>
 							<ul className="list-disc pl-5">
-								{project.highlights.map((highlight, index) => (
-									<li key={`${project.slug}-highlight-${index}`}>
+								{project.highlights.map((highlight) => (
+									<li key={`${project.slug}-highlight-${highlight}`}>
 										{highlight}
 									</li>
 								))}

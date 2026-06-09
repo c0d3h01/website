@@ -1,15 +1,11 @@
 "use client";
 
+import Button from "@/components/ui/Button";
+import type { ProjectStatus } from "@/data/projects";
 import Link from "next/link";
 import { useState } from "react";
-import Button from "@/components/ui/Button";
-import {
-	ExternalLinkIcon,
-	EyeIcon,
-	EyeOffIcon,
-	GitHubIcon,
-} from "@/components/ui/icons";
-import type { ProjectStatus } from "@/data/projects";
+import { FiGithub } from "react-icons/fi";
+import { LuExternalLink, LuEye, LuEyeOff } from "react-icons/lu";
 
 interface ProjectCardProps {
 	slug: string;
@@ -34,7 +30,7 @@ const statusMeta: Record<ProjectStatus, { label: string; className: string }> =
 		},
 		archived: {
 			label: "Archived",
-			className: "bg-stone-200 text-stone-700",
+			className: "border border-amber-500 bg-amber-50 text-amber-700",
 		},
 	};
 
@@ -105,7 +101,7 @@ const ProjectCard = ({
 									onClick={() => setShowPreview((prev) => !prev)}
 									className="project-card-action"
 								>
-									{showPreview ? <EyeOffIcon /> : <EyeIcon />}
+									{showPreview ? <LuEyeOff /> : <LuEye />}
 								</Button>
 							)}
 
@@ -117,7 +113,7 @@ const ProjectCard = ({
 									className="project-card-action"
 									href={liveUrl}
 								>
-									<ExternalLinkIcon />
+									<LuExternalLink />
 								</a>
 							)}
 
@@ -129,7 +125,7 @@ const ProjectCard = ({
 									className="project-card-action"
 									href={githubUrl}
 								>
-									<GitHubIcon />
+									<FiGithub />
 								</a>
 							)}
 						</div>

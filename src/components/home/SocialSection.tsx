@@ -1,17 +1,23 @@
 import ButtonLink from "@/components/ui/ButtonLink";
-import { footerSocialLinks } from "@/data/social";
+import { SocialLinks } from "@/data/social";
 
 const SocialSection = () => {
 	return (
-		<section className="flex flex-col gap-2.5">
-			<div className="flex flex-wrap items-center gap-2.5">
-				{footerSocialLinks.map((link) => (
-					<ButtonLink key={link.id} href={link.href}>
-						<link.icon />
-						{link.name}
-					</ButtonLink>
-				))}
-			</div>
+		<section
+			aria-label="Social links"
+			className="flex w-full flex-wrap items-center justify-center gap-3 pt-1 md:w-auto md:justify-start"
+		>
+			{SocialLinks.map((link) => (
+				<ButtonLink
+					key={link.id}
+					ariaLabel={link.name}
+					href={link.href}
+					className="social-link"
+				>
+					<link.icon className="social-link-icon" />
+					<span className="social-link-tag">{link.name}</span>
+				</ButtonLink>
+			))}
 		</section>
 	);
 };

@@ -9,7 +9,10 @@ import remarkGfm from "remark-gfm";
 import remarkHtml from "remark-html";
 
 // Markdown source files for blog content.
-const postsDirectory = path.join(process.cwd(), "content/blog");
+const postsDirectory = path.join(process.cwd(), "src/data/blog");
+const markdownProcessor = remark().use(remarkGfm).use(remarkHtml, {
+	sanitize: false,
+});
 
 interface BlogPostMeta {
 	slug: string;
@@ -68,10 +71,7 @@ export const getBlogPostBySlug = (slug: string): BlogPost | null => {
 };
 
 export const renderMarkdown = async (markdown: string): Promise<string> => {
-	const processed = await remark()
-		.use(remarkGfm)
-		.use(remarkHtml, { sanitize: false })
-		.process(markdown);
+	const processed = await markdownProcessor.process(markdown);
 
 	return processed.toString();
 };

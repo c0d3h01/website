@@ -1,6 +1,5 @@
 export type ProjectStatus = "active" | "building" | "archived";
 
-// Source of truth for project cards across home and /projects.
 export interface Project {
 	id: number;
 	slug: string;

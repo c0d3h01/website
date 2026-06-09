@@ -1,9 +1,10 @@
-import { type ButtonHTMLAttributes, forwardRef } from "react";
+import type { ButtonHTMLAttributes, Ref } from "react";
 
 type ButtonVariant = "default" | "unstyled";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	variant?: ButtonVariant;
+	ref?: Ref<HTMLButtonElement>;
 }
 
 const variantClassName: Record<ButtonVariant, string> = {
@@ -11,18 +12,20 @@ const variantClassName: Record<ButtonVariant, string> = {
 	unstyled: "",
 };
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-	({ type = "button", variant = "default", className, ...props }, ref) => {
-		const resolvedClassName = [variantClassName[variant], className]
-			.filter(Boolean)
-			.join(" ");
+const Button = ({
+	type = "button",
+	variant = "default",
+	className,
+	ref,
+	...props
+}: ButtonProps) => {
+	const resolvedClassName = [variantClassName[variant], className]
+		.filter(Boolean)
+		.join(" ");
 
-		return (
-			<button ref={ref} type={type} className={resolvedClassName} {...props} />
-		);
-	},
-);
-
-Button.displayName = "Button";
+	return (
+		<button ref={ref} type={type} className={resolvedClassName} {...props} />
+	);
+};
 
 export default Button;

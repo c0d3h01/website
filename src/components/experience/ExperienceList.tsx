@@ -2,12 +2,9 @@ import type { Experience } from "@/data/experience";
 
 interface ExperienceListProps {
 	items: Experience[];
-	headingTag?: "h2" | "h3";
 }
 
-const ExperienceList = ({ items, headingTag = "h3" }: ExperienceListProps) => {
-	const HeadingTag = headingTag;
-
+const ExperienceList = ({ items }: ExperienceListProps) => {
 	return (
 		<div className="section-copy flex flex-col gap-2.5">
 			{items.map(({ id, role, company, duration, location, highlights }) => (
@@ -16,9 +13,9 @@ const ExperienceList = ({ items, headingTag = "h3" }: ExperienceListProps) => {
 					className="rounded-md border border-(--gb-border) bg-(--gb-surface) p-3"
 				>
 					<div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-						<HeadingTag className="text-[1.02rem] font-semibold text-(--gb-fg0)">
+						<h3 className="text-[1.02rem] font-semibold text-(--gb-fg0)">
 							{role} · {company}
-						</HeadingTag>
+						</h3>
 						<p className="text-sm text-(--gb-fg2)">{duration}</p>
 					</div>
 					<p className="text-sm text-(--gb-fg2)">{location}</p>

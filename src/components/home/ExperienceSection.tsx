@@ -4,9 +4,7 @@ import ViewAllLink from "@/components/ui/ViewAllLink";
 import { experiences } from "@/data/experience";
 
 const ExperienceSection = () => {
-	const activeExperiences = experiences.filter((item) =>
-		/present/i.test(item.duration),
-	);
+	const activeExperiences = experiences.filter((item) => item.isCurrent);
 	const visibleExperiences =
 		activeExperiences.length > 0 ? activeExperiences : experiences.slice(0, 1);
 

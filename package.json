@@ -1,9 +1,9 @@
 {
 	"name": "website",
-	"version": "0.1.0",
-	"repository": "https://github.com/c0d3h01/website",
 	"author": "Harshal Sawant @ c0d3h01",
+	"version": "0.1.8",
 	"license": "GPL-3.0-only",
+	"repository": "https://github.com/c0d3h01/website",
 	"private": true,
 	"scripts": {
 		"dev": "next dev --turbopack",
@@ -20,25 +20,25 @@
 	"dependencies": {
 		"gray-matter": "^4.0.3",
 		"next": "16.1.6",
-		"react": "^19.2.4",
-		"react-dom": "^19.2.4",
-		"react-icons": "^5.5.0",
+		"react": "^19.2.7",
+		"react-dom": "^19.2.7",
+		"react-icons": "^5.6.0",
 		"remark": "^15.0.1",
 		"remark-gfm": "^4.0.1",
 		"remark-html": "^16.0.1",
 		"server-only": "^0.0.1"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.4.3",
-		"@next/bundle-analyzer": "^16.1.6",
-		"@tailwindcss/postcss": "^4.1.18",
-		"@types/node": "^25.2.3",
-		"@types/react": "^19.2.14",
+		"@biomejs/biome": "^2.4.16",
+		"@next/bundle-analyzer": "^16.2.7",
+		"@tailwindcss/postcss": "^4.3.0",
+		"@types/node": "^25.9.2",
+		"@types/react": "^19.2.17",
 		"@types/react-dom": "^19.2.3",
-		"@vitest/coverage-v8": "^4.0.18",
-		"postcss": "^8.5.6",
-		"tailwindcss": "^4.1.18",
+		"@vitest/coverage-v8": "^4.1.8",
+		"postcss": "^8.5.15",
+		"tailwindcss": "^4.3.0",
 		"typescript": "^5.9.3",
-		"vitest": "^4.0.18"
+		"vitest": "^4.1.8"
 	}
 }

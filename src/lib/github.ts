@@ -13,8 +13,10 @@ const withCacheBuster = (url: string, version?: string): string => {
 		return url;
 	}
 
-	const separator = url.includes("?") ? "&" : "?";
-	return `${url}${separator}v=${encodeURIComponent(version)}`;
+	const cacheBustedUrl = new URL(url);
+	cacheBustedUrl.searchParams.set("v", version);
+
+	return cacheBustedUrl.toString();
 };
 
 export const getGitHubUser = unstable_cache(

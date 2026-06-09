@@ -5,14 +5,14 @@ const SkillsSection = () => {
 	return (
 		<section className="flex flex-col gap-2">
 			<SectionHeading title="Skills & Tools" />
-			<div className="flex flex-wrap gap-1.5">
-				{skills.map(({ id, icon: Icon, text }) => (
-					<span key={id} className="skills-card">
+			<ul className="flex flex-wrap gap-1.5" aria-label="Skills and tools">
+				{skills.map(({ icon: Icon, name }) => (
+					<li key={name} className="skills-card">
 						<Icon />
-						{text}
-					</span>
+						{name}
+					</li>
 				))}
-			</div>
+			</ul>
 		</section>
 	);
 };

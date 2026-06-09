@@ -31,22 +31,4 @@ const displayFont = localFont({
 	variable: "--font-plus-jakarta-sans-local",
 });
 
-const monoFont = localFont({
-	src: [
-		{
-			path: "../../public/fonts/jetbrains-mono/jetbrains-mono-latin-wght-normal.woff2",
-			style: "normal",
-			weight: "100 800",
-		},
-		{
-			path: "../../public/fonts/jetbrains-mono/jetbrains-mono-latin-wght-italic.woff2",
-			style: "italic",
-			weight: "100 800",
-		},
-	],
-	display: "swap",
-	preload: false,
-	variable: "--font-jetbrains-mono-local",
-});
-
-export const siteFontVariables = `${bodyFont.variable} ${displayFont.variable} ${monoFont.variable}`;
+export const siteFontVariables = `${bodyFont.variable} ${displayFont.variable}`;

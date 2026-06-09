@@ -1,3 +1,4 @@
+import { profile } from "@/data/github";
 import type { Metadata } from "next";
 import type { ComponentType } from "react";
 import { BiLogoPostgresql } from "react-icons/bi";
@@ -6,40 +7,35 @@ import { DiJavascript } from "react-icons/di";
 import { FaDocker, FaRust } from "react-icons/fa";
 import { FaGithub, FaGolang, FaPython } from "react-icons/fa6";
 import { IoLogoNodejs } from "react-icons/io5";
-import { RiJavaLine, RiNextjsLine, RiReactjsLine } from "react-icons/ri";
-import { SiDjango, SiNixos, SiPostman, SiRedis } from "react-icons/si";
-import { TbBracketsAngle, TbBrandTypescript } from "react-icons/tb";
+import { RiNextjsLine, RiReactjsLine } from "react-icons/ri";
+import { SiDjango, SiNixos, SiPostman } from "react-icons/si";
+import { TbBrandTypescript } from "react-icons/tb";
 import { VscTerminalLinux } from "react-icons/vsc";
-import { profile } from "@/data/github";
 
 type IconComponent = ComponentType<{ className?: string }>;
 
 interface Skill {
-	id: number;
 	icon: IconComponent;
-	text: string;
+	name: string;
 }
 
 export const skills: Skill[] = [
-	{ id: 1, icon: FaGolang, text: "Go" },
-	{ id: 2, icon: FaRust, text: "Rust" },
-	{ id: 3, icon: TbBracketsAngle, text: "C++" },
-	{ id: 4, icon: FaPython, text: "Python" },
-	{ id: 5, icon: RiJavaLine, text: "Java" },
-	{ id: 6, icon: BsFiletypeSql, text: "SQL" },
-	{ id: 7, icon: IoLogoNodejs, text: "Node.js" },
-	{ id: 8, icon: SiDjango, text: "Django" },
-	{ id: 9, icon: BiLogoPostgresql, text: "PostgreSQL" },
-	{ id: 10, icon: SiRedis, text: "Redis" },
-	{ id: 11, icon: FaDocker, text: "Docker" },
-	{ id: 12, icon: VscTerminalLinux, text: "Linux" },
-	{ id: 13, icon: SiNixos, text: "Nix, NixOS" },
-	{ id: 14, icon: FaGithub, text: "GitHub Actions" },
-	{ id: 15, icon: SiPostman, text: "API Testing" },
-	{ id: 16, icon: TbBrandTypescript, text: "TypeScript" },
-	{ id: 17, icon: DiJavascript, text: "JavaScript" },
-	{ id: 18, icon: RiReactjsLine, text: "React" },
-	{ id: 19, icon: RiNextjsLine, text: "Next.js" },
+	{ icon: FaGolang, name: "Go" },
+	{ icon: FaRust, name: "Rust" },
+	{ icon: FaPython, name: "Python" },
+	{ icon: BsFiletypeSql, name: "SQL" },
+	{ icon: IoLogoNodejs, name: "Node.js" },
+	{ icon: SiDjango, name: "Django" },
+	{ icon: BiLogoPostgresql, name: "PostgreSQL" },
+	{ icon: FaDocker, name: "Docker" },
+	{ icon: VscTerminalLinux, name: "Linux" },
+	{ icon: SiNixos, name: "Nix, NixOS" },
+	{ icon: FaGithub, name: "GitHub Actions" },
+	{ icon: SiPostman, name: "API Testing" },
+	{ icon: TbBrandTypescript, name: "TypeScript" },
+	{ icon: DiJavascript, name: "JavaScript" },
+	{ icon: RiReactjsLine, name: "React" },
+	{ icon: RiNextjsLine, name: "Next.js" },
 ];
 
 const normalizeSiteUrl = (url: string) => url.replace(/\/$/, "");

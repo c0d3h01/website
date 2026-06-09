@@ -1,3 +1,4 @@
+/* biome-ignore-all lint/complexity/noImportantStyles: reduced-motion overrides need cascade priority. */
 @import "tailwindcss";
 
 :root {
@@ -16,9 +17,6 @@
 		var(--font-plus-jakarta-sans-local), "Aptos Display", "Segoe UI Variable",
 		"Segoe UI", "Inter", "SF Pro Display", "Helvetica Neue", Helvetica, Arial,
 		sans-serif;
-	--font-scihub:
-		var(--font-jetbrains-mono-local), ui-monospace, SFMono-Regular, Menlo,
-		Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 body {
@@ -106,6 +104,56 @@ h3 {
 	border: 1px solid var(--gb-border);
 }
 
+.social-link {
+	@apply relative overflow-visible px-2 py-1.5;
+	min-width: 2.5rem;
+	min-height: 2.5rem;
+}
+
+.social-link-icon {
+	@apply size-4 shrink-0;
+	color: var(--gb-fg0);
+}
+
+.social-link-tag {
+	position: absolute;
+	left: 50%;
+	top: calc(100% + 0.45rem);
+	transform: translateX(-50%) translateY(-0.2rem) scale(0.96);
+	opacity: 0;
+	pointer-events: none;
+	white-space: nowrap;
+	border-radius: 999px;
+	border: 1px solid var(--gb-border);
+	background: var(--gb-surface-strong);
+	padding: 0.22rem 0.55rem;
+	font-size: 0.72rem;
+	line-height: 1;
+	color: var(--gb-fg1);
+	transition:
+		opacity 0.16s ease,
+		transform 0.16s ease;
+	z-index: 10;
+}
+
+.social-link:hover .social-link-tag,
+.social-link:focus-visible .social-link-tag {
+	opacity: 1;
+	transform: translateX(-50%) translateY(0) scale(1);
+}
+
+@media (hover: none), (pointer: coarse) {
+	.social-link {
+		min-width: 44px;
+		min-height: 44px;
+		padding: 0.75rem;
+	}
+
+	.social-link-tag {
+		top: calc(100% + 0.5rem);
+	}
+}
+
 .content-rail {
 	border-inline: 1px solid var(--gb-border);
 	padding-inline: clamp(0.7rem, 1.35vw, 1rem);
@@ -118,17 +166,6 @@ h3 {
 	border: 1px solid var(--gb-border);
 	overflow-wrap: anywhere;
 	word-break: break-word;
-}
-
-.blog-shell {
-	font-family: var(--font-scihub), monospace;
-	font-size: 0.97rem;
-	line-height: 1.55;
-}
-
-.blog-shell :where(h1, h2, h3, h4, h5, h6) {
-	font-family: var(--font-scihub), monospace;
-	letter-spacing: 0.01em;
 }
 
 .blog-prose {

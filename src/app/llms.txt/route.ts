@@ -31,7 +31,7 @@ const toAbsoluteUrl = (value: string) => {
 const buildLlmsText = () => {
 	const aboutText = stripHtml(profile.aboutHtml);
 	const primarySkills = Array.from(
-		new Set(skills.map((skill) => skill.text)),
+		new Set(skills.map((skill) => skill.name)),
 	).join(", ");
 
 	const experienceLines = experiences
@@ -81,7 +81,7 @@ const buildLlmsText = () => {
 			cal: `https://cal.com/${profile.calComUsername}`,
 		},
 		resume: toAbsoluteUrl("/assets/docs/resume.pdf"),
-		primarySkills: skills.map((skill) => skill.text),
+		primarySkills: skills.map((skill) => skill.name),
 		lastUpdated: today,
 	};
 

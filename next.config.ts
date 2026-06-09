@@ -7,6 +7,15 @@ const withBundleAnalyzer = createBundleAnalyzer({
 
 const nextConfig: NextConfig = {
 	poweredByHeader: false,
+	async redirects() {
+		return [
+			{
+				source: "/resume",
+				destination: "/assets/docs/resume.pdf",
+				permanent: false,
+			},
+		];
+	},
 	images: {
 		formats: ["image/avif", "image/webp"],
 		minimumCacheTTL: 60 * 60 * 24 * 30,

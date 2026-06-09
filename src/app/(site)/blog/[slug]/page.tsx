@@ -1,3 +1,4 @@
+// biome-ignore-all lint/security/noDangerouslySetInnerHtml: rendered markdown comes from local blog files.
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -20,7 +21,7 @@ export const generateStaticParams = () => {
 	}));
 };
 
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 export const generateMetadata = async ({
 	params,

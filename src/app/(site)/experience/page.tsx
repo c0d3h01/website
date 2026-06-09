@@ -28,7 +28,7 @@ export const dynamic = "force-static";
 const ExperiencePage = () => {
 	return (
 		<PageShell title="Experience">
-			<ExperienceList items={experiences} headingTag="h2" />
+			<ExperienceList items={experiences} />
 		</PageShell>
 	);
 };

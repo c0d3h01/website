@@ -4,8 +4,6 @@ type BlogLayoutProps = {
 	children: ReactNode;
 };
 
-const BlogLayout = ({ children }: BlogLayoutProps) => (
-	<div className="blog-shell">{children}</div>
-);
+const BlogLayout = ({ children }: BlogLayoutProps) => children;
 
 export default BlogLayout;
