@@ -1,8 +1,12 @@
-import type { ButtonHTMLAttributes, Ref } from "react";
+"use client";
+
+import { type HTMLMotionProps, motion } from "motion/react";
+import type { Ref } from "react";
+import { hoverScale, springTransition, tapScale } from "@/lib/motion";
 
 type ButtonVariant = "default" | "unstyled";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends HTMLMotionProps<"button"> {
 	variant?: ButtonVariant;
 	ref?: Ref<HTMLButtonElement>;
 }
@@ -24,7 +28,15 @@ const Button = ({
 		.join(" ");
 
 	return (
-		<button ref={ref} type={type} className={resolvedClassName} {...props} />
+		<motion.button
+			ref={ref}
+			type={type}
+			className={resolvedClassName}
+			whileHover={hoverScale}
+			whileTap={tapScale}
+			transition={springTransition}
+			{...props}
+		/>
 	);
 };
 
