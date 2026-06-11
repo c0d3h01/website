@@ -1,6 +1,10 @@
+"use client";
+
+import { motion } from "motion/react";
+import Image, { type ImageProps } from "next/image";
 import SocialSection from "@/components/home/SocialSection";
 import ImagePreview from "@/components/ui/ImagePreview";
-import Image, { type ImageProps } from "next/image";
+import { gentleSpring, staggerContainer, staggerItem } from "@/lib/motion";
 
 interface ProfileHeaderProps {
 	userName: string;
@@ -17,7 +21,12 @@ const ProfileHeader = ({
 
 	return (
 		<section className="flex flex-col items-center gap-3 text-center md:flex-row md:items-center md:gap-4 md:text-left">
-			<div className="shrink-0">
+			<motion.div
+				className="shrink-0"
+				initial={{ opacity: 0, scale: 0.9 }}
+				animate={{ opacity: 1, scale: 1 }}
+				transition={gentleSpring}
+			>
 				<ImagePreview
 					src={userImage}
 					alt={imageAlt}
@@ -38,15 +47,22 @@ const ProfileHeader = ({
 						</span>
 					}
 				/>
-			</div>
+			</motion.div>
 
-			<div className="flex min-w-0 flex-col items-center justify-center gap-2 md:items-start">
-				<div className="flex flex-col gap-1">
+			<motion.div
+				className="flex min-w-0 flex-col items-center justify-center gap-2 md:items-start"
+				variants={staggerContainer}
+				initial="hidden"
+				animate="visible"
+			>
+				<motion.div className="flex flex-col gap-1" variants={staggerItem}>
 					<h1 className="head-name py-0 normal-case">{userName}</h1>
 					<p>{userBio}</p>
-				</div>
-				<SocialSection />
-			</div>
+				</motion.div>
+				<motion.div variants={staggerItem}>
+					<SocialSection />
+				</motion.div>
+			</motion.div>
 		</section>
 	);
 };
