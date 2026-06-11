@@ -21,16 +21,21 @@ const BlogPostCard = ({
 	const publishedAt = formatShortDate(date);
 
 	return (
-		<Link href={href} className="blog-card block">
-			<div className="flex w-full flex-col gap-0.5">
-				<h2 className="wrap-break-word text-xl font-semibold md:text-lg">
-					{title}
-				</h2>
-				<p className="text-sm opacity-70">{publishedAt}</p>
-				<p className="wrap-break-word opacity-80">{description}</p>
-			</div>
-		</Link>
-		// </motion.div>
+		<motion.div
+			whileHover={hoverLift}
+			whileTap={tapScale}
+			transition={springTransition}
+		>
+			<Link href={href} className="blog-card block">
+				<div className="flex w-full flex-col gap-0.5">
+					<h2 className="wrap-break-word text-xl font-semibold md:text-lg">
+						{title}
+					</h2>
+					<p className="text-sm opacity-70">{publishedAt}</p>
+					<p className="wrap-break-word opacity-80">{description}</p>
+				</div>
+			</Link>
+		</motion.div>
 	);
 };
 
