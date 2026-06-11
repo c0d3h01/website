@@ -1,5 +1,3 @@
-import type { IconComponent } from "@/data/github";
-import { profile } from "@/data/github";
 import {
 	FaGithub,
 	FaLinkedinIn,
@@ -8,7 +6,15 @@ import {
 } from "react-icons/fa6";
 import { LuCalendarClock } from "react-icons/lu";
 import { MdOutlineMail } from "react-icons/md";
-import { SiBitcoin, SiBuymeacoffee, SiCodeforces, SiEthereum, SiSolana } from "react-icons/si";
+import {
+	SiBitcoin,
+	SiBuymeacoffee,
+	SiCodeforces,
+	SiEthereum,
+	SiSolana,
+} from "react-icons/si";
+import type { IconComponent } from "@/data/github";
+import { profile } from "@/data/github";
 
 export const emailLink = `mailto:${profile.email}?subject=Interested%20in%20Hiring%20You`;
 export const resumeFilePath = "/assets/docs/resume.pdf";
