@@ -1,6 +1,10 @@
 /* biome-ignore-all lint/complexity/noImportantStyles: reduced-motion overrides need cascade priority. */
 @import "tailwindcss";
 
+html {
+	scroll-behavior: smooth;
+}
+
 :root {
 	color-scheme: light;
 	--gb-fg0: #0f172a;
