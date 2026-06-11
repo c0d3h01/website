@@ -1,4 +1,3 @@
-import { profile } from "@/data/github";
 import type { Metadata } from "next";
 import type { ComponentType } from "react";
 import { BiLogoPostgresql } from "react-icons/bi";
@@ -11,6 +10,7 @@ import { RiNextjsLine, RiReactjsLine } from "react-icons/ri";
 import { SiDjango, SiNixos, SiPostman } from "react-icons/si";
 import { TbBrandTypescript } from "react-icons/tb";
 import { VscTerminalLinux } from "react-icons/vsc";
+import { profile } from "@/data/github";
 
 type IconComponent = ComponentType<{ className?: string }>;
 

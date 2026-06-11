@@ -1,18 +1,29 @@
+"use client";
+
+import { motion } from "motion/react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { skills } from "@/data/site";
+import { staggerContainer, staggerItem } from "@/lib/motion";
 
 const SkillsSection = () => {
 	return (
 		<section className="flex flex-col gap-2">
 			<SectionHeading title="Skills & Tools" />
-			<ul className="flex flex-wrap gap-1.5" aria-label="Skills and tools">
+			<motion.ul
+				className="flex flex-wrap gap-1.5"
+				aria-label="Skills and tools"
+				variants={staggerContainer}
+				initial="hidden"
+				whileInView="visible"
+				viewport={{ once: true, margin: "-40px" }}
+			>
 				{skills.map(({ icon: Icon, name }) => (
-					<li key={name} className="skills-card">
+					<motion.li key={name} className="skills-card" variants={staggerItem}>
 						<Icon />
 						{name}
-					</li>
+					</motion.li>
 				))}
-			</ul>
+			</motion.ul>
 		</section>
 	);
 };

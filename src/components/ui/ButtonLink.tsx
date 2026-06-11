@@ -1,5 +1,9 @@
+"use client";
+
+import { motion } from "motion/react";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { hoverScale, springTransition, tapScale } from "@/lib/motion";
 
 interface ButtonLinkProps {
 	href: string;
@@ -21,15 +25,22 @@ const ButtonLink = ({
 	const resolvedClassName = ["btn", className].filter(Boolean).join(" ");
 
 	return (
-		<Link
-			href={href}
-			aria-label={ariaLabel}
-			target={target}
-			rel={rel}
-			className={resolvedClassName}
+		<motion.div
+			whileHover={hoverScale}
+			whileTap={tapScale}
+			transition={springTransition}
+			className="inline-flex"
 		>
-			{children}
-		</Link>
+			<Link
+				href={href}
+				aria-label={ariaLabel}
+				target={target}
+				rel={rel}
+				className={resolvedClassName}
+			>
+				{children}
+			</Link>
+		</motion.div>
 	);
 };
 

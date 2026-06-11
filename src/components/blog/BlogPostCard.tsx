@@ -1,5 +1,9 @@
+"use client";
+
+import { motion } from "motion/react";
 import Link from "next/link";
 import { formatShortDate } from "@/lib/date";
+import { hoverLift, springTransition, tapScale } from "@/lib/motion";
 
 interface BlogPostCardProps {
 	title: string;
@@ -26,6 +30,7 @@ const BlogPostCard = ({
 				<p className="wrap-break-word opacity-80">{description}</p>
 			</div>
 		</Link>
+		// </motion.div>
 	);
 };
 

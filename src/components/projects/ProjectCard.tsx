@@ -1,11 +1,13 @@
 "use client";
 
-import Button from "@/components/ui/Button";
-import type { ProjectStatus } from "@/data/projects";
+import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
 import { FiGithub } from "react-icons/fi";
 import { LuExternalLink, LuEye, LuEyeOff } from "react-icons/lu";
+import Button from "@/components/ui/Button";
+import type { ProjectStatus } from "@/data/projects";
+import { hoverLift, springTransition, tapScale } from "@/lib/motion";
 
 interface ProjectCardProps {
 	slug: string;
@@ -19,20 +21,20 @@ interface ProjectCardProps {
 }
 
 const statusMeta: Record<ProjectStatus, { label: string; className: string }> =
-	{
-		active: {
-			label: "Active",
-			className: "bg-emerald-100 text-emerald-700",
-		},
-		building: {
-			label: "Building",
-			className: "bg-amber-100 text-amber-700",
-		},
-		archived: {
-			label: "Archived",
-			className: "border border-amber-500 bg-amber-50 text-amber-700",
-		},
-	};
+{
+	active: {
+		label: "Active",
+		className: "bg-emerald-100 text-emerald-700",
+	},
+	building: {
+		label: "Building",
+		className: "bg-amber-100 text-amber-700",
+	},
+	archived: {
+		label: "Archived",
+		className: "border border-amber-500 bg-amber-50 text-amber-700",
+	},
+};
 
 const ProjectCard = ({
 	slug,
@@ -60,24 +62,32 @@ const ProjectCard = ({
 				className="absolute inset-0 z-20 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--gb-fg0)"
 			/>
 
-			{showPreview && hasPreview && (
-				<div className="relative z-30 overflow-hidden">
-					<div className="p-2">
-						<video
-							className="w-full rounded-md"
-							loop
-							autoPlay
-							muted
-							playsInline
-							controls
-							preload="metadata"
-						>
-							<source src={previewVideo} type="video/mp4" />
-							Your browser does not support the video tag.
-						</video>
-					</div>
-				</div>
-			)}
+			<AnimatePresence>
+				{showPreview && hasPreview && (
+					<motion.div
+						className="relative z-30 overflow-hidden"
+						initial={{ height: 0, opacity: 0 }}
+						animate={{ height: "auto", opacity: 1 }}
+						exit={{ height: 0, opacity: 0 }}
+						transition={{ duration: 0.25, ease: "easeInOut" }}
+					>
+						<div className="p-2">
+							<video
+								className="w-full rounded-md"
+								loop
+								autoPlay
+								muted
+								playsInline
+								controls
+								preload="metadata"
+							>
+								<source src={previewVideo} type="video/mp4" />
+								Your browser does not support the video tag.
+							</video>
+						</div>
+					</motion.div>
+				)}
+			</AnimatePresence>
 
 			<div className="p-2">
 				<div className="flex flex-col gap-1 md:gap-0">

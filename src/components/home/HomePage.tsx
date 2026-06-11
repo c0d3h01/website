@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import AboutSection from "@/components/home/AboutSection";
 import ExperienceSection from "@/components/home/ExperienceSection";
 import FooterSection from "@/components/home/FooterSection";
@@ -8,7 +9,6 @@ import SkillsSection from "@/components/home/SkillsSection";
 import SupportSection from "@/components/home/SupportSection";
 import WritingsSection from "@/components/home/WritingsSection";
 import Screen from "@/layout/Screen";
-import { Suspense } from "react";
 
 const HomePage = () => {
 	return (
