@@ -2,12 +2,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { profile } from "@/data/github";
-import { defaultOgImage } from "@/data/site";
-import AppShell from "@/layout/AppShell";
-import Screen from "@/layout/Screen";
+import { defaultOgImage, profile } from "@/content";
 import { getBlogPostBySlug, getBlogPosts, renderMarkdown } from "@/lib/blog";
-import { formatLongDate } from "@/lib/date";
+import { formatLongDate } from "@/lib/utils";
 
 type BlogPostPageProps = {
 	params: Promise<{
@@ -78,26 +75,22 @@ const BlogPostPage = async ({ params }: BlogPostPageProps) => {
 	const htmlContent = await renderMarkdown(post.content);
 
 	return (
-		<AppShell>
-			<Screen>
-				<article className="content-rail flex flex-col gap-4">
-					<div className="flex flex-wrap items-center justify-between gap-2">
-						<p className="text-sm opacity-70">{formatLongDate(post.date)}</p>
-						<Link className="btn text-sm" href="/blog">
-							{"<- Back to Blog"}
-						</Link>
-					</div>
+		<article className="content-rail flex flex-col gap-4">
+			<div className="flex flex-wrap items-center justify-between gap-2">
+				<p className="text-sm opacity-70">{formatLongDate(post.date)}</p>
+				<Link className="btn text-sm" href="/blog">
+					{"<- Back to Blog"}
+				</Link>
+			</div>
 
-					<h1 className="wrap-break-word text-2xl font-bold">{post.title}</h1>
-					<p className="wrap-break-word opacity-80">{post.description}</p>
+			<h1 className="wrap-break-word text-2xl font-bold">{post.title}</h1>
+			<p className="wrap-break-word opacity-80">{post.description}</p>
 
-					<div
-						className="blog-prose flex flex-col gap-4"
-						dangerouslySetInnerHTML={{ __html: htmlContent }}
-					/>
-				</article>
-			</Screen>
-		</AppShell>
+			<div
+				className="blog-prose flex flex-col gap-4"
+				dangerouslySetInnerHTML={{ __html: htmlContent }}
+			/>
+		</article>
 	);
 };
 

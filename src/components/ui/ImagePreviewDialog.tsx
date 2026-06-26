@@ -11,7 +11,7 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import Button from "@/components/ui/Button";
-import { backdropVariants, dialogContentVariants } from "@/lib/motion";
+import { backdropVariants, dialogContentVariants } from "@/lib/utils";
 
 interface ImagePreviewDialogProps {
 	isOpen: boolean;
@@ -80,6 +80,7 @@ const ImagePreviewDialog = ({
 		<AnimatePresence>
 			{isOpen && (
 				<motion.div
+					key="image-preview-backdrop"
 					role="dialog"
 					aria-modal="true"
 					aria-label={dialogLabel}

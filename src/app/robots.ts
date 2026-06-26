@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { siteUrl } from "@/data/site";
+import { siteUrl } from "@/content";
 
 const robots = (): MetadataRoute.Robots => {
 	return {

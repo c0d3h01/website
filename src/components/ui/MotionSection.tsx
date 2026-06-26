@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import type { CSSProperties, ReactNode } from "react";
-import { fadeSlideUp } from "@/lib/motion";
+import { fadeSlideUp } from "@/lib/utils";
 
 interface MotionSectionProps {
 	children: ReactNode;

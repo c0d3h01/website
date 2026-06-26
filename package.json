@@ -1,21 +1,13 @@
 {
 	"name": "website",
-	"author": "Harshal Sawant @ c0d3h01",
-	"version": "0.1.8",
-	"license": "GPL-3.0-only",
-	"repository": "https://github.com/c0d3h01/website",
+	"version": "1.2.9",
 	"private": true,
 	"scripts": {
-		"dev": "next dev --turbopack",
-		"dev:webpack": "next dev",
+		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "biome check --write .",
-		"typecheck": "next typegen && tsc --noEmit --incremental false",
-		"fmt": "biome format --write .",
-		"test": "vitest",
-		"test:run": "vitest run",
-		"test:coverage": "vitest run --coverage"
+		"lint": "biome check",
+		"fmt": "biome format --write"
 	},
 	"dependencies": {
 		"gray-matter": "^4.0.3",
@@ -36,7 +28,6 @@
 		"@types/node": "^25.9.2",
 		"@types/react": "^19.2.17",
 		"@types/react-dom": "^19.2.3",
-		"@vitest/coverage-v8": "^4.1.8",
 		"postcss": "^8.5.15",
 		"tailwindcss": "^4.3.0",
 		"typescript": "^5.9.3",

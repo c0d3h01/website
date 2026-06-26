@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import Link from "next/link";
 import { MdKeyboardDoubleArrowDown } from "react-icons/md";
-import { hoverScale, springTransition, tapScale } from "@/lib/motion";
+import { hoverScale, springTransition, tapScale } from "@/lib/utils";
 
 interface ViewAllLinkProps {
 	href: string;
