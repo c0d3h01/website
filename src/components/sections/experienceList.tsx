@@ -1,8 +1,4 @@
-"use client";
-
-import { motion } from "motion/react";
 import type { Experience } from "@/content";
-import { staggerContainer, staggerItem } from "@/lib/utils";
 
 interface ExperienceListProps {
 	items: Experience[];
@@ -10,18 +6,11 @@ interface ExperienceListProps {
 
 const ExperienceList = ({ items }: ExperienceListProps) => {
 	return (
-		<motion.div
-			className="section-copy flex flex-col gap-2.5"
-			variants={staggerContainer}
-			initial="hidden"
-			whileInView="visible"
-			viewport={{ once: true, margin: "-40px" }}
-		>
+		<div className="section-copy flex flex-col gap-2.5">
 			{items.map(({ id, role, company, duration, location, highlights }) => (
-				<motion.article
+				<article
 					key={id}
 					className="rounded-md border border-(--gb-border) bg-(--gb-surface) p-3"
-					variants={staggerItem}
 				>
 					<div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
 						<h3 className="text-[1.02rem] font-semibold text-(--gb-fg0)">
@@ -35,9 +24,9 @@ const ExperienceList = ({ items }: ExperienceListProps) => {
 							<li key={`${id}-${highlight}`}>{highlight}</li>
 						))}
 					</ul>
-				</motion.article>
+				</article>
 			))}
-		</motion.div>
+		</div>
 	);
 };
 

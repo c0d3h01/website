@@ -62,8 +62,26 @@ h3 {
 	border-right: 1px solid rgba(31, 41, 55, 0.14);
 	padding-inline: clamp(0.7rem, 1.35vw, 1rem);
 	padding-block: clamp(0.35rem, 0.85vw, 0.55rem);
+}
+
+/* Profile header is short and stable — a tight fluid placeholder keeps
+   initial paint fast without snapping when off-screen. */
+.section-stack > .section-profile {
 	content-visibility: auto;
-	contain-intrinsic-size: 480px;
+	contain-intrinsic-size: auto 220px;
+}
+
+/* Static, sub-200px sections — content-visibility off entirely to prevent
+   intrinsic-size snapping on tiny modules. */
+.section-stack > .section-static {
+	/* no content-visibility */
+}
+
+/* Dynamic lists (projects, blog, experience) — fluid auto metric sized for
+   list-length variation; auto lets the browser refine once measured. */
+.section-stack > .section-fluid {
+	content-visibility: auto;
+	contain-intrinsic-size: auto 600px;
 }
 
 .section-copy p {
@@ -250,4 +268,20 @@ h3 {
 .project-card-action:focus-visible {
 	outline: 2px solid var(--gb-fg0);
 	outline-offset: 2px;
+}
+
+/* Project preview reveal — GPU-only (clip-path + opacity), no layout
+   reflow. Toggled via [data-open] by the user-driven open/close button. */
+.project-preview-clip {
+	clip-path: inset(0 0 100% 0);
+	opacity: 0;
+	transition:
+		clip-path 0.22s ease,
+		opacity 0.22s ease;
+	will-change: clip-path, opacity;
+}
+
+.project-preview-clip[data-open="true"] {
+	clip-path: inset(0 0 0 0);
+	opacity: 1;
 }

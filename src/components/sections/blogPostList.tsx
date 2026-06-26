@@ -4,8 +4,7 @@ import dynamic from "next/dynamic";
 import type { BlogPostMeta } from "@/content";
 
 // Lazy-load the per-card component (motion + next/link). Keeps the initial
-// bundle smaller and lets the chunk resolve while the MotionSection parent
-// is still in its `hidden` viewport state.
+// bundle smaller and lets the chunk resolve while the parent layout paints.
 const BlogPostCard = dynamic(() => import("@/components/sections/blogPostCard"), {
 	loading: () => (
 		<div className="flex flex-col gap-3.5 md:gap-2.5" aria-hidden="true" />

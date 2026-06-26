@@ -26,9 +26,19 @@ The avatar pipeline queries the unauthenticated GitHub redirect layer — `https
 
 Blog posts live as `.md` files under `src/content/blog/`. Projects, skills, experience, and social links are typed, immutable arrays in `src/content/index.ts`. No migration overhead, no CMS lock-in. Authoring is a `git commit` away.
 
-### GPU-Accelerated Motion
+### Zero Visual Intersection Delay
 
-Animations run on a `transform`/`opacity` budget through `motion` (the new Motion One family) — no layout thrash, no jank. A custom Radar Status Indicator marks active projects with a continuously animated, GPU-composited pulse.
+The rendering pipeline carries **no scroll-listening observers** and **no passive structural reveal animations**. Every page section paints at first frame with its final layout, removing intersection-observer overhead from the main thread. Scroll handoff stays on the compositor; the result is instantaneous layout rendering and frame-stable scrolling on low-tier mobile hardware.
+
+### Predictive Layout Containment
+
+`content-visibility: auto` is enabled on heavy sections, but with fluid intrinsic fallback dimensions tuned to each surface's measured profile:
+
+- **Dynamic lists** (Projects, Blog, Experience) — `contain-intrinsic-size: auto 600px;` for height-variable lists.
+- **Stable profile header** — `contain-intrinsic-size: auto 220px;` for a short, predictable container.
+- **Static lightweight wrappers** (About, Skills, Hire, Support, Footer) — `content-visibility` disabled to prevent intrinsic-size snap on sub-200px modules.
+
+The browser refines each value on first measurement, eliminating the layout thrash caused by uniform, rigid placeholders.
 
 ### Static-First Architecture
 
@@ -45,7 +55,7 @@ Every route is prerendered at build time. React Server Components handle data hy
 | **Language**         | TypeScript (strict)       | 5.9.3          | End-to-end type safety across server/client boundaries            |
 | **Styling Engine**   | Tailwind CSS 4            | 4.3.0          | Utility-first CSS with native CSS variable theming                |
 | **PostCSS Layer**    | `@tailwindcss/postcss`    | 4.3.0          | Single-pass Tailwind compilation pipeline                         |
-| **Animations**       | `motion`                  | 12.40.0        | GPU-accelerated transitions, scroll-reveal, gesture primitives    |
+| **Animations**       | `motion`                  | 12.40.0        | User-triggered transitions + gesture primitives (no scroll-reveal) |
 | **Content Pipeline** | `gray-matter` + `remark`  | 4.0.3 / 15.0.1 | Frontmatter parsing, GFM markdown → HTML at build time            |
 | **Icons**            | `react-icons`             | 5.6.0          | Tree-shakeable icon set across FA, BI, SI families                |
 | **Lint/Format**      | Biome                     | 2.4.16         | Single-binary formatter + linter, zero-config defaults            |
@@ -58,10 +68,11 @@ Every route is prerendered at build time. React Server Components handle data hy
 
 ```
 website/
-├── public/                       # Static assets (images, banners, favicon)
+├── public/                       # Static assets (banners, fonts)
+│   ├── fonts/                    # Self-hosted woff2 subsets
 │   └── images/
-│       ├── banners/
-│       └── icon.png
+│       └── banners/              # Animated project showcase
+│           └── projects.gif
 ├── src/
 │   ├── app/                      # Next.js App Router entry points
 │   │   ├── (site)/               # Site route group
@@ -106,7 +117,6 @@ website/
 │   │       ├── CryptoDonationSelectorClient.tsx
 │   │       ├── ImagePreview.tsx
 │   │       ├── ImagePreviewDialog.tsx
-│   │       ├── MotionSection.tsx
 │   │       ├── SectionHeading.tsx
 │   │       └── ViewAllLink.tsx
 │   ├── content/                  # Single source of truth for site data
@@ -134,6 +144,9 @@ website/
 - **Static Site Generation (SSG).** All routes are prerendered at build time. No runtime data fetching on read paths. `revalidate` is configured per route for incremental regeneration when needed.
 - **Localized bundle-splitting.** Per-route code-splitting is native to the App Router. Client islands are loaded only on routes that mount them.
 - **Next.js Image Optimization.** Remote avatar pattern configured via `images.remotePatterns` for `github.com`. AVIF + WebP output, 30-day minimum cache TTL.
+- **Isolated motion footprint.** `motion/react` is reserved for explicit user-triggered interactions: hover scale (`whileHover`), tap scale (`whileTap`), dropdown open/close (`AnimatePresence`), and modal backdrop/content. Scroll-reveal, viewport triggers, and mount-time entrance variants have been removed — sections paint at first frame with no intersection-observer cost.
+- **Snappy interactive physics.** Shared `springTransition` uses `stiffness: 400`, `damping: 30` for sub-150ms perceived tap latency. Dropdown and modal variants add `mass: 0.6` for crisper release. Every animated property is compositor-friendly (`scale`, `opacity`, `translate`, `clip-path`); no `width`/`height`/`top`/`left` keyframes ever reach the main thread.
+- **GPU-only preview reveal.** The project card video preview animates via `clip-path: inset()` + `opacity` toggle — purely compositor work, zero layout reflow on toggle.
 - **Strict TypeScript.** `"strict": true` with `noUncheckedIndexedAccess` and `noImplicitOverride`. Type errors block the build.
 - **Biome as a single binary.** Replaces ESLint + Prettier. Faster CI, one config file, zero plugin sprawl.
 

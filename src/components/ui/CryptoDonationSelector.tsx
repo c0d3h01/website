@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { FaWallet } from "react-icons/fa6";
 import Button from "@/components/ui/Button";
 import { cryptoDonationOptions } from "@/content";
-import { dropdownVariants, staggerContainer, staggerItem } from "@/lib/utils";
+import { dropdownVariants } from "@/lib/utils";
 
 const COPY_RESET_MS = 1800;
 
@@ -98,51 +98,45 @@ export default function CryptoDonationSelector() {
 						animate="visible"
 						exit="exit"
 					>
-						<motion.div
-							className="flex w-full flex-col gap-2 rounded-lg border border-(--gb-border) bg-(--gb-surface) p-2 shadow-xl ring-1 ring-black/5"
-							variants={staggerContainer}
-							initial="hidden"
-							animate="visible"
-						>
+						<div className="flex w-full flex-col gap-2 rounded-lg border border-(--gb-border) bg-(--gb-surface) p-2 shadow-xl ring-1 ring-black/5">
 							{cryptoDonationOptions.map((option) => {
 								const isCopied = copiedId === option.id;
 								return (
-									<motion.div key={option.id} variants={staggerItem}>
-										<Button
-											role="option"
-											aria-selected={isCopied}
-											className={`w-full justify-between gap-3 text-left transition-colors hover:bg-black/5 dark:hover:bg-white/10 ${
-												isCopied ? "border-(--gb-yellow)" : ""
-											}`}
-											onClick={() => handleCopy(option.id, option.address)}
-										>
-											<span className="flex items-center gap-2">
-												<option.icon className="size-5 shrink-0 text-(--gb-fg1)" />
-												<span className="flex flex-col items-start leading-tight">
-													<span className="text-sm font-medium text-(--gb-fg1)">
-														{option.name}
-													</span>
-													{option.shortName && (
-														<span className="text-xs text-(--gb-fg2)">
-															{option.shortName}
-														</span>
-													)}
+									<Button
+										key={option.id}
+										role="option"
+										aria-selected={isCopied}
+										className={`w-full justify-between gap-3 text-left transition-colors hover:bg-black/5 dark:hover:bg-white/10 ${
+											isCopied ? "border-(--gb-yellow)" : ""
+										}`}
+										onClick={() => handleCopy(option.id, option.address)}
+									>
+										<span className="flex items-center gap-2">
+											<option.icon className="size-5 shrink-0 text-(--gb-fg1)" />
+											<span className="flex flex-col items-start leading-tight">
+												<span className="text-sm font-medium text-(--gb-fg1)">
+													{option.name}
 												</span>
+												{option.shortName && (
+													<span className="text-xs text-(--gb-fg2)">
+														{option.shortName}
+													</span>
+												)}
 											</span>
-											<span
-												className={`text-xs font-medium ${
-													isCopied
-														? "text-green-500 dark:text-green-400"
-														: "text-(--gb-fg2)"
-												}`}
-											>
-												{isCopied ? "Copied!" : "Copy"}
-											</span>
-										</Button>
-									</motion.div>
+										</span>
+										<span
+											className={`text-xs font-medium ${
+												isCopied
+													? "text-green-500 dark:text-green-400"
+													: "text-(--gb-fg2)"
+											}`}
+										>
+											{isCopied ? "Copied!" : "Copy"}
+										</span>
+									</Button>
 								);
 							})}
-						</motion.div>
+						</div>
 					</motion.div>
 				)}
 			</AnimatePresence>

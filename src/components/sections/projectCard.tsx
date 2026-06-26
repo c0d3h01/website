@@ -1,13 +1,11 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
 import { FiGithub } from "react-icons/fi";
 import { LuExternalLink, LuEye, LuEyeOff } from "react-icons/lu";
 import Button from "@/components/ui/Button";
 import type { ProjectStatus } from "@/content";
-import { hoverLift, springTransition, tapScale } from "@/lib/utils";
 
 interface ProjectCardProps {
 	slug: string;
@@ -59,32 +57,28 @@ const ProjectCard = ({
 				className="absolute inset-0 z-20 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--gb-fg0)"
 			/>
 
-			<AnimatePresence>
-				{showPreview && hasPreview && (
-					<motion.div
-						className="relative z-30 overflow-hidden"
-						initial={{ height: 0, opacity: 0 }}
-						animate={{ height: "auto", opacity: 1 }}
-						exit={{ height: 0, opacity: 0 }}
-						transition={{ duration: 0.25, ease: "easeInOut" }}
-					>
-						<div className="p-2">
-							<video
-								className="w-full rounded-md"
-								loop
-								autoPlay
-								muted
-								playsInline
-								controls
-								preload="metadata"
-							>
-								<source src={previewVideo} type="video/mp4" />
-								Your browser does not support the video tag.
-							</video>
-						</div>
-					</motion.div>
-				)}
-			</AnimatePresence>
+			{hasPreview && (
+				<div
+					className="project-preview-clip relative z-30 overflow-hidden"
+					data-open={showPreview ? "true" : "false"}
+					aria-hidden={!showPreview}
+				>
+					<div className="p-2">
+						<video
+							className="w-full rounded-md"
+							loop
+							autoPlay
+							muted
+							playsInline
+							controls
+							preload="metadata"
+						>
+							<source src={previewVideo} type="video/mp4" />
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				</div>
+			)}
 
 			<div className="p-2">
 				<div className="flex flex-col gap-1 md:gap-0">
