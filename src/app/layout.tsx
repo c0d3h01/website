@@ -1,8 +1,6 @@
-// biome-ignore-all lint/security/noDangerouslySetInnerHtml: JSON-LD is generated from local profile data.
 import type { Viewport } from "next";
 import { siteFontVariables } from "@/app/fonts";
-import { profile } from "@/data/github";
-import { seoMetadata, siteUrl } from "@/data/site";
+import { profile, profileAvatarUrl, seoMetadata, siteUrl } from "@/content";
 import "./globals.css";
 
 export const metadata = seoMetadata;
@@ -16,7 +14,7 @@ const personJsonLd = {
 	"@type": "Person",
 	name: profile.name,
 	url: siteUrl,
-	image: `${siteUrl}${profile.image}`,
+	image: profileAvatarUrl,
 	jobTitle: profile.bio,
 	email: `mailto:${profile.email}`,
 	sameAs: [

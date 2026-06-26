@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatLongDate, formatShortDate } from "@/lib/date";
+import { formatLongDate, formatShortDate } from "@/lib/utils";
 
 describe("date formatters", () => {
 	it("formats short dates in UTC", () => {

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import ExperienceList from "@/components/experience/ExperienceList";
-import { experiences } from "@/data/experience";
-import { defaultOgImage } from "@/data/site";
-import PageShell from "@/layout/PageShell";
+import Link from "next/link";
+import ExperienceList from "@/components/sections/experienceList";
+import SectionHeading from "@/components/ui/SectionHeading";
+import { defaultOgImage, experiences } from "@/content";
 
 export const metadata: Metadata = {
 	title: "Experience",
@@ -27,9 +27,16 @@ export const dynamic = "force-static";
 
 const ExperiencePage = () => {
 	return (
-		<PageShell title="Experience">
+		<section className="flex flex-col gap-4">
+			<div className="flex items-center justify-between gap-2">
+				<SectionHeading title="Experience" as="h1" />
+				<Link className="btn text-sm w-fit" href="/">
+					Back Home
+				</Link>
+			</div>
+
 			<ExperienceList items={experiences} />
-		</PageShell>
+		</section>
 	);
 };
 

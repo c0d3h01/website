@@ -22,7 +22,8 @@ const nextConfig: NextConfig = {
 		remotePatterns: [
 			{
 				protocol: "https",
-				hostname: "avatars.githubusercontent.com",
+				hostname: "github.com",
+				pathname: "/*.png",
 			},
 		],
 	},

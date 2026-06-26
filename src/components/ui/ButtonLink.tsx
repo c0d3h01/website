@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { hoverScale, springTransition, tapScale } from "@/lib/motion";
+import { hoverScale, springTransition, tapScale } from "@/lib/utils";
 
 interface ButtonLinkProps {
 	href: string;
@@ -26,7 +26,6 @@ const ButtonLink = ({
 
 	return (
 		<motion.div
-			whileHover={hoverScale}
 			whileTap={tapScale}
 			transition={springTransition}
 			className="inline-flex"

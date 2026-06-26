@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import BlogPostCard from "@/components/blog/BlogPostCard";
-import { defaultOgImage } from "@/data/site";
-import PageShell from "@/layout/PageShell";
+import Link from "next/link";
+import BlogPostList from "@/components/sections/blogPostList";
+import SectionHeading from "@/components/ui/SectionHeading";
+import { defaultOgImage } from "@/content";
 import { getBlogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
@@ -29,23 +30,22 @@ const BlogPage = () => {
 	const posts = getBlogPosts();
 
 	return (
-		<PageShell title="Blog">
+		<section className="flex flex-col gap-4">
+			<div className="flex items-center justify-between gap-2">
+				<SectionHeading title="Blog" as="h1" />
+				<Link className="btn text-sm w-fit" href="/">
+					Back Home
+				</Link>
+			</div>
+
 			<div className="content-rail flex flex-col gap-3">
 				{posts.length > 0 ? (
-					posts.map((post) => (
-						<BlogPostCard
-							key={post.slug}
-							href={`/blog/${post.slug}`}
-							title={post.title}
-							description={post.description}
-							date={post.date}
-						/>
-					))
+					<BlogPostList posts={posts} />
 				) : (
 					<p className="opacity-75">No blog posts published yet.</p>
 				)}
 			</div>
-		</PageShell>
+		</section>
 	);
 };
 

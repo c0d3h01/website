@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import ProjectList from "@/components/projects/ProjectList";
-import { projects } from "@/data/projects";
-import { defaultOgImage } from "@/data/site";
-import PageShell from "@/layout/PageShell";
+import Link from "next/link";
+import ProjectListClient from "@/components/sections/projectListClient";
+import SectionHeading from "@/components/ui/SectionHeading";
+import { defaultOgImage, projects } from "@/content";
 
 export const metadata: Metadata = {
 	title: "Projects",
@@ -27,9 +27,16 @@ export const dynamic = "force-static";
 
 const ProjectsPage = () => {
 	return (
-		<PageShell title="Projects">
-			<ProjectList items={projects} />
-		</PageShell>
+		<section className="flex flex-col gap-4">
+			<div className="flex items-center justify-between gap-2">
+				<SectionHeading title="Projects" as="h1" />
+				<Link className="btn text-sm w-fit" href="/">
+					Back Home
+				</Link>
+			</div>
+
+			<ProjectListClient items={projects} />
+		</section>
 	);
 };
 

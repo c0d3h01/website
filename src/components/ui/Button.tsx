@@ -2,7 +2,7 @@
 
 import { type HTMLMotionProps, motion } from "motion/react";
 import type { Ref } from "react";
-import { hoverScale, springTransition, tapScale } from "@/lib/motion";
+import { hoverScale, springTransition, tapScale } from "@/lib/utils";
 
 type ButtonVariant = "default" | "unstyled";
 
@@ -32,7 +32,6 @@ const Button = ({
 			ref={ref}
 			type={type}
 			className={resolvedClassName}
-			whileHover={hoverScale}
 			whileTap={tapScale}
 			transition={springTransition}
 			{...props}
