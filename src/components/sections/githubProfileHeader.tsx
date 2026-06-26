@@ -3,11 +3,13 @@ import { profile, profileAvatarUrl } from "@/content";
 
 const GitHubProfileHeader = () => {
 	return (
-		<ProfileHeader
-			userName={profile.name}
-			userBio={profile.bio}
-			userImage={profileAvatarUrl}
-		/>
+		<div className="section-profile">
+			<ProfileHeader
+				userName={profile.name}
+				userBio={profile.bio}
+				userImage={profileAvatarUrl}
+			/>
+		</div>
 	);
 };
 
