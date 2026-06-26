@@ -2,7 +2,7 @@
 
 import { type HTMLMotionProps, motion } from "motion/react";
 import type { Ref } from "react";
-import { hoverScale, springTransition, tapScale } from "@/lib/utils";
+import { springTransition, tapScale } from "@/lib/utils";
 
 type ButtonVariant = "default" | "unstyled";
 

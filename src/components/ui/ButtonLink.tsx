@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { hoverScale, springTransition, tapScale } from "@/lib/utils";
+import { springTransition, tapScale } from "@/lib/utils";
 
 interface ButtonLinkProps {
 	href: string;
