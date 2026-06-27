@@ -4,12 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FiGithub } from "react-icons/fi";
 import { LuLink } from "react-icons/lu";
-import {
-	defaultOgImage,
-	getProjectBySlug,
-	profile,
-	projects,
-} from "@/content";
+import { defaultOgImage, getProjectBySlug, profile, projects } from "@/content";
 
 type ProjectPageProps = {
 	params: Promise<{

@@ -1,5 +1,5 @@
-import CryptoDonationSelectorClient from "@/components/ui/CryptoDonationSelectorClient";
 import ButtonLink from "@/components/ui/ButtonLink";
+import CryptoDonationSelectorClient from "@/components/ui/CryptoDonationSelectorClient";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { supportMethods, supportText } from "@/content";
 

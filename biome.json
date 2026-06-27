@@ -18,13 +18,13 @@
 		"rules": {
 			"recommended": true,
 			"suspicious": {
-        "noUnknownAtRules": "off"
-      }
+				"noUnknownAtRules": "off"
+			}
 		},
 		"domains": {
-      "next": "recommended",
-      "react": "recommended"
-    }
+			"next": "recommended",
+			"react": "recommended"
+		}
 	},
 	"css": {
 		"parser": {

@@ -18,20 +18,21 @@ interface ProjectCardProps {
 	previewVideo: string;
 }
 
-const statusMeta: Record<ProjectStatus, { label: string; className: string }> = {
-	active: {
-		label: "Active",
-		className: "bg-emerald-100 text-emerald-700",
-	},
-	building: {
-		label: "Building",
-		className: "bg-amber-100 text-amber-700",
-	},
-	archived: {
-		label: "Archived",
-		className: "border border-amber-500 bg-amber-50 text-amber-700",
-	},
-};
+const statusMeta: Record<ProjectStatus, { label: string; className: string }> =
+	{
+		active: {
+			label: "Active",
+			className: "bg-emerald-100 text-emerald-700",
+		},
+		building: {
+			label: "Building",
+			className: "bg-amber-100 text-amber-700",
+		},
+		archived: {
+			label: "Archived",
+			className: "border border-amber-500 bg-amber-50 text-amber-700",
+		},
+	};
 
 const ProjectCard = ({
 	slug,
@@ -47,7 +48,9 @@ const ProjectCard = ({
 	const projectPagePath = `/projects/${slug}`;
 	const statusInfo = statusMeta[status];
 	const [showPreview, setShowPreview] = useState(false);
-	const previewLabel = showPreview ? "Close project preview" : "Open project preview";
+	const previewLabel = showPreview
+		? "Close project preview"
+		: "Open project preview";
 
 	return (
 		<article className="project-card relative rounded-md">

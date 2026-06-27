@@ -32,10 +32,8 @@ const parsePost = (fileName: string): BlogPost | null => {
 
 		return {
 			slug,
-			title:
-				typeof data.title === "string" && data.title ? data.title : slug,
-			description:
-				typeof data.description === "string" ? data.description : "",
+			title: typeof data.title === "string" && data.title ? data.title : slug,
+			description: typeof data.description === "string" ? data.description : "",
 			date: typeof data.date === "string" ? data.date : "",
 			content,
 		};
@@ -54,9 +52,7 @@ const loadPosts = cache((): BlogPost[] => {
 		.readdirSync(postsDirectory)
 		.filter((fileName) => fileName.endsWith(".md"));
 
-	return files
-		.map(parsePost)
-		.filter((post): post is BlogPost => post !== null);
+	return files.map(parsePost).filter((post): post is BlogPost => post !== null);
 });
 
 export const getBlogPosts = (): BlogPostMeta[] =>

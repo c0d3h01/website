@@ -7,7 +7,8 @@ interface ProjectListProps {
 }
 
 const ProjectList = ({ items, limit }: ProjectListProps) => {
-	const visibleItems = typeof limit === "number" ? items.slice(0, limit) : items;
+	const visibleItems =
+		typeof limit === "number" ? items.slice(0, limit) : items;
 
 	return (
 		<div className="flex flex-col gap-3.5 md:gap-2.5">

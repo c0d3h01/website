@@ -1,4 +1,11 @@
-import { experiences, hireText, profile, projects, siteUrl, skills } from "@/content";
+import {
+	experiences,
+	hireText,
+	profile,
+	projects,
+	siteUrl,
+	skills,
+} from "@/content";
 import { getBlogPosts } from "@/lib/blog";
 
 export const dynamic = "force-static";

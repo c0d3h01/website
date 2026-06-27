@@ -8,14 +8,11 @@ import { projects } from "@/content";
 // Code-split the project list (motion + react-icons + video element) out of
 // the initial client bundle. The placeholder keeps the flex column height
 // stable while the dynamic chunk resolves.
-const ProjectList = dynamic(
-	() => import("@/components/sections/projectList"),
-	{
-		loading: () => (
-			<div className="flex flex-col gap-3.5 md:gap-2.5" aria-hidden="true" />
-		),
-	},
-);
+const ProjectList = dynamic(() => import("@/components/sections/projectList"), {
+	loading: () => (
+		<div className="flex flex-col gap-3.5 md:gap-2.5" aria-hidden="true" />
+	),
+});
 
 const Projects = () => {
 	const visibleCount = 2;
