@@ -25,11 +25,11 @@ const ProfileHeader = ({
 					dialogLabel="Profile picture preview"
 					triggerAriaLabel="Open avatar preview"
 					trigger={
-						<span className="pro-pic-shell">
+						<span className="pro-pic-shell relative block md:size-32.5 size-27 select-none">
 							<Image
 								src={userImage}
 								alt={imageAlt}
-								className="pro-pic"
+								className="pro-pic block size-full object-cover"
 								fill
 								preload
 								placeholder={typeof userImage === "string" ? "empty" : "blur"}
@@ -42,7 +42,7 @@ const ProfileHeader = ({
 
 			<div className="flex min-w-0 flex-col items-center justify-center gap-2 md:items-start">
 				<div className="flex flex-col gap-1">
-					<h1 className="head-name py-0 normal-case">{userName}</h1>
+					<h1 className="head-name font-bold md:text-[2rem] text-[1.8rem] leading-[1.95rem] py-0 normal-case">{userName}</h1>
 					<p>{userBio}</p>
 				</div>
 				<Social />

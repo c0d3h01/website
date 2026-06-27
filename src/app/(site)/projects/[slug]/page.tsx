@@ -82,7 +82,10 @@ const ProjectDetailPage = async ({ params }: ProjectPageProps) => {
 		<article className="flex flex-col gap-4">
 			<div className="flex items-center justify-between gap-2">
 				<h1 className="text-2xl font-bold text-(--gb-fg0)">{project.title}</h1>
-				<Link className="btn text-sm" href="/projects">
+				<Link
+					className="btn cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md text-sm"
+					href="/projects"
+				>
 					Back to Projects
 				</Link>
 			</div>
@@ -106,7 +109,7 @@ const ProjectDetailPage = async ({ params }: ProjectPageProps) => {
 						target="_blank"
 						rel="noopener noreferrer"
 						aria-label={`Open live project: ${project.title}`}
-						className="btn text-sm"
+						className="btn cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md text-sm"
 						href={project.liveUrl}
 					>
 						<LuLink />
@@ -119,7 +122,7 @@ const ProjectDetailPage = async ({ params }: ProjectPageProps) => {
 						target="_blank"
 						rel="noopener noreferrer"
 						aria-label={`Open GitHub repository for ${project.title}`}
-						className="btn text-sm"
+						className="btn cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md text-sm"
 						href={project.githubUrl}
 					>
 						<FiGithub />

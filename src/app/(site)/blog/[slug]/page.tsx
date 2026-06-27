@@ -78,7 +78,10 @@ const BlogPostPage = async ({ params }: BlogPostPageProps) => {
 		<article className="content-rail flex flex-col gap-4">
 			<div className="flex flex-wrap items-center justify-between gap-2">
 				<p className="text-sm opacity-70">{formatLongDate(post.date)}</p>
-				<Link className="btn text-sm" href="/blog">
+				<Link
+					className="btn cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md text-sm"
+					href="/blog"
+				>
 					{"<- Back to Blog"}
 				</Link>
 			</div>

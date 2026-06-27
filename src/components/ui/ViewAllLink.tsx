@@ -18,7 +18,7 @@ const ViewAllLink = ({ href, label = "View All" }: ViewAllLinkProps) => {
 			whileTap={tapScale}
 			transition={springTransition}
 		>
-			<Link href={href} className="showMore-btn block">
+			<Link href={href} className="showMore-btn select-none w-full px-2 py-1 rounded-md block">
 				<span className="flex items-center justify-center gap-0.5">
 					<MdKeyboardDoubleArrowDown />
 					{label}

@@ -12,9 +12,9 @@ const Social = () => {
 					<ButtonLink
 						ariaLabel={link.name}
 						href={link.href}
-						className="social-link"
+						className="social-link relative overflow-visible px-2 py-1.5"
 					>
-						<link.icon className="social-link-icon" />
+						<link.icon className="social-link-icon size-4 shrink-0" />
 						<span className="social-link-tag">{link.name}</span>
 					</ButtonLink>
 				</div>

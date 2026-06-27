@@ -30,7 +30,10 @@ const ProjectsPage = () => {
 		<section className="flex flex-col gap-4">
 			<div className="flex items-center justify-between gap-2">
 				<SectionHeading title="Projects" as="h1" />
-				<Link className="btn text-sm w-fit" href="/">
+				<Link
+					className="btn cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md text-sm w-fit"
+					href="/"
+				>
 					Back Home
 				</Link>
 			</div>
