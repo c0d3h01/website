@@ -10,7 +10,10 @@ import { projects } from "@/content";
 // stable while the dynamic chunk resolves.
 const ProjectList = dynamic(() => import("@/components/sections/projectList"), {
 	loading: () => (
-		<div className="flex flex-col gap-3.5 md:gap-2.5" aria-hidden="true" />
+		<div
+			className="flex min-h-88 flex-col gap-3.5 md:gap-2.5 md:min-h-64"
+			aria-hidden="true"
+		/>
 	),
 });
 

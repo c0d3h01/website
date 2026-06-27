@@ -69,11 +69,11 @@ h3 {
 	/* no content-visibility */
 }
 
-/* Dynamic lists (projects, blog, experience) — fluid auto metric sized for
-   list-length variation; auto lets the browser refine once measured. */
+/* Dynamic lists — kept as a no-op so adjacent sections don't trigger forced
+   layout mid-scroll. Lists are short (2-3 items), the containment tradeoff
+   doesn't pay off here. */
 .section-stack > .section-fluid {
-	content-visibility: auto;
-	contain-intrinsic-size: auto 600px;
+	display: block;
 }
 
 .section-copy p {
@@ -338,10 +338,10 @@ h3 {
 	transition:
 		clip-path 0.22s ease,
 		opacity 0.22s ease;
-	will-change: clip-path, opacity;
 }
 
 .project-preview-clip[data-open="true"] {
+	will-change: clip-path, opacity;
 	clip-path: inset(0 0 0 0);
 	opacity: 1;
 }

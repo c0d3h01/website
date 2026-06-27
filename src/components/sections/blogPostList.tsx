@@ -9,7 +9,10 @@ const BlogPostCard = dynamic(
 	() => import("@/components/sections/blogPostCard"),
 	{
 		loading: () => (
-			<div className="flex flex-col gap-3.5 md:gap-2.5" aria-hidden="true" />
+			<div
+				className="flex min-h-72 flex-col gap-3.5 md:gap-2.5 md:min-h-56"
+				aria-hidden="true"
+			/>
 		),
 	},
 );
