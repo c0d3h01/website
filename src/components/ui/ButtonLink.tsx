@@ -22,7 +22,7 @@ const ButtonLink = ({
 	rel = "noopener noreferrer",
 	className,
 }: ButtonLinkProps) => {
-	const resolvedClassName = ["btn", className].filter(Boolean).join(" ");
+	const resolvedClassName = ["btn cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md", className].filter(Boolean).join(" ");
 
 	return (
 		<motion.div

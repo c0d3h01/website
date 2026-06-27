@@ -12,7 +12,7 @@ interface ButtonProps extends HTMLMotionProps<"button"> {
 }
 
 const variantClassName: Record<ButtonVariant, string> = {
-	default: "btn",
+	default: "btn cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md",
 	unstyled: "",
 };
 

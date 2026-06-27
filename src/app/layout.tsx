@@ -36,6 +36,7 @@ export default function RootLayout({
 				<script
 					type="application/ld+json"
 					// Schema.org Person data for richer search snippets.
+					// biome-ignore lint/security/noDangerouslySetInnerHtml: Required pattern for JSON-LD schema injection.
 					dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
 				/>
 				{process.env.NODE_ENV === "development" && (

@@ -21,7 +21,7 @@ const BlogPostCard = ({
 
 	return (
 		<motion.div whileTap={tapScale} transition={springTransition}>
-			<Link href={href} className="blog-card block">
+			<Link href={href} className="blog-card cursor-pointer p-2 rounded-md block">
 				<div className="flex w-full flex-col gap-0.5">
 					<h2 className="wrap-break-word text-xl font-semibold md:text-lg">
 						{title}
