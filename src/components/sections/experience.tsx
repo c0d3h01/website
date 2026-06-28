@@ -11,7 +11,7 @@ const Experience = () => {
 	const shouldShowViewAll = experiences.length > visibleExperiences.length;
 
 	return (
-		<section className="section-fluid flex flex-col gap-4">
+		<section className="section-fluid flex flex-col gap-3">
 			<SectionHeading title="Experience" />
 			<ExperienceList items={visibleExperiences} />
 			{shouldShowViewAll && <ViewAllLink href="/experience" />}

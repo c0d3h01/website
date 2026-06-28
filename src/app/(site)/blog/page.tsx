@@ -30,7 +30,7 @@ const BlogPage = () => {
 	const posts = getBlogPosts();
 
 	return (
-		<section className="flex flex-col gap-4">
+		<section className="flex flex-col gap-3">
 			<div className="flex items-center justify-between gap-2">
 				<SectionHeading title="Blog" as="h1" />
 				<Link
@@ -41,7 +41,7 @@ const BlogPage = () => {
 				</Link>
 			</div>
 
-			<div className="content-rail flex flex-col gap-4">
+			<div className="content-rail flex flex-col gap-3">
 				{posts.length > 0 ? (
 					<BlogPostList posts={posts} />
 				) : (
