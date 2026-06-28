@@ -41,7 +41,7 @@ const BlogPage = () => {
 				</Link>
 			</div>
 
-			<div className="content-rail flex flex-col gap-3">
+			<div className="content-rail flex flex-col gap-4">
 				{posts.length > 0 ? (
 					<BlogPostList posts={posts} />
 				) : (

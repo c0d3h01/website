@@ -11,7 +11,7 @@ const Writings = () => {
 	const hasMore = posts.length > VISIBLE_POST_COUNT;
 
 	return (
-		<section id="blog" className="section-fluid flex flex-col gap-3">
+		<section id="blog" className="section-fluid flex flex-col gap-4">
 			<SectionHeading title="Blog" />
 
 			{posts.length === 0 ? (

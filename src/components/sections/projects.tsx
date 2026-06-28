@@ -22,7 +22,7 @@ const Projects = () => {
 	const shouldShowViewAll = projects.length > visibleCount;
 
 	return (
-		<section id="projects" className="section-fluid flex flex-col gap-3">
+		<section id="projects" className="section-fluid flex flex-col gap-4">
 			<SectionHeading title="Projects" />
 			<ProjectList items={projects} limit={visibleCount} />
 			{shouldShowViewAll && <ViewAllLink href="/projects" />}
