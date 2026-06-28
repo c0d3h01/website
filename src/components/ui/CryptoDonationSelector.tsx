@@ -54,8 +54,25 @@ const CryptoDonationSelector = memo(function CryptoDonationSelector() {
 
 	const handleCopy = async (id: number, address: string) => {
 		try {
-			await navigator.clipboard.writeText(address);
-			setCopiedId(id);
+			// Try modern clipboard API first
+			if (navigator.clipboard?.writeText) {
+				await navigator.clipboard.writeText(address);
+				setCopiedId(id);
+			} else {
+				// Fallback for older browsers or contexts where clipboard isn't available
+				const textarea = document.createElement("textarea");
+				textarea.value = address;
+				textarea.style.position = "fixed";
+				textarea.style.opacity = "0";
+				document.body.appendChild(textarea);
+				textarea.select();
+				try {
+					document.execCommand("copy");
+					setCopiedId(id);
+				} finally {
+					document.body.removeChild(textarea);
+				}
+			}
 		} catch {
 			setCopiedId(null);
 		}
