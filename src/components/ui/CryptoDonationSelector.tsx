@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { FaWallet } from "react-icons/fa6";
 import Button from "@/components/ui/Button";
 import { cryptoDonationOptions } from "@/content";
@@ -9,16 +9,23 @@ import { dropdownVariants } from "@/lib/utils";
 
 const COPY_RESET_MS = 1800;
 
-export default function CryptoDonationSelector() {
+const CryptoDonationSelector = memo(function CryptoDonationSelector() {
 	const [isOpen, setIsOpen] = useState(false);
 	const [copiedId, setCopiedId] = useState<number | null>(null);
 	const containerRef = useRef<HTMLFieldSetElement>(null);
+	const scrollListenerRef = useRef(false);
 
 	useEffect(() => {
 		if (!isOpen) return;
 		const onScroll = () => setIsOpen(false);
-		window.addEventListener("scroll", onScroll, { passive: true });
-		return () => window.removeEventListener("scroll", onScroll);
+		if (!scrollListenerRef.current) {
+			window.addEventListener("scroll", onScroll, { passive: true });
+			scrollListenerRef.current = true;
+		}
+		return () => {
+			window.removeEventListener("scroll", onScroll);
+			scrollListenerRef.current = false;
+		};
 	}, [isOpen]);
 
 	useEffect(() => {
@@ -31,8 +38,8 @@ export default function CryptoDonationSelector() {
 				setIsOpen(false);
 			}
 		};
-		document.addEventListener("mousedown", onClickOutside);
-		document.addEventListener("touchstart", onClickOutside);
+		document.addEventListener("mousedown", onClickOutside, { passive: true });
+		document.addEventListener("touchstart", onClickOutside, { passive: true });
 		return () => {
 			document.removeEventListener("mousedown", onClickOutside);
 			document.removeEventListener("touchstart", onClickOutside);
@@ -47,8 +54,25 @@ export default function CryptoDonationSelector() {
 
 	const handleCopy = async (id: number, address: string) => {
 		try {
-			await navigator.clipboard.writeText(address);
-			setCopiedId(id);
+			// Try modern clipboard API first
+			if (navigator.clipboard?.writeText) {
+				await navigator.clipboard.writeText(address);
+				setCopiedId(id);
+			} else {
+				// Fallback for older browsers or contexts where clipboard isn't available
+				const textarea = document.createElement("textarea");
+				textarea.value = address;
+				textarea.style.position = "fixed";
+				textarea.style.opacity = "0";
+				document.body.appendChild(textarea);
+				textarea.select();
+				try {
+					document.execCommand("copy");
+					setCopiedId(id);
+				} finally {
+					document.body.removeChild(textarea);
+				}
+			}
 		} catch {
 			setCopiedId(null);
 		}
@@ -67,7 +91,7 @@ export default function CryptoDonationSelector() {
 		<fieldset
 			ref={containerRef}
 			aria-label="Crypto donation selector"
-			className="relative inline-flex shrink-0 flex-col items-start border-none p-0 m-0"
+			className="relative inline-flex shrink-0 flex-col items-start border-none p-0"
 			onPointerEnter={(e) => {
 				if (e.pointerType === "mouse") setIsOpen(true);
 			}}
@@ -102,11 +126,12 @@ export default function CryptoDonationSelector() {
 							{cryptoDonationOptions.map((option) => {
 								const isCopied = copiedId === option.id;
 								return (
-									<Button
+									<button
 										key={option.id}
+										type="button"
 										role="option"
 										aria-selected={isCopied}
-										className={`w-full justify-between gap-3 text-left transition-colors hover:bg-black/5 dark:hover:bg-white/10 ${
+										className={`w-full flex items-center justify-between gap-3 px-2 py-1 rounded-md text-left transition-colors cursor-pointer border-none bg-transparent hover:bg-black/5 dark:hover:bg-white/10 ${
 											isCopied ? "border-(--gb-yellow)" : ""
 										}`}
 										onClick={() => handleCopy(option.id, option.address)}
@@ -133,7 +158,7 @@ export default function CryptoDonationSelector() {
 										>
 											{isCopied ? "Copied!" : "Copy"}
 										</span>
-									</Button>
+									</button>
 								);
 							})}
 						</div>
@@ -142,4 +167,6 @@ export default function CryptoDonationSelector() {
 			</AnimatePresence>
 		</fieldset>
 	);
-}
+});
+
+export default CryptoDonationSelector;

@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { memo, type ReactNode, useMemo } from "react";
 import { springTransition, tapScale } from "@/lib/utils";
 
 interface ButtonLinkProps {
@@ -14,15 +14,24 @@ interface ButtonLinkProps {
 	className?: string;
 }
 
-const ButtonLink = ({
+const ButtonLink = memo(function ButtonLink({
 	href,
 	children,
 	ariaLabel,
 	target = "_blank",
 	rel = "noopener noreferrer",
 	className,
-}: ButtonLinkProps) => {
-	const resolvedClassName = ["btn cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md", className].filter(Boolean).join(" ");
+}: ButtonLinkProps) {
+	const resolvedClassName = useMemo(
+		() =>
+			[
+				"btn cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md",
+				className,
+			]
+				.filter(Boolean)
+				.join(" "),
+		[className],
+	);
 
 	return (
 		<motion.div
@@ -41,6 +50,6 @@ const ButtonLink = ({
 			</Link>
 		</motion.div>
 	);
-};
+});
 
 export default ButtonLink;

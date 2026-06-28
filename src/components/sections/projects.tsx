@@ -11,7 +11,7 @@ import { projects } from "@/content";
 const ProjectList = dynamic(() => import("@/components/sections/projectList"), {
 	loading: () => (
 		<div
-			className="flex min-h-88 flex-col gap-3.5 md:gap-2.5 md:min-h-64"
+			className="flex min-h-64 flex-col gap-2.5 md:gap-3.5 md:min-h-88"
 			aria-hidden="true"
 		/>
 	),

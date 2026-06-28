@@ -10,7 +10,7 @@ const BlogPostCard = dynamic(
 	{
 		loading: () => (
 			<div
-				className="flex min-h-72 flex-col gap-3.5 md:gap-2.5 md:min-h-56"
+				className="flex min-h-72 flex-col gap-2.5 md:gap-3.5 md:min-h-56"
 				aria-hidden="true"
 			/>
 		),
@@ -23,7 +23,7 @@ interface BlogPostListProps {
 
 const BlogPostList = ({ posts }: BlogPostListProps) => {
 	return (
-		<div className="flex flex-col gap-3.5 md:gap-2.5">
+		<div className="flex flex-col gap-2.5 md:gap-3.5 contain-layout">
 			{posts.map((post) => (
 				<BlogPostCard
 					key={post.slug}
