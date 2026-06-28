@@ -27,13 +27,13 @@ GRUB cannot read files from encrypted (LUKS) partitions during boot. If your roo
 
 ```bash
 # Mount the partition
-sudo mount /dev/sdX1 /mnt/temp
+$ mount /dev/sdX1 /mnt/temp
 
 # Copy ISO
-sudo cp ~/Downloads/your-distro.iso /mnt/temp/
+$ cp ~/Downloads/your-distro.iso /mnt/temp/
 
 # Get the UUID
-sudo blkid /dev/sdX1
+$ blkid /dev/sdX1
 ```
 
 **Option B: If you have exFAT partition (needs conversion):**
@@ -41,13 +41,13 @@ sudo blkid /dev/sdX1
 ```bash
 # Backup your data first!
 # Convert to ext4 using GParted or:
-sudo umount /dev/sdX1
-sudo mkfs.ext4 /dev/sdX1
+$ umount /dev/sdX1
+$ mkfs.ext4 /dev/sdX1
 
 # Then mount and copy ISO
-sudo mount /dev/sdX1 /mnt/temp
-sudo cp ~/Downloads/your-distro.iso /mnt/temp/
-sudo blkid /dev/sdX1
+$ mount /dev/sdX1 /mnt/temp
+$ cp ~/Downloads/your-distro.iso /mnt/temp/
+$ blkid /dev/sdX1
 ```
 
 **Option C: If partition is too small, create a new one:**
@@ -63,10 +63,10 @@ sudo blkid /dev/sdX1
 
 ```bash
 # Create mount point
-sudo mkdir -p /mnt/iso
+$ mkdir -p /mnt/iso
 
 # Mount the ISO
-sudo mount -o loop ~/Downloads/your-distro.iso /mnt/iso
+$ mount -o loop ~/Downloads/your-distro.iso /mnt/iso
 
 # Find kernel and initrd locations
 find /mnt/iso -name "vmlinuz*"
@@ -76,21 +76,21 @@ find /mnt/iso -name "initr*"
 cat /mnt/iso/boot/grub/grub.cfg
 
 # Copy kernel and initrd to /boot
-sudo cp /mnt/iso/path/to/vmlinuz-* /boot/
-sudo cp /mnt/iso/path/to/initramfs-* /boot/
+$ cp /mnt/iso/path/to/vmlinuz-* /boot/
+$ cp /mnt/iso/path/to/initramfs-* /boot/
 
 # Verify
 ls -lh /boot/vmlinuz-* /boot/initramfs-*
 
 # Unmount ISO
-sudo umount /mnt/iso
+$ umount /mnt/iso
 ```
 
 ### Step 3: Create GRUB Menu Entry
 
 ```bash
 # Edit GRUB custom entries
-sudo nano /etc/grub.d/40_custom
+$ nano /etc/grub.d/40_custom
 ```
 
 Add this entry (adjust paths and parameters based on what you found in Step 2):
@@ -131,13 +131,13 @@ menuentry "Ubuntu Installer" {
 **For Fedora/RHEL-based:**
 
 ```bash
-sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+$ grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
 **For Debian/Ubuntu-based:**
 
 ```bash
-sudo update-grub
+$ update-grub
 ```
 
 ### Step 5: Reboot and Install
@@ -161,7 +161,7 @@ Find your partition UUIDs:
 lsblk -fa
 
 # Get specific UUID
-sudo blkid /dev/sdX1
+$ blkid /dev/sdX1
 ```
 
 Common partitions:
@@ -250,10 +250,11 @@ Once installed, the new OS will add itself to GRUB automatically. You'll have:
 After successful installation, you can remove the installer files:
 
 ```bash
-sudo rm /boot/vmlinuz-linux-cachyos
-sudo rm /boot/initramfs-linux-cachyos.img
-sudo rm /mnt/temp/cachyos-desktop-linux-260124.iso
-sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+# Succesfull cleanup
+$ rm /boot/vmlinuz-linux-cachyos
+$ rm /boot/initramfs-linux-cachyos.img
+$ rm /mnt/temp/cachyos-desktop-linux-260124.iso
+$ grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
 ## Notes
@@ -263,8 +264,3 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 - Keep your EFI partition intact for dual booting
 - Some distros use `archisobasedir`, others use `boot=casper`
 - The `copytoram` parameter is crucial if you plan to erase the current OS
-
----
-
-**Last Updated:** February 2026
-**Tested On:** Fedora 43, CachyOS 260124
