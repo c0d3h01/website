@@ -15,6 +15,11 @@ const nextConfig: NextConfig = {
 		// from barrel optimization.
 		optimizePackageImports: ["react-icons", "motion"],
 	},
+	onDemandEntries: {
+		// Reduce memory usage for long-running dev servers
+		maxInactiveAge: 60 * 1000,
+		pagesBufferLength: 5,
+	},
 	async redirects() {
 		return [
 			{
