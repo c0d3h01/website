@@ -25,7 +25,7 @@ const ProfileHeader = ({
 					dialogLabel="Profile picture preview"
 					triggerAriaLabel="Open avatar preview"
 					trigger={
-						<span className="pro-pic-shell relative block md:size-32.5 size-27 select-none">
+						<span className="pro-pic-shell relative block md:size-32 size-28 select-none">
 							<Image
 								src={userImage}
 								alt={imageAlt}
@@ -42,7 +42,7 @@ const ProfileHeader = ({
 
 			<div className="flex min-w-0 flex-col items-center justify-center gap-2 md:items-start">
 				<div className="flex flex-col gap-1">
-					<h1 className="head-name font-bold md:text-[2rem] text-[1.8rem] leading-[1.95rem] py-0 normal-case">
+					<h1 className="head-name font-bold md:text-4xl text-3xl py-0 normal-case">
 						{userName}
 					</h1>
 					<p>{userBio}</p>

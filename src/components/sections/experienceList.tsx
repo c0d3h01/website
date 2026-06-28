@@ -10,7 +10,7 @@ const ExperienceList = ({ items }: ExperienceListProps) => {
 			{items.map(({ id, role, company, duration, location, highlights }) => (
 				<article
 					key={id}
-					className="rounded-md border border-(--gb-border) bg-(--gb-surface) p-3"
+					className="rounded-md border border-(--gb-border) bg-(--gb-surface) p-2.5"
 				>
 					<div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
 						<h3 className="text-[1.02rem] font-semibold text-(--gb-fg0)">

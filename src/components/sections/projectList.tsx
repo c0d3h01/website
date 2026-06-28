@@ -11,7 +11,7 @@ const ProjectList = ({ items, limit }: ProjectListProps) => {
 		typeof limit === "number" ? items.slice(0, limit) : items;
 
 	return (
-		<div className="flex flex-col gap-3.5 md:gap-2.5">
+		<div className="flex flex-col gap-2.5 md:gap-3.5">
 			{visibleItems.map((project) => (
 				<ProjectCard
 					key={project.id}

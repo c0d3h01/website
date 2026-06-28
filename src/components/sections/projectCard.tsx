@@ -66,7 +66,7 @@ const ProjectCard = ({
 					data-open={showPreview ? "true" : "false"}
 					aria-hidden={!showPreview}
 				>
-					<div className="p-2">
+					<div className="p-2.5">
 						<video
 							className="w-full rounded-md"
 							loop
@@ -83,8 +83,8 @@ const ProjectCard = ({
 				</div>
 			)}
 
-			<div className="p-2">
-				<div className="flex flex-col gap-1 md:gap-0">
+			<div className="p-2.5">
+				<div className="flex flex-col gap-1">
 					<div className="flex items-center justify-between">
 						<div className="flex min-w-0 items-center gap-2">
 							<h2 className="truncate text-2xl font-semibold">{title}</h2>
@@ -140,8 +140,8 @@ const ProjectCard = ({
 			</div>
 
 			<div className="overflow-hidden">
-				<div className="mx-auto mt-3 flex w-[97%] border-t border-(--gb-border) md:mt-0" />
-				<div className="flex items-center px-3 py-3 md:py-2">
+				<div className="mt-3 flex border-t border-(--gb-border) md:mt-0" />
+				<div className="flex items-center px-2 py-2 md:py-1.5">
 					<ul className="flex flex-wrap gap-1.5 select-none">
 						{skills.map((skill) => (
 							<li
