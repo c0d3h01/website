@@ -11,7 +11,9 @@ const Skills = () => {
 						key={name}
 						className="skills-card select-none flex flex-row gap-1 items-center px-2 py-1 rounded-md"
 					>
-						<Icon />
+						<span aria-label={name}>
+							<Icon />
+						</span>
 						{name}
 					</li>
 				))}
