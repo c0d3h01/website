@@ -111,12 +111,6 @@ h3 {
 	user-select: none;
 }
 
-.head-name {
-	font-weight: 700;
-	color: var(--gb-fg0);
-	/* Typography is handled by Tailwind: md:text-4xl (2rem), text-3xl (1.875rem) */
-}
-
 .showMore-btn {
 	display: block;
 	width: 100%;
