@@ -1,7 +1,7 @@
 "use client";
 
-import { memo } from "react";
 import Link from "next/link";
+import { memo } from "react";
 import { formatShortDate } from "@/lib/utils";
 
 interface BlogPostCardProps {
@@ -20,7 +20,10 @@ const BlogPostCard = memo(function BlogPostCard({
 	const publishedAt = formatShortDate(date);
 
 	return (
-		<Link href={href} className="blog-card cursor-pointer p-2 rounded-md block hover:bg-gray-100 transition-colors">
+		<Link
+			href={href}
+			className="blog-card cursor-pointer p-2 rounded-md block hover:bg-gray-100 transition-colors"
+		>
 			<div className="flex w-full flex-col gap-0.5">
 				<h2 className="wrap-break-word text-xl font-semibold md:text-lg">
 					{title}

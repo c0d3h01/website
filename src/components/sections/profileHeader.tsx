@@ -42,7 +42,9 @@ const ProfileHeader = ({
 
 			<div className="flex min-w-0 flex-col items-center justify-center gap-2 md:items-start">
 				<div className="flex flex-col gap-1">
-					<h1 className="head-name font-bold md:text-[2rem] text-[1.8rem] leading-[1.95rem] py-0 normal-case">{userName}</h1>
+					<h1 className="head-name font-bold md:text-[2rem] text-[1.8rem] leading-[1.95rem] py-0 normal-case">
+						{userName}
+					</h1>
 					<p>{userBio}</p>
 				</div>
 				<Social />

@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import { memo, useMemo, type ReactNode } from "react";
+import { memo, type ReactNode, useMemo } from "react";
 import { springTransition, tapScale } from "@/lib/utils";
 
 interface ButtonLinkProps {
@@ -24,7 +24,10 @@ const ButtonLink = memo(function ButtonLink({
 }: ButtonLinkProps) {
 	const resolvedClassName = useMemo(
 		() =>
-			["btn cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md", className]
+			[
+				"btn cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md",
+				className,
+			]
 				.filter(Boolean)
 				.join(" "),
 		[className],

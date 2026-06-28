@@ -8,7 +8,6 @@ import { cryptoDonationOptions } from "@/content";
 import { dropdownVariants } from "@/lib/utils";
 
 const COPY_RESET_MS = 1800;
-let scrollListenerCount = 0;
 
 const CryptoDonationSelector = memo(function CryptoDonationSelector() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -22,12 +21,10 @@ const CryptoDonationSelector = memo(function CryptoDonationSelector() {
 		if (!scrollListenerRef.current) {
 			window.addEventListener("scroll", onScroll, { passive: true });
 			scrollListenerRef.current = true;
-			scrollListenerCount++;
 		}
 		return () => {
 			window.removeEventListener("scroll", onScroll);
 			scrollListenerRef.current = false;
-			scrollListenerCount--;
 		};
 	}, [isOpen]);
 
@@ -114,6 +111,7 @@ const CryptoDonationSelector = memo(function CryptoDonationSelector() {
 								return (
 									<button
 										key={option.id}
+										type="button"
 										role="option"
 										aria-selected={isCopied}
 										className={`w-full flex items-center justify-between gap-3 px-2 py-1 rounded-md text-left transition-colors cursor-pointer border-none bg-transparent hover:bg-black/5 dark:hover:bg-white/10 ${
