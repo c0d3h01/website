@@ -13,7 +13,7 @@ const Support = () => {
 					const Icon = method.icon;
 
 					return (
-						<ButtonLink key={method.id} href={method.href}>
+						<ButtonLink key={method.label} href={method.href}>
 							<Icon />
 							{method.label}
 						</ButtonLink>

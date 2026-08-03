@@ -1,4 +1,4 @@
-import { PiFilePdfBold, PiSuitcaseSimpleBold } from "react-icons/pi";
+import { Briefcase, FileText } from "lucide-react";
 import ButtonLink from "@/components/ui/ButtonLink";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { emailLink, hireText, resumeFilePath } from "@/content";
@@ -10,11 +10,11 @@ const Hire = () => {
 			<p>{hireText}</p>
 			<div className="flex flex-wrap items-center gap-2.5">
 				<ButtonLink href={emailLink}>
-					<PiSuitcaseSimpleBold />
+					<Briefcase />
 					Hire Me
 				</ButtonLink>
 				<ButtonLink href={resumeFilePath}>
-					<PiFilePdfBold />
+					<FileText />
 					Resume
 				</ButtonLink>
 			</div>
