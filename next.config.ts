@@ -7,14 +7,9 @@ const withBundleAnalyzer = createBundleAnalyzer({
 
 const nextConfig: NextConfig = {
 	poweredByHeader: false,
-	experimental: {
-		// Tree-shake named imports from heavy icon/animation libraries.
-		// `react-icons` ships per-family barrels; without this, importing
-		// a single icon pulls the whole family. `motion` (the new Motion
-		// One) also re-exports through package entrypoints that benefit
-		// from barrel optimization.
-		optimizePackageImports: ["react-icons", "motion"],
-	},
+	// Restore scroll position on back/forward navigation so clicking "back to home"
+	// from a blog or project detail lands the user where they left the list, not at the top.
+	scrollRestoration: true,
 	onDemandEntries: {
 		// Reduce memory usage for long-running dev servers
 		maxInactiveAge: 60 * 1000,
