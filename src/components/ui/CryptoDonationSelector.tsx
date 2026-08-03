@@ -1,8 +1,8 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { Wallet } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
-import { FaWallet } from "react-icons/fa6";
 import Button from "@/components/ui/Button";
 import { cryptoDonationOptions } from "@/content";
 import { dropdownVariants } from "@/lib/utils";
@@ -11,7 +11,7 @@ const COPY_RESET_MS = 1800;
 
 const CryptoDonationSelector = memo(function CryptoDonationSelector() {
 	const [isOpen, setIsOpen] = useState(false);
-	const [copiedId, setCopiedId] = useState<number | null>(null);
+	const [copiedKey, setCopiedKey] = useState<string | null>(null);
 	const containerRef = useRef<HTMLFieldSetElement>(null);
 	const scrollListenerRef = useRef(false);
 
@@ -47,17 +47,17 @@ const CryptoDonationSelector = memo(function CryptoDonationSelector() {
 	}, [isOpen]);
 
 	useEffect(() => {
-		if (copiedId === null) return;
-		const t = setTimeout(() => setCopiedId(null), COPY_RESET_MS);
+		if (copiedKey === null) return;
+		const t = setTimeout(() => setCopiedKey(null), COPY_RESET_MS);
 		return () => clearTimeout(t);
-	}, [copiedId]);
+	}, [copiedKey]);
 
-	const handleCopy = async (id: number, address: string) => {
+	const handleCopy = async (shortName: string, address: string) => {
 		try {
 			// Try modern clipboard API first
 			if (navigator.clipboard?.writeText) {
 				await navigator.clipboard.writeText(address);
-				setCopiedId(id);
+				setCopiedKey(shortName);
 			} else {
 				// Fallback for older browsers or contexts where clipboard isn't available
 				const textarea = document.createElement("textarea");
@@ -68,13 +68,13 @@ const CryptoDonationSelector = memo(function CryptoDonationSelector() {
 				textarea.select();
 				try {
 					document.execCommand("copy");
-					setCopiedId(id);
+					setCopiedKey(shortName);
 				} finally {
 					document.body.removeChild(textarea);
 				}
 			}
 		} catch {
-			setCopiedId(null);
+			setCopiedKey(null);
 		}
 	};
 
@@ -107,7 +107,7 @@ const CryptoDonationSelector = memo(function CryptoDonationSelector() {
 				aria-haspopup="listbox"
 				onClick={() => setIsOpen((prev) => !prev)}
 			>
-				<FaWallet className="size-4 shrink-0" />
+				<Wallet className="size-4 shrink-0" />
 				Crypto
 			</Button>
 
@@ -124,17 +124,17 @@ const CryptoDonationSelector = memo(function CryptoDonationSelector() {
 					>
 						<div className="flex w-full flex-col gap-2 rounded-lg border border-(--gb-border) bg-(--gb-surface) p-2 shadow-xl ring-1 ring-black/5">
 							{cryptoDonationOptions.map((option) => {
-								const isCopied = copiedId === option.id;
+								const isCopied = copiedKey === option.shortName;
 								return (
 									<button
-										key={option.id}
+										key={option.shortName}
 										type="button"
 										role="option"
 										aria-selected={isCopied}
 										className={`w-full flex items-center justify-between gap-3 px-2 py-1 rounded-md text-left transition-colors cursor-pointer border-none bg-transparent hover:bg-black/5 dark:hover:bg-white/10 ${
 											isCopied ? "border-(--gb-yellow)" : ""
 										}`}
-										onClick={() => handleCopy(option.id, option.address)}
+										onClick={() => handleCopy(option.shortName, option.address)}
 									>
 										<span className="flex items-center gap-2">
 											<option.icon className="size-5 shrink-0 text-(--gb-fg1)" />

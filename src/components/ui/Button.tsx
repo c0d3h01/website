@@ -1,8 +1,8 @@
 "use client";
 
-import { type HTMLMotionProps, motion } from "motion/react";
+import { type HTMLMotionProps, motion } from "framer-motion";
 import { memo, type Ref, useMemo } from "react";
-import { springTransition, tapScale } from "@/lib/utils";
+import { hoverScale, springTransition, tapScale } from "@/lib/utils";
 
 type ButtonVariant = "default" | "unstyled";
 
@@ -36,6 +36,7 @@ const Button = memo(
 				type={type}
 				className={resolvedClassName}
 				whileTap={tapScale}
+				whileHover={hoverScale}
 				transition={springTransition}
 				{...props}
 			/>
