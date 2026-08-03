@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { memo, type ReactNode, useMemo } from "react";
-import { springTransition, tapScale } from "@/lib/utils";
+import { hoverScale, springTransition, tapScale } from "@/lib/utils";
 
 interface ButtonLinkProps {
 	href: string;
@@ -36,6 +36,7 @@ const ButtonLink = memo(function ButtonLink({
 	return (
 		<motion.div
 			whileTap={tapScale}
+			whileHover={hoverScale}
 			transition={springTransition}
 			className="inline-flex"
 		>

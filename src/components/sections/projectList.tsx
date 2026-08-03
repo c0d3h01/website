@@ -14,7 +14,7 @@ const ProjectList = ({ items, limit }: ProjectListProps) => {
 		<div className="flex flex-col gap-2.5 md:gap-3.5">
 			{visibleItems.map((project) => (
 				<ProjectCard
-					key={project.id}
+					key={project.slug}
 					slug={project.slug}
 					title={project.title}
 					status={project.status}

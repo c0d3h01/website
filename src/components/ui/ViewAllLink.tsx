@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "motion/react";
+import { ChevronsDown } from "lucide-react";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 import { hoverScale, springTransition, tapScale } from "@/lib/utils";
 
 interface ViewAllLinkProps {
@@ -23,7 +23,7 @@ const ViewAllLink = ({ href, label = "View All" }: ViewAllLinkProps) => {
 				className="showMore-btn select-none w-full px-2 py-1 rounded-md block"
 			>
 				<span className="flex items-center justify-center gap-0.5">
-					<MdKeyboardDoubleArrowDown />
+					<ChevronsDown />
 					{label}
 				</span>
 			</Link>

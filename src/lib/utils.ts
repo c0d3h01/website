@@ -1,4 +1,4 @@
-import type { Transition, Variants } from "motion/react";
+import type { Transition, Variants } from "framer-motion";
 
 // ---------------------------------------------------------------------------
 // Date formatting

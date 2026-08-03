@@ -8,7 +8,7 @@ const Social = () => {
 			className="flex w-full flex-wrap items-center justify-center gap-3 pt-1 md:w-auto md:justify-start"
 		>
 			{SocialLinks.map((link) => (
-				<div key={link.id}>
+				<div key={link.name}>
 					<ButtonLink
 						ariaLabel={link.name}
 						href={link.href}

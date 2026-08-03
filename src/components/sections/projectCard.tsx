@@ -1,9 +1,9 @@
 "use client";
 
+import { Eye, EyeOff, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { FiGithub } from "react-icons/fi";
-import { LuExternalLink, LuEye, LuEyeOff } from "react-icons/lu";
 import Button from "@/components/ui/Button";
 import type { ProjectStatus } from "@/content";
 
@@ -105,7 +105,7 @@ const ProjectCard = ({
 									onClick={() => setShowPreview((prev) => !prev)}
 									className="project-card-action"
 								>
-									{showPreview ? <LuEyeOff /> : <LuEye />}
+									{showPreview ? <EyeOff /> : <Eye />}
 								</Button>
 							)}
 
@@ -117,7 +117,7 @@ const ProjectCard = ({
 									className="project-card-action"
 									href={liveUrl}
 								>
-									<LuExternalLink />
+									<ExternalLink />
 								</a>
 							)}
 
