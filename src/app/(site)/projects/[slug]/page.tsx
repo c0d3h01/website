@@ -1,9 +1,9 @@
+import { Link as LinkIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FiGithub } from "react-icons/fi";
-import { LuLink } from "react-icons/lu";
 import { defaultOgImage, getProjectBySlug, profile, projects } from "@/content";
 
 type ProjectPageProps = {
@@ -112,7 +112,7 @@ const ProjectDetailPage = async ({ params }: ProjectPageProps) => {
 						className="btn cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md text-sm"
 						href={project.liveUrl}
 					>
-						<LuLink />
+						<LinkIcon />
 						Live
 					</a>
 				)}
