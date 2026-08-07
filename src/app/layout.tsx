@@ -1,4 +1,5 @@
 import type { Viewport } from "next";
+import Script from "next/script";
 import { siteFontVariables } from "@/app/fonts";
 import { profile, profileAvatarUrl, seoMetadata, siteUrl } from "@/content";
 import "./globals.css";
@@ -25,6 +26,11 @@ const personJsonLd = {
 	],
 };
 
+// ponytail: dev-only Figma capture script is gated at module level so the
+// production HTML never carries a runtime branch. Tree-shaking drops the
+// import + element entirely in the prod build.
+const isDev = process.env.NODE_ENV === "development";
+
 export default function RootLayout({
 	children,
 }: Readonly<{
@@ -39,10 +45,10 @@ export default function RootLayout({
 					// biome-ignore lint/security/noDangerouslySetInnerHtml: Required pattern for JSON-LD schema injection.
 					dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
 				/>
-				{process.env.NODE_ENV === "development" && (
-					<script
+				{isDev && (
+					<Script
 						src="https://mcp.figma.com/mcp/html-to-design/capture.js"
-						async
+						strategy="lazyOnload"
 					/>
 				)}
 			</head>

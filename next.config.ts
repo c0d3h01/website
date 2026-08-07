@@ -7,9 +7,6 @@ const withBundleAnalyzer = createBundleAnalyzer({
 
 const nextConfig: NextConfig = {
 	poweredByHeader: false,
-	// Restore scroll position on back/forward navigation so clicking "back to home"
-	// from a blog or project detail lands the user where they left the list, not at the top.
-	scrollRestoration: true,
 	onDemandEntries: {
 		// Reduce memory usage for long-running dev servers
 		maxInactiveAge: 60 * 1000,
@@ -26,6 +23,10 @@ const nextConfig: NextConfig = {
 	},
 	images: {
 		formats: ["image/avif", "image/webp"],
+		// Lock the image-optimizer allowlist. Next 16 rejects unrestricted qualities
+		// by default; we cap to 3 buckets so the optimizer doesn't 400 on a request
+		// asking for q=1 or q=100 and burn disk on one-off cached variants.
+		qualities: [50, 75, 90],
 		minimumCacheTTL: 60 * 60 * 24 * 30,
 		remotePatterns: [
 			{
