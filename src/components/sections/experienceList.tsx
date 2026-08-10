@@ -1,24 +1,8 @@
 "use client";
 
-import { motion, type Variants } from "motion/react";
+import { motion } from "motion/react";
 import type { Experience } from "@/content";
-
-const container: Variants = {
-	hidden: { opacity: 0 },
-	show: {
-		opacity: 1,
-		transition: { staggerChildren: 0.1 },
-	},
-};
-
-const itemVariants: Variants = {
-	hidden: { opacity: 0, y: 20 },
-	show: {
-		opacity: 1,
-		y: 0,
-		transition: { type: "spring", stiffness: 300, damping: 24 },
-	},
-};
+import { listContainerVariants, listItemVariants } from "@/lib/utils";
 
 interface ExperienceListProps {
 	items: Experience[];
@@ -27,35 +11,62 @@ interface ExperienceListProps {
 const ExperienceList = ({ items }: ExperienceListProps) => {
 	return (
 		<motion.div
-			variants={container}
+			variants={listContainerVariants}
 			initial="hidden"
 			whileInView="show"
 			viewport={{ once: true, margin: "-40px" }}
-			className="section-copy flex flex-col gap-2.5"
+			className="flex flex-col gap-3"
 		>
 			{items.map(({ role, company, duration, location, highlights }) => {
 				const entryKey = `${role}·${company}`;
 				return (
 					<motion.article
-						variants={itemVariants}
-						whileHover={{ y: -2, boxShadow: "0 4px 12px rgba(0,0,0,0.05)" }}
+						variants={listItemVariants}
+						whileHover={{ y: -2 }}
+						transition={{ type: "spring", stiffness: 400, damping: 30 }}
 						key={entryKey}
-						className="experience-card rounded-md border border-(--gb-border) bg-(--gb-surface) p-2.5"
+						className="experience-card flex gap-3.5 p-4"
 					>
-						<div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-							<h3 className="min-w-0 text-[1.02rem] font-semibold text-(--gb-fg0)">
-								{role} · {company}
-							</h3>
-							<p className="shrink-0 whitespace-nowrap text-sm text-(--gb-fg2)">
-								{duration}
+						{/* Left accent bar */}
+						<div
+							className="w-0.5 shrink-0 rounded-full self-stretch bg-(--accent)"
+							aria-hidden="true"
+						/>
+
+						{/* Content */}
+						<div className="flex flex-col gap-1.5 min-w-0">
+							<div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
+								<h3 className="font-semibold text-(--fg-primary) text-sm">
+									{role}
+									<span className="text-(--fg-tertiary) font-normal mx-1.5">
+										·
+									</span>
+									{company}
+								</h3>
+								<span className="font-mono text-xs text-(--fg-tertiary) shrink-0 whitespace-nowrap">
+									{duration}
+								</span>
+							</div>
+							<p className="text-xs text-(--fg-tertiary) uppercase tracking-wide font-medium">
+								{location}
 							</p>
+							<ul className="flex flex-col gap-1 mt-1.5">
+								{highlights.map((highlight) => (
+									<li
+										key={`${entryKey}-${highlight}`}
+										className="flex gap-2 text-sm text-(--fg-secondary) leading-relaxed"
+									>
+										<span
+											className="text-(--accent) shrink-0 mt-0.5 select-none"
+											aria-hidden="true"
+										>
+											▸
+										</span>
+										{highlight}
+									</li>
+								))}
+							</ul>
 						</div>
-						<p className="text-sm text-(--gb-fg2)">{location}</p>
-						<ul className="mt-2 list-disc space-y-1 pl-5 text-[0.95rem] text-(--gb-fg1)">
-							{highlights.map((highlight) => (
-								<li key={`${entryKey}-${highlight}`}>{highlight}</li>
-							))}
-						</ul>
 					</motion.article>
 				);
 			})}

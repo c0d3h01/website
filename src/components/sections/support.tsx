@@ -5,16 +5,15 @@ import { supportMethods, supportText } from "@/content";
 
 const Support = () => {
 	return (
-		<section className="section-static section-copy relative flex flex-col gap-2 overflow-visible">
+		<section className="section-copy relative flex flex-col gap-3 overflow-visible pb-10">
 			<SectionHeading title="Support Me" />
-			<p>{supportText}</p>
-			<div className="flex flex-wrap items-center gap-2">
+			<p className="text-(--fg-secondary)">{supportText}</p>
+			<div className="flex flex-wrap items-center gap-2 mt-1">
 				{supportMethods.map((method) => {
 					const Icon = method.icon;
-
 					return (
 						<ButtonLink key={method.label} href={method.href}>
-							<Icon />
+							<Icon className="size-4" />
 							{method.label}
 						</ButtonLink>
 					);

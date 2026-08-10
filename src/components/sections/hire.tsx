@@ -5,16 +5,16 @@ import { emailLink, hireText, resumeFilePath } from "@/content";
 
 const Hire = () => {
 	return (
-		<section className="section-static section-copy flex flex-col gap-2">
+		<section className="section-copy flex flex-col gap-3">
 			<SectionHeading title="Hire Me" />
-			<p>{hireText}</p>
-			<div className="flex flex-wrap items-center gap-2.5">
+			<p className="text-(--fg-secondary)">{hireText}</p>
+			<div className="flex flex-wrap items-center gap-2.5 mt-1">
 				<ButtonLink href={emailLink}>
-					<Briefcase />
+					<Briefcase className="size-4" />
 					Hire Me
 				</ButtonLink>
 				<ButtonLink href={resumeFilePath}>
-					<FileText />
+					<FileText className="size-4" />
 					Resume
 				</ButtonLink>
 			</div>

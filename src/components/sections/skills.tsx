@@ -8,24 +8,22 @@ const container: Variants = {
 	hidden: { opacity: 0 },
 	show: {
 		opacity: 1,
-		transition: {
-			staggerChildren: 0.05,
-		},
+		transition: { staggerChildren: 0.04 },
 	},
 };
 
 const item: Variants = {
-	hidden: { opacity: 0, scale: 0.8 },
+	hidden: { opacity: 0, scale: 0.88 },
 	show: {
 		opacity: 1,
 		scale: 1,
-		transition: { type: "spring", stiffness: 300, damping: 24 },
+		transition: { type: "spring", stiffness: 360, damping: 24 },
 	},
 };
 
 const Skills = () => {
 	return (
-		<section className="section-static flex flex-col gap-2">
+		<section className="flex flex-col gap-3">
 			<SectionHeading title="Skills & Tools" />
 			<motion.ul
 				variants={container}
@@ -38,14 +36,11 @@ const Skills = () => {
 				{skills.map(({ icon: Icon, name }) => (
 					<motion.li
 						variants={item}
-						whileHover={{
-							scale: 1.05,
-							y: -1,
-						}}
+						whileHover={{ scale: 1.06, y: -1 }}
 						key={name}
-						className="skills-card select-none flex flex-row gap-1 items-center px-2 py-1 rounded-md transition-colors hover:bg-(--gb-border)"
+						className="skill-chip"
 					>
-						<Icon />
+						<Icon className="size-3 shrink-0" />
 						{name}
 					</motion.li>
 				))}
