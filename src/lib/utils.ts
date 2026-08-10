@@ -84,3 +84,22 @@ export const dialogContentVariants: Variants = {
 		transition: { duration: 0.12, ease: "easeIn" },
 	},
 };
+
+/** Stagger container for vertical list reveals (use with `whileInView`). */
+export const listContainerVariants: Variants = {
+	hidden: { opacity: 0 },
+	show: {
+		opacity: 1,
+		transition: { staggerChildren: 0.1 },
+	},
+};
+
+/** Spring item entrance for list children (pair with `listContainerVariants`). */
+export const listItemVariants: Variants = {
+	hidden: { opacity: 0, y: 20 },
+	show: {
+		opacity: 1,
+		y: 0,
+		transition: { type: "spring", stiffness: 300, damping: 24 },
+	},
+};
