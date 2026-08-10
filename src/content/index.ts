@@ -362,7 +362,7 @@ export const experiences: Experience[] = [
 // ---------------------------------------------------------------------------
 
 export const emailLink = `mailto:${profile.email}?subject=Interested%20in%20Hiring%20You`;
-export const resumeFilePath = "/public/docs/harshal_sawant-resume.pdf";
+export const resumeFilePath = "/docs/harshal_sawant-resume.pdf";
 
 interface SocialLink {
 	name: string;
