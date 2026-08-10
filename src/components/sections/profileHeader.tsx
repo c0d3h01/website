@@ -1,52 +1,59 @@
-import Image, { type ImageProps } from "next/image";
+import Image from "next/image";
 import Social from "@/components/sections/social";
 import ImagePreview from "@/components/ui/ImagePreview";
+import { profile, profileAvatarUrl } from "@/content";
 
-interface ProfileHeaderProps {
-	userName: string;
-	userBio: string;
-	userImage: ImageProps["src"];
-}
+const imageAlt = "Profile Picture";
 
-const ProfileHeader = ({
-	userName,
-	userBio,
-	userImage,
-}: ProfileHeaderProps) => {
-	const imageAlt = "Profile Picture";
+// Character count for the CSS typewriter animation.
+// "Harshal Sawant" = 14 chars — JetBrains Mono is monospace so 14ch = exact width.
+// Update the `steps(14)` in globals.css if the name changes.
 
+const ProfileHeader = () => {
 	return (
-		<section className="flex flex-col items-center gap-3 text-center sm:flex-row sm:items-center sm:gap-4 sm:text-left">
-			<div className="shrink-0">
+		<section className="section-profile flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-6">
+			{/* Avatar */}
+			<div className="flex justify-center shrink-0 sm:justify-start">
 				<ImagePreview
-					src={userImage}
+					src={profileAvatarUrl}
 					alt={imageAlt}
 					previewAlt={`${imageAlt} Preview`}
 					dialogLabel="Profile picture preview"
 					triggerAriaLabel="Open avatar preview"
 					trigger={
-						<span className="pro-pic-shell relative block size-24 sm:size-28 md:size-32 select-none">
+						<span className="avatar-shell size-20 sm:size-24">
 							<Image
-								src={userImage}
+								src={profileAvatarUrl}
 								alt={imageAlt}
-								className="pro-pic block size-full object-cover"
+								className="avatar-img"
 								fill
 								preload
-								placeholder={typeof userImage === "string" ? "empty" : "blur"}
-								sizes="(max-width: 640px) 96px, (max-width: 768px) 112px, 130px"
+								placeholder="empty"
+								sizes="(max-width: 640px) 80px, 96px"
 							/>
 						</span>
 					}
 				/>
 			</div>
 
-			<div className="flex min-w-0 flex-col items-center justify-center gap-2 sm:items-start">
-				<div className="flex flex-col gap-1">
-					<h1 className="font-bold text-lg sm:text-xl md:text-2xl">
-						{userName}
-					</h1>
-					<p>{userBio}</p>
-				</div>
+			{/* Identity */}
+			<div className="flex flex-col items-center gap-2.5 sm:items-start">
+				{/* Terminal prompt — decorative, hidden from assistive tech */}
+				<p className="terminal-prompt" aria-hidden="true">
+					$ whoami
+				</p>
+
+				{/* Typewriter name — text in DOM is read by screen readers regardless of overflow:hidden */}
+				<h1 className="terminal-name">{profile.name}</h1>
+
+				{/* Role badge */}
+				<span className="role-badge">
+					<span className="opacity-40 select-none mr-0.5">[</span>
+					{profile.bio}
+					<span className="opacity-40 select-none ml-0.5">]</span>
+				</span>
+
+				{/* Social links */}
 				<Social />
 			</div>
 		</section>
