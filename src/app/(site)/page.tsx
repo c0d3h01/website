@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import About from "@/components/sections/about";
 import Experience from "@/components/sections/experience";
 import Footer from "@/components/sections/footer";
-import GitHubProfileHeader from "@/components/sections/githubProfileHeader";
 import Hire from "@/components/sections/hire";
+import ProfileHeader from "@/components/sections/profileHeader";
 import Projects from "@/components/sections/projects";
 import Skills from "@/components/sections/skills";
 import Support from "@/components/sections/support";
@@ -19,8 +19,8 @@ export const revalidate = 300;
 
 const HomePageRoute = () => {
 	return (
-		<div className="section-stack flex flex-col gap-4">
-			<GitHubProfileHeader />
+		<div className="section-stack">
+			<ProfileHeader />
 			<Reveal delay={0.1}>
 				<About />
 			</Reveal>
