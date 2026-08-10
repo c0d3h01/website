@@ -1,35 +1,55 @@
 @import "tailwindcss";
 
+/* ─── Design Tokens ──────────────────────────────────────────────────────────── */
+
 :root {
-	color-scheme: light, dark;
-	--gb-fg0: #09090b;
-	--gb-fg1: #3f3f46;
-	--gb-fg2: #71717b;
-	--gb-yellow: #000000;
-	--gb-border: #e4e4e7;
-	--gb-surface: #ffffff;
-	--gb-surface-strong: #f4f4f5;
-	--font-body:
+	color-scheme: light dark;
+
+	/* Light palette */
+	--bg: #fafafa;
+	--bg-card: #ffffff;
+	--bg-subtle: #f4f4f5;
+	--fg-primary: #09090b;
+	--fg-secondary: #52525b;
+	--fg-tertiary: #a1a1aa;
+	--border: #e4e4e7;
+	--accent: #16a34a;
+	--accent-dim: #dcfce7;
+	--accent-text: #14532d;
+	--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+	--shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+	/* Font stacks */
+	--font-sans:
 		var(--font-inter-local), "Aptos", "Inter", "Segoe UI Variable", "Segoe UI",
-		"SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		system-ui, sans-serif;
+	--font-mono:
+		var(--font-jetbrains-mono), "JetBrains Mono", "Fira Code", "Cascadia Code",
+		"Courier New", monospace;
 	--font-display:
 		var(--font-plus-jakarta-sans-local), "Aptos Display", "Segoe UI Variable",
-		"Segoe UI", "Inter", "SF Pro Display", "Helvetica Neue", Helvetica, Arial,
-		sans-serif;
+		"Inter", system-ui, sans-serif;
 }
 
 .dark {
 	color-scheme: dark;
-	--gb-fg0: #fafafa;
-	--gb-fg1: #d4d4d8;
-	--gb-fg2: #a1a1aa;
-	--gb-yellow: #ffffff;
-	--gb-border: #27272a;
-	--gb-surface: #09090b;
-	--gb-surface-strong: #18181b;
+
+	--bg: #0b0f1a;
+	--bg-card: #111827;
+	--bg-subtle: #161d2e;
+	--fg-primary: #f1f5f9;
+	--fg-secondary: #94a3b8;
+	--fg-tertiary: #475569;
+	--border: #1e293b;
+	--accent: #22c55e;
+	--accent-dim: #052e16;
+	--accent-text: #86efac;
+	--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+	--shadow-md: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* View Transition Theme Animations */
+/* ─── View Transition Theme Animation ──────────────────────────────────────── */
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
 	animation: none;
@@ -50,144 +70,196 @@
 		clip-path: circle(var(--theme-r) at var(--theme-x) var(--theme-y));
 	}
 }
+
+/* ─── Terminal Animation ────────────────────────────────────────────────────── */
+
+/* "Harshal Sawant" = 14 chars — works because JetBrains Mono is monospace (1ch = 1 glyph) */
+@keyframes terminal-type {
+	to {
+		width: 14ch;
+	}
+}
+@keyframes terminal-cursor-blink {
+	0%,
+	49% {
+		border-color: var(--accent);
+	}
+	50%,
+	100% {
+		border-color: transparent;
+	}
+}
+@keyframes terminal-cursor-hide {
+	to {
+		border-color: transparent;
+	}
+}
+
+/* ─── Base ──────────────────────────────────────────────────────────────────── */
+
 body {
-	font-family: var(--font-body);
+	font-family: var(--font-sans);
 	min-height: 100vh;
-	color: var(--gb-fg1);
-	line-height: 1.55;
-	background-color: var(--gb-surface);
+	color: var(--fg-secondary);
+	line-height: 1.6;
+	background-color: var(--bg);
 }
 
 h1,
 h2,
 h3 {
-	font-family: var(--font-display), sans-serif;
+	font-family: var(--font-sans);
 	letter-spacing: -0.01em;
+	color: var(--fg-primary);
 }
 
 ::selection {
-	background: rgba(107, 114, 128, 0.2);
-	color: var(--gb-fg0);
+	background: color-mix(in srgb, var(--accent) 18%, transparent);
+	color: var(--fg-primary);
 }
 
 @media (prefers-reduced-motion: reduce) {
 	*,
 	*::before,
 	*::after {
-		animation-duration: 0.01ms;
-		animation-iteration-count: 1;
-		transition-duration: 0.01ms;
-		scroll-behavior: auto;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
 	}
 }
 
+/* ─── Section Layout ────────────────────────────────────────────────────────── */
+
+.section-stack {
+	display: flex;
+	flex-direction: column;
+}
+
 .section-stack > * {
-	padding-inline: clamp(0.75rem, 2vw, 1.5rem);
-	padding-block: clamp(0.75rem, 1.5vw, 1rem);
+	padding-inline: 1.25rem;
+	padding-block: 1.5rem;
+}
+
+.section-stack > * + * {
+	border-top: 1px solid var(--border);
 }
 
 @media (min-width: 640px) {
 	.section-stack > * {
-		border-left: 1px solid var(--gb-border);
-		border-right: 1px solid var(--gb-border);
-		padding-inline: clamp(1rem, 2vw, 1.5rem);
+		border-left: 1px solid var(--border);
+		border-right: 1px solid var(--border);
+		padding-inline: 1.75rem;
 	}
-}
-
-/* Profile header is short and stable — a tight fluid placeholder keeps
-   initial paint fast without snapping when off-screen. */
-.section-stack > .section-profile {
-	content-visibility: auto;
-	contain-intrinsic-size: auto 220px;
-}
-
-/* Static, sub-200px sections — content-visibility off entirely to prevent
-   intrinsic-size snapping on tiny modules. */
-.section-stack > .section-static {
-	/* no content-visibility */
-}
-
-/* Dynamic lists — kept as a no-op so adjacent sections don't trigger forced
-   layout mid-scroll. Lists are short (2-3 items), the containment tradeoff
-   doesn't pay off here. */
-.section-stack > .section-fluid {
-	display: block;
 }
 
 .section-copy p {
 	line-height: 1.72;
+	font-size: 0.95rem;
 }
 
-.pro-pic-shell {
-	position: relative;
+/* ─── Avatar ────────────────────────────────────────────────────────────────── */
+
+.avatar-shell {
 	display: block;
+	position: relative;
 	border-radius: 50%;
 	overflow: hidden;
+	border: 2px solid var(--border);
+	transition: border-color 0.2s ease;
+	cursor: pointer;
+	-webkit-user-select: none;
+	user-select: none;
 }
 
-/* Pro pic sizing is handled by Tailwind classes: md:size-32 (128px), size-28 (112px) */
+.avatar-shell:hover {
+	border-color: var(--accent);
+}
 
-.pro-pic {
+.avatar-img {
 	display: block;
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	-webkit-user-select: none;
-	user-select: none;
 }
 
-.skills-card {
-	display: flex;
-	flex-direction: row;
-	gap: 0.375rem;
-	align-items: center;
-	padding: 0.375rem 0.75rem;
-	border-radius: 0.375rem;
-	background: var(--gb-surface);
-	border: 1px solid var(--gb-border);
-	-webkit-user-select: none;
-	user-select: none;
+/* ─── Terminal Hero ─────────────────────────────────────────────────────────── */
+
+.terminal-prompt {
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	color: var(--accent);
+	opacity: 0.75;
+	letter-spacing: 0;
+	line-height: 1.5;
+	margin-bottom: 0.125rem;
 }
 
-.showMore-btn {
-	display: block;
-	width: 100%;
-	padding: 0.375rem 0.75rem;
-	border-radius: 0.375rem;
-	background: var(--gb-surface);
-	border: 1px solid var(--gb-border);
-	-webkit-user-select: none;
-	user-select: none;
+.terminal-name {
+	font-family: var(--font-mono);
+	font-weight: 700;
+	font-size: clamp(1.5rem, 5vw, 2.25rem);
+	letter-spacing: -0.03em;
+	color: var(--fg-primary);
+	white-space: nowrap;
+	overflow: hidden;
+	width: 0;
+	border-right: 2px solid var(--accent);
+	line-height: 1.2;
+	animation:
+		terminal-type 0.7s steps(14, end) 0.25s forwards,
+		terminal-cursor-blink 0.55s step-end 0.25s 6,
+		terminal-cursor-hide 0s 3.6s forwards;
 }
 
-.btn {
+@media (prefers-reduced-motion: reduce) {
+	.terminal-name {
+		width: auto;
+		overflow: visible;
+		border-right: none;
+		animation: none;
+	}
+}
+
+.role-badge {
 	display: inline-flex;
-	flex-direction: row;
-	gap: 0.5rem;
 	align-items: center;
-	padding: 0.375rem 0.75rem;
-	border-radius: 0.375rem;
-	width: fit-content;
-	cursor: pointer;
-	background: var(--gb-surface);
-	border: 1px solid var(--gb-border);
-	-webkit-user-select: none;
-	user-select: none;
+	font-family: var(--font-mono);
+	font-size: 0.7rem;
+	font-weight: 500;
+	color: var(--accent-text);
+	background: var(--accent-dim);
+	border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+	padding: 0.2rem 0.55rem;
+	border-radius: 4px;
+	letter-spacing: 0.01em;
 }
+
+/* ─── Social Links ──────────────────────────────────────────────────────────── */
 
 .social-link {
 	position: relative;
-	overflow: visible;
-	padding: 0.375rem 0.5rem;
-	min-width: 2.5rem;
-	min-height: 2.5rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 0.375rem;
+	color: var(--fg-tertiary);
+	transition:
+		color 0.15s ease,
+		background-color 0.15s ease;
+}
+
+.social-link:hover {
+	color: var(--fg-primary);
+	background-color: var(--bg-subtle);
 }
 
 .social-link-icon {
 	width: 1rem;
 	height: 1rem;
 	flex-shrink: 0;
-	color: var(--gb-fg0);
 }
 
 .social-link-tag {
@@ -198,16 +270,16 @@ h3 {
 	opacity: 0;
 	pointer-events: none;
 	white-space: nowrap;
-	border-radius: 999px;
-	border: 1px solid var(--gb-border);
-	background: var(--gb-surface-strong);
-	padding: 0.25rem 0.5rem;
-	font-size: 0.75rem;
+	border-radius: 4px;
+	border: 1px solid var(--border);
+	background: var(--bg-card);
+	padding: 0.2rem 0.45rem;
+	font-size: 0.7rem;
 	line-height: 1;
-	color: var(--gb-fg1);
+	color: var(--fg-secondary);
 	transition:
-		opacity 0.16s ease,
-		transform 0.16s ease;
+		opacity 0.15s ease,
+		transform 0.15s ease;
 	z-index: 10;
 }
 
@@ -225,43 +297,246 @@ h3 {
 		touch-action: manipulation;
 	}
 
-	.social-link-tag {
-		top: calc(100% + 0.5rem);
-	}
-
 	button {
 		touch-action: manipulation;
 	}
 }
 
-.content-rail {
-	border-inline: 1px solid var(--gb-border);
-	padding-inline: clamp(1rem, 2vw, 1.5rem);
-	padding-block: clamp(0.75rem, 1.5vw, 1rem);
+/* ─── Buttons ───────────────────────────────────────────────────────────────── */
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.375rem 0.75rem;
+	border-radius: 0.375rem;
+	font-size: 0.875rem;
+	font-weight: 500;
+	cursor: pointer;
+	width: fit-content;
+	border: 1px solid var(--border);
+	background: var(--bg-card);
+	color: var(--fg-primary);
+	transition:
+		background-color 0.15s ease,
+		border-color 0.15s ease;
+	-webkit-user-select: none;
+	user-select: none;
 }
 
-.blog-card {
-	display: block;
-	padding: 0.5rem;
-	border-radius: 0.375rem;
-	cursor: pointer;
-	background: var(--gb-surface);
-	border: 1px solid var(--gb-border);
-	overflow-wrap: anywhere;
-	word-break: break-word;
-	contain: layout style paint;
-	transition: background-color 0.2s ease;
+.btn:hover {
+	background: var(--bg-subtle);
+	border-color: var(--fg-tertiary);
 }
+
+.btn-primary {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.375rem 0.75rem;
+	border-radius: 0.375rem;
+	font-size: 0.875rem;
+	font-weight: 500;
+	cursor: pointer;
+	width: fit-content;
+	border: 1px solid transparent;
+	background: var(--accent);
+	color: #ffffff;
+	transition: opacity 0.15s ease;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.btn-primary:hover {
+	opacity: 0.88;
+}
+
+.show-more-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	padding: 0.375rem 0.75rem;
+	border-radius: 0.375rem;
+	border: 1px solid var(--border);
+	background: var(--bg-card);
+	color: var(--fg-secondary);
+	font-size: 0.875rem;
+	cursor: pointer;
+	gap: 0.375rem;
+	transition:
+		background-color 0.15s ease,
+		color 0.15s ease;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.show-more-btn:hover {
+	background: var(--bg-subtle);
+	color: var(--fg-primary);
+}
+
+/* ─── Skill Chips ───────────────────────────────────────────────────────────── */
+
+.skill-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	padding: 0.2rem 0.6rem;
+	border-radius: 4px;
+	border: 1px solid var(--border);
+	background: var(--bg-card);
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	color: var(--fg-secondary);
+	-webkit-user-select: none;
+	user-select: none;
+	cursor: default;
+	transition:
+		background-color 0.15s ease,
+		border-color 0.15s ease,
+		color 0.15s ease;
+}
+
+.skill-chip:hover {
+	background: var(--bg-subtle);
+	border-color: var(--fg-tertiary);
+	color: var(--fg-primary);
+}
+
+/* ─── Experience Card ───────────────────────────────────────────────────────── */
+
+.experience-card {
+	background: var(--bg-card);
+	border: 1px solid var(--border);
+	border-radius: 0.5rem;
+	transition:
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
+}
+
+.experience-card:hover {
+	border-color: var(--fg-tertiary);
+	box-shadow: var(--shadow-sm);
+}
+
+/* ─── Project Card ──────────────────────────────────────────────────────────── */
+
+.project-card {
+	background: var(--bg-card);
+	border: 1px solid var(--border);
+	border-radius: 0.5rem;
+	overflow: hidden;
+	transition:
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+	border-color: var(--fg-tertiary);
+	box-shadow: var(--shadow-md);
+}
+
+.project-card-action {
+	color: var(--fg-tertiary);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 2rem;
+	min-height: 2rem;
+	border-radius: 0.375rem;
+	transition:
+		color 0.15s ease,
+		background-color 0.15s ease;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.project-card-action svg {
+	width: 0.9rem;
+	height: 0.9rem;
+}
+
+.project-card-action:hover {
+	color: var(--fg-primary);
+	background: var(--bg-subtle);
+}
+
+.project-card-action:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+
+/* Status dots */
+.status-dot {
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+
+.status-dot-active {
+	background: var(--accent);
+	box-shadow: 0 0 0 2px var(--accent-dim);
+}
+
+.status-dot-building {
+	background: #f59e0b;
+	box-shadow: 0 0 0 2px #fef3c7;
+}
+
+.status-dot-archived {
+	background: var(--fg-tertiary);
+}
+
+/* Tech pills */
+.tech-pill {
+	font-family: var(--font-mono);
+	font-size: 0.68rem;
+	color: var(--fg-tertiary);
+	background: var(--bg-subtle);
+	border-radius: 3px;
+	padding: 0.1rem 0.4rem;
+}
+
+/* Project preview reveal — GPU-only (clip-path + opacity), no layout reflow */
+.project-preview-clip {
+	clip-path: inset(0 0 100% 0);
+	opacity: 0;
+	transition:
+		clip-path 0.22s ease,
+		opacity 0.22s ease;
+}
+
+.project-preview-clip[data-open="true"] {
+	will-change: clip-path, opacity;
+	clip-path: inset(0 0 0 0);
+	opacity: 1;
+}
+
+/* ─── Blog ──────────────────────────────────────────────────────────────────── */
+
+.blog-row {
+	display: block;
+	padding-block: 0.75rem;
+	cursor: pointer;
+}
+
+.blog-row + .blog-row {
+	border-top: 1px solid var(--border);
+}
+
+/* ─── Blog Prose (detail page) ──────────────────────────────────────────────── */
 
 .blog-prose {
-	color: var(--gb-fg1);
+	color: var(--fg-secondary);
 	overflow-wrap: anywhere;
 	word-break: break-word;
 }
 
 .blog-prose :where(h2, h3) {
 	font-weight: 600;
-	color: var(--gb-fg0);
+	color: var(--fg-primary);
 }
 
 .blog-prose :where(p, ul, ol) {
@@ -297,16 +572,18 @@ h3 {
 }
 
 .blog-prose a {
-	color: var(--gb-yellow);
+	color: var(--accent-text);
 	text-decoration: underline;
 }
 
 .blog-prose code {
-	background: var(--gb-surface-strong);
-	border: 1px solid var(--gb-border);
-	border-radius: 0.3rem;
+	background: var(--bg-subtle);
+	border: 1px solid var(--border);
+	border-radius: 3px;
 	padding: 0.08rem 0.35rem;
-	color: var(--gb-fg0);
+	color: var(--fg-primary);
+	font-family: var(--font-mono);
+	font-size: 0.875em;
 }
 
 .blog-prose pre {
@@ -314,49 +591,10 @@ h3 {
 	overflow-x: auto;
 }
 
-.project-card {
-	background: var(--gb-surface);
-	border: 1px solid var(--gb-border);
-}
+/* ─── Content rail (sub-pages: blog, experience, projects) ──────────────────── */
 
-.project-card-action {
-	color: inherit;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	min-width: 2.75rem;
-	min-height: 2.75rem;
-	border-radius: 0.5rem;
-	transition: background-color 0.14s ease;
-	-webkit-tap-highlight-color: transparent;
-}
-
-.project-card-action svg {
-	width: 1.05rem;
-	height: 1.05rem;
-}
-
-.project-card-action:hover {
-	background: var(--gb-surface-strong);
-}
-
-.project-card-action:focus-visible {
-	outline: 2px solid var(--gb-fg0);
-	outline-offset: 2px;
-}
-
-/* Project preview reveal — GPU-only (clip-path + opacity), no layout
-   reflow. Toggled via [data-open] by the user-driven open/close button. */
-.project-preview-clip {
-	clip-path: inset(0 0 100% 0);
-	opacity: 0;
-	transition:
-		clip-path 0.22s ease,
-		opacity 0.22s ease;
-}
-
-.project-preview-clip[data-open="true"] {
-	will-change: clip-path, opacity;
-	clip-path: inset(0 0 0 0);
-	opacity: 1;
+.content-rail {
+	border-inline: 1px solid var(--border);
+	padding-inline: clamp(1rem, 2vw, 1.5rem);
+	padding-block: clamp(0.75rem, 1.5vw, 1rem);
 }
