@@ -1,8 +1,17 @@
 import type { Metadata } from "next";
-import ProjectListClient from "@/components/sections/projectListClient";
+import nextDynamic from "next/dynamic";
 import ButtonLink from "@/components/ui/ButtonLink";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { defaultOgImage, projects } from "@/content";
+
+const ProjectList = nextDynamic(
+	() => import("@/components/sections/projectList"),
+	{
+		loading: () => (
+			<div className="flex flex-col gap-2.5 md:gap-3.5" aria-hidden="true" />
+		),
+	},
+);
 
 export const metadata: Metadata = {
 	title: "Projects",
@@ -35,7 +44,7 @@ const ProjectsPage = () => {
 				</ButtonLink>
 			</div>
 
-			<ProjectListClient items={projects} />
+			<ProjectList items={projects} />
 		</section>
 	);
 };
