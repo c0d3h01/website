@@ -106,11 +106,11 @@ const ImagePreviewDialog = ({
 							variant="unstyled"
 							aria-label="Close image preview"
 							onClick={onClose}
-							className="absolute top-3 right-3 z-20 rounded-full bg-black/70 p-2.5 text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+							className="absolute top-3 right-3 z-20 rounded-full bg-black/50 hover:bg-black/80 transition-colors p-2 text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--accent) cursor-pointer"
 						>
 							<svg
 								aria-hidden="true"
-								className="h-6 w-6"
+								className="h-5 w-5"
 								fill="none"
 								stroke="currentColor"
 								viewBox="0 0 24 24"

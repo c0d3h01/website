@@ -3,40 +3,42 @@
 import { motion } from "motion/react";
 import Link from "next/link";
 import { memo, type ReactNode, useMemo } from "react";
-import { hoverScale, springTransition, tapScale } from "@/lib/utils";
+import { springTransition, tapScale } from "@/lib/utils";
+
+type ButtonLinkVariant = "default" | "primary";
 
 interface ButtonLinkProps {
 	href: string;
 	children: ReactNode;
+	variant?: ButtonLinkVariant;
 	ariaLabel?: string;
 	target?: "_blank" | "_self";
 	rel?: string;
 	className?: string;
 }
 
+const variantClass: Record<ButtonLinkVariant, string> = {
+	default: "btn",
+	primary: "btn-primary",
+};
+
 const ButtonLink = memo(function ButtonLink({
 	href,
 	children,
+	variant = "default",
 	ariaLabel,
 	target = "_blank",
 	rel = "noopener noreferrer",
 	className,
 }: ButtonLinkProps) {
 	const resolvedClassName = useMemo(
-		() =>
-			[
-				"btn cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md",
-				className,
-			]
-				.filter(Boolean)
-				.join(" "),
-		[className],
+		() => [variantClass[variant], className].filter(Boolean).join(" "),
+		[variant, className],
 	);
 
 	return (
 		<motion.div
 			whileTap={tapScale}
-			whileHover={hoverScale}
 			transition={springTransition}
 			className="inline-flex"
 		>

@@ -122,7 +122,7 @@ const CryptoDonationSelector = memo(function CryptoDonationSelector() {
 						animate="visible"
 						exit="exit"
 					>
-						<div className="flex w-full flex-col gap-2 rounded-lg border border-(--gb-border) bg-(--gb-surface) p-2 shadow-xl ring-1 ring-black/5">
+						<div className="flex w-full flex-col gap-2 rounded-lg border border-(--border) bg-(--bg-card) p-2 shadow-xl ring-1 ring-black/5">
 							{cryptoDonationOptions.map((option) => {
 								const isCopied = copiedKey === option.shortName;
 								return (
@@ -132,18 +132,18 @@ const CryptoDonationSelector = memo(function CryptoDonationSelector() {
 										role="option"
 										aria-selected={isCopied}
 										className={`w-full flex items-center justify-between gap-3 px-2 py-1 rounded-md text-left transition-colors cursor-pointer border-none bg-transparent hover:bg-black/5 dark:hover:bg-white/10 ${
-											isCopied ? "border-(--gb-yellow)" : ""
+											isCopied ? "border-(--accent)" : ""
 										}`}
 										onClick={() => handleCopy(option.shortName, option.address)}
 									>
 										<span className="flex items-center gap-2">
-											<option.icon className="size-5 shrink-0 text-(--gb-fg1)" />
+											<option.icon className="size-5 shrink-0 text-(--fg-secondary)" />
 											<span className="flex flex-col items-start leading-tight">
-												<span className="text-sm font-medium text-(--gb-fg1)">
+												<span className="text-sm font-medium text-(--fg-primary)">
 													{option.name}
 												</span>
 												{option.shortName && (
-													<span className="text-xs text-(--gb-fg2)">
+													<span className="text-xs text-(--fg-tertiary)">
 														{option.shortName}
 													</span>
 												)}
@@ -152,8 +152,8 @@ const CryptoDonationSelector = memo(function CryptoDonationSelector() {
 										<span
 											className={`text-xs font-medium ${
 												isCopied
-													? "text-green-500 dark:text-green-400"
-													: "text-(--gb-fg2)"
+													? "text-(--accent-text)"
+													: "text-(--fg-tertiary)"
 											}`}
 										>
 											{isCopied ? "Copied!" : "Copy"}

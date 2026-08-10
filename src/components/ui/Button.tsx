@@ -2,9 +2,9 @@
 
 import { type HTMLMotionProps, motion } from "motion/react";
 import { memo, type Ref, useMemo } from "react";
-import { hoverScale, springTransition, tapScale } from "@/lib/utils";
+import { springTransition, tapScale } from "@/lib/utils";
 
-type ButtonVariant = "default" | "unstyled";
+type ButtonVariant = "default" | "primary" | "unstyled";
 
 interface ButtonProps extends HTMLMotionProps<"button"> {
 	variant?: ButtonVariant;
@@ -12,8 +12,8 @@ interface ButtonProps extends HTMLMotionProps<"button"> {
 }
 
 const variantClassName: Record<ButtonVariant, string> = {
-	default:
-		"btn cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md",
+	default: "btn",
+	primary: "btn-primary",
 	unstyled: "",
 };
 
@@ -36,7 +36,6 @@ const Button = memo(
 				type={type}
 				className={resolvedClassName}
 				whileTap={tapScale}
-				whileHover={hoverScale}
 				transition={springTransition}
 				{...props}
 			/>
