@@ -1,21 +1,7 @@
 "use client";
 
-import dynamic from "next/dynamic";
+import BlogPostCard from "@/components/sections/blogPostCard";
 import type { BlogPostMeta } from "@/content";
-
-// Lazy-load the per-card component (motion + next/link). Keeps the initial
-// bundle smaller and lets the chunk resolve while the parent layout paints.
-const BlogPostCard = dynamic(
-	() => import("@/components/sections/blogPostCard"),
-	{
-		loading: () => (
-			<div
-				className="flex min-h-72 flex-col gap-2.5 md:gap-3.5 md:min-h-56"
-				aria-hidden="true"
-			/>
-		),
-	},
-);
 
 interface BlogPostListProps {
 	posts: BlogPostMeta[];

@@ -21,23 +21,28 @@ const BlogPostCard = memo(function BlogPostCard({
 	const publishedAt = formatShortDate(date);
 
 	return (
-		<motion.div
-			whileHover={{ y: -1, boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}
-			transition={{ type: "spring", stiffness: 400, damping: 30 }}
+		<Link
+			href={href}
+			className="blog-row group block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--accent) rounded-sm"
 		>
-			<Link
-				href={href}
-				className="blog-card cursor-pointer p-2 rounded-md block hover:bg-gray-100 transition-colors"
+			<motion.article
+				className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between px-2 py-1 -mx-2 rounded-md transition-colors group-hover:bg-(--bg-subtle)"
+				whileHover={{ x: 4 }}
+				transition={{ type: "spring", stiffness: 400, damping: 30 }}
 			>
-				<div className="flex w-full flex-col gap-0.5">
-					<h2 className="wrap-break-word text-base sm:text-lg font-semibold">
+				<div className="flex flex-col min-w-0 flex-1 pr-4">
+					<h3 className="text-[1.05rem] font-semibold text-(--fg-primary) leading-snug truncate group-hover:text-(--accent) transition-colors">
 						{title}
-					</h2>
-					<p className="text-sm opacity-70">{publishedAt}</p>
-					<p className="wrap-break-word opacity-80">{description}</p>
+					</h3>
+					<p className="text-[0.92rem] text-(--fg-secondary) truncate opacity-90">
+						{description}
+					</p>
 				</div>
-			</Link>
-		</motion.div>
+				<time className="shrink-0 font-mono text-[0.8rem] text-(--fg-tertiary) sm:text-right mt-1 sm:mt-0 opacity-80">
+					{publishedAt}
+				</time>
+			</motion.article>
+		</Link>
 	);
 });
 
