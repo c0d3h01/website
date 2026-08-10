@@ -1,25 +1,31 @@
-import ButtonLink from "@/components/ui/ButtonLink";
+"use client";
+
+import { motion } from "motion/react";
 import { SocialLinks } from "@/content";
+import { springTransition, tapScale } from "@/lib/utils";
 
 const Social = () => {
 	return (
-		<section
+		<nav
 			aria-label="Social links"
-			className="flex w-full flex-wrap items-center justify-center gap-3 pt-1 sm:w-auto sm:justify-start"
+			className="flex flex-wrap items-center gap-1"
 		>
 			{SocialLinks.map((link) => (
-				<div key={link.name}>
-					<ButtonLink
-						ariaLabel={link.name}
-						href={link.href}
-						className="social-link relative overflow-visible px-2 py-1.5"
-					>
-						<link.icon className="social-link-icon size-4 shrink-0" />
-						<span className="social-link-tag">{link.name}</span>
-					</ButtonLink>
-				</div>
+				<motion.a
+					key={link.name}
+					href={link.href}
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label={link.name}
+					className="social-link"
+					whileTap={tapScale}
+					transition={springTransition}
+				>
+					<link.icon className="social-link-icon" />
+					<span className="social-link-tag">{link.name}</span>
+				</motion.a>
 			))}
-		</section>
+		</nav>
 	);
 };
 
