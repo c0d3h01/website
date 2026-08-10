@@ -1,3 +1,4 @@
+import { JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
 
 // `display: "swap"` keeps text visible during font load (no FOIT).
@@ -41,4 +42,16 @@ const displayFont = localFont({
 	adjustFontFallback: "Arial",
 });
 
-export const siteFontVariables = `${bodyFont.variable} ${displayFont.variable}`;
+// JetBrains Mono: used exclusively for the terminal hero name, role badge,
+// and tech stack chips. The monospace metric (1ch = 1 glyph) is what makes
+// the CSS typewriter animation width-calculation precise.
+const monoFont = JetBrains_Mono({
+	subsets: ["latin"],
+	weight: ["400", "500", "700"],
+	display: "swap",
+	variable: "--font-jetbrains-mono",
+	preload: false,
+	fallback: ["Consolas", "Courier New", "monospace"],
+});
+
+export const siteFontVariables = `${bodyFont.variable} ${displayFont.variable} ${monoFont.variable}`;
