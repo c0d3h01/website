@@ -23,15 +23,15 @@ const statusMeta: Record<ProjectStatus, { label: string; className: string }> =
 	{
 		active: {
 			label: "Active",
-			className: "bg-emerald-100 text-emerald-700",
+			className: "status-dot-active",
 		},
 		building: {
 			label: "Building",
-			className: "bg-amber-100 text-amber-700",
+			className: "status-dot-building",
 		},
 		archived: {
 			label: "Archived",
-			className: "border border-amber-500 bg-amber-50 text-amber-700",
+			className: "status-dot-archived",
 		},
 	};
 
@@ -55,25 +55,25 @@ const ProjectCard = ({
 
 	return (
 		<motion.article
-			className="project-card relative rounded-md"
-			whileHover={{ y: -2, boxShadow: "0 4px 20px rgba(0,0,0,0.08)" }}
+			className="project-card relative flex flex-col h-full"
+			whileHover={{ y: -2 }}
 			transition={{ type: "spring", stiffness: 400, damping: 30 }}
 		>
 			<Link
 				href={projectPagePath}
 				aria-label={`Open project details for ${title}`}
-				className="absolute inset-0 z-20 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--gb-fg0)"
+				className="absolute inset-0 z-20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--accent)"
 			/>
 
 			{hasPreview && (
 				<div
-					className="project-preview-clip relative z-30 overflow-hidden"
+					className="project-preview-clip relative z-30 bg-black/5 dark:bg-white/5"
 					data-open={showPreview ? "true" : "false"}
 					aria-hidden={!showPreview}
 				>
-					<div className="p-2.5">
+					<div className="p-3">
 						<video
-							className="w-full rounded-md"
+							className="w-full rounded-md shadow-sm border border-white/10"
 							loop
 							autoPlay
 							muted
@@ -88,77 +88,75 @@ const ProjectCard = ({
 				</div>
 			)}
 
-			<div className="p-2.5">
-				<div className="flex flex-col gap-1">
-					<div className="flex items-center justify-between">
-						<div className="flex min-w-0 items-center gap-2">
-							<h2 className="truncate text-lg sm:text-xl md:text-2xl font-semibold">
-								{title}
-							</h2>
+			<div className="p-3.5 flex flex-col flex-1 gap-2.5">
+				<div className="flex items-start justify-between gap-3">
+					<div className="flex min-w-0 flex-col items-start gap-1">
+						<h2 className="truncate text-[1.15rem] leading-tight font-semibold text-(--fg-primary) max-w-full">
+							{title}
+						</h2>
+						<div className="flex items-center gap-1.5 opacity-80">
 							<span
-								className={`pointer-events-none shrink-0 rounded px-2 py-0.5 text-sm font-semibold leading-none tracking-wide ${statusInfo.className}`}
-							>
+								className={`status-dot ${statusInfo.className}`}
+								aria-hidden="true"
+							/>
+							<span className="text-[0.65rem] font-mono tracking-wide uppercase text-(--fg-tertiary)">
 								{statusInfo.label}
 							</span>
 						</div>
-
-						<div className="relative z-30 flex select-none gap-1 sm:gap-2 px-1 sm:px-2 text-base">
-							{hasPreview && (
-								<Button
-									variant="unstyled"
-									aria-label={previewLabel}
-									aria-pressed={showPreview}
-									aria-expanded={showPreview}
-									onClick={() => setShowPreview((prev) => !prev)}
-									className="project-card-action"
-								>
-									{showPreview ? <EyeOff /> : <Eye />}
-								</Button>
-							)}
-
-							{liveUrl && (
-								<a
-									target="_blank"
-									rel="noopener noreferrer"
-									aria-label={`Open live project: ${title}`}
-									className="project-card-action"
-									href={liveUrl}
-								>
-									<ExternalLink />
-								</a>
-							)}
-
-							{githubUrl && (
-								<a
-									target="_blank"
-									rel="noopener noreferrer"
-									aria-label={`Open GitHub repository for ${title}`}
-									className="project-card-action"
-									href={githubUrl}
-								>
-									<FiGithub />
-								</a>
-							)}
-						</div>
 					</div>
 
-					<p className="opacity-80">{description}</p>
+					<div className="relative z-30 flex shrink-0 select-none gap-1 -mt-0.5 -mr-1">
+						{hasPreview && (
+							<Button
+								variant="unstyled"
+								aria-label={previewLabel}
+								aria-pressed={showPreview}
+								aria-expanded={showPreview}
+								onClick={() => setShowPreview((prev) => !prev)}
+								className="project-card-action"
+							>
+								{showPreview ? <EyeOff /> : <Eye />}
+							</Button>
+						)}
+
+						{liveUrl && (
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={`Open live project: ${title}`}
+								className="project-card-action"
+								href={liveUrl}
+							>
+								<ExternalLink />
+							</a>
+						)}
+
+						{githubUrl && (
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={`Open GitHub repository for ${title}`}
+								className="project-card-action"
+								href={githubUrl}
+							>
+								<FiGithub />
+							</a>
+						)}
+					</div>
 				</div>
+
+				<p className="text-[0.92rem] leading-snug text-(--fg-secondary) opacity-90 line-clamp-2">
+					{description}
+				</p>
 			</div>
 
-			<div className="overflow-hidden">
-				<div className="mt-3 flex border-t border-(--gb-border) md:mt-0" />
-				<div className="flex items-center px-2 py-2 md:py-1.5">
-					<ul className="flex flex-wrap gap-1.5 select-none">
-						{skills.map((skill) => (
-							<li
-								key={`${title}-${skill}`}
-								className="list-none rounded-md border border-(--gb-border) px-2 py-0.5 text-sm"
-							>
-								{skill}
-							</li>
-						))}
-					</ul>
+			<div className="p-3 pt-0 mt-auto">
+				<div className="flex flex-wrap gap-1.5 select-none">
+					{skills.map((skill) => (
+						<span key={`${title}-${skill}`} className="tech-pill">
+							{skill}
+						</span>
+					))}
 				</div>
 			</div>
 		</motion.article>
