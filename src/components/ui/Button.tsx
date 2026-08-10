@@ -1,6 +1,6 @@
 "use client";
 
-import { type HTMLMotionProps, motion } from "framer-motion";
+import { type HTMLMotionProps, motion } from "motion/react";
 import { memo, type Ref, useMemo } from "react";
 import { hoverScale, springTransition, tapScale } from "@/lib/utils";
 

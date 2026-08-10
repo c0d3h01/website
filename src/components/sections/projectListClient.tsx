@@ -7,7 +7,7 @@ import type { Project } from "@/content";
 // of the initial route JS bundle.
 const ProjectList = dynamic(() => import("@/components/sections/projectList"), {
 	loading: () => (
-		<div className="flex flex-col gap-3.5 md:gap-2.5" aria-hidden="true" />
+		<div className="flex flex-col gap-2.5 md:gap-3.5" aria-hidden="true" />
 	),
 });
 

@@ -16,7 +16,7 @@ const ProfileHeader = ({
 	const imageAlt = "Profile Picture";
 
 	return (
-		<section className="flex flex-col items-center gap-3 text-center md:flex-row md:items-center md:gap-4 md:text-left">
+		<section className="flex flex-col items-center gap-3 text-center sm:flex-row sm:items-center sm:gap-4 sm:text-left">
 			<div className="shrink-0">
 				<ImagePreview
 					src={userImage}
@@ -25,7 +25,7 @@ const ProfileHeader = ({
 					dialogLabel="Profile picture preview"
 					triggerAriaLabel="Open avatar preview"
 					trigger={
-						<span className="pro-pic-shell relative block md:size-32 size-28 select-none">
+						<span className="pro-pic-shell relative block size-24 sm:size-28 md:size-32 select-none">
 							<Image
 								src={userImage}
 								alt={imageAlt}
@@ -33,16 +33,16 @@ const ProfileHeader = ({
 								fill
 								preload
 								placeholder={typeof userImage === "string" ? "empty" : "blur"}
-								sizes="(max-width: 768px) 108px, 130px"
+								sizes="(max-width: 640px) 96px, (max-width: 768px) 112px, 130px"
 							/>
 						</span>
 					}
 				/>
 			</div>
 
-			<div className="flex min-w-0 flex-col items-center justify-center gap-2 md:items-start">
+			<div className="flex min-w-0 flex-col items-center justify-center gap-2 sm:items-start">
 				<div className="flex flex-col gap-1">
-					<h1 className="font-bold md:text-2xl text-xl">
+					<h1 className="font-bold text-lg sm:text-xl md:text-2xl">
 						{userName}
 					</h1>
 					<p>{userBio}</p>

@@ -1,6 +1,7 @@
 import type { Viewport } from "next";
 import Script from "next/script";
 import { siteFontVariables } from "@/app/fonts";
+import { ThemeProvider } from "@/components/theme-provider";
 import { profile, profileAvatarUrl, seoMetadata, siteUrl } from "@/content";
 import "./globals.css";
 
@@ -37,7 +38,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" className={siteFontVariables}>
+		<html lang="en" className={siteFontVariables} suppressHydrationWarning>
 			<head>
 				<script
 					type="application/ld+json"
@@ -52,7 +53,16 @@ export default function RootLayout({
 					/>
 				)}
 			</head>
-			<body className="antialiased">{children}</body>
+			<body className="antialiased">
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem
+					disableTransitionOnChange
+				>
+					{children}
+				</ThemeProvider>
+			</body>
 		</html>
 	);
 }

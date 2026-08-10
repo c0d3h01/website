@@ -1,7 +1,7 @@
 // biome-ignore-all lint/security/noDangerouslySetInnerHtml: rendered markdown comes from local blog files.
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import ButtonLink from "@/components/ui/ButtonLink";
 import { defaultOgImage, profile } from "@/content";
 import { getBlogPostBySlug, getBlogPosts, renderMarkdown } from "@/lib/blog";
 import { formatLongDate } from "@/lib/utils";
@@ -78,12 +78,9 @@ const BlogPostPage = async ({ params }: BlogPostPageProps) => {
 		<article className="content-rail flex flex-col gap-4">
 			<div className="flex flex-wrap items-center justify-between gap-2">
 				<p className="text-sm opacity-70">{formatLongDate(post.date)}</p>
-				<Link
-					className="btn cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md text-sm"
-					href="/blog"
-				>
+				<ButtonLink href="/blog" target="_self" rel="" className="text-sm">
 					{"<- Back to Blog"}
-				</Link>
+				</ButtonLink>
 			</div>
 
 			<h1 className="wrap-break-word text-2xl font-bold">{post.title}</h1>

@@ -279,7 +279,15 @@ export const projects: Project[] = [
 		],
 		liveUrl: "",
 		githubUrl: "",
-		techStack: ["Go", "Postgres", "Redis", "ClickHouse", "OpenTelemetry", "Docker", "Cloudflare Workers"],
+		techStack: [
+			"Go",
+			"Postgres",
+			"Redis",
+			"ClickHouse",
+			"OpenTelemetry",
+			"Docker",
+			"Cloudflare Workers",
+		],
 		bannerImage: "/images/banners/projects.gif",
 		previewVideo: "",
 	},
@@ -301,7 +309,15 @@ export const projects: Project[] = [
 		],
 		liveUrl: "",
 		githubUrl: "",
-		techStack: ["Go", "Redis", "Lua", "Postgres", "k6", "OpenTelemetry", "Docker"],
+		techStack: [
+			"Go",
+			"Redis",
+			"Lua",
+			"Postgres",
+			"k6",
+			"OpenTelemetry",
+			"Docker",
+		],
 		bannerImage: "/images/banners/projects.gif",
 		previewVideo: "",
 	},
@@ -401,7 +417,7 @@ export const supportMethods: SupportLink[] = [
 		label: "GitHub Sponsors",
 		href: `https://github.com/sponsors/${profile.support.githubSponsorsUsername}`,
 		icon: Heart,
-	}
+	},
 ];
 
 export const cryptoDonationOptions: CryptoDonationOption[] = [

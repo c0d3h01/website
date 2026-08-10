@@ -1,9 +1,9 @@
 import { Link as LinkIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FiGithub } from "react-icons/fi";
+import ButtonLink from "@/components/ui/ButtonLink";
 import { defaultOgImage, getProjectBySlug, profile, projects } from "@/content";
 
 type ProjectPageProps = {
@@ -82,12 +82,9 @@ const ProjectDetailPage = async ({ params }: ProjectPageProps) => {
 		<article className="flex flex-col gap-4">
 			<div className="flex items-center justify-between gap-2">
 				<h1 className="text-2xl font-bold text-(--gb-fg0)">{project.title}</h1>
-				<Link
-					className="btn cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md text-sm"
-					href="/projects"
-				>
+				<ButtonLink href="/projects" target="_self" rel="" className="text-sm">
 					Back to Projects
-				</Link>
+				</ButtonLink>
 			</div>
 
 			<div className="overflow-hidden rounded-md border border-(--gb-border) bg-(--gb-surface)">
@@ -105,29 +102,25 @@ const ProjectDetailPage = async ({ params }: ProjectPageProps) => {
 
 			<div className="flex flex-wrap gap-2">
 				{project.liveUrl && (
-					<a
-						target="_blank"
-						rel="noopener noreferrer"
-						aria-label={`Open live project: ${project.title}`}
-						className="btn cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md text-sm"
+					<ButtonLink
 						href={project.liveUrl}
+						ariaLabel={`Open live project: ${project.title}`}
+						className="text-sm"
 					>
 						<LinkIcon />
 						Live
-					</a>
+					</ButtonLink>
 				)}
 
 				{project.githubUrl && (
-					<a
-						target="_blank"
-						rel="noopener noreferrer"
-						aria-label={`Open GitHub repository for ${project.title}`}
-						className="btn cursor-pointer w-fit select-none flex flex-row gap-1.5 items-center px-2 py-1 rounded-md text-sm"
+					<ButtonLink
 						href={project.githubUrl}
+						ariaLabel={`Open GitHub repository for ${project.title}`}
+						className="text-sm"
 					>
 						<FiGithub />
 						GitHub
-					</a>
+					</ButtonLink>
 				)}
 			</div>
 

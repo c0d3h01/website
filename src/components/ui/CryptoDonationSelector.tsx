@@ -1,7 +1,7 @@
 "use client";
 
 import { Wallet } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import Button from "@/components/ui/Button";
 import { cryptoDonationOptions } from "@/content";
@@ -116,7 +116,7 @@ const CryptoDonationSelector = memo(function CryptoDonationSelector() {
 					<motion.div
 						role="listbox"
 						aria-label="Crypto donation options"
-						className="absolute bottom-full right-0 z-50 w-max min-w-48 pb-2 sm:left-0 sm:right-auto"
+						className="absolute bottom-full left-0 z-50 w-max min-w-48 pb-2"
 						variants={dropdownVariants}
 						initial="hidden"
 						animate="visible"

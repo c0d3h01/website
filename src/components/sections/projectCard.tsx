@@ -1,6 +1,7 @@
 "use client";
 
-import { Eye, EyeOff, ExternalLink } from "lucide-react";
+import { ExternalLink, Eye, EyeOff } from "lucide-react";
+import { motion } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
 import { FiGithub } from "react-icons/fi";
@@ -53,7 +54,11 @@ const ProjectCard = ({
 		: "Open project preview";
 
 	return (
-		<article className="project-card relative rounded-md">
+		<motion.article
+			className="project-card relative rounded-md"
+			whileHover={{ y: -2, boxShadow: "0 4px 20px rgba(0,0,0,0.08)" }}
+			transition={{ type: "spring", stiffness: 400, damping: 30 }}
+		>
 			<Link
 				href={projectPagePath}
 				aria-label={`Open project details for ${title}`}
@@ -87,7 +92,9 @@ const ProjectCard = ({
 				<div className="flex flex-col gap-1">
 					<div className="flex items-center justify-between">
 						<div className="flex min-w-0 items-center gap-2">
-							<h2 className="truncate text-2xl font-semibold">{title}</h2>
+							<h2 className="truncate text-lg sm:text-xl md:text-2xl font-semibold">
+								{title}
+							</h2>
 							<span
 								className={`pointer-events-none shrink-0 rounded px-2 py-0.5 text-sm font-semibold leading-none tracking-wide ${statusInfo.className}`}
 							>
@@ -95,7 +102,7 @@ const ProjectCard = ({
 							</span>
 						</div>
 
-						<div className="relative z-30 flex select-none gap-2 px-2 text-base">
+						<div className="relative z-30 flex select-none gap-1 sm:gap-2 px-1 sm:px-2 text-base">
 							{hasPreview && (
 								<Button
 									variant="unstyled"
@@ -154,7 +161,7 @@ const ProjectCard = ({
 					</ul>
 				</div>
 			</div>
-		</article>
+		</motion.article>
 	);
 };
 

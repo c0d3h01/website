@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronsDown } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Link from "next/link";
 import { hoverScale, springTransition, tapScale } from "@/lib/utils";
 

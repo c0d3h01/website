@@ -68,10 +68,7 @@ const ScrollRestorer = () => {
 	useEffect(() => {
 		const save = () => {
 			try {
-				sessionStorage.setItem(
-					`scroll:${pathname}`,
-					String(window.scrollY),
-				);
+				sessionStorage.setItem(`scroll:${pathname}`, String(window.scrollY));
 			} catch {
 				// ignore
 			}

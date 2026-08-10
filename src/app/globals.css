@@ -2,13 +2,13 @@
 
 :root {
 	color-scheme: light, dark;
-	--gb-fg0: #0f172a;
-	--gb-fg1: #1f2937;
-	--gb-fg2: #6b7280;
-	--gb-yellow: #0f766e;
-	--gb-border: #e5e7eb;
+	--gb-fg0: #09090b;
+	--gb-fg1: #3f3f46;
+	--gb-fg2: #71717b;
+	--gb-yellow: #000000;
+	--gb-border: #e4e4e7;
 	--gb-surface: #ffffff;
-	--gb-surface-strong: #f5f5f5;
+	--gb-surface-strong: #f4f4f5;
 	--font-body:
 		var(--font-inter-local), "Aptos", "Inter", "Segoe UI Variable", "Segoe UI",
 		"SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -18,6 +18,38 @@
 		sans-serif;
 }
 
+.dark {
+	color-scheme: dark;
+	--gb-fg0: #fafafa;
+	--gb-fg1: #d4d4d8;
+	--gb-fg2: #a1a1aa;
+	--gb-yellow: #ffffff;
+	--gb-border: #27272a;
+	--gb-surface: #09090b;
+	--gb-surface-strong: #18181b;
+}
+
+/* View Transition Theme Animations */
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation: none;
+	mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+	z-index: 1;
+}
+::view-transition-new(root) {
+	z-index: 2;
+	animation: clip-theme 0.6s cubic-bezier(0.85, 0, 0.15, 1) forwards;
+}
+@keyframes clip-theme {
+	0% {
+		clip-path: circle(0px at var(--theme-x) var(--theme-y));
+	}
+	100% {
+		clip-path: circle(var(--theme-r) at var(--theme-x) var(--theme-y));
+	}
+}
 body {
 	font-family: var(--font-body);
 	min-height: 100vh;
@@ -50,10 +82,16 @@ h3 {
 }
 
 .section-stack > * {
-	border-left: 1px solid var(--gb-border);
-	border-right: 1px solid var(--gb-border);
-	padding-inline: clamp(1rem, 2vw, 1.5rem);
+	padding-inline: clamp(0.75rem, 2vw, 1.5rem);
 	padding-block: clamp(0.75rem, 1.5vw, 1rem);
+}
+
+@media (min-width: 640px) {
+	.section-stack > * {
+		border-left: 1px solid var(--gb-border);
+		border-right: 1px solid var(--gb-border);
+		padding-inline: clamp(1rem, 2vw, 1.5rem);
+	}
 }
 
 /* Profile header is short and stable — a tight fluid placeholder keeps

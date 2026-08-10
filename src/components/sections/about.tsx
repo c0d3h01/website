@@ -1,11 +1,12 @@
+// biome-ignore-all lint/security/noDangerouslySetInnerHtml: internal content
 "use client";
 
+import { motion } from "motion/react";
 import { useState } from "react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { profile } from "@/content";
 
-// Bio runs long; clamp to 5 lines and let the reader expand.
-const COLLAPSED_LINES = 5;
+// Bio runs long; let the reader expand.
 
 const About = () => {
 	const [expanded, setExpanded] = useState(false);
@@ -15,8 +16,9 @@ const About = () => {
 		<section className="section-static flex flex-col gap-2">
 			<SectionHeading title="About Me" />
 
-			<div className="relative">
-				<article
+			<motion.div className="relative" layout>
+				<motion.article
+					layout="position"
 					dangerouslySetInnerHTML={{ __html: profile.aboutHtml }}
 					aria-expanded={expanded}
 					className={
@@ -28,21 +30,25 @@ const About = () => {
 				/>
 
 				{clamped && (
-					<div
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
 						aria-hidden
 						className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-(--background) to-transparent"
 					/>
 				)}
-			</div>
+			</motion.div>
 
-			<button
+			<motion.button
+				layout="position"
 				type="button"
 				onClick={() => setExpanded((v) => !v)}
 				aria-expanded={expanded}
 				className="text-muted-foreground hover:text-foreground self-start text-sm font-medium underline-offset-4 transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--gb-fg0)"
 			>
 				{expanded ? "See less" : "See more"}
-			</button>
+			</motion.button>
 		</section>
 	);
 };
