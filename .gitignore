@@ -19,3 +19,6 @@ test-results/
 !AGENTS.md
 .direnv
 .pnpm-store
+.vercel
+.claude/
+.agents/skills/
