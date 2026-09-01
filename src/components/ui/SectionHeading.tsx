@@ -8,7 +8,7 @@ const SectionHeading = ({
 	as: HeadingTag = "h2",
 }: SectionHeadingProps) => {
 	return (
-		<HeadingTag className="text-[1.22rem] leading-none font-semibold tracking-tight text-(--gb-fg0) md:text-[1.28rem] pb-2 border-b border-(--gb-border)">
+		<HeadingTag className="border-b border-(--gb-border) pb-4 text-xl font-semibold tracking-[-0.04em] text-(--gb-fg0) md:text-2xl">
 			{title}
 		</HeadingTag>
 	);

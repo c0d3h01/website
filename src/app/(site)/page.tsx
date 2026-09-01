@@ -19,7 +19,7 @@ export const revalidate = 300;
 
 const HomePageRoute = () => {
 	return (
-		<div className="section-stack flex flex-col gap-4">
+		<div className="section-stack flex flex-col gap-16 pb-20 pt-10 sm:gap-24 sm:pt-16">
 			<GitHubProfileHeader />
 			<Reveal delay={0.1}>
 				<About />

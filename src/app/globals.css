@@ -1,14 +1,16 @@
 @import "tailwindcss";
 
 :root {
-	color-scheme: light, dark;
-	--gb-fg0: #09090b;
-	--gb-fg1: #3f3f46;
-	--gb-fg2: #71717b;
-	--gb-yellow: #000000;
-	--gb-border: #e4e4e7;
-	--gb-surface: #ffffff;
-	--gb-surface-strong: #f4f4f5;
+	color-scheme: light;
+	--gb-fg0: #102018;
+	--gb-fg1: #405048;
+	--gb-fg2: #6e7c74;
+	--gb-yellow: #157347;
+	--gb-border: #d8e2dc;
+	--gb-surface: #f7faf8;
+	--gb-surface-strong: #eaf2ed;
+	--gb-accent-soft: #d9f4e4;
+	--gb-code: #edf5ef;
 	--font-body:
 		var(--font-inter-local), "Aptos", "Inter", "Segoe UI Variable", "Segoe UI",
 		"SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -20,13 +22,15 @@
 
 .dark {
 	color-scheme: dark;
-	--gb-fg0: #fafafa;
-	--gb-fg1: #d4d4d8;
-	--gb-fg2: #a1a1aa;
-	--gb-yellow: #ffffff;
-	--gb-border: #27272a;
-	--gb-surface: #09090b;
-	--gb-surface-strong: #18181b;
+	--gb-fg0: #eef8f1;
+	--gb-fg1: #c0d0c5;
+	--gb-fg2: #82958a;
+	--gb-yellow: #6ee7a3;
+	--gb-border: #26372d;
+	--gb-surface: #0d1510;
+	--gb-surface-strong: #15231a;
+	--gb-accent-soft: #173b27;
+	--gb-code: #122019;
 }
 
 /* View Transition Theme Animations */
@@ -56,6 +60,26 @@ body {
 	color: var(--gb-fg1);
 	line-height: 1.55;
 	background-color: var(--gb-surface);
+	background-image: linear-gradient(
+		to bottom,
+		color-mix(in srgb, var(--gb-yellow) 4%, transparent),
+		transparent 28rem
+	);
+}
+
+html {
+	background: var(--gb-surface);
+	scroll-behavior: smooth;
+}
+
+:focus-visible {
+	outline: 2px solid var(--gb-yellow);
+	outline-offset: 4px;
+}
+
+::selection {
+	background: var(--gb-accent-soft);
+	color: var(--gb-fg0);
 }
 
 h1,

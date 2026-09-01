@@ -16,7 +16,7 @@ const ProfileHeader = ({
 	const imageAlt = "Profile Picture";
 
 	return (
-		<section className="flex flex-col items-center gap-3 text-center sm:flex-row sm:items-center sm:gap-4 sm:text-left">
+		<section className="grid items-center gap-8 border-b border-(--gb-border) pb-14 sm:grid-cols-[auto_1fr] sm:gap-10 md:grid-cols-[10rem_1fr] md:pb-20">
 			<div className="shrink-0">
 				<ImagePreview
 					src={userImage}
@@ -25,7 +25,7 @@ const ProfileHeader = ({
 					dialogLabel="Profile picture preview"
 					triggerAriaLabel="Open avatar preview"
 					trigger={
-						<span className="pro-pic-shell relative block size-24 sm:size-28 md:size-32 select-none">
+						<span className="pro-pic-shell relative block size-24 border-4 border-(--gb-accent-soft) sm:size-28 md:size-32 select-none">
 							<Image
 								src={userImage}
 								alt={imageAlt}
@@ -40,9 +40,12 @@ const ProfileHeader = ({
 				/>
 			</div>
 
-			<div className="flex min-w-0 flex-col items-center justify-center gap-2 sm:items-start">
-				<div className="flex flex-col gap-1">
-					<h1 className="font-bold text-lg sm:text-xl md:text-2xl">
+			<div className="flex min-w-0 flex-col items-start justify-center gap-5">
+				<div className="flex flex-col gap-2">
+					<p className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-(--gb-yellow)">
+						Backend and systems engineer
+					</p>
+					<h1 className="text-balance font-bold text-4xl leading-[1.05] tracking-[-0.06em] text-(--gb-fg0) sm:text-5xl md:text-6xl">
 						{userName}
 					</h1>
 					<p>{userBio}</p>

@@ -7,8 +7,8 @@ import "./globals.css";
 
 export const metadata = seoMetadata;
 export const viewport: Viewport = {
-	colorScheme: "light",
-	themeColor: "#ffffff",
+	colorScheme: "dark light",
+	themeColor: "#0d1510",
 };
 
 const personJsonLd = {
