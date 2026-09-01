@@ -20,26 +20,28 @@ export const revalidate = 300;
 const HomePageRoute = () => {
 	return (
 		<div className="section-stack flex flex-col gap-4">
-			<GitHubProfileHeader />
-			<Reveal delay={0.1}>
+			<div id="home">
+				<GitHubProfileHeader />
+			</div>
+			<Reveal id="about" delay={0.1}>
 				<About />
 			</Reveal>
-			<Reveal delay={0.1}>
+			<Reveal id="experience" delay={0.1}>
 				<Experience />
 			</Reveal>
-			<Reveal delay={0.1}>
+			<Reveal id="skills" delay={0.1}>
 				<Skills />
 			</Reveal>
-			<Reveal delay={0.1}>
+			<Reveal id="projects" delay={0.1}>
 				<Projects />
 			</Reveal>
-			<Reveal delay={0.1}>
+			<Reveal id="blog" delay={0.1}>
 				<Writings />
 			</Reveal>
-			<Reveal delay={0.1}>
+			<Reveal id="hire" delay={0.1}>
 				<Hire />
 			</Reveal>
-			<Reveal delay={0.1}>
+			<Reveal id="support" delay={0.1}>
 				<Support />
 			</Reveal>
 			<Reveal delay={0.1}>
