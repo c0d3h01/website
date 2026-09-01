@@ -11,42 +11,44 @@ import Writings from "@/components/sections/writings";
 import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
-	alternates: {
-		canonical: "/",
-	},
+	title: "Software Engineer",
+	alternates: { canonical: "/" },
 };
 export const revalidate = 300;
 
-const HomePageRoute = () => {
-	return (
-		<div className="section-stack flex flex-col gap-4">
-			<GitHubProfileHeader />
-			<Reveal delay={0.1}>
-				<About />
-			</Reveal>
-			<Reveal delay={0.1}>
-				<Experience />
-			</Reveal>
-			<Reveal delay={0.1}>
-				<Skills />
-			</Reveal>
-			<Reveal delay={0.1}>
+const HomePageRoute = () => (
+	<div className="section-stack flex flex-col">
+		<GitHubProfileHeader />
+		<Reveal delay={0.08}>
+			<About />
+		</Reveal>
+		<Reveal delay={0.08}>
+			<Experience />
+		</Reveal>
+		<Reveal delay={0.08}>
+			<Skills />
+		</Reveal>
+		<Reveal delay={0.08}>
+			<div id="work">
 				<Projects />
-			</Reveal>
-			<Reveal delay={0.1}>
+			</div>
+		</Reveal>
+		<Reveal delay={0.08}>
+			<div id="writing">
 				<Writings />
-			</Reveal>
-			<Reveal delay={0.1}>
+			</div>
+		</Reveal>
+		<Reveal delay={0.08}>
+			<div id="contact">
 				<Hire />
-			</Reveal>
-			<Reveal delay={0.1}>
-				<Support />
-			</Reveal>
-			<Reveal delay={0.1}>
-				<Footer />
-			</Reveal>
-		</div>
-	);
-};
-
+			</div>
+		</Reveal>
+		<Reveal delay={0.08}>
+			<Support />
+		</Reveal>
+		<Reveal delay={0.08}>
+			<Footer />
+		</Reveal>
+	</div>
+);
 export default HomePageRoute;

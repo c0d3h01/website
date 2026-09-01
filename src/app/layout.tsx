@@ -38,7 +38,11 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" className={siteFontVariables} suppressHydrationWarning>
+		<html
+			lang="en"
+			className={`${siteFontVariables} bg-background`}
+			suppressHydrationWarning
+		>
 			<head>
 				<script
 					type="application/ld+json"
