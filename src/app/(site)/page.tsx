@@ -8,7 +8,6 @@ import Projects from "@/components/sections/projects";
 import Skills from "@/components/sections/skills";
 import Support from "@/components/sections/support";
 import Writings from "@/components/sections/writings";
-import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
 	alternates: {
@@ -21,30 +20,14 @@ const HomePageRoute = () => {
 	return (
 		<div className="section-stack flex flex-col gap-4">
 			<GitHubProfileHeader />
-			<Reveal delay={0.1}>
-				<About />
-			</Reveal>
-			<Reveal delay={0.1}>
-				<Experience />
-			</Reveal>
-			<Reveal delay={0.1}>
-				<Skills />
-			</Reveal>
-			<Reveal delay={0.1}>
-				<Projects />
-			</Reveal>
-			<Reveal delay={0.1}>
-				<Writings />
-			</Reveal>
-			<Reveal delay={0.1}>
-				<Hire />
-			</Reveal>
-			<Reveal delay={0.1}>
-				<Support />
-			</Reveal>
-			<Reveal delay={0.1}>
-				<Footer />
-			</Reveal>
+			<About />
+			<Experience />
+			<Skills />
+			<Projects />
+			<Writings />
+			<Hire />
+			<Support />
+			<Footer />
 		</div>
 	);
 };

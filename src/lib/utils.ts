@@ -1,4 +1,4 @@
-import type { Transition, Variants } from "motion/react";
+import type { Variants } from "motion/react";
 
 // ---------------------------------------------------------------------------
 // Date formatting
@@ -31,20 +31,6 @@ export const formatLongDate = (date: string) =>
 // Every animated property here is GPU-friendly (transform / opacity).
 // ---------------------------------------------------------------------------
 
-/** Snappy spring for interactive feedback (buttons, links, cards).
- *  Tuned for sub-150ms perceived latency on user-driven input. */
-export const springTransition: Transition = {
-	type: "spring",
-	stiffness: 400,
-	damping: 30,
-};
-
-/** Scale-down feedback for tap/press — pair with `whileTap`. */
-export const tapScale = { scale: 0.97 };
-
-/** Subtle scale-up on hover — pair with `whileHover`. */
-export const hoverScale = { scale: 1.03 };
-
 /** Dropdown / popover entrance (use with `AnimatePresence`).
  *  GPU-only: opacity + translateY + scale. */
 export const dropdownVariants: Variants = {
@@ -63,24 +49,3 @@ export const dropdownVariants: Variants = {
 	},
 };
 
-/** Modal backdrop fade (opacity only). */
-export const backdropVariants: Variants = {
-	hidden: { opacity: 0 },
-	visible: { opacity: 1, transition: { duration: 0.15 } },
-	exit: { opacity: 0, transition: { duration: 0.12 } },
-};
-
-/** Modal content scale-up entrance (transform + opacity only). */
-export const dialogContentVariants: Variants = {
-	hidden: { opacity: 0, scale: 0.92 },
-	visible: {
-		opacity: 1,
-		scale: 1,
-		transition: { type: "spring", stiffness: 500, damping: 30, mass: 0.6 },
-	},
-	exit: {
-		opacity: 0,
-		scale: 0.95,
-		transition: { duration: 0.12, ease: "easeIn" },
-	},
-};

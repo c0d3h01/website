@@ -1,5 +1,3 @@
-"use client";
-
 import type { Experience } from "@/content";
 
 interface ExperienceListProps {
