@@ -1,12 +1,10 @@
 "use client";
 
-import { type HTMLMotionProps, motion } from "motion/react";
-import { memo, type Ref, useMemo } from "react";
-import { hoverScale, springTransition, tapScale } from "@/lib/utils";
+import { type ButtonHTMLAttributes, memo, type Ref, useMemo } from "react";
 
 type ButtonVariant = "default" | "unstyled";
 
-interface ButtonProps extends HTMLMotionProps<"button"> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	variant?: ButtonVariant;
 	ref?: Ref<HTMLButtonElement>;
 }
@@ -31,15 +29,7 @@ const Button = memo(
 		);
 
 		return (
-			<motion.button
-				ref={ref}
-				type={type}
-				className={resolvedClassName}
-				whileTap={tapScale}
-				whileHover={hoverScale}
-				transition={springTransition}
-				{...props}
-			/>
+			<button ref={ref} type={type} className={resolvedClassName} {...props} />
 		);
 	},
 );

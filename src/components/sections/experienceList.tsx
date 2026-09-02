@@ -1,24 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "motion/react";
 import type { Experience } from "@/content";
-
-const container: Variants = {
-	hidden: { opacity: 0 },
-	show: {
-		opacity: 1,
-		transition: { staggerChildren: 0.1 },
-	},
-};
-
-const itemVariants: Variants = {
-	hidden: { opacity: 0, y: 20 },
-	show: {
-		opacity: 1,
-		y: 0,
-		transition: { type: "spring", stiffness: 300, damping: 24 },
-	},
-};
 
 interface ExperienceListProps {
 	items: Experience[];
@@ -26,19 +8,11 @@ interface ExperienceListProps {
 
 const ExperienceList = ({ items }: ExperienceListProps) => {
 	return (
-		<motion.div
-			variants={container}
-			initial="hidden"
-			whileInView="show"
-			viewport={{ once: true, margin: "-40px" }}
-			className="section-copy flex flex-col gap-2.5"
-		>
+		<div className="section-copy flex flex-col gap-2.5">
 			{items.map(({ role, company, duration, location, highlights }) => {
 				const entryKey = `${role}·${company}`;
 				return (
-					<motion.article
-						variants={itemVariants}
-						whileHover={{ y: -2, boxShadow: "0 4px 12px rgba(0,0,0,0.05)" }}
+					<article
 						key={entryKey}
 						className="experience-card rounded-md border border-(--gb-border) bg-(--gb-surface) p-2.5"
 					>
@@ -56,10 +30,10 @@ const ExperienceList = ({ items }: ExperienceListProps) => {
 								<li key={`${entryKey}-${highlight}`}>{highlight}</li>
 							))}
 						</ul>
-					</motion.article>
+					</article>
 				);
 			})}
-		</motion.div>
+		</div>
 	);
 };
 

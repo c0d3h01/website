@@ -29,27 +29,6 @@
 	--gb-surface-strong: #18181b;
 }
 
-/* View Transition Theme Animations */
-::view-transition-old(root),
-::view-transition-new(root) {
-	animation: none;
-	mix-blend-mode: normal;
-}
-::view-transition-old(root) {
-	z-index: 1;
-}
-::view-transition-new(root) {
-	z-index: 2;
-	animation: clip-theme 0.6s cubic-bezier(0.85, 0, 0.15, 1) forwards;
-}
-@keyframes clip-theme {
-	0% {
-		clip-path: circle(0px at var(--theme-x) var(--theme-y));
-	}
-	100% {
-		clip-path: circle(var(--theme-r) at var(--theme-x) var(--theme-y));
-	}
-}
 body {
 	font-family: var(--font-body);
 	min-height: 100vh;

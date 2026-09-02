@@ -1,9 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
 import Link from "next/link";
 import { memo, type ReactNode, useMemo } from "react";
-import { hoverScale, springTransition, tapScale } from "@/lib/utils";
 
 interface ButtonLinkProps {
 	href: string;
@@ -34,12 +32,7 @@ const ButtonLink = memo(function ButtonLink({
 	);
 
 	return (
-		<motion.div
-			whileTap={tapScale}
-			whileHover={hoverScale}
-			transition={springTransition}
-			className="inline-flex"
-		>
+		<div className="inline-flex">
 			<Link
 				href={href}
 				aria-label={ariaLabel}
@@ -49,7 +42,7 @@ const ButtonLink = memo(function ButtonLink({
 			>
 				{children}
 			</Link>
-		</motion.div>
+		</div>
 	);
 });
 
