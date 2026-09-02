@@ -1,30 +1,4 @@
-import { Bitcoin, Heart, Mail } from "lucide-react";
 import type { Metadata } from "next";
-import type { ComponentType } from "react";
-import { BiLogoPostgresql } from "react-icons/bi";
-import { BsFiletypeSql } from "react-icons/bs";
-import { DiJavascript } from "react-icons/di";
-import { FaDocker, FaRust } from "react-icons/fa";
-import {
-	FaGithub,
-	FaGolang,
-	FaLinkedinIn,
-	FaPython,
-	FaXTwitter,
-} from "react-icons/fa6";
-import { IoLogoNodejs } from "react-icons/io5";
-import { RiNextjsLine, RiReactjsLine } from "react-icons/ri";
-import {
-	SiDjango,
-	SiEthereum,
-	SiNixos,
-	SiPostman,
-	SiSolana,
-} from "react-icons/si";
-import { TbBrandTypescript } from "react-icons/tb";
-import { VscTerminalLinux } from "react-icons/vsc";
-
-export type IconComponent = ComponentType<{ className?: string }>;
 
 // ---------------------------------------------------------------------------
 // Profile
@@ -78,34 +52,6 @@ export const profile: Profile = {
  * `github.com/<username>.png` without authentication, no API call, no quota.
  */
 export const profileAvatarUrl = `https://github.com/${profile.githubUsername}.png`;
-
-// ---------------------------------------------------------------------------
-// Skills
-// ---------------------------------------------------------------------------
-
-interface Skill {
-	icon: IconComponent;
-	name: string;
-}
-
-export const skills: Skill[] = [
-	{ icon: FaGolang, name: "Go" },
-	{ icon: FaRust, name: "Rust" },
-	{ icon: FaPython, name: "Python" },
-	{ icon: BsFiletypeSql, name: "SQL" },
-	{ icon: IoLogoNodejs, name: "Node.js" },
-	{ icon: SiDjango, name: "Django" },
-	{ icon: BiLogoPostgresql, name: "PostgreSQL" },
-	{ icon: FaDocker, name: "Docker" },
-	{ icon: VscTerminalLinux, name: "Linux" },
-	{ icon: SiNixos, name: "Nix, NixOS" },
-	{ icon: FaGithub, name: "GitHub Actions" },
-	{ icon: SiPostman, name: "API Testing" },
-	{ icon: TbBrandTypescript, name: "TypeScript" },
-	{ icon: DiJavascript, name: "JavaScript" },
-	{ icon: RiReactjsLine, name: "React" },
-	{ icon: RiNextjsLine, name: "Next.js" },
-];
 
 // ---------------------------------------------------------------------------
 // SEO / site metadata
@@ -354,89 +300,5 @@ export const experiences: Experience[] = [
 			"Built REST APIs and backends, handling routing, auth, validation, and errors.",
 			"Used PostgreSQL, Redis, Docker, and CI/CD to keep services stable and easy to maintain.",
 		],
-	},
-];
-
-// ---------------------------------------------------------------------------
-// Social, hire + support
-// ---------------------------------------------------------------------------
-
-export const emailLink = `mailto:${profile.email}?subject=Interested%20in%20Hiring%20You`;
-export const resumeFilePath = "/public/docs/harshal_sawant-resume.pdf";
-
-interface SocialLink {
-	name: string;
-	href: string;
-	icon: IconComponent;
-}
-
-export const SocialLinks: SocialLink[] = [
-	{
-		name: "Email",
-		href: `mailto:${profile.email}`,
-		icon: Mail,
-	},
-	{
-		name: "GitHub",
-		href: `https://github.com/${profile.githubUsername}`,
-		icon: FaGithub,
-	},
-	{
-		name: "X (Twitter)",
-		href: `https://x.com/intent/follow?screen_name=${profile.twitterHandle}`,
-		icon: FaXTwitter,
-	},
-	{
-		name: "LinkedIn",
-		href: `https://www.linkedin.com/in/${profile.linkedinSlug}`,
-		icon: FaLinkedinIn,
-	},
-];
-
-export const hireText =
-	"I'm open to software engineering roles and freelance work where I can build reliable backend systems, developer tools, and performance-critical products.";
-
-interface SupportLink {
-	label: string;
-	href: string;
-	icon: IconComponent;
-}
-
-export interface CryptoDonationOption {
-	name: string;
-	shortName: string;
-	address: string;
-	icon: IconComponent;
-}
-
-export const supportText =
-	"If my open-source work, tools, or technical writing helps you, consider supporting me. It helps me keep building and sharing useful developer tools.";
-
-export const supportMethods: SupportLink[] = [
-	{
-		label: "GitHub Sponsors",
-		href: `https://github.com/sponsors/${profile.support.githubSponsorsUsername}`,
-		icon: Heart,
-	},
-];
-
-export const cryptoDonationOptions: CryptoDonationOption[] = [
-	{
-		name: "Bitcoin",
-		shortName: "BTC",
-		address: profile.support.bitcoinAddress,
-		icon: Bitcoin,
-	},
-	{
-		name: "Ethereum",
-		shortName: "ETH",
-		address: profile.support.ethereumAddress,
-		icon: SiEthereum,
-	},
-	{
-		name: "Solana",
-		shortName: "SOL",
-		address: profile.support.solanaAddress,
-		icon: SiSolana,
 	},
 ];

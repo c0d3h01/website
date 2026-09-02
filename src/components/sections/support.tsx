@@ -1,7 +1,17 @@
+import { Heart } from "lucide-react";
 import ButtonLink from "@/components/ui/ButtonLink";
 import CryptoDonationSelectorClient from "@/components/ui/CryptoDonationSelectorClient";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { supportMethods, supportText } from "@/content";
+
+const supportText =
+	"If my open-source work, tools, or technical writing helps you, consider supporting me. It helps me keep building and sharing useful developer tools.";
+const supportMethods = [
+	{
+		label: "GitHub Sponsors",
+		href: "https://github.com/sponsors/c0d3h01",
+		icon: Heart,
+	},
+];
 
 const Support = () => {
 	return (

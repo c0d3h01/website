@@ -1,5 +1,27 @@
+import { Mail } from "lucide-react";
+import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 import ButtonLink from "@/components/ui/ButtonLink";
-import { SocialLinks } from "@/content";
+
+type SocialLink = {
+	name: string;
+	href: string;
+	icon: React.ComponentType<{ className?: string }>;
+};
+
+const SocialLinks: SocialLink[] = [
+	{ name: "Email", href: "mailto:harshalsawant.dev@gmail.com", icon: Mail },
+	{ name: "GitHub", href: "https://github.com/c0d3h01", icon: FaGithub },
+	{
+		name: "X (Twitter)",
+		href: "https://x.com/intent/follow?screen_name=haarshalsawant",
+		icon: FaXTwitter,
+	},
+	{
+		name: "LinkedIn",
+		href: "https://www.linkedin.com/in/haarshalsawant",
+		icon: FaLinkedinIn,
+	},
+];
 
 const Social = () => {
 	return (

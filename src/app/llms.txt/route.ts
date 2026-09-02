@@ -1,12 +1,26 @@
-import {
-	experiences,
-	hireText,
-	profile,
-	projects,
-	siteUrl,
-	skills,
-} from "@/content";
+import { experiences, profile, projects, siteUrl } from "@/content";
 import { getBlogPosts } from "@/lib/blog";
+
+const hireText =
+	"I'm open to software engineering roles and freelance work where I can build reliable backend systems, developer tools, and performance-critical products.";
+const skills = [
+	"Go",
+	"Rust",
+	"Python",
+	"SQL",
+	"Node.js",
+	"Django",
+	"PostgreSQL",
+	"Docker",
+	"Linux",
+	"Nix, NixOS",
+	"GitHub Actions",
+	"API Testing",
+	"TypeScript",
+	"JavaScript",
+	"React",
+	"Next.js",
+].map((name) => ({ name }));
 
 export const dynamic = "force-static";
 

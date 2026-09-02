@@ -1,11 +1,32 @@
 "use client";
 
-import { Wallet } from "lucide-react";
+import { Bitcoin, Wallet } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
+import { SiEthereum, SiSolana } from "react-icons/si";
 import Button from "@/components/ui/Button";
-import { cryptoDonationOptions } from "@/content";
 import { dropdownVariants } from "@/lib/utils";
+
+const cryptoDonationOptions = [
+	{
+		name: "Bitcoin",
+		shortName: "BTC",
+		address: "bc1qdy2acxf0jk4j94stnmccnkyk5avfhqqc09xjvl",
+		icon: Bitcoin,
+	},
+	{
+		name: "Ethereum",
+		shortName: "ETH",
+		address: "0x87EdD72c510ecc537B167FF21ef726B62f7f600B",
+		icon: SiEthereum,
+	},
+	{
+		name: "Solana",
+		shortName: "SOL",
+		address: "4RdWWahnTrrtFfFCWy2wgznYGcJseCotphaPbcpSnR8H",
+		icon: SiSolana,
+	},
+];
 
 const COPY_RESET_MS = 1800;
 

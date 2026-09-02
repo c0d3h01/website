@@ -1,7 +1,12 @@
 import { Briefcase, FileText } from "lucide-react";
 import ButtonLink from "@/components/ui/ButtonLink";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { emailLink, hireText, resumeFilePath } from "@/content";
+
+const emailLink =
+	"mailto:harshalsawant.dev@gmail.com?subject=Interested%20in%20Hiring%20You";
+const resumeFilePath = "/public/docs/harshal_sawant-resume.pdf";
+const hireText =
+	"I'm open to software engineering roles and freelance work where I can build reliable backend systems, developer tools, and performance-critical products.";
 
 const Hire = () => {
 	return (
