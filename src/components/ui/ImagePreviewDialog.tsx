@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
 import Image, { type ImageProps } from "next/image";
 import {
 	type MouseEvent,
@@ -11,7 +10,6 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import Button from "@/components/ui/Button";
-import { backdropVariants, dialogContentVariants } from "@/lib/utils";
 
 interface ImagePreviewDialogProps {
 	isOpen: boolean;
@@ -76,68 +74,56 @@ const ImagePreviewDialog = ({
 		};
 	}, [isOpen, closeOnEscape]);
 
-	const dialog = (
-		<AnimatePresence>
-			{isOpen && (
-				<motion.div
-					key="image-preview-backdrop"
-					role="dialog"
-					aria-modal="true"
-					aria-label={dialogLabel}
-					tabIndex={-1}
-					className="fixed inset-0 z-50 flex items-center justify-center p-4"
-					variants={backdropVariants}
-					initial="hidden"
-					animate="visible"
-					exit="exit"
-					onClick={closeOnBackdropClick}
-					onKeyDown={closeOnDialogKeyDown}
-					style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}
+	const dialog = isOpen ? (
+		<div
+			key="image-preview-backdrop"
+			role="dialog"
+			aria-modal="true"
+			aria-label={dialogLabel}
+			tabIndex={-1}
+			className="fixed inset-0 z-50 flex items-center justify-center p-4"
+			onClick={closeOnBackdropClick}
+			onKeyDown={closeOnDialogKeyDown}
+			style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}
+		>
+			<div
+				className={`${dialogWidthClassName} relative overflow-hidden rounded-lg`}
+			>
+				<Button
+					ref={closeButtonRef}
+					variant="unstyled"
+					aria-label="Close image preview"
+					onClick={onClose}
+					className="absolute top-3 right-3 z-20 rounded-full bg-black/70 p-2.5 text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
 				>
-					<motion.div
-						className={`${dialogWidthClassName} relative overflow-hidden rounded-lg`}
-						variants={dialogContentVariants}
-						initial="hidden"
-						animate="visible"
-						exit="exit"
+					<svg
+						aria-hidden="true"
+						className="h-6 w-6"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
 					>
-						<Button
-							ref={closeButtonRef}
-							variant="unstyled"
-							aria-label="Close image preview"
-							onClick={onClose}
-							className="absolute top-3 right-3 z-20 rounded-full bg-black/70 p-2.5 text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-						>
-							<svg
-								aria-hidden="true"
-								className="h-6 w-6"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									strokeWidth={2}
-									d="M6 18L18 6M6 6l12 12"
-								/>
-							</svg>
-						</Button>
-
-						<Image
-							src={src}
-							alt={alt}
-							width={width}
-							height={height}
-							sizes={sizes}
-							placeholder={placeholder}
-							className={imageClassName}
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							strokeWidth={2}
+							d="M6 18L18 6M6 6l12 12"
 						/>
-					</motion.div>
-				</motion.div>
-			)}
-		</AnimatePresence>
-	);
+					</svg>
+				</Button>
+
+				<Image
+					src={src}
+					alt={alt}
+					width={width}
+					height={height}
+					sizes={sizes}
+					placeholder={placeholder}
+					className={imageClassName}
+				/>
+			</div>
+		</div>
+	) : null;
 
 	return createPortal(dialog, document.body);
 };

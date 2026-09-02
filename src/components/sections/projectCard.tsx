@@ -1,7 +1,6 @@
 "use client";
 
 import { ExternalLink, Eye, EyeOff } from "lucide-react";
-import { motion } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
 import { FiGithub } from "react-icons/fi";
@@ -54,11 +53,7 @@ const ProjectCard = ({
 		: "Open project preview";
 
 	return (
-		<motion.article
-			className="project-card relative rounded-md"
-			whileHover={{ y: -2, boxShadow: "0 4px 20px rgba(0,0,0,0.08)" }}
-			transition={{ type: "spring", stiffness: 400, damping: 30 }}
-		>
+		<article className="project-card relative rounded-md">
 			<Link
 				href={projectPagePath}
 				aria-label={`Open project details for ${title}`}
@@ -161,7 +156,7 @@ const ProjectCard = ({
 					</ul>
 				</div>
 			</div>
-		</motion.article>
+		</article>
 	);
 };
 

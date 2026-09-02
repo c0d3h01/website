@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "motion/react";
 import Link from "next/link";
 import { memo } from "react";
 import { formatShortDate } from "@/lib/utils";
@@ -21,10 +18,7 @@ const BlogPostCard = memo(function BlogPostCard({
 	const publishedAt = formatShortDate(date);
 
 	return (
-		<motion.div
-			whileHover={{ y: -1, boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}
-			transition={{ type: "spring", stiffness: 400, damping: 30 }}
-		>
+		<div>
 			<Link
 				href={href}
 				className="blog-card cursor-pointer p-2 rounded-md block hover:bg-gray-100 transition-colors"
@@ -37,7 +31,7 @@ const BlogPostCard = memo(function BlogPostCard({
 					<p className="wrap-break-word opacity-80">{description}</p>
 				</div>
 			</Link>
-		</motion.div>
+		</div>
 	);
 });
 
